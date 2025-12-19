@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>자주 묻는 질문 - 경리업무를잘하는청년들</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
+    <style>
+        @font-face { font-family: 'Pretendard'; font-weight: 400; font-display: block; src: local('Pretendard Regular'), url('fonts/Pretendard-1.3.9/web/static/woff2/Pretendard-Regular.woff2') format('woff2'); }
+        @font-face { font-family: 'Pretendard'; font-weight: 700; font-display: block; src: local('Pretendard Bold'), url('fonts/Pretendard-1.3.9/web/static/woff2/Pretendard-Bold.woff2') format('woff2'); }
+        @font-face { font-family: 'Pretendard'; font-weight: 900; font-display: block; src: local('Pretendard Black'), url('fonts/Pretendard-1.3.9/web/static/woff2/Pretendard-Black.woff2') format('woff2'); }
+        * { font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, sans-serif; }
+        body { background: #F8FAFC; color: #1E293B; }
+        .nav-glass { background: rgba(255, 255, 255, 0.9); backdrop-filter: blur(20px); border-bottom: 1px solid #E2E8F0; }
+        .faq-item { transition: all 0.3s ease; }
+        .faq-item:hover { transform: translateY(-2px); }
+        .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.4s ease-out; }
+        .faq-answer.active { max-height: 500px; }
+        .faq-icon { transition: transform 0.3s ease; }
+        .faq-icon.active { transform: rotate(180deg); }
+    </style>
+</head>
+<body class="antialiased">
+    
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 right-0 z-50 nav-glass">
+        <div class="max-w-7xl mx-auto px-2 py-1 flex items-center justify-between">
+            <a href="index.html" class="flex items-center gap-1 hover:opacity-80 transition-opacity">
+                <img src="로고.png" alt="경리업무를잘하는청년들" class="h-20 object-contain">
+            </a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="min-h-[50vh] relative flex items-center pt-24 pb-16 bg-gradient-to-br from-blue-50 to-indigo-50">
+        <div class="max-w-7xl mx-auto px-6 relative z-10 text-center">
+            <div data-aos="fade-up" data-aos-duration="800">
+                <a href="index.html" class="inline-flex items-center gap-2 text-gray-500 hover:text-blue-600 transition-colors mb-8">
+                    <i class="fas fa-arrow-left"></i>
+                    <span>메인으로 돌아가기</span>
+                </a>
+                
+                <div class="inline-flex items-center gap-3 bg-blue-100 border border-blue-200 px-5 py-3 rounded-full mb-8">
+                    <span class="text-3xl">❓</span>
+                    <span class="text-lg font-semibold text-blue-700">자주 묻는 질문</span>
+                </div>
+                
+                <h1 class="text-5xl md:text-6xl font-black leading-tight mb-6 tracking-tight text-gray-900">
+                    궁금하신 점이 있으신가요?
+                </h1>
+                
+                <p class="text-xl text-gray-600 mb-8">
+                    고객님들이 자주 물어보시는 질문들을 모았습니다
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="py-20 bg-white">
+        <div class="max-w-4xl mx-auto px-6">
+            
+            <!-- FAQ Item 1 -->
+            <div data-aos="fade-up" data-aos-duration="600" data-aos-delay="100" class="faq-item bg-white border-2 border-gray-200 rounded-2xl p-6 mb-4 cursor-pointer shadow-sm hover:shadow-md" onclick="toggleFaq(this)">
+                <div class="flex justify-between items-center">
+                    <h3 class="text-xl font-bold text-gray-900 pr-8">업종 제한은 없나요?</h3>
+                    <i class="fas fa-chevron-down faq-icon text-blue-600 text-xl"></i>
+                </div>
+                <div class="faq-answer mt-4 pt-4 border-t border-gray-200">
+                    <p class="text-lg text-gray-600 leading-relaxed">네, 특별히 제한은 없습니다. 업종 불문 손익 및 자금관리를 필요하니까요.</p>
+                </div>
+            </div>
+
+            <!-- FAQ Item 2 -->
+            <div data-aos="fade-up" data-aos-duration="600" data-aos-delay="150" class="faq-item bg-white border-2 border-gray-200 rounded-2xl p-6 mb-4 cursor-pointer shadow-sm hover:shadow-md" onclick="toggleFaq(this)">
+                <div class="flex justify-between items-center">
+                    <h3 class="text-xl font-bold text-gray-900 pr-8">업무에 어떤 프로그램을 사용하시나요?</h3>
+                    <i class="fas fa-chevron-down faq-icon text-blue-600 text-xl"></i>
+                </div>
+                <div class="faq-answer mt-4 pt-4 border-t border-gray-200">
+                    <p class="text-lg text-gray-600 leading-relaxed">경리프로그램은 <strong>경리나라 프로그램</strong>을 사용하며, 경우에 따라 구글시트, 구글데이터스튜디오 등의 보조도구가 필요할 수 있습니다.</p>
+                </div>
+            </div>
+
+            <!-- FAQ Item 3 -->
+            <div data-aos="fade-up" data-aos-duration="600" data-aos-delay="200" class="faq-item bg-white border-2 border-gray-200 rounded-2xl p-6 mb-4 cursor-pointer shadow-sm hover:shadow-md" onclick="toggleFaq(this)">
+                <div class="flex justify-between items-center">
+                    <h3 class="text-xl font-bold text-gray-900 pr-8">경리직원이 출장을 나오는 방식인가요?</h3>
+                    <i class="fas fa-chevron-down faq-icon text-blue-600 text-xl"></i>
+                </div>
+                <div class="faq-answer mt-4 pt-4 border-t border-gray-200">
+                    <p class="text-lg text-gray-600 leading-relaxed">경리나라 프로그램을 통해 <strong>원격지에서 근무</strong>합니다.</p>
+                </div>
+            </div>
+
+            <!-- FAQ Item 4 -->
+            <div data-aos="fade-up" data-aos-duration="600" data-aos-delay="250" class="faq-item bg-white border-2 border-gray-200 rounded-2xl p-6 mb-4 cursor-pointer shadow-sm hover:shadow-md" onclick="toggleFaq(this)">
+                <div class="flex justify-between items-center">
+                    <h3 class="text-xl font-bold text-gray-900 pr-8">업무 소통은 어떤 방식으로 진행되나요?</h3>
+                    <i class="fas fa-chevron-down faq-icon text-blue-600 text-xl"></i>
+                </div>
+                <div class="faq-answer mt-4 pt-4 border-t border-gray-200">
+                    <p class="text-lg text-gray-600 leading-relaxed">카카오채널 <strong>"wapeople"</strong> 검색, 혹은 카카오톡 팀채팅 등으로 진행하고 있습니다.</p>
+                </div>
+            </div>
+
+            <!-- FAQ Item 5 -->
+            <div data-aos="fade-up" data-aos-duration="600" data-aos-delay="300" class="faq-item bg-white border-2 border-gray-200 rounded-2xl p-6 mb-4 cursor-pointer shadow-sm hover:shadow-md" onclick="toggleFaq(this)">
+                <div class="flex justify-between items-center">
+                    <h3 class="text-xl font-bold text-gray-900 pr-8">서비스 금액은 선납인가요? 후납인가요?</h3>
+                    <i class="fas fa-chevron-down faq-icon text-blue-600 text-xl"></i>
+                </div>
+                <div class="faq-answer mt-4 pt-4 border-t border-gray-200">
+                    <p class="text-lg text-gray-600 leading-relaxed">서비스 금액은 <strong>후납</strong>이며, CMS 자동출금으로 진행합니다.</p>
+                </div>
+            </div>
+
+            <!-- FAQ Item 6 -->
+            <div data-aos="fade-up" data-aos-duration="600" data-aos-delay="350" class="faq-item bg-white border-2 border-gray-200 rounded-2xl p-6 mb-4 cursor-pointer shadow-sm hover:shadow-md" onclick="toggleFaq(this)">
+                <div class="flex justify-between items-center">
+                    <h3 class="text-xl font-bold text-gray-900 pr-8">경리직원이 있어도 원격경리 서비스를 도입할 수 있나요?</h3>
+                    <i class="fas fa-chevron-down faq-icon text-blue-600 text-xl"></i>
+                </div>
+                <div class="faq-answer mt-4 pt-4 border-t border-gray-200">
+                    <p class="text-lg text-gray-600 leading-relaxed">보통 경리직원이 있는데 원격경리 서비스를 도입하는 경우 기존 경리직원의 업무과중이나 겸직 등의 이유로 <strong>직원 보호 차원</strong>에서 도입하는 경우도 있습니다.</p>
+                </div>
+            </div>
+
+            <!-- FAQ Item 7 -->
+            <div data-aos="fade-up" data-aos-duration="600" data-aos-delay="400" class="faq-item bg-white border-2 border-gray-200 rounded-2xl p-6 mb-4 cursor-pointer shadow-sm hover:shadow-md" onclick="toggleFaq(this)">
+                <div class="flex justify-between items-center">
+                    <h3 class="text-xl font-bold text-gray-900 pr-8">세무기장업무도 같이 하시나요?</h3>
+                    <i class="fas fa-chevron-down faq-icon text-blue-600 text-xl"></i>
+                </div>
+                <div class="faq-answer mt-4 pt-4 border-t border-gray-200">
+                    <p class="text-lg text-gray-600 leading-relaxed">세무기장 서비스도 진행하며 세무기장서비스는 <strong>세무법인청년들</strong>에서 진행합니다.</p>
+                </div>
+            </div>
+
+            <!-- FAQ Item 8 -->
+            <div data-aos="fade-up" data-aos-duration="600" data-aos-delay="450" class="faq-item bg-white border-2 border-gray-200 rounded-2xl p-6 mb-4 cursor-pointer shadow-sm hover:shadow-md" onclick="toggleFaq(this)">
+                <div class="flex justify-between items-center">
+                    <h3 class="text-xl font-bold text-gray-900 pr-8">혹시 경리업무 코칭도 진행하시나요?</h3>
+                    <i class="fas fa-chevron-down faq-icon text-blue-600 text-xl"></i>
+                </div>
+                <div class="faq-answer mt-4 pt-4 border-t border-gray-200">
+                    <p class="text-lg text-gray-600 leading-relaxed"><strong>코칭경리 서비스</strong>를 진행합니다. 별도 문의 주시면 상담 도와드리겠습니다.</p>
+                </div>
+            </div>
+
+            <!-- FAQ Item 9 -->
+            <div data-aos="fade-up" data-aos-duration="600" data-aos-delay="500" class="faq-item bg-white border-2 border-gray-200 rounded-2xl p-6 mb-4 cursor-pointer shadow-sm hover:shadow-md" onclick="toggleFaq(this)">
+                <div class="flex justify-between items-center">
+                    <h3 class="text-xl font-bold text-gray-900 pr-8">서비스 절차는 어떻게 되나요?</h3>
+                    <i class="fas fa-chevron-down faq-icon text-blue-600 text-xl"></i>
+                </div>
+                <div class="faq-answer mt-4 pt-4 border-t border-gray-200">
+                    <p class="text-lg text-gray-600 leading-relaxed">원격경리 서비스 예시 페이지를 참고해 주시기 바랍니다.</p>
+                </div>
+            </div>
+
+            <!-- FAQ Item 10 -->
+            <div data-aos="fade-up" data-aos-duration="600" data-aos-delay="550" class="faq-item bg-white border-2 border-gray-200 rounded-2xl p-6 mb-4 cursor-pointer shadow-sm hover:shadow-md" onclick="toggleFaq(this)">
+                <div class="flex justify-between items-center">
+                    <h3 class="text-xl font-bold text-gray-900 pr-8">서비스 종료 시 인수인계는 어떻게 해주시나요?</h3>
+                    <i class="fas fa-chevron-down faq-icon text-blue-600 text-xl"></i>
+                </div>
+                <div class="faq-answer mt-4 pt-4 border-t border-gray-200">
+                    <p class="text-lg text-gray-600 leading-relaxed">경리나라 프로그램의 데이터를 인계하며, 필요시 구글시트 등 보조 자료도 함께 전달해드립니다.</p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-20 bg-gradient-to-br from-blue-600 to-indigo-600">
+        <div class="max-w-4xl mx-auto px-6 text-center">
+            <h2 data-aos="fade-up" data-aos-duration="800" class="text-4xl md:text-5xl font-black mb-8 leading-tight text-white">
+                더 궁금하신 점이 있으신가요?
+            </h2>
+            <p data-aos="fade-up" data-aos-duration="800" data-aos-delay="100" class="text-xl text-blue-100 mb-12 leading-relaxed">
+                언제든지 편하게 문의해주세요<br/>
+                24시간 이내에 답변드리겠습니다
+            </p>
+            
+            <div data-aos="zoom-in" data-aos-duration="600" data-aos-delay="200" class="flex flex-col sm:flex-row gap-4 justify-center max-w-2xl mx-auto">
+                <a href="tel:1566-2678" class="flex-1 bg-white text-blue-600 font-bold text-lg px-10 py-4 rounded-full hover:bg-blue-50 transition-all shadow-lg hover:shadow-2xl hover:-translate-y-1 inline-flex items-center justify-center gap-2 min-w-[200px]">
+                    <i class="fas fa-phone"></i>
+                    전화 상담하기
+                </a>
+                <a onclick="openModal()" class="flex-1 bg-blue-500 text-white font-bold text-lg px-10 py-4 rounded-full hover:bg-blue-400 transition-all shadow-lg hover:shadow-2xl hover:-translate-y-1 inline-flex items-center justify-center gap-2 min-w-[200px] cursor-pointer">
+                    <i class="fas fa-comments"></i>
+                    상담 신청하기
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-white py-8 border-t border-gray-200">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="flex flex-col md:flex-row items-start justify-between gap-6">
+                <div class="flex items-center gap-4">
+                    <a href="index.html"><img src="로고.png" alt="경리업무를잘하는청년들" class="h-20 object-contain"></a>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-3 text-gray-600 text-sm">
+                    <div class="flex items-center gap-2 hover:scale-105 transition-transform duration-300 cursor-pointer" onclick="copyToClipboard('1566-2678', '전화번호')">
+                        <i class="fas fa-phone text-blue-700"></i>
+                        <span>전화번호 : 1566-2678</span>
+                    </div>
+                    <div class="flex items-center gap-2 hover:scale-105 transition-transform duration-300 cursor-pointer" onclick="copyToClipboard('wapeople10101@gmail.com', '이메일')">
+                        <i class="fas fa-envelope text-blue-700"></i>
+                        <span>wapeople10101@gmail.com</span>
+                    </div>
+                    <div class="flex items-center gap-2 hover:scale-105 transition-transform duration-300 cursor-pointer">
+                        <i class="fas fa-user text-blue-700"></i>
+                        <span>대표이사 : 금종석</span>
+                    </div>
+                    <div class="flex items-center gap-2 hover:scale-105 transition-transform duration-300 cursor-pointer">
+                        <i class="fas fa-clock text-blue-700"></i>
+                        <span>평일 09:00 - 18:00</span>
+                    </div>
+                    <a href="https://map.naver.com/p/entry/place/1245812255?c=17.59,0,0,0,dh&placePath=/home?from=map&from=map&fromPanelNum=1&additionalHeight=76&timestamp=202512121734&locale=ko&svcName=map_pcv5" target="_blank" rel="noopener noreferrer" class="flex items-start gap-2 md:col-span-2 hover:scale-105 transition-transform duration-300 cursor-pointer">
+                        <i class="fas fa-map-marker-alt text-blue-700 mt-0.5"></i>
+                        <span>주소 : 경기도 수원시 팔달구 권광로 175번길 83 2층 3층</span>
+                    </a>
+                </div>
+            </div>
+            <div class="border-t border-gray-200 mt-6 pt-6 text-center text-gray-400 text-sm">
+                <p>&copy; 2025 경리업무를잘하는청년들. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 600,
+            once: true,
+            offset: 100,
+            easing: 'ease-out-cubic'
+        });
+    </script>
+</body>
+</html>
+
