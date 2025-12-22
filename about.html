@@ -205,102 +205,92 @@
                 <button onclick="openModal()" data-aos="zoom-in" data-aos-duration="600" data-aos-delay="200" class="bg-white text-blue-600 font-bold text-xl px-14 py-6 rounded-full hover:bg-blue-50 transition-all shadow-lg hover:shadow-2xl hover:-translate-y-1">
                     지금 무료 상담 신청하기
                 </button>
+                <a href="faq.html" data-aos="zoom-in" data-aos-duration="600" data-aos-delay="250" class="bg-blue-500 text-white font-bold text-xl px-14 py-6 rounded-full hover:bg-blue-400 transition-all shadow-lg hover:shadow-2xl hover:-translate-y-1 inline-flex items-center justify-center gap-2">
+                    <i class="fas fa-question-circle"></i>
+                    자주 묻는 질문
+                </a>
             </div>
+            
+            <p class="text-blue-200 mt-6">
+                ⏱️ 평균 24시간 이내 답변 · 📧 이메일 상담 가능
+            </p>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="bg-gray-900 text-gray-300 py-16">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="grid md:grid-cols-3 gap-12 mb-12">
-                
-                <!-- 회사 정보 -->
-                <div>
-                    <img src="로고.webp" alt="경리업무를잘하는청년들" class="h-16 mb-6 brightness-0 invert">
-                    <p class="text-gray-400 mb-4 leading-relaxed">
-                        중소기업의 경리 업무를<br/>
-                        전문적으로 지원합니다
-                    </p>
+    <footer class="bg-white py-8 border-t border-gray-200">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="flex flex-col md:flex-row items-start justify-between gap-6">
+                <div class="flex items-center gap-4">
+                    <a href="index.html"><img src="로고.webp" alt="경리업무를잘하는청년들" class="h-16 md:h-20 object-contain"></a>
                 </div>
-
-                <!-- 빠른 링크 -->
-                <div>
-                    <h3 class="text-white font-bold text-lg mb-4">빠른 링크</h3>
-                    <ul class="space-y-3">
-                        <li><a href="about.html" class="hover:text-white transition-colors">원격경리란?</a></li>
-                        <li><a href="service.html" class="hover:text-white transition-colors">서비스업</a></li>
-                        <li><a href="manufacturing.html" class="hover:text-white transition-colors">제조업</a></li>
-                        <li><a href="construction.html" class="hover:text-white transition-colors">건설업</a></li>
-                        <li><a href="location.html" class="hover:text-white transition-colors">찾아오실 때</a></li>
-                    </ul>
-                </div>
-
-                <!-- 연락처 -->
-                <div>
-                    <h3 class="text-white font-bold text-lg mb-4">연락처</h3>
-                    <ul class="space-y-3">
-                        <li class="flex items-start gap-3">
-                            <i class="fas fa-phone text-blue-400 mt-1"></i>
-                            <div>
-                                <a href="tel:010-2877-1535" onclick="copyToClipboard('010-2877-1535', '전화번호')" class="hover:text-white transition-colors cursor-pointer">010-2877-1535</a>
-                            </div>
-                        </li>
-                        <li class="flex items-start gap-3">
-                            <i class="fas fa-envelope text-blue-400 mt-1"></i>
-                            <div>
-                                <a href="mailto:wnals1535@naver.com" onclick="copyToClipboard('wnals1535@naver.com', '이메일')" class="hover:text-white transition-colors cursor-pointer">wnals1535@naver.com</a>
-                            </div>
-                        </li>
-                        <li class="flex items-start gap-3">
-                            <i class="fas fa-map-marker-alt text-blue-400 mt-1"></i>
-                            <div>
-                                <span class="text-gray-200">14시간 이내 연락</span><br/>
-                                <span class="text-sm">평일 09:00 - 18:00</span>
-                            </div>
-                        </li>
-                    </ul>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-3 text-gray-600 text-sm">
+                    <div class="flex items-center gap-2 hover:scale-105 transition-transform duration-300 cursor-pointer" onclick="copyToClipboard('1566-2687', '전화번호')">
+                        <i class="fas fa-phone text-blue-700"></i>
+                        <span>전화번호 : 1566-2687</span>
+                    </div>
+                    <div class="flex items-center gap-2 hover:scale-105 transition-transform duration-300 cursor-pointer" onclick="copyToClipboard('wapeople000@gmail.com', '이메일')">
+                        <i class="fas fa-envelope text-blue-700"></i>
+                        <span>wapeople000@gmail.com</span>
+                    </div>
+                    <div class="flex items-center gap-2 hover:scale-105 transition-transform duration-300 cursor-pointer">
+                        <i class="fas fa-user text-blue-700"></i>
+                        <span>대표이사 : 금종석</span>
+                    </div>
+                    <div class="flex items-center gap-2 hover:scale-105 transition-transform duration-300 cursor-pointer">
+                        <i class="fas fa-clock text-blue-700"></i>
+                        <span>평일 09:00 - 18:00</span>
+                    </div>
+                    <a href="https://map.naver.com/p/entry/place/1245812255?c=17.59,0,0,0,dh&placePath=/home?from=map&from=map&fromPanelNum=1&additionalHeight=76&timestamp=202512121734&locale=ko&svcName=map_pcv5" target="_blank" rel="noopener noreferrer" class="flex items-start gap-2 md:col-span-2 hover:scale-105 transition-transform duration-300 cursor-pointer">
+                        <i class="fas fa-map-marker-alt text-blue-700 mt-0.5"></i>
+                        <span>주소 : 경기 수원시 팔달구 권광로175번길 83 201호</span>
+                    </a>
                 </div>
             </div>
-
-            <div class="border-t border-gray-800 pt-8 text-center text-gray-500 text-sm">
-                <p>&copy; 2024 경리업무를잘하는청년들. All rights reserved.</p>
+            <div class="border-t border-gray-200 mt-6 pt-6 text-center text-gray-400 text-sm">
+                <p>&copy; 2025 경리업무를잘하는청년들. All rights reserved.</p>
             </div>
         </div>
     </footer>
 
     <!-- Modal -->
     <div id="consultModal" class="modal">
-        <div class="modal-content" onclick="event.stopPropagation()">
-            <button onclick="closeModal()" class="absolute top-4 right-4 text-gray-400 hover:text-gray-600 text-2xl">
-                <i class="fas fa-times"></i>
-            </button>
+        <div class="bg-white rounded-3xl p-8 md:p-12 max-w-xl w-full mx-4 relative max-h-[90vh] overflow-y-auto">
+            <button onclick="closeModal()" class="absolute top-6 right-6 text-gray-400 hover:text-gray-600 text-3xl font-light">&times;</button>
             
-            <h2 class="text-3xl font-bold text-gray-900 mb-2 text-center">무료 상담 신청</h2>
-            <p class="text-gray-600 mb-8 text-center">14시간 이내에 연락드립니다</p>
-
-            <form id="consultForm" onsubmit="handleFormSubmit(event, 'consultForm')" action="https://api.web3forms.com/submit" method="POST" class="space-y-6">
-                <input type="hidden" name="access_key" value="a7332947-a2df-4574-ba9c-94e17aeff7ab">
+            <div class="text-center mb-8">
+                <div class="w-16 h-16 rounded-2xl bg-blue-600 flex items-center justify-center mx-auto mb-4">
+                    <i class="fas fa-paper-plane text-white text-2xl"></i>
+                </div>
+                <h3 class="text-3xl font-bold text-gray-900 mb-2">무료 상담 신청</h3>
+                <p class="text-gray-500">원격경리 서비스에 대해 안내해드립니다.</p>
+            </div>
+            
+            <form id="consultForm" class="space-y-5" action="https://api.web3forms.com/submit" method="POST" onsubmit="return handleFormSubmit(event, 'consultForm')">
+                <input type="hidden" name="access_key" value="a191fea1-6313-4b80-bb5f-51e02890e63d">
                 <input type="hidden" name="subject" value="[원격경리] 새로운 상담 신청">
-                <input type="hidden" name="from_name" value="경리업무를잘하는청년들">
+                <input type="hidden" name="from_name" value="경리업무를잘하는청년들 홈페이지">
+                <input type="hidden" name="redirect" value="false">
+                <input type="hidden" name="industry" value="원격경리">
                 
                 <div>
-                    <label class="block text-gray-700 font-semibold mb-2">회사명 <span class="text-blue-600">*</span></label>
+                    <label class="block text-gray-700 font-semibold mb-2">회사명 <span class="text-rose-500">*</span></label>
                     <input type="text" name="company" required class="w-full border-2 border-gray-200 rounded-xl px-4 py-3 text-gray-900" placeholder="회사명을 입력해주세요">
                 </div>
                 <div>
-                    <label class="block text-gray-700 font-semibold mb-2">대표님 성함 <span class="text-blue-600">*</span></label>
+                    <label class="block text-gray-700 font-semibold mb-2">대표님 성함 <span class="text-rose-500">*</span></label>
                     <input type="text" name="name" required class="w-full border-2 border-gray-200 rounded-xl px-4 py-3 text-gray-900" placeholder="성함을 입력해주세요">
                 </div>
                 <div>
-                    <label class="block text-gray-700 font-semibold mb-2">연락처 <span class="text-blue-600">*</span></label>
-                    <input type="tel" name="phone" required class="w-full border-2 border-gray-200 rounded-xl px-4 py-3 text-gray-900" placeholder="010-0000-0000">
+                    <label class="block text-gray-700 font-semibold mb-2">연락처 <span class="text-rose-500">*</span></label>
+                    <input type="tel" name="phone" required class="w-full border-2 border-gray-200 rounded-xl px-4 py-3 text-gray-900" placeholder="연락받으실 번호를 입력해주세요">
                 </div>
                 <div>
-                    <label class="block text-gray-700 font-semibold mb-2">이메일 <span class="text-blue-600">*</span></label>
+                    <label class="block text-gray-700 font-semibold mb-2">이메일 <span class="text-rose-500">*</span></label>
                     <input type="email" name="email" required class="w-full border-2 border-gray-200 rounded-xl px-4 py-3 text-gray-900" placeholder="이메일을 입력해주세요">
                 </div>
                 <div>
-                    <label class="block text-gray-700 font-semibold mb-2">현재 가장 큰 고민 <span class="text-blue-600">*</span></label>
+                    <label class="block text-gray-700 font-semibold mb-2">현재 가장 큰 고민 <span class="text-rose-500">*</span></label>
                     <textarea name="message" required rows="4" class="w-full border-2 border-gray-200 rounded-xl px-4 py-3 text-gray-900 resize-none" placeholder="예) 경리 직원 채용이 어려워요&#10;예) 급여 계산이 복잡해요"></textarea>
                 </div>
                 <button type="submit" class="w-full bg-blue-600 text-white font-bold text-lg py-4 rounded-xl hover:bg-blue-700 transition-all shadow-lg hover:shadow-2xl hover:-translate-y-1">무료 상담 신청하기</button>
@@ -342,19 +332,21 @@
                 const data = await response.json();
                 
                 if (data.success) {
-                    alert('상담 신청이 완료되었습니다!\n14시간 이내에 연락드리겠습니다.');
+                    alert('✅ 상담 신청이 완료되었습니다!\n\n14시간 이내에 연락드리겠습니다.\n감사합니다!');
                     form.reset();
                     closeModal();
                 } else {
                     throw new Error('전송 실패');
                 }
             } catch (error) {
-                alert('전송에 실패했습니다. 잠시 후 다시 시도해주세요.');
-                console.error('Error:', error);
+                alert('❌ 전송 중 오류가 발생했습니다.\n\n다시 시도해주시거나 전화(1566-2687)로 문의해주세요.');
+                console.error('Form submission error:', error);
             } finally {
                 submitButton.disabled = false;
                 submitButton.innerHTML = originalButtonText;
             }
+            
+            return false;
         }
     </script>
 
