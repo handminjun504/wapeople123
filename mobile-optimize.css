@@ -1,0 +1,93 @@
+/* 모바일 최적화 CSS - 모든 페이지에 적용 */
+body {
+    overflow-x: hidden;
+}
+
+/* 모바일 최적화 */
+@media (max-width: 768px) {
+    /* 터치 타겟 최소 크기 확보 (48px) */
+    button, a, input[type="radio"], input[type="checkbox"] {
+        min-height: 44px;
+    }
+    
+    /* 텍스트 가독성 향상 */
+    body {
+        -webkit-text-size-adjust: 100%;
+        text-rendering: optimizeLegibility;
+    }
+    
+    /* 카드 호버 효과를 터치 친화적으로 */
+    .card:active {
+        transform: translateY(-2px);
+    }
+    
+    /* 스크롤 성능 최적화 */
+    * {
+        -webkit-tap-highlight-color: transparent;
+        -webkit-touch-callout: none;
+    }
+    
+    /* 버튼 터치 영역 최적화 */
+    button, a.card {
+        touch-action: manipulation;
+    }
+    
+    /* 폼 입력 필드 확대 방지 */
+    input, select, textarea {
+        font-size: 16px !important;
+    }
+    
+    /* 모바일 네비게이션 최적화 */
+    .nav-glass {
+        padding-top: 0.5rem;
+        padding-bottom: 0.5rem;
+    }
+    
+    /* AOS 애니메이션 overflow 방지 */
+    section {
+        overflow-x: hidden;
+    }
+    
+    /* 모바일에서 카드 간격 확보 */
+    .card {
+        margin-bottom: 0;
+    }
+    
+    /* 호버 효과로 인한 레이아웃 시프트 방지 */
+    .card:hover {
+        transform: translateY(-2px);
+    }
+}
+
+/* 작은 모바일 기기 (iPhone SE 등) */
+@media (max-width: 375px) {
+    h1 {
+        font-size: 1.75rem !important;
+    }
+    
+    /* 작은 화면에서 간격 조정 */
+    .grid {
+        gap: 0.75rem;
+    }
+    
+    section {
+        padding-top: 2rem;
+        padding-bottom: 2rem;
+    }
+}
+
+/* 요소 겹침 방지를 위한 전역 설정 */
+section {
+    position: relative;
+    z-index: 1;
+}
+
+/* 네비게이션이 항상 최상위 */
+nav {
+    z-index: 1000 !important;
+}
+
+footer {
+    position: relative;
+    z-index: 10;
+}

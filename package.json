@@ -1,0 +1,15 @@
+{
+  "name": "accounting-service-website",
+  "version": "1.0.0",
+  "description": "경리업무를잘하는청년들 웹사이트",
+  "scripts": {
+    "build": "tailwindcss -i ./src/input.css -o ./dist/output.css --minify",
+    "watch": "tailwindcss -i ./src/input.css -o ./dist/output.css --watch"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "tailwindcss": "^3.4.1"
+  }
+}
