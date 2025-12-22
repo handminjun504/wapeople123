@@ -21,14 +21,153 @@
     
     <!-- Navigation -->
     <nav class="fixed top-0 left-0 right-0 z-50 nav-glass">
-        <div class="max-w-7xl mx-auto px-3 py-2 flex items-center justify-start">
+        <div class="max-w-7xl mx-auto px-3 md:px-6 py-2 flex items-center justify-between">
             <a href="index.html" class="flex items-center gap-1 hover:opacity-80 transition-opacity touch-manipulation">
                 <img src="로고.webp" alt="경리업무를잘하는청년들" class="h-12 md:h-16 object-contain">
+            </a>
+            
+            <!-- 메뉴 -->
+            <div class="hidden md:flex items-center gap-6">
+                <!-- 업종 퀵메뉴 -->
+                <div class="relative group">
+                    <button class="flex items-center gap-2 px-4 py-2 text-gray-700 hover:text-blue-600 font-semibold transition-colors">
+                        <span>업종별 서비스</span>
+                        <i class="fas fa-chevron-down text-sm"></i>
+                    </button>
+                
+                <!-- 드롭다운 메뉴 -->
+                <div class="absolute top-full left-0 mt-2 w-48 bg-white rounded-xl shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 border border-gray-100">
+                    <div class="py-2">
+                        <a href="service.html" class="flex items-center gap-3 px-4 py-3 hover:bg-blue-50 transition-colors">
+                            <span class="text-xl">💼</span>
+                            <span class="text-gray-700 font-medium">서비스업</span>
+                        </a>
+                        <a href="manufacturing.html" class="flex items-center gap-3 px-4 py-3 hover:bg-emerald-50 transition-colors">
+                            <span class="text-xl">🏭</span>
+                            <span class="text-gray-700 font-medium">제조업</span>
+                        </a>
+                        <a href="construction.html" class="flex items-center gap-3 px-4 py-3 hover:bg-amber-50 transition-colors">
+                            <span class="text-xl">🏗️</span>
+                            <span class="text-gray-700 font-medium">건설업</span>
+                        </a>
+                        <a href="wholesale.html" class="flex items-center gap-3 px-4 py-3 hover:bg-sky-50 transition-colors">
+                            <span class="text-xl">📦</span>
+                            <span class="text-gray-700 font-medium">도소매업</span>
+                        </a>
+                        <a href="restaurant.html" class="flex items-center gap-3 px-4 py-3 hover:bg-rose-50 transition-colors">
+                            <span class="text-xl">🍽️</span>
+                            <span class="text-gray-700 font-medium">음식점업</span>
+                        </a>
+                        <a href="ecommerce.html" class="flex items-center gap-3 px-4 py-3 hover:bg-violet-50 transition-colors">
+                            <span class="text-xl">🛒</span>
+                            <span class="text-gray-700 font-medium">쇼핑몰</span>
+                        </a>
+                    </div>
+                </div>
+                </div>
+                
+                <!-- 원격경리란? -->
+                <a href="#remote-accounting" class="px-4 py-2 text-gray-700 hover:text-blue-600 font-semibold transition-colors">
+                    원격경리란?
+                </a>
+                
+                <!-- 찾아오실 때 -->
+                <a href="location.html" class="px-4 py-2 text-gray-700 hover:text-blue-600 font-semibold transition-colors">
+                    찾아오실 때
+                </a>
+            </div>
+            
+            <a href="faq.html" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 md:px-6 md:py-3 rounded-full font-bold text-sm md:text-base transition-colors shadow-lg">
+                상담 바로가기
             </a>
         </div>
     </nav>
 
     <main>
+    <!-- 원격경리 소개 Section -->
+    <section id="remote-accounting" class="py-16 md:py-24 bg-gray-50 pt-24 md:pt-28 relative">
+        <div class="max-w-7xl mx-auto px-4 md:px-6">
+            <div class="mb-8 md:mb-10">
+                <p data-aos="fade-up" data-aos-duration="500" class="text-lg md:text-xl text-blue-600 font-bold mb-4">
+                    원격경리란?
+                </p>
+                <h2 data-aos="fade-up" data-aos-duration="500" data-aos-delay="50" class="text-3xl md:text-5xl font-black text-gray-900 mb-6 leading-tight">
+                    경리 직원 없이도<br/>
+                    <span class="text-blue-600">전문가가 관리합니다</span>
+                </h2>
+                <p data-aos="fade-up" data-aos-duration="500" data-aos-delay="100" class="text-lg md:text-xl text-gray-600 max-w-3xl leading-relaxed">
+                    원격경리는 경리 직원을 직접 고용하지 않고, 전문 경리팀이 온라인으로 회사의 회계와 세무를 관리하는 서비스입니다
+                </p>
+            </div>
+
+
+            <div class="grid md:grid-cols-3 gap-6 md:gap-8">
+                
+                <!-- 특징 1 -->
+                <div data-aos="fade-up" data-aos-duration="500" data-aos-delay="150" class="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-shadow">
+                    <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mb-6">
+                        <i class="fas fa-laptop-house text-3xl text-blue-600"></i>
+                    </div>
+                    <h3 class="text-xl md:text-2xl font-bold text-gray-900 mb-4">
+                        온라인으로 완벽 처리
+                    </h3>
+                    <p class="text-gray-600 leading-relaxed">
+                        증빙 사진만 찍어서 카톡으로 보내주세요. 전표입력부터 급여, 세금신고까지 모두 처리됩니다.
+                    </p>
+                </div>
+
+                <!-- 특징 2 -->
+                <div data-aos="fade-up" data-aos-duration="500" data-aos-delay="200" class="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-shadow">
+                    <div class="w-16 h-16 bg-emerald-100 rounded-full flex items-center justify-center mb-6">
+                        <i class="fas fa-user-tie text-3xl text-emerald-600"></i>
+                    </div>
+                    <h3 class="text-xl md:text-2xl font-bold text-gray-900 mb-4">
+                        전문가가 직접 관리
+                    </h3>
+                    <p class="text-gray-600 leading-relaxed">
+                        경력 5년 이상 전문 경리팀이 담당합니다. 직원 채용, 교육, 퇴사 걱정이 없습니다.
+                    </p>
+                </div>
+
+                <!-- 특징 3 -->
+                <div data-aos="fade-up" data-aos-duration="500" data-aos-delay="250" class="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-shadow">
+                    <div class="w-16 h-16 bg-amber-100 rounded-full flex items-center justify-center mb-6">
+                        <i class="fas fa-won-sign text-3xl text-amber-600"></i>
+                    </div>
+                    <h3 class="text-xl md:text-2xl font-bold text-gray-900 mb-4">
+                        비용은 절반으로
+                    </h3>
+                    <p class="text-gray-600 leading-relaxed">
+                        경리 직원 1명 인건비의 1/2 수준으로 더 전문적인 서비스를 받을 수 있습니다.
+                    </p>
+                </div>
+            </div>
+
+            <!-- 추가 설명 -->
+            <div data-aos="fade-up" data-aos-duration="500" data-aos-delay="300" class="mt-12 md:mt-16 bg-blue-50 rounded-2xl p-8 md:p-10 border-2 border-blue-100">
+                <div class="flex flex-col md:flex-row items-center gap-6">
+                    <div class="flex-shrink-0">
+                        <div class="w-20 h-20 bg-blue-600 rounded-full flex items-center justify-center">
+                            <i class="fas fa-check text-4xl text-white"></i>
+                        </div>
+                    </div>
+                    <div class="text-center md:text-left">
+                        <h3 class="text-2xl font-bold text-gray-900 mb-3">
+                            150+ 기업이 원격경리로 경리 고민을 해결했습니다
+                        </h3>
+                        <p class="text-lg text-gray-700">
+                            제조업, 건설업, 서비스업, 쇼핑몰 등 다양한 업종에서<br class="hidden md:block"/>
+                            원격경리로 효율적인 회계 관리를 하고 있습니다
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="absolute bottom-8 md:bottom-6 left-1/2 -translate-x-1/2 animate-bounce opacity-70 hidden md:block">
+            <i class="fas fa-chevron-down text-2xl md:text-3xl text-blue-600"></i>
+        </div>
+    </section>
+
     <!-- Hero Section -->
     <section class="min-h-screen relative pt-24 md:pt-28 pb-16 md:pb-20 bg-white">
         <div class="max-w-7xl mx-auto px-4 md:px-6 relative z-10 w-full">
@@ -178,7 +317,7 @@
                     <!-- 제목 영역 (어두운 배경) -->
                     <div class="bg-amber-500 p-5 md:p-6">
                         <div class="flex items-center gap-3 mb-2">
-                            <span class="text-3xl">📊</span>
+                            <span class="text-3xl">·</span>
                             <h3 class="text-xl md:text-2xl font-bold text-white">원가 계산,</h3>
                         </div>
                         <p class="text-lg md:text-xl font-semibold text-white/95">맞는 건지 모르겠어요</p>
@@ -204,7 +343,7 @@
                     <!-- 제목 영역 -->
                     <div class="bg-blue-500 p-5 md:p-6">
                         <div class="flex items-center gap-3 mb-2">
-                            <span class="text-3xl">💰</span>
+                            <span class="text-3xl">·</span>
                             <h3 class="text-xl md:text-2xl font-bold text-white">수익이</h3>
                         </div>
                         <p class="text-lg md:text-xl font-semibold text-white/95">얼마인지 모르겠어요</p>
@@ -230,7 +369,7 @@
                     <!-- 제목 영역 -->
                     <div class="bg-rose-500 p-5 md:p-6">
                         <div class="flex items-center gap-3 mb-2">
-                            <span class="text-3xl">📋</span>
+                            <span class="text-3xl">·</span>
                             <h3 class="text-xl md:text-2xl font-bold text-white">미수금 관리가</h3>
                         </div>
                         <p class="text-lg md:text-xl font-semibold text-white/95">엉망이에요</p>
@@ -256,7 +395,7 @@
                     <!-- 제목 영역 -->
                     <div class="bg-emerald-500 p-5 md:p-6">
                         <div class="flex items-center gap-3 mb-2">
-                            <span class="text-3xl">💸</span>
+                            <span class="text-3xl">·</span>
                             <h3 class="text-xl md:text-2xl font-bold text-white">세금이</h3>
                         </div>
                         <p class="text-lg md:text-xl font-semibold text-white/95">갑자기 많이 나와요</p>
@@ -293,14 +432,14 @@
     <section class="py-12 md:py-20 bg-blue-50">
         <div class="max-w-4xl mx-auto px-4 md:px-6">
             <div class="text-center mb-8 md:mb-10">
-                <div data-aos="fade-up" data-aos-duration="500" class="inline-flex items-center gap-2 bg-green-100 border border-green-200 px-3 md:px-4 py-2 rounded-full mb-3 md:mb-4">
+                <div class="inline-flex items-center gap-2 bg-green-100 border border-green-200 px-3 md:px-4 py-2 rounded-full mb-3 md:mb-4">
                     <i class="fas fa-bolt text-green-600 text-sm"></i>
                     <span class="text-green-700 font-semibold text-sm md:text-sm">1분 간단 진단</span>
                 </div>
-                <h2 data-aos="fade-up" data-aos-duration="500" data-aos-delay="50" class="text-2xl md:text-4xl font-black text-gray-900 mb-3 md:mb-4 px-4">
+                <h2 class="text-2xl md:text-4xl font-black text-gray-900 mb-3 md:mb-4 px-4">
                     우리 회사에 딱 맞는 솔루션 찾기
                 </h2>
-                <p data-aos="fade-up" data-aos-duration="500" data-aos-delay="100" class="text-base md:text-lg text-gray-600 px-4">
+                <p class="text-base md:text-lg text-gray-600 px-4">
                     간단한 질문 3개로 맞춤 솔루션을 추천해드립니다
                 </p>
             </div>
@@ -313,7 +452,7 @@
                     <input type="hidden" name="redirect" value="false">
                     
                     <!-- 질문 1: 업종 -->
-                    <div data-aos="fade-right" data-aos-duration="400" data-aos-delay="200">
+                    <div>
                         <label class="block text-gray-900 font-bold text-[17px] md:text-lg mb-3 md:mb-4">
                             <i class="fas fa-building text-blue-600 mr-2"></i>
                             1. 우리 회사 업종은?
@@ -372,7 +511,7 @@
                     </div>
 
                     <!-- 질문 2: 직원 수 -->
-                    <div data-aos="fade-right" data-aos-duration="400" data-aos-delay="250">
+                    <div>
                         <label class="block text-gray-900 font-bold text-[17px] md:text-lg mb-3 md:mb-4">
                             <i class="fas fa-users text-blue-600 mr-2"></i>
                             2. 직원은 몇 명인가요?
@@ -406,7 +545,7 @@
                     </div>
 
                     <!-- 질문 3: 가장 큰 고민 -->
-                    <div data-aos="fade-right" data-aos-duration="600" data-aos-delay="600">
+                    <div>
                         <label class="block text-gray-900 font-bold text-[17px] md:text-lg mb-3 md:mb-4">
                             <i class="fas fa-exclamation-circle text-blue-600 mr-2"></i>
                             3. 가장 큰 고민은? (중복 선택 가능)
@@ -432,7 +571,7 @@
                     </div>
 
                     <!-- 연락처 -->
-                    <div data-aos="fade-up" data-aos-duration="400" data-aos-delay="350" class="grid md:grid-cols-2 gap-3 md:gap-4">
+                    <div class="grid md:grid-cols-2 gap-3 md:gap-4">
                         <div>
                             <label class="block text-gray-700 font-semibold mb-2 text-[15px] md:text-base">
                                 회사명 <span class="text-red-500">*</span>
@@ -448,18 +587,18 @@
                     </div>
 
                     <!-- 제출 버튼 -->
-                    <button type="submit" data-aos="zoom-in" data-aos-duration="400" data-aos-delay="400" class="w-full bg-blue-600 text-white font-bold text-[17px] md:text-lg py-4 md:py-5 rounded-xl hover:bg-blue-700 transition-all shadow-lg hover:shadow-2xl hover:-translate-y-1 min-h-[56px]">
+                    <button type="submit" class="w-full bg-blue-600 text-white font-bold text-[17px] md:text-lg py-4 md:py-5 rounded-xl hover:bg-blue-700 transition-all shadow-lg hover:shadow-2xl hover:-translate-y-1 min-h-[56px]">
                         <i class="fas fa-magic mr-2"></i>
                         맞춤 솔루션 받아보기
                     </button>
                     
-                    <p data-aos="fade-up" data-aos-duration="400" data-aos-delay="450" class="text-center text-sm md:text-sm text-gray-500 leading-relaxed">
+                    <p class="text-center text-sm md:text-sm text-gray-500 leading-relaxed">
                         ✅ 24시간 내 맞춤 솔루션 안내 · 📞 부담 없는 무료 상담
                     </p>
                 </form>
 
                 <!-- 신뢰 배지 -->
-                <div data-aos="fade-up" data-aos-duration="400" data-aos-delay="500" class="flex flex-wrap justify-center items-center gap-6 mt-8 pt-8 border-t border-gray-200">
+                <div class="flex flex-wrap justify-center items-center gap-6 mt-8 pt-8 border-t border-gray-200">
                     <div class="flex items-center gap-2 text-gray-600">
                         <i class="fas fa-lock text-green-600"></i>
                         <span class="text-sm">개인정보 보호</span>
