@@ -49,17 +49,17 @@
             </a>
             
             <!-- 메뉴 & 버튼 그룹 -->
-            <div class="hidden md:flex items-center gap-8">
+            <div class="flex items-center gap-2 md:gap-8">
                 <!-- 원격경리 -->
-                <a href="#remote-accounting" class="px-8 py-5 text-gray-700 hover:text-blue-700 font-semibold transition-colors whitespace-nowrap">
+                <a href="#remote-accounting" class="hidden md:block px-8 py-5 text-gray-700 hover:text-blue-700 font-semibold transition-colors whitespace-nowrap">
                     원격경리
                 </a>
                 
                 <!-- 구분선 -->
-                <div class="h-6 w-px bg-gray-300"></div>
+                <div class="hidden md:block h-6 w-px bg-gray-300"></div>
                 
                 <!-- 업종 퀵메뉴 -->
-                <div class="relative group">
+                <div class="relative group hidden md:block">
                     <button class="flex items-center gap-2 px-3 py-2 text-gray-700 hover:text-blue-700 font-semibold transition-colors whitespace-nowrap">
                         <span>업종별 서비스</span>
                         <i class="fas fa-chevron-down text-sm"></i>
@@ -97,18 +97,18 @@
                 </div>
                 
                 <!-- 구분선 -->
-                <div class="h-6 w-px bg-gray-300"></div>
+                <div class="hidden md:block h-6 w-px bg-gray-300"></div>
                 
                 <!-- 찾아오실 때 -->
-                <a href="location.html" class="px-3 py-2 text-gray-700 hover:text-blue-700 font-semibold transition-colors whitespace-nowrap">
+                <a href="location.html" class="hidden md:block px-3 py-2 text-gray-700 hover:text-blue-700 font-semibold transition-colors whitespace-nowrap">
                     찾아오실 때
                 </a>
                 
                 <!-- 구분선 -->
-                <div class="h-6 w-px bg-gray-300"></div>
+                <div class="hidden md:block h-6 w-px bg-gray-300"></div>
                 
                 <!-- 상담 바로가기 -->
-                <a href="#quickDiagnosis" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 md:px-6 md:py-3 rounded-full font-bold text-sm md:text-base transition-colors shadow-lg whitespace-nowrap ml-2">
+                <a href="#quickDiagnosis" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 md:px-6 md:py-3 rounded-full font-bold text-sm md:text-base transition-colors shadow-lg whitespace-nowrap md:ml-2">
                     상담 바로가기
                 </a>
             </div>
@@ -116,23 +116,31 @@
     </nav>
 
     <main>
-    <!-- 원격경리 소개 Section -->
-    <section id="remote-accounting" class="py-16 md:py-24 bg-blue-50 pt-24 md:pt-28 relative">
-        <div class="max-w-7xl mx-auto px-4 md:px-6">
-            <div class="mb-8 md:mb-10 text-center">
-                <div class="mb-6 md:mb-8"></div>
-                
-                <h2 data-aos="fade-up" data-aos-duration="500" data-aos-delay="100" class="text-3xl md:text-5xl font-black text-gray-900 mb-6 leading-tight">
+    <!-- 원격경리 소개 Section - 제목 -->
+    <section id="remote-accounting" class="min-h-[80vh] flex flex-col justify-between bg-blue-50 pt-24 md:pt-32 pb-20 md:pb-24 relative">
+        <div class="flex-1 flex items-center justify-center">
+            <div class="max-w-4xl mx-auto px-4 md:px-6 text-center">
+                <h2 data-aos="fade-up" data-aos-duration="500" data-aos-delay="100" class="text-4xl md:text-6xl font-black text-gray-900 mb-8 leading-tight">
                     경리 직원 없이도<br/>
                     <span class="text-blue-700">전문가가 관리합니다</span>
                 </h2>
-                <p data-aos="fade-up" data-aos-duration="500" data-aos-delay="150" class="text-lg md:text-xl text-gray-600 leading-relaxed max-w-3xl mx-auto">
+                <p data-aos="fade-up" data-aos-duration="500" data-aos-delay="150" class="text-xl md:text-2xl text-gray-600 leading-relaxed max-w-3xl mx-auto">
                     원격경리는 경리 직원을 직접 고용하지 않고,<br/>
                     전문 경리팀이 온라인으로 회사의 회계를 관리하는 서비스입니다
                 </p>
             </div>
+        </div>
+        
+        <!-- 스크롤 화살표 -->
+        <div class="flex flex-col items-center animate-bounce mt-8">
+            <p class="text-sm md:text-base text-blue-600 font-semibold mb-2">자세히 보기</p>
+            <i class="fas fa-chevron-down text-3xl md:text-4xl text-blue-600"></i>
+        </div>
+    </section>
 
-
+    <!-- 원격경리 특징 Section - 박스들 -->
+    <section class="py-16 md:py-24 bg-white relative">
+        <div class="max-w-7xl mx-auto px-4 md:px-6">
             <div class="grid md:grid-cols-3 gap-6 md:gap-8">
                 
                 <!-- 특징 1 -->
@@ -176,10 +184,10 @@
             </div>
 
             <!-- 추가 설명 -->
-            <div data-aos="fade-up" data-aos-duration="500" data-aos-delay="300" class="mt-12 md:mt-16 bg-blue-50 rounded-2xl p-8 md:p-10 border-2 border-blue-100">
+            <div data-aos="fade-up" data-aos-duration="500" data-aos-delay="300" class="mt-12 md:mt-16 bg-white rounded-2xl p-8 md:p-10 border-2 border-blue-300 shadow-xl">
                 <div class="flex flex-col md:flex-row items-center gap-6">
                     <div class="flex-shrink-0">
-                        <div class="w-20 h-20 bg-blue-600 rounded-full flex items-center justify-center">
+                        <div class="w-20 h-20 bg-blue-600 rounded-full flex items-center justify-center shadow-lg">
                             <i class="fas fa-check text-4xl text-white"></i>
                         </div>
                     </div>
@@ -195,13 +203,10 @@
                 </div>
             </div>
         </div>
-        <div class="absolute bottom-8 md:bottom-6 left-1/2 -translate-x-1/2 animate-bounce opacity-70 hidden md:block">
-            <i class="fas fa-chevron-down text-2xl md:text-3xl text-blue-600"></i>
-        </div>
     </section>
 
     <!-- Hero Section -->
-    <section class="min-h-screen relative pt-24 md:pt-28 pb-16 md:pb-20 bg-white">
+    <section class="min-h-screen relative pt-24 md:pt-28 pb-16 md:pb-20 bg-gray-50">
         <div class="max-w-7xl mx-auto px-4 md:px-6 relative z-10 w-full">
             <!-- Header -->
             <div class="text-center mb-8 md:mb-10">
@@ -342,17 +347,19 @@
             </div>
 
             <!-- 고민 카드 그리드 -->
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-6">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-6">        
                 
                 <!-- 고민 카드 1: 원가 계산 -->
-                <div data-aos="fade-up" data-aos-duration="500" data-aos-delay="100" class="rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-shadow">
+                <div data-aos="fade-up" data-aos-duration="500" data-aos-delay="100" class="rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all cursor-pointer" onclick="showSolution(1)">
                     <!-- 제목 영역 (어두운 배경) -->
                     <div class="bg-amber-500 p-3 md:p-4">
-                        <div class="flex items-center gap-3 mb-2">
-                            <span class="text-5xl text-white">•</span>
-                            <h3 class="text-xl md:text-2xl font-bold text-white">원가 계산,</h3>
+                        <div class="flex items-start gap-3">
+                            <span class="text-5xl text-white leading-none">•</span>
+                            <div>
+                                <h3 class="text-xl md:text-2xl font-bold text-white leading-tight">원가 계산,</h3>
+                                <p class="text-lg md:text-xl font-semibold text-white/95 mt-1">맞는 건지 모르겠어요</p>
+                            </div>
                         </div>
-                        <p class="text-lg md:text-xl font-semibold text-white/95">맞는 건지 모르겠어요</p>
                     </div>
                     
                     <!-- 고민 내용 (밝은 배경) -->
@@ -371,14 +378,16 @@
                 </div>
 
                 <!-- 고민 카드 2: 수익 관리 -->
-                <div data-aos="fade-up" data-aos-duration="500" data-aos-delay="200" class="rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-shadow">
+                <div data-aos="fade-up" data-aos-duration="500" data-aos-delay="200" class="rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all cursor-pointer" onclick="showSolution(2)">
                     <!-- 제목 영역 -->
                     <div class="bg-blue-500 p-3 md:p-4">
-                        <div class="flex items-center gap-3 mb-2">
-                            <span class="text-5xl text-white">•</span>
-                            <h3 class="text-xl md:text-2xl font-bold text-white">수익이</h3>
+                        <div class="flex items-start gap-3">
+                            <span class="text-5xl text-white leading-none">•</span>
+                            <div>
+                                <h3 class="text-xl md:text-2xl font-bold text-white leading-tight">수익이</h3>
+                                <p class="text-lg md:text-xl font-semibold text-white/95 mt-1">얼마인지 모르겠어요</p>
+                            </div>
                         </div>
-                        <p class="text-lg md:text-xl font-semibold text-white/95">얼마인지 모르겠어요</p>
                     </div>
                     
                     <!-- 고민 내용 -->
@@ -397,14 +406,16 @@
                 </div>
 
                 <!-- 고민 카드 3: 미수금 관리 -->
-                <div data-aos="fade-up" data-aos-duration="500" data-aos-delay="300" class="rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-shadow">
+                <div data-aos="fade-up" data-aos-duration="500" data-aos-delay="300" class="rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all cursor-pointer" onclick="showSolution(3)">
                     <!-- 제목 영역 -->
                     <div class="bg-rose-500 p-3 md:p-4">
-                        <div class="flex items-center gap-3 mb-2">
-                            <span class="text-5xl text-white">•</span>
-                            <h3 class="text-xl md:text-2xl font-bold text-white">미수금 관리가</h3>
+                        <div class="flex items-start gap-3">
+                            <span class="text-5xl text-white leading-none">•</span>
+                            <div>
+                                <h3 class="text-xl md:text-2xl font-bold text-white leading-tight">미수금 관리가</h3>
+                                <p class="text-lg md:text-xl font-semibold text-white/95 mt-1">엉망이에요</p>
+                            </div>
                         </div>
-                        <p class="text-lg md:text-xl font-semibold text-white/95">엉망이에요</p>
                     </div>
                     
                     <!-- 고민 내용 -->
@@ -423,14 +434,16 @@
                 </div>
 
                 <!-- 고민 카드 4: 세금 관리 -->
-                <div data-aos="fade-up" data-aos-duration="500" data-aos-delay="400" class="rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-shadow">
+                <div data-aos="fade-up" data-aos-duration="500" data-aos-delay="400" class="rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all cursor-pointer" onclick="showSolution(4)">
                     <!-- 제목 영역 -->
                     <div class="bg-emerald-500 p-3 md:p-4">
-                        <div class="flex items-center gap-3 mb-2">
-                            <span class="text-5xl text-white">•</span>
-                            <h3 class="text-xl md:text-2xl font-bold text-white">세금이</h3>
+                        <div class="flex items-start gap-3">
+                            <span class="text-5xl text-white leading-none">•</span>
+                            <div>
+                                <h3 class="text-xl md:text-2xl font-bold text-white leading-tight">세금이</h3>
+                                <p class="text-lg md:text-xl font-semibold text-white/95 mt-1">갑자기 많이 나와요</p>
+                            </div>
                         </div>
-                        <p class="text-lg md:text-xl font-semibold text-white/95">갑자기 많이 나와요</p>
                     </div>
                     
                     <!-- 고민 내용 -->
@@ -449,13 +462,299 @@
                 </div>
 
             </div>
+        </div>
+    </section>
 
-            <!-- CTA 버튼 -->
-            <div class="text-center mt-10 md:mt-12">
-                <a href="#quickDiagnosis" data-aos="fade-up" data-aos-duration="500" data-aos-delay="500" class="inline-flex items-center gap-2 bg-blue-600 text-white px-8 py-4 rounded-full font-bold text-lg shadow-lg hover:shadow-xl transition-all hover:-translate-y-1">
-                    <i class="fas fa-arrow-down"></i>
-                    <span>지금 바로 1분 진단 받기</span>
-                </a>
+    <!-- 이렇게 해결했습니다 Section -->
+    <section class="py-16 md:py-24 bg-gradient-to-br from-gray-50 to-blue-50">
+        <div class="max-w-5xl mx-auto px-4 md:px-6">
+            <div class="text-center mb-8 md:mb-12">
+                <div class="inline-flex items-center gap-2 bg-blue-100 border border-blue-200 px-4 py-2 rounded-full mb-4">
+                    <i class="fas fa-lightbulb text-blue-600"></i>
+                    <span class="text-blue-700 font-semibold text-sm md:text-base">Solution</span>
+                </div>
+                <h2 data-aos="fade-up" data-aos-duration="500" class="text-2xl md:text-4xl font-black text-gray-900 mb-3 md:mb-4">
+                    이렇게 해결했습니다
+                </h2>
+                <p data-aos="fade-up" data-aos-duration="500" data-aos-delay="50" class="text-base md:text-lg text-gray-600">
+                    위의 고민 카드를 클릭하면 해결 방법을 확인할 수 있습니다
+                </p>
+            </div>
+
+            <!-- 솔루션 컨텐츠 -->
+            <div id="solutionContainer" class="bg-white rounded-3xl p-6 md:p-10 shadow-2xl border-2 border-blue-100">
+                <!-- 솔루션 1: 원가 계산 -->
+                <div id="solution-1" class="solution-content hidden">
+                    <div class="flex items-center gap-4 mb-6 pb-6 border-b border-amber-200">
+                        <div class="w-16 h-16 bg-amber-100 rounded-2xl flex items-center justify-center flex-shrink-0">
+                            <span class="text-3xl">💰</span>
+                        </div>
+                        <div>
+                            <h3 class="text-2xl md:text-3xl font-black text-gray-900 mb-1">원가 계산 솔루션</h3>
+                            <p class="text-amber-600 font-semibold">제조업 • 도소매업 특화</p>
+                        </div>
+                    </div>
+                    
+                    <div class="grid md:grid-cols-2 gap-6 mb-6">
+                        <div class="bg-amber-50 rounded-2xl p-6">
+                            <h4 class="font-bold text-lg text-gray-900 mb-3 flex items-center gap-2">
+                                <i class="fas fa-check-circle text-amber-600"></i>
+                                제공 서비스
+                            </h4>
+                            <ul class="space-y-2 text-gray-700">
+                                <li class="flex items-start gap-2">
+                                    <i class="fas fa-chevron-right text-amber-500 mt-1"></i>
+                                    <span>원자재별 입출고 관리 및 재고 추적</span>
+                                </li>
+                                <li class="flex items-start gap-2">
+                                    <i class="fas fa-chevron-right text-amber-500 mt-1"></i>
+                                    <span>제품별 원가 계산 및 수익률 분석</span>
+                                </li>
+                                <li class="flex items-start gap-2">
+                                    <i class="fas fa-chevron-right text-amber-500 mt-1"></i>
+                                    <span>월별 원가 변동 추이 리포트</span>
+                                </li>
+                                <li class="flex items-start gap-2">
+                                    <i class="fas fa-chevron-right text-amber-500 mt-1"></i>
+                                    <span>적정 판매가 산정 및 가격 전략 상담</span>
+                                </li>
+                            </ul>
+                        </div>
+                        
+                        <div class="bg-gray-50 rounded-2xl p-6">
+                            <h4 class="font-bold text-lg text-gray-900 mb-3 flex items-center gap-2">
+                                <i class="fas fa-chart-line text-amber-600"></i>
+                                기대 효과
+                            </h4>
+                            <ul class="space-y-2 text-gray-700">
+                                <li class="flex items-start gap-2">
+                                    <i class="fas fa-star text-amber-400 mt-1"></i>
+                                    <span>실시간 원가 파악으로 즉각 대응 가능</span>
+                                </li>
+                                <li class="flex items-start gap-2">
+                                    <i class="fas fa-star text-amber-400 mt-1"></i>
+                                    <span>수익성 낮은 제품 조기 발견</span>
+                                </li>
+                                <li class="flex items-start gap-2">
+                                    <i class="fas fa-star text-amber-400 mt-1"></i>
+                                    <span>데이터 기반 가격 결정</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- 이미지 placeholder -->
+                    <div class="bg-gradient-to-r from-amber-100 to-amber-50 rounded-2xl p-8 text-center">
+                        <i class="fas fa-image text-6xl text-amber-300 mb-4"></i>
+                        <p class="text-gray-600 font-semibold">실제 사례 이미지가 여기에 표시됩니다</p>
+                    </div>
+                </div>
+
+                <!-- 솔루션 2: 수익 관리 -->
+                <div id="solution-2" class="solution-content hidden">
+                    <div class="flex items-center gap-4 mb-6 pb-6 border-b border-blue-200">
+                        <div class="w-16 h-16 bg-blue-100 rounded-2xl flex items-center justify-center flex-shrink-0">
+                            <span class="text-3xl">📊</span>
+                        </div>
+                        <div>
+                            <h3 class="text-2xl md:text-3xl font-black text-gray-900 mb-1">수익 관리 솔루션</h3>
+                            <p class="text-blue-600 font-semibold">서비스업 • 건설업 특화</p>
+                        </div>
+                    </div>
+                    
+                    <div class="grid md:grid-cols-2 gap-6 mb-6">
+                        <div class="bg-blue-50 rounded-2xl p-6">
+                            <h4 class="font-bold text-lg text-gray-900 mb-3 flex items-center gap-2">
+                                <i class="fas fa-check-circle text-blue-600"></i>
+                                제공 서비스
+                            </h4>
+                            <ul class="space-y-2 text-gray-700">
+                                <li class="flex items-start gap-2">
+                                    <i class="fas fa-chevron-right text-blue-500 mt-1"></i>
+                                    <span>프로젝트별 매출/비용 분리 관리</span>
+                                </li>
+                                <li class="flex items-start gap-2">
+                                    <i class="fas fa-chevron-right text-blue-500 mt-1"></i>
+                                    <span>실시간 손익 현황 대시보드</span>
+                                </li>
+                                <li class="flex items-start gap-2">
+                                    <i class="fas fa-chevron-right text-blue-500 mt-1"></i>
+                                    <span>고객사별 수익성 분석</span>
+                                </li>
+                                <li class="flex items-start gap-2">
+                                    <i class="fas fa-chevron-right text-blue-500 mt-1"></i>
+                                    <span>월별/분기별 수익 트렌드 리포트</span>
+                                </li>
+                            </ul>
+                        </div>
+                        
+                        <div class="bg-gray-50 rounded-2xl p-6">
+                            <h4 class="font-bold text-lg text-gray-900 mb-3 flex items-center gap-2">
+                                <i class="fas fa-chart-line text-blue-600"></i>
+                                기대 효과
+                            </h4>
+                            <ul class="space-y-2 text-gray-700">
+                                <li class="flex items-start gap-2">
+                                    <i class="fas fa-star text-blue-400 mt-1"></i>
+                                    <span>프로젝트 진행 중 수익 예측 가능</span>
+                                </li>
+                                <li class="flex items-start gap-2">
+                                    <i class="fas fa-star text-blue-400 mt-1"></i>
+                                    <span>적자 프로젝트 조기 차단</span>
+                                </li>
+                                <li class="flex items-start gap-2">
+                                    <i class="fas fa-star text-blue-400 mt-1"></i>
+                                    <span>현금 흐름 투명성 확보</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="bg-gradient-to-r from-blue-100 to-blue-50 rounded-2xl p-8 text-center">
+                        <i class="fas fa-image text-6xl text-blue-300 mb-4"></i>
+                        <p class="text-gray-600 font-semibold">실제 사례 이미지가 여기에 표시됩니다</p>
+                    </div>
+                </div>
+
+                <!-- 솔루션 3: 미수금 관리 -->
+                <div id="solution-3" class="solution-content hidden">
+                    <div class="flex items-center gap-4 mb-6 pb-6 border-b border-rose-200">
+                        <div class="w-16 h-16 bg-rose-100 rounded-2xl flex items-center justify-center flex-shrink-0">
+                            <span class="text-3xl">💳</span>
+                        </div>
+                        <div>
+                            <h3 class="text-2xl md:text-3xl font-black text-gray-900 mb-1">미수금 관리 솔루션</h3>
+                            <p class="text-rose-600 font-semibold">전 업종 적용 가능</p>
+                        </div>
+                    </div>
+                    
+                    <div class="grid md:grid-cols-2 gap-6 mb-6">
+                        <div class="bg-rose-50 rounded-2xl p-6">
+                            <h4 class="font-bold text-lg text-gray-900 mb-3 flex items-center gap-2">
+                                <i class="fas fa-check-circle text-rose-600"></i>
+                                제공 서비스
+                            </h4>
+                            <ul class="space-y-2 text-gray-700">
+                                <li class="flex items-start gap-2">
+                                    <i class="fas fa-chevron-right text-rose-500 mt-1"></i>
+                                    <span>거래처별 미수금 현황 실시간 추적</span>
+                                </li>
+                                <li class="flex items-start gap-2">
+                                    <i class="fas fa-chevron-right text-rose-500 mt-1"></i>
+                                    <span>회수 기한별 알림 및 독촉 관리</span>
+                                </li>
+                                <li class="flex items-start gap-2">
+                                    <i class="fas fa-chevron-right text-rose-500 mt-1"></i>
+                                    <span>장기 미수금 분석 및 대응 전략</span>
+                                </li>
+                                <li class="flex items-start gap-2">
+                                    <i class="fas fa-chevron-right text-rose-500 mt-1"></i>
+                                    <span>고객 신용도 평가 및 관리</span>
+                                </li>
+                            </ul>
+                        </div>
+                        
+                        <div class="bg-gray-50 rounded-2xl p-6">
+                            <h4 class="font-bold text-lg text-gray-900 mb-3 flex items-center gap-2">
+                                <i class="fas fa-chart-line text-rose-600"></i>
+                                기대 효과
+                            </h4>
+                            <ul class="space-y-2 text-gray-700">
+                                <li class="flex items-start gap-2">
+                                    <i class="fas fa-star text-rose-400 mt-1"></i>
+                                    <span>미수금 회수율 향상</span>
+                                </li>
+                                <li class="flex items-start gap-2">
+                                    <i class="fas fa-star text-rose-400 mt-1"></i>
+                                    <span>현금 유동성 개선</span>
+                                </li>
+                                <li class="flex items-start gap-2">
+                                    <i class="fas fa-star text-rose-400 mt-1"></i>
+                                    <span>불량 채권 사전 방지</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="bg-gradient-to-r from-rose-100 to-rose-50 rounded-2xl p-8 text-center">
+                        <i class="fas fa-image text-6xl text-rose-300 mb-4"></i>
+                        <p class="text-gray-600 font-semibold">실제 사례 이미지가 여기에 표시됩니다</p>
+                    </div>
+                </div>
+
+                <!-- 솔루션 4: 세금 관리 -->
+                <div id="solution-4" class="solution-content hidden">
+                    <div class="flex items-center gap-4 mb-6 pb-6 border-b border-emerald-200">
+                        <div class="w-16 h-16 bg-emerald-100 rounded-2xl flex items-center justify-center flex-shrink-0">
+                            <span class="text-3xl">🧾</span>
+                        </div>
+                        <div>
+                            <h3 class="text-2xl md:text-3xl font-black text-gray-900 mb-1">세금 관리 솔루션</h3>
+                            <p class="text-emerald-600 font-semibold">세무사 협력 시스템</p>
+                        </div>
+                    </div>
+                    
+                    <div class="grid md:grid-cols-2 gap-6 mb-6">
+                        <div class="bg-emerald-50 rounded-2xl p-6">
+                            <h4 class="font-bold text-lg text-gray-900 mb-3 flex items-center gap-2">
+                                <i class="fas fa-check-circle text-emerald-600"></i>
+                                제공 서비스
+                            </h4>
+                            <ul class="space-y-2 text-gray-700">
+                                <li class="flex items-start gap-2">
+                                    <i class="fas fa-chevron-right text-emerald-500 mt-1"></i>
+                                    <span>월별 세금 예상액 산정 및 알림</span>
+                                </li>
+                                <li class="flex items-start gap-2">
+                                    <i class="fas fa-chevron-right text-emerald-500 mt-1"></i>
+                                    <span>절세 가능 항목 검토 및 제안</span>
+                                </li>
+                                <li class="flex items-start gap-2">
+                                    <i class="fas fa-chevron-right text-emerald-500 mt-1"></i>
+                                    <span>세무사와 협력한 신고 대행</span>
+                                </li>
+                                <li class="flex items-start gap-2">
+                                    <i class="fas fa-chevron-right text-emerald-500 mt-1"></i>
+                                    <span>세무 조사 대응 및 자료 준비</span>
+                                </li>
+                            </ul>
+                        </div>
+                        
+                        <div class="bg-gray-50 rounded-2xl p-6">
+                            <h4 class="font-bold text-lg text-gray-900 mb-3 flex items-center gap-2">
+                                <i class="fas fa-chart-line text-emerald-600"></i>
+                                기대 효과
+                            </h4>
+                            <ul class="space-y-2 text-gray-700">
+                                <li class="flex items-start gap-2">
+                                    <i class="fas fa-star text-emerald-400 mt-1"></i>
+                                    <span>세금 폭탄 사전 예방</span>
+                                </li>
+                                <li class="flex items-start gap-2">
+                                    <i class="fas fa-star text-emerald-400 mt-1"></i>
+                                    <span>합법적 절세 효과</span>
+                                </li>
+                                <li class="flex items-start gap-2">
+                                    <i class="fas fa-star text-emerald-400 mt-1"></i>
+                                    <span>세무 리스크 최소화</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="bg-gradient-to-r from-emerald-100 to-emerald-50 rounded-2xl p-8 text-center">
+                        <i class="fas fa-image text-6xl text-emerald-300 mb-4"></i>
+                        <p class="text-gray-600 font-semibold">실제 사례 이미지가 여기에 표시됩니다</p>
+                    </div>
+                </div>
+
+                <!-- 기본 메시지 (아무것도 선택 안 됨) -->
+                <div id="solution-default" class="solution-content text-center py-12">
+                    <i class="fas fa-hand-pointer text-6xl text-gray-300 mb-6"></i>
+                    <p class="text-xl text-gray-600 font-semibold mb-2">위의 고민 카드를 클릭해보세요</p>
+                    <p class="text-gray-500">각 고민에 맞는 해결 방법을 확인할 수 있습니다</p>
+                </div>
+                </div>
             </div>
         </div>
     </section>
@@ -625,7 +924,7 @@
                     </button>
                     
                     <p class="text-center text-sm md:text-sm text-gray-500 leading-relaxed">
-                        ✅ 24시간 내 맞춤 솔루션 안내 • 📞 부담 없는 무료 상담
+                        ✅ 14시간 이내 맞춤 솔루션 안내 • 📞 부담 없는 무료 상담
                     </p>
                 </form>
 
@@ -716,7 +1015,7 @@
                 
                 if (data.success) {
                     // 성공 메시지 표시
-                    alert('✅ 신청이 완료되었습니다!\n\n24시간 이내에 맞춤 솔루션을 안내해드리겠습니다.\n감사합니다!');
+                    alert('✅ 신청이 완료되었습니다!\n\n14시간 이내에 맞춤 솔루션을 안내해드리겠습니다.\n감사합니다!');
                     form.reset();
                 } else {
                     throw new Error('전송 실패');
@@ -756,6 +1055,51 @@
             offset: 50,
             easing: 'ease-out-cubic'
         });
+
+        // 해결 방법 탭 전환 함수
+        function showSolution(num) {
+            // 현재 표시된 컨텐츠 찾기
+            const contents = document.querySelectorAll('.solution-content');
+            const selectedContent = document.getElementById('solution-' + num);
+            
+            // 이미 선택된 컨텐츠면 아무것도 하지 않음
+            if (selectedContent && !selectedContent.classList.contains('hidden')) {
+                return;
+            }
+
+            // 현재 표시된 컨텐츠에 페이드아웃 효과
+            contents.forEach(content => {
+                if (!content.classList.contains('hidden')) {
+                    content.classList.add('animate-fadeOut');
+                    
+                    // 애니메이션 후 숨기기
+                    setTimeout(() => {
+                        content.classList.add('hidden');
+                        content.classList.remove('animate-fadeOut', 'animate-fadeIn');
+                    }, 300);
+                }
+            });
+
+            // 선택된 솔루션 표시 (페이드인)
+            setTimeout(() => {
+                if (selectedContent) {
+                    selectedContent.classList.remove('hidden');
+                    selectedContent.classList.add('animate-fadeIn');
+                    
+                    // 해결 방법 컨테이너로 스크롤 (약간 위쪽으로)
+                    const solutionContainer = document.getElementById('solutionContainer');
+                    if (solutionContainer) {
+                        const elementPosition = solutionContainer.getBoundingClientRect().top + window.pageYOffset;
+                        const offsetPosition = elementPosition - 120; // 네비게이션 바와 여백 고려
+                        
+                        window.scrollTo({
+                            top: offsetPosition,
+                            behavior: 'smooth'
+                        });
+                    }
+                }
+            }, 150);
+        }
     </script>
 </body>
 </html>

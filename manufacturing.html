@@ -91,18 +91,18 @@
                 </div>
                 
                 <!-- 구분선 -->
-                <div class="h-6 w-px bg-gray-300"></div>
+                <div class="hidden md:block h-6 w-px bg-gray-300"></div>
                 
                 <!-- 찾아오실 때 -->
-                <a href="location.html" class="px-3 py-2 text-gray-700 hover:text-emerald-600 font-semibold transition-colors whitespace-nowrap">
+                <a href="location.html" class="hidden md:block px-3 py-2 text-gray-700 hover:text-emerald-600 font-semibold transition-colors whitespace-nowrap">
                     찾아오실 때
                 </a>
                 
                 <!-- 구분선 -->
-                <div class="h-6 w-px bg-gray-300"></div>
+                <div class="hidden md:block h-6 w-px bg-gray-300"></div>
                 
                 <!-- 상담 바로가기 -->
-                <button onclick="openModal()" class="bg-emerald-600 hover:bg-emerald-700 text-white px-4 py-2 md:px-6 md:py-3 rounded-full font-bold text-sm md:text-base transition-colors shadow-lg cursor-pointer whitespace-nowrap ml-2">
+                <button onclick="openModal()" class="bg-emerald-600 hover:bg-emerald-700 text-white px-4 py-2 md:px-6 md:py-3 rounded-full font-bold text-sm md:text-base transition-colors shadow-lg cursor-pointer whitespace-nowrap md:ml-2">
                     상담 바로가기
                 </button>
             </div>
@@ -161,7 +161,7 @@
                             <div class="timeline-dot"></div>
                             <div class="w-0.5 h-full bg-emerald-200"></div>
                         </div>
-                        <div class="card rounded-2xl p-8 flex-1">
+                        <div class="card rounded-2xl p-8 flex-1 cursor-pointer hover:shadow-2xl transition-all" onclick="showManufacturingSolution(1)">
                             <span class="text-emerald-600 text-sm font-semibold">고민 1</span>
                             <h3 class="text-2xl md:text-3xl font-bold mt-2 mb-4 text-gray-900">제품별 원가가 안 보여요</h3>
                             <p class="text-gray-600 leading-relaxed text-base md:text-lg">
@@ -176,7 +176,7 @@
                             <div class="timeline-dot"></div>
                             <div class="w-0.5 h-full bg-emerald-200"></div>
                         </div>
-                        <div class="card rounded-2xl p-8 flex-1">
+                        <div class="card rounded-2xl p-8 flex-1 cursor-pointer hover:shadow-2xl transition-all" onclick="showManufacturingSolution(2)">
                             <span class="text-emerald-600 text-sm font-semibold">고민 2</span>
                             <h3 class="text-2xl md:text-3xl font-bold mt-2 mb-4 text-gray-900">거래처가 너무 많아요</h3>
                             <p class="text-gray-600 leading-relaxed text-base md:text-lg">
@@ -190,7 +190,7 @@
                         <div class="flex flex-col items-center">
                             <div class="timeline-dot"></div>
                         </div>
-                        <div class="card rounded-2xl p-8 flex-1">
+                        <div class="card rounded-2xl p-8 flex-1 cursor-pointer hover:shadow-2xl transition-all" onclick="showManufacturingSolution(3)">
                             <span class="text-emerald-600 text-sm font-semibold">고민 3</span>
                             <h3 class="text-2xl md:text-3xl font-bold mt-2 mb-4 text-gray-900">재고 파악이 안 돼요</h3>
                             <p class="text-gray-600 leading-relaxed text-base md:text-lg">
@@ -201,28 +201,77 @@
                     </div>
                 </div>
                 
-                <div data-aos="fade-left" data-aos-duration="800" data-aos-delay="200" class="rounded-3xl p-10 border-2 border-emerald-500 bg-white shadow-xl">
+                <div id="manufacturingSolutionBox" data-aos="fade-left" data-aos-duration="800" data-aos-delay="200" class="rounded-3xl p-10 border-2 border-emerald-500 bg-white shadow-xl">
                     <div class="inline-flex items-center gap-2 bg-green-500 px-5 py-3 rounded-full mb-8">
                         <i class="fas fa-check-circle text-white text-lg"></i>
                         <span class="text-white font-bold text-base">✨ 이렇게 해결했습니다</span>
                     </div>
                     
-                    <h3 class="text-3xl md:text-4xl font-bold mb-6 text-gray-900">
-                        "제품별로 정확한<br/>원가를 알게 됐어요"
-                    </h3>
-                    
-                    <blockquote class="text-lg md:text-xl text-gray-600 leading-relaxed mb-8 border-l-4 border-emerald-500 pl-6">
-                        "이제 견적 낼 때 정확한 원가를 기준으로 해요. 수익이 안 나는 제품도 파악됐고, 
-                        거래처별 미수금도 한눈에 보여서 자금 관리가 편해졌어요."
-                    </blockquote>
-                    
-                    <div class="flex items-center gap-4">
-                        <div class="w-14 h-14 rounded-full bg-emerald-100 flex items-center justify-center text-xl">
-                            🏭
+                    <div class="relative min-h-[450px]">
+                        <!-- 솔루션 1 -->
+                        <div id="manufacturing-solution-1" class="solution-content absolute top-0 left-0 w-full">
+                            <h3 class="text-3xl md:text-4xl font-bold mb-6 text-gray-900">
+                                "제품별로 정확한<br/>원가를 알게 됐어요"
+                            </h3>
+                            
+                            <blockquote class="text-lg md:text-xl text-gray-600 leading-relaxed mb-8 border-l-4 border-emerald-500 pl-6">
+                                "이제 견적 낼 때 정확한 원가를 기준으로 해요. 원자재, 인건비, 전기료까지 모두 계산되니까 
+                                어떤 제품이 수익성이 좋은지 바로 알 수 있어요."
+                            </blockquote>
+                            
+                            <div class="flex items-center gap-4">
+                                <div class="w-14 h-14 rounded-full bg-emerald-100 flex items-center justify-center text-xl">
+                                    🏭
+                                </div>
+                                <div>
+                                    <p class="font-bold text-gray-900">금속 부품 제조업 대표</p>
+                                    <p class="text-gray-500 text-sm">직원 25명 / 이용 1년</p>
+                                </div>
+                            </div>
                         </div>
-                        <div>
-                            <p class="font-bold text-gray-900">금속 부품 제조업 대표</p>
-                            <p class="text-gray-500 text-sm">직원 25명 / 이용 1년</p>
+
+                        <!-- 솔루션 2 -->
+                        <div id="manufacturing-solution-2" class="solution-content absolute top-0 left-0 w-full hidden">
+                            <h3 class="text-3xl md:text-4xl font-bold mb-6 text-gray-900">
+                                "거래처 관리가<br/>쉬워졌어요"
+                            </h3>
+                            
+                            <blockquote class="text-lg md:text-xl text-gray-600 leading-relaxed mb-8 border-l-4 border-emerald-500 pl-6">
+                                "거래처별로 미지급금, 미수금이 자동으로 정리돼요. 누구한테 얼마를 줘야 하고, 
+                                받아야 하는지 한눈에 보이니까 자금 계획 세우기가 훨씬 편해졌어요."
+                            </blockquote>
+                            
+                            <div class="flex items-center gap-4">
+                                <div class="w-14 h-14 rounded-full bg-emerald-100 flex items-center justify-center text-xl">
+                                    🏭
+                                </div>
+                                <div>
+                                    <p class="font-bold text-gray-900">플라스틱 제조업 대표</p>
+                                    <p class="text-gray-500 text-sm">직원 18명 / 이용 9개월</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 솔루션 3 -->
+                        <div id="manufacturing-solution-3" class="solution-content absolute top-0 left-0 w-full hidden">
+                            <h3 class="text-3xl md:text-4xl font-bold mb-6 text-gray-900">
+                                "재고 관리가<br/>정확해졌어요"
+                            </h3>
+                            
+                            <blockquote class="text-lg md:text-xl text-gray-600 leading-relaxed mb-8 border-l-4 border-emerald-500 pl-6">
+                                "입고, 출고를 체계적으로 기록하니까 현재 재고가 정확히 파악돼요. 
+                                재고 금액도 자동으로 계산되고, 과잉재고나 부족 재고도 미리 알 수 있어요."
+                            </blockquote>
+                            
+                            <div class="flex items-center gap-4">
+                                <div class="w-14 h-14 rounded-full bg-emerald-100 flex items-center justify-center text-xl">
+                                    🏭
+                                </div>
+                                <div>
+                                    <p class="font-bold text-gray-900">식품 제조업 대표</p>
+                                    <p class="text-gray-500 text-sm">직원 30명 / 이용 2년</p>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -326,7 +375,7 @@
             </div>
             
             <p class="text-emerald-200 mt-6">
-                ⏱️ 평균 24시간 이내 답변 · 📧 이메일 상담 가능
+                ⏱️ 평균 14시간 이내 답변 · 📧 이메일 상담 가능
             </p>
         </div>
     </section>
@@ -414,6 +463,38 @@
     </div>
 
     <script>
+        function showManufacturingSolution(num) {
+            const solutions = document.querySelectorAll('#manufacturingSolutionBox .solution-content');
+            solutions.forEach(solution => {
+                if (!solution.classList.contains('hidden')) {
+                    solution.classList.add('animate-fadeOut');
+                    setTimeout(() => {
+                        solution.classList.add('hidden');
+                        solution.classList.remove('animate-fadeOut', 'animate-fadeIn');
+                    }, 300);
+                }
+            });
+
+            setTimeout(() => {
+                const selectedSolution = document.getElementById('manufacturing-solution-' + num);
+                if (selectedSolution) {
+                    selectedSolution.classList.remove('hidden');
+                    selectedSolution.classList.add('animate-fadeIn');
+                    
+                    const solutionBox = document.getElementById('manufacturingSolutionBox');
+                    if (solutionBox) {
+                        const elementPosition = solutionBox.getBoundingClientRect().top + window.pageYOffset;
+                        const offsetPosition = elementPosition - 120;
+                        
+                        window.scrollTo({
+                            top: offsetPosition,
+                            behavior: 'smooth'
+                        });
+                    }
+                }
+            }, 150);
+        }
+
         function openModal() { document.getElementById('consultModal').classList.add('active'); document.body.style.overflow = 'hidden'; }
         function closeModal() { document.getElementById('consultModal').classList.remove('active'); document.body.style.overflow = 'auto'; }
         document.getElementById('consultModal').addEventListener('click', function(e) { if (e.target === this) closeModal(); });
@@ -439,7 +520,7 @@
                 const response = await fetch('https://api.web3forms.com/submit', {method: 'POST', body: formData});
                 const data = await response.json();
                 if (data.success) {
-                    alert('✅ 상담 신청이 완료되었습니다!\n\n24시간 이내에 연락드리겠습니다.\n감사합니다!');
+                    alert('✅ 상담 신청이 완료되었습니다!\n\n14시간 이내에 연락드리겠습니다.\n감사합니다!');
                     form.reset();
                     closeModal();
                 } else { throw new Error('전송 실패'); }
