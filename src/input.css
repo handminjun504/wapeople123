@@ -6,14 +6,6 @@
 @layer base {
     html {
         font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
-        visibility: hidden;
-        opacity: 0;
-        transition: opacity 0.3s ease;
-    }
-    
-    html.fonts-loaded {
-        visibility: visible;
-        opacity: 1;
     }
     
     * {
