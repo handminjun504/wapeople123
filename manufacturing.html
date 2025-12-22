@@ -19,10 +19,62 @@
     <!-- Navigation -->
     <nav class="fixed top-0 left-0 right-0 z-50 nav-glass">
         <div class="max-w-7xl mx-auto px-3 md:px-6 py-2 flex items-center justify-between">
-            <a href="index.html" class="flex items-center gap-1 hover:opacity-80 transition-opacity">
+            <a href="index.html" class="flex items-center gap-1 hover:opacity-80 transition-opacity touch-manipulation">
                 <img src="로고.webp" alt="경리업무를잘하는청년들" class="h-12 md:h-16 object-contain">
             </a>
-            <a href="#contact" class="bg-emerald-600 hover:bg-emerald-700 text-white px-4 py-2 md:px-6 md:py-3 rounded-full font-bold text-sm md:text-base transition-colors shadow-lg">
+            
+            <!-- 메뉴 -->
+            <div class="hidden md:flex items-center gap-6">
+                <!-- 업종 퀵메뉴 -->
+                <div class="relative group">
+                    <button class="flex items-center gap-2 px-4 py-2 text-gray-700 hover:text-emerald-600 font-semibold transition-colors">
+                        <span>업종별 서비스</span>
+                        <i class="fas fa-chevron-down text-sm"></i>
+                    </button>
+                    
+                    <!-- 드롭다운 메뉴 -->
+                    <div class="absolute top-full left-0 mt-2 w-48 bg-white rounded-xl shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 border border-gray-100">
+                        <div class="py-2">
+                            <a href="service.html" class="flex items-center gap-3 px-4 py-3 hover:bg-blue-50 transition-colors">
+                                <span class="text-xl">💼</span>
+                                <span class="text-gray-700 font-medium">서비스업</span>
+                            </a>
+                            <a href="manufacturing.html" class="flex items-center gap-3 px-4 py-3 hover:bg-emerald-50 transition-colors">
+                                <span class="text-xl">🏭</span>
+                                <span class="text-gray-700 font-medium">제조업</span>
+                            </a>
+                            <a href="construction.html" class="flex items-center gap-3 px-4 py-3 hover:bg-amber-50 transition-colors">
+                                <span class="text-xl">🏗️</span>
+                                <span class="text-gray-700 font-medium">건설업</span>
+                            </a>
+                            <a href="wholesale.html" class="flex items-center gap-3 px-4 py-3 hover:bg-sky-50 transition-colors">
+                                <span class="text-xl">📦</span>
+                                <span class="text-gray-700 font-medium">도소매업</span>
+                            </a>
+                            <a href="restaurant.html" class="flex items-center gap-3 px-4 py-3 hover:bg-rose-50 transition-colors">
+                                <span class="text-xl">🍽️</span>
+                                <span class="text-gray-700 font-medium">음식점업</span>
+                            </a>
+                            <a href="ecommerce.html" class="flex items-center gap-3 px-4 py-3 hover:bg-violet-50 transition-colors">
+                                <span class="text-xl">🛒</span>
+                                <span class="text-gray-700 font-medium">쇼핑몰</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 원격경리란? -->
+                <a href="index.html#remote-accounting" class="px-4 py-2 text-gray-700 hover:text-emerald-600 font-semibold transition-colors">
+                    원격경리란?
+                </a>
+                
+                <!-- 찾아오실 때 -->
+                <a href="location.html" class="px-4 py-2 text-gray-700 hover:text-emerald-600 font-semibold transition-colors">
+                    찾아오실 때
+                </a>
+            </div>
+            
+            <a href="faq.html" class="bg-emerald-600 hover:bg-emerald-700 text-white px-4 py-2 md:px-6 md:py-3 rounded-full font-bold text-sm md:text-base transition-colors shadow-lg">
                 상담 바로가기
             </a>
         </div>
