@@ -23,11 +23,11 @@
 
 @layer components {
     .accent-text {
-        color: #2563EB;
+        color: #1D4ED8;
     }
     
     .accent-bg {
-        background: #2563EB;
+        background: #1D4ED8;
     }
     
     .card {
