@@ -194,7 +194,7 @@
                         <div id="map" style="width:100%;height:500px;"></div>
                     </div>
                     <div class="mt-4">
-                        <a href="https://map.kakao.com/link/map/경리업무를잘하는청년들 201호,37.2635,127.0286" target="_blank" class="block bg-yellow-400 hover:bg-yellow-500 text-gray-900 px-6 py-3 rounded-full font-bold text-center transition-colors shadow-lg">
+                        <a href="https://map.kakao.com/link/map/경리업무를잘하는청년들 201호,37.2642963868707,127.027686435975" target="_blank" class="block bg-yellow-400 hover:bg-yellow-500 text-gray-900 px-6 py-3 rounded-full font-bold text-center transition-colors shadow-lg">
                             <i class="fas fa-map-marked-alt mr-2"></i>
                             카카오맵으로 보기
                         </a>
@@ -260,14 +260,14 @@
         // 지도 생성
         var mapContainer = document.getElementById('map');
         var mapOption = {
-            center: new kakao.maps.LatLng(37.2635, 127.0286), // 수원시 팔달구 좌표
+            center: new kakao.maps.LatLng(37.2642963868707, 127.027686435975), // 수원시 팔달구 권광로175번길 83 201호
             level: 3
         };
         
         var map = new kakao.maps.Map(mapContainer, mapOption);
         
         // 마커 생성
-        var markerPosition = new kakao.maps.LatLng(37.2635, 127.0286);
+        var markerPosition = new kakao.maps.LatLng(37.2642963868707, 127.027686435975);
         var marker = new kakao.maps.Marker({
             position: markerPosition
         });
