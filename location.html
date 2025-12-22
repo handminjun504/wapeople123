@@ -239,48 +239,36 @@
     </section>
 
     <!-- Footer -->
-    <footer class="bg-gray-900 text-white py-12 md:py-16">
-        <div class="max-w-7xl mx-auto px-4 md:px-6">
-            <div class="grid md:grid-cols-3 gap-8 md:gap-12 mb-8">
-                <!-- Company Info -->
-                <div>
-                    <h3 class="text-xl font-bold mb-4">경리업무를잘하는청년들</h3>
-                    <p class="text-gray-400 leading-relaxed text-sm">
-                        업종별 맞춤 경리 서비스<br/>
-                        150+ 기업이 신뢰하는 원격경리
-                    </p>
+    <footer class="bg-white py-8 border-t border-gray-200">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="flex flex-col md:flex-row items-start justify-between gap-6">
+                <div class="flex items-center gap-4">
+                    <a href="index.html"><img src="로고.webp" alt="경리업무를잘하는청년들" class="h-16 md:h-20 object-contain"></a>
                 </div>
-                
-                <!-- Quick Links -->
-                <div>
-                    <h3 class="text-lg font-bold mb-4">바로가기</h3>
-                    <div class="space-y-2">
-                        <a href="service.html" class="block text-gray-400 hover:text-white transition-colors text-sm">서비스업</a>
-                        <a href="manufacturing.html" class="block text-gray-400 hover:text-white transition-colors text-sm">제조업</a>
-                        <a href="construction.html" class="block text-gray-400 hover:text-white transition-colors text-sm">건설업</a>
-                        <a href="faq.html" class="block text-gray-400 hover:text-white transition-colors text-sm">자주 묻는 질문</a>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-3 text-gray-600 text-sm">
+                    <div class="flex items-center gap-2 hover:scale-105 transition-transform duration-300 cursor-pointer" onclick="copyToClipboard('1566-2687', '전화번호')">
+                        <i class="fas fa-phone text-blue-700"></i>
+                        <span>전화번호 : 1566-2687</span>
                     </div>
-                </div>
-                
-                <!-- Contact -->
-                <div>
-                    <h3 class="text-lg font-bold mb-4">문의하기</h3>
-                    <div class="space-y-2 text-sm">
-                        <p class="text-gray-400">전화: 1566-2687</p>
-                        <p class="text-gray-400">이메일: wapeople000@gmail.com</p>
-                        <div class="flex gap-3 mt-4">
-                            <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-gray-700 transition-colors">
-                                <i class="fab fa-kakao"></i>
-                            </a>
-                            <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-gray-700 transition-colors">
-                                <i class="fab fa-instagram"></i>
-                            </a>
-                        </div>
+                    <div class="flex items-center gap-2 hover:scale-105 transition-transform duration-300 cursor-pointer" onclick="copyToClipboard('wapeople000@gmail.com', '이메일')">
+                        <i class="fas fa-envelope text-blue-700"></i>
+                        <span>wapeople000@gmail.com</span>
                     </div>
+                    <div class="flex items-center gap-2 hover:scale-105 transition-transform duration-300 cursor-pointer">
+                        <i class="fas fa-user text-blue-700"></i>
+                        <span>대표이사 : 금종석</span>
+                    </div>
+                    <div class="flex items-center gap-2 hover:scale-105 transition-transform duration-300 cursor-pointer">
+                        <i class="fas fa-clock text-blue-700"></i>
+                        <span>평일 09:00 - 18:00</span>
+                    </div>
+                    <a href="https://map.naver.com/p/entry/place/1245812255?c=17.59,0,0,0,dh&placePath=/home?from=map&from=map&fromPanelNum=1&additionalHeight=76&timestamp=202512121734&locale=ko&svcName=map_pcv5" target="_blank" rel="noopener noreferrer" class="flex items-start gap-2 md:col-span-2 hover:scale-105 transition-transform duration-300 cursor-pointer">
+                        <i class="fas fa-map-marker-alt text-blue-700 mt-0.5"></i>
+                        <span>주소 : 경기 수원시 팔달구 권광로175번길 83 201호</span>
+                    </a>
                 </div>
             </div>
-            
-            <div class="border-t border-gray-800 pt-8 text-center text-gray-500 text-sm">
+            <div class="border-t border-gray-200 mt-6 pt-6 text-center text-gray-400 text-sm">
                 <p>&copy; 2025 경리업무를잘하는청년들. All rights reserved.</p>
             </div>
         </div>
@@ -325,6 +313,15 @@
             const address = '경기 수원시 팔달구 권광로175번길 83 201호';
             navigator.clipboard.writeText(address).then(() => {
                 alert('주소가 복사되었습니다!');
+            });
+        }
+        
+        // 클립보드 복사 함수
+        function copyToClipboard(text, type) {
+            navigator.clipboard.writeText(text).then(() => {
+                alert(type + '이(가) 복사되었습니다!\n' + text);
+            }).catch(err => {
+                console.error('복사 실패:', err);
             });
         }
     </script>
