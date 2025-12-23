@@ -84,7 +84,7 @@
                             </a>
                             <a href="ecommerce.html" class="flex items-center gap-3 px-4 py-3 hover:bg-violet-50 transition-colors">
                                 <span class="text-xl">🛒</span>
-                                <span class="text-gray-700 font-medium">쇼핑몰</span>
+                                <span class="text-gray-700 font-medium">쇼핑몰업</span>
                             </a>
                         </div>
                     </div>
@@ -265,7 +265,7 @@
             </h2>
             <p data-aos="fade-up" data-aos-duration="800" data-aos-delay="100" class="text-xl text-blue-100 mb-12 leading-relaxed">
                 언제든지 편하게 문의해주세요<br/>
-                14시간 이내에 답변드리겠습니다
+                영업시간 내 문의 시, 30분 이내로 답변드리겠습니다
             </p>
             
             <div data-aos="zoom-in" data-aos-duration="600" data-aos-delay="200" class="flex flex-col sm:flex-row gap-4 justify-center max-w-2xl mx-auto">
@@ -430,7 +430,7 @@
                 const response = await fetch('https://api.web3forms.com/submit', {method: 'POST', body: formData});
                 const data = await response.json();
                 if (data.success) {
-                    alert('✅ 상담 신청이 완료되었습니다!\n\n14시간 이내에 연락드리겠습니다.\n감사합니다!');
+                    alert('✅ 상담 신청이 완료되었습니다!\n\n영업시간 내 문의 시, 30분 이내로 연락드리겠습니다.\n감사합니다!');
                     form.reset();
                     closeModal();
                 } else { throw new Error('전송 실패'); }
