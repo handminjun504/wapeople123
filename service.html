@@ -42,18 +42,18 @@
                 <img src="로고.webp" alt="경리업무를잘하는청년들" class="h-12 md:h-16 object-contain">
             </a>
             
-            <!-- 메뉴 & 버튼 그룹 -->
-            <div class="flex items-center gap-2 md:gap-8">
+            <!-- 데스크톱 메뉴 -->
+            <div class="hidden md:flex items-center gap-2 md:gap-8">
                 <!-- 원격경리 -->
-                <a href="about.html" class="hidden md:block px-8 py-5 text-gray-700 hover:text-blue-700 font-semibold transition-colors whitespace-nowrap">
+                <a href="about.html" class="px-8 py-5 text-gray-700 hover:text-blue-700 font-semibold transition-colors whitespace-nowrap">
                     원격경리
                 </a>
                 
                 <!-- 구분선 -->
-                <div class="hidden md:block h-6 w-px bg-gray-300"></div>
+                <div class="h-6 w-px bg-gray-300"></div>
                 
                 <!-- 업종 퀵메뉴 -->
-                <div class="relative group hidden md:block">
+                <div class="relative group">
                     <button class="flex items-center gap-2 px-3 py-2 text-gray-700 hover:text-blue-700 font-semibold transition-colors whitespace-nowrap">
                         <span>업종별 서비스</span>
                         <i class="fas fa-chevron-down text-sm"></i>
@@ -91,28 +91,115 @@
                 </div>
                 
                 <!-- 구분선 -->
-                <div class="hidden md:block h-6 w-px bg-gray-300"></div>
+                <div class="h-6 w-px bg-gray-300"></div>
                 
                 <!-- 찾아오실 때 -->
-                <a href="location.html" class="hidden md:block px-3 py-2 text-gray-700 hover:text-blue-700 font-semibold transition-colors whitespace-nowrap">
+                <a href="location.html" class="px-3 py-2 text-gray-700 hover:text-blue-700 font-semibold transition-colors whitespace-nowrap">
                     찾아오실 때
                 </a>
                 
                 <!-- 구분선 -->
-                <div class="hidden md:block h-6 w-px bg-gray-300"></div>
+                <div class="h-6 w-px bg-gray-300"></div>
                 
                 <!-- FAQ -->
-                <a href="faq.html" class="hidden md:block px-3 py-2 text-gray-700 hover:text-blue-700 font-semibold transition-colors whitespace-nowrap">
+                <a href="faq.html" class="px-3 py-2 text-gray-700 hover:text-blue-700 font-semibold transition-colors whitespace-nowrap">
                     FAQ
                 </a>
                 
                 <!-- 상담 바로가기 -->
-                <button onclick="openModal()" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 md:px-6 md:py-3 rounded-full font-bold text-sm md:text-base transition-colors shadow-lg cursor-pointer whitespace-nowrap md:ml-2">
+                <button onclick="openModal()" class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-full font-bold transition-colors shadow-lg cursor-pointer whitespace-nowrap ml-2">
                     상담 바로가기
                 </button>
             </div>
+
+            <!-- 모바일 메뉴 -->
+            <div class="flex md:hidden items-center gap-2">
+                <button onclick="openModal()" class="flex items-center justify-center bg-blue-600 hover:bg-blue-700 text-white px-5 py-2.5 rounded-full font-bold text-sm transition-colors shadow-lg cursor-pointer whitespace-nowrap">
+                    상담 바로가기
+                </button>
+                <button id="mobileMenuBtn" class="flex items-center justify-center p-2 text-gray-700 hover:text-blue-700 transition-colors">
+                    <i class="fas fa-bars text-2xl"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- 모바일 메뉴 패널 -->
+        <div id="mobileMenu" class="hidden md:hidden bg-white border-t border-gray-200 shadow-lg">
+            <div class="max-w-7xl mx-auto px-4 py-4">
+                <a href="about.html" class="block py-3 px-4 text-gray-700 hover:bg-blue-50 hover:text-blue-700 font-semibold rounded-lg transition-colors">
+                    원격경리
+                </a>
+                
+                <!-- 업종별 서비스 -->
+                <div class="border-t border-gray-100 mt-2 pt-2">
+                    <p class="px-4 py-2 text-sm font-bold text-gray-500">업종별 서비스</p>
+                    <a href="service.html" class="flex items-center gap-3 py-3 px-4 text-gray-700 hover:bg-blue-50 rounded-lg transition-colors">
+                        <span class="text-xl">💼</span>
+                        <span class="font-medium">서비스업</span>
+                    </a>
+                    <a href="manufacturing.html" class="flex items-center gap-3 py-3 px-4 text-gray-700 hover:bg-emerald-50 rounded-lg transition-colors">
+                        <span class="text-xl">🏭</span>
+                        <span class="font-medium">제조업</span>
+                    </a>
+                    <a href="construction.html" class="flex items-center gap-3 py-3 px-4 text-gray-700 hover:bg-amber-50 rounded-lg transition-colors">
+                        <span class="text-xl">🏗️</span>
+                        <span class="font-medium">건설업</span>
+                    </a>
+                    <a href="wholesale.html" class="flex items-center gap-3 py-3 px-4 text-gray-700 hover:bg-sky-50 rounded-lg transition-colors">
+                        <span class="text-xl">📦</span>
+                        <span class="font-medium">도소매업</span>
+                    </a>
+                    <a href="restaurant.html" class="flex items-center gap-3 py-3 px-4 text-gray-700 hover:bg-rose-50 rounded-lg transition-colors">
+                        <span class="text-xl">🍽️</span>
+                        <span class="font-medium">음식점업</span>
+                    </a>
+                    <a href="ecommerce.html" class="flex items-center gap-3 py-3 px-4 text-gray-700 hover:bg-violet-50 rounded-lg transition-colors">
+                        <span class="text-xl">🛒</span>
+                        <span class="font-medium">쇼핑몰업</span>
+                    </a>
+                </div>
+                
+                <div class="border-t border-gray-100 mt-2 pt-2">
+                    <a href="location.html" class="block py-3 px-4 text-gray-700 hover:bg-blue-50 hover:text-blue-700 font-semibold rounded-lg transition-colors">
+                        찾아오실 때
+                    </a>
+                    <a href="faq.html" class="block py-3 px-4 text-gray-700 hover:bg-blue-50 hover:text-blue-700 font-semibold rounded-lg transition-colors">
+                        FAQ
+                    </a>
+                </div>
+            </div>
         </div>
     </nav>
+
+    <script>
+        // 모바일 메뉴 토글
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        
+        if (mobileMenuBtn && mobileMenu) {
+            mobileMenuBtn.addEventListener('click', function() {
+                mobileMenu.classList.toggle('hidden');
+                const icon = this.querySelector('i');
+                if (mobileMenu.classList.contains('hidden')) {
+                    icon.classList.remove('fa-times');
+                    icon.classList.add('fa-bars');
+                } else {
+                    icon.classList.remove('fa-bars');
+                    icon.classList.add('fa-times');
+                }
+            });
+
+            // 메뉴 링크 클릭 시 메뉴 닫기
+            mobileMenu.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', function() {
+                    mobileMenu.classList.add('hidden');
+                    const icon = mobileMenuBtn.querySelector('i');
+                    icon.classList.remove('fa-times');
+                    icon.classList.add('fa-bars');
+                });
+            });
+        }
+    </script>
 
     <main>
     <!-- Hero Section -->
