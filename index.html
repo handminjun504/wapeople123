@@ -122,21 +122,21 @@
 
     <main>
     <!-- Hero Section -->
-    <section class="min-h-screen relative pt-24 md:pt-28 pb-16 md:pb-20 bg-gray-50">
+    <section class="min-h-screen relative pt-20 md:pt-24 pb-12 md:pb-16 bg-gray-50">
         <div class="max-w-7xl mx-auto px-4 md:px-6 relative z-10 w-full">
             <!-- Header -->
-            <div class="text-center mb-8 md:mb-10">
-                <div data-aos="fade-up" data-aos-duration="500" class="inline-flex items-center gap-2 bg-blue-50 border border-blue-100 px-3 md:px-6 py-2 md:py-3 rounded-full mb-4 md:mb-6 text-center">
+            <div class="text-center mb-6 md:mb-8">
+                <div data-aos="fade-up" data-aos-duration="500" class="inline-flex items-center gap-2 bg-blue-50 border border-blue-100 px-3 md:px-6 py-1.5 md:py-2 rounded-full mb-2 md:mb-4 text-center">
                     <span class="w-2 h-2 bg-green-500 rounded-full animate-pulse flex-shrink-0"></span>
                     <span class="text-sm md:text-lg text-gray-600 leading-tight">현재 150+ 기업이 함께하고 있습니다</span>
                 </div>
                 
                 <h1 data-aos="fade-up" data-aos-duration="500" data-aos-delay="50" class="text-3xl md:text-5xl lg:text-6xl font-black leading-tight mb-3 md:mb-6 tracking-tight text-gray-900 px-2 md:px-4">
-                    어떤 <span class="text-blue-600">고민</span>이 있으신가요?
+                    어떤 <span class="text-blue-600">업종</span>을 경영하고 있으신가요?
                 </h1>
                 
                 <p data-aos="fade-up" data-aos-duration="500" data-aos-delay="100" class="text-base md:text-xl text-gray-600 max-w-2xl mx-auto px-4 md:px-6 leading-relaxed">
-                    대표님들의 고민을 듣고 싶습니다
+                    대표님들의 고민을 해결해 드리겠습니다
                 </p>
             </div>
             
@@ -246,10 +246,9 @@
             </div>
             
             <!-- 스크롤 안내 -->
-            <div class="text-center mt-28 md:mt-32 mb-8 hidden md:block">
-                <div class="animate-bounce opacity-70">
-                    <p class="text-sm text-blue-600 font-semibold mb-2">다른 업종인가요?</p>
-                    <i class="fas fa-chevron-down text-2xl md:text-3xl text-blue-600"></i>
+            <div class="text-center mt-10 md:mt-12 mb-2 hidden md:block">
+                <div class="animate-bounce">
+                    <i class="fas fa-chevron-down text-3xl md:text-4xl text-red-600 drop-shadow-lg"></i>
                 </div>
             </div>
         </div>
@@ -379,27 +378,10 @@
                 </div>
 
             </div>
-        </div>
-    </section>
 
-    <!-- 이렇게 해결했습니다 Section -->
-    <section class="py-16 md:py-24 bg-gradient-to-br from-gray-50 to-blue-50">
-        <div class="max-w-5xl mx-auto px-4 md:px-6">
-            <div class="text-center mb-8 md:mb-12">
-                <div class="inline-flex items-center gap-2 bg-blue-100 border border-blue-200 px-4 py-2 rounded-full mb-4">
-                    <i class="fas fa-lightbulb text-blue-600"></i>
-                    <span class="text-blue-700 font-semibold text-sm md:text-base">Solution</span>
-                </div>
-                <h2 data-aos="fade-up" data-aos-duration="500" class="text-2xl md:text-4xl font-black text-gray-900 mb-3 md:mb-4">
-                    이렇게 해결했습니다
-                </h2>
-                <p data-aos="fade-up" data-aos-duration="500" data-aos-delay="50" class="text-base md:text-lg text-gray-600">
-                    위의 고민 카드를 클릭하면 해결 방법을 확인할 수 있습니다
-                </p>
-            </div>
-
-            <!-- 솔루션 컨텐츠 -->
-            <div id="solutionContainer" class="bg-white rounded-3xl p-6 md:p-10 shadow-2xl border-2 border-blue-100">
+            <!-- 솔루션 슬라이드 컨테이너 -->
+            <div id="solutionSlideContainer" class="mt-8 md:mt-12 hidden">
+                <div class="bg-gradient-to-br from-gray-50 to-indigo-50 rounded-3xl p-6 md:p-10 shadow-2xl border-2 border-blue-200">
                 <!-- 솔루션 1: 원가 계산 -->
                 <div id="solution-1" class="solution-content hidden">
                     <div class="flex items-center gap-4 mb-6 pb-6 border-b border-amber-200">
@@ -665,12 +647,7 @@
                     </div>
                 </div>
 
-                <!-- 기본 메시지 (아무것도 선택 안 됨) -->
-                <div id="solution-default" class="solution-content text-center py-12">
-                    <i class="fas fa-hand-pointer text-6xl text-gray-300 mb-6"></i>
-                    <p class="text-xl text-gray-600 font-semibold mb-2">위의 고민 카드를 클릭해보세요</p>
-                    <p class="text-gray-500">각 고민에 맞는 해결 방법을 확인할 수 있습니다</p>
-                </div>
+                <!-- 기본 메시지는 제거됨 -->
                 </div>
             </div>
         </div>
@@ -973,14 +950,21 @@
             easing: 'ease-out-cubic'
         });
 
-        // 해결 방법 탭 전환 함수
+        // 해결 방법 슬라이드 표시 함수
         function showSolution(num) {
-            // 현재 표시된 컨텐츠 찾기
+            const slideContainer = document.getElementById('solutionSlideContainer');
             const contents = document.querySelectorAll('.solution-content');
             const selectedContent = document.getElementById('solution-' + num);
             
-            // 이미 선택된 컨텐츠면 아무것도 하지 않음
+            // 슬라이드 컨테이너 표시
+            if (slideContainer.classList.contains('hidden')) {
+                slideContainer.classList.remove('hidden');
+                slideContainer.classList.add('animate-fadeIn');
+            }
+            
+            // 이미 선택된 컨텐츠면 스크롤만
             if (selectedContent && !selectedContent.classList.contains('hidden')) {
+                scrollToSolution();
                 return;
             }
 
@@ -989,7 +973,6 @@
                 if (!content.classList.contains('hidden')) {
                     content.classList.add('animate-fadeOut');
                     
-                    // 애니메이션 후 숨기기
                     setTimeout(() => {
                         content.classList.add('hidden');
                         content.classList.remove('animate-fadeOut', 'animate-fadeIn');
@@ -1002,20 +985,23 @@
                 if (selectedContent) {
                     selectedContent.classList.remove('hidden');
                     selectedContent.classList.add('animate-fadeIn');
-                    
-                    // 해결 방법 컨테이너로 스크롤 (약간 위쪽으로)
-                    const solutionContainer = document.getElementById('solutionContainer');
-                    if (solutionContainer) {
-                        const elementPosition = solutionContainer.getBoundingClientRect().top + window.pageYOffset;
-                        const offsetPosition = elementPosition - 120; // 네비게이션 바와 여백 고려
-                        
-                        window.scrollTo({
-                            top: offsetPosition,
-                            behavior: 'smooth'
-                        });
-                    }
+                    scrollToSolution();
                 }
             }, 150);
+        }
+        
+        // 솔루션으로 스크롤
+        function scrollToSolution() {
+            const slideContainer = document.getElementById('solutionSlideContainer');
+            if (slideContainer) {
+                const elementPosition = slideContainer.getBoundingClientRect().top + window.pageYOffset;
+                const offsetPosition = elementPosition - 100;
+                
+                window.scrollTo({
+                    top: offsetPosition,
+                    behavior: 'smooth'
+                });
+            }
         }
     </script>
 </body>

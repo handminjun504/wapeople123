@@ -162,11 +162,11 @@
             <div class="grid lg:grid-cols-2 gap-12 items-center">
                 <div class="space-y-8">
                     <div data-aos="fade-right" data-aos-duration="800" data-aos-delay="100" class="flex gap-6">
-                        <div class="flex flex-col items-center">
+                        <div class="timeline-container flex flex-col items-center transition-all duration-300">
                             <div class="timeline-dot"></div>
                             <div class="w-0.5 h-full bg-emerald-200"></div>
                         </div>
-                        <div class="card rounded-2xl p-8 flex-1 cursor-pointer hover:shadow-2xl transition-all" onclick="showManufacturingSolution(1)">
+                        <div class="card rounded-2xl p-8 flex-1 cursor-pointer hover:shadow-2xl hover:ring-2 hover:ring-emerald-400 transition-all" onclick="showManufacturingSolution(1)">
                             <span class="text-emerald-600 text-sm font-semibold">고민 1</span>
                             <h3 class="text-2xl md:text-3xl font-bold mt-2 mb-4 text-gray-900">제품별 원가가 안 보여요</h3>
                             <p class="text-gray-600 leading-relaxed text-base md:text-lg">
@@ -177,11 +177,11 @@
                     </div>
                     
                     <div data-aos="fade-right" data-aos-duration="800" data-aos-delay="200" class="flex gap-6">
-                        <div class="flex flex-col items-center">
+                        <div class="timeline-container flex flex-col items-center transition-all duration-300">
                             <div class="timeline-dot"></div>
                             <div class="w-0.5 h-full bg-emerald-200"></div>
                         </div>
-                        <div class="card rounded-2xl p-8 flex-1 cursor-pointer hover:shadow-2xl transition-all" onclick="showManufacturingSolution(2)">
+                        <div class="card rounded-2xl p-8 flex-1 cursor-pointer hover:shadow-2xl hover:ring-2 hover:ring-emerald-400 transition-all" onclick="showManufacturingSolution(2)">
                             <span class="text-emerald-600 text-sm font-semibold">고민 2</span>
                             <h3 class="text-2xl md:text-3xl font-bold mt-2 mb-4 text-gray-900">거래처가 너무 많아요</h3>
                             <p class="text-gray-600 leading-relaxed text-base md:text-lg">
@@ -192,10 +192,11 @@
                     </div>
                     
                     <div data-aos="fade-right" data-aos-duration="800" data-aos-delay="300" class="flex gap-6">
-                        <div class="flex flex-col items-center">
+                        <div class="timeline-container flex flex-col items-center transition-all duration-300">
                             <div class="timeline-dot"></div>
+                            <div class="w-0.5 h-full bg-emerald-200"></div>
                         </div>
-                        <div class="card rounded-2xl p-8 flex-1 cursor-pointer hover:shadow-2xl transition-all" onclick="showManufacturingSolution(3)">
+                        <div class="card rounded-2xl p-8 flex-1 cursor-pointer hover:shadow-2xl hover:ring-2 hover:ring-emerald-400 transition-all" onclick="showManufacturingSolution(3)">
                             <span class="text-emerald-600 text-sm font-semibold">고민 3</span>
                             <h3 class="text-2xl md:text-3xl font-bold mt-2 mb-4 text-gray-900">재고 파악이 안 돼요</h3>
                             <p class="text-gray-600 leading-relaxed text-base md:text-lg">
@@ -212,31 +213,31 @@
                         <span class="text-white font-bold text-base">✨ 이렇게 해결했습니다</span>
                     </div>
                     
-                    <div class="relative min-h-[550px]">
+                    <div class="relative h-[450px] overflow-hidden">
                         <!-- 솔루션 1 -->
-                        <div id="manufacturing-solution-1" class="solution-content absolute top-0 left-0 w-full">
-                            <h3 class="text-3xl md:text-4xl font-bold mb-6 text-gray-900">
-                                "제품별로 정확한<br/>원가를 알게 됐어요"
-                            </h3>
-                            
-                            <blockquote class="text-lg md:text-xl text-gray-600 leading-relaxed mb-8 border-l-4 border-emerald-500 pl-6">
+                        <div id="manufacturing-solution-1" class="solution-content absolute top-0 left-0 w-full h-full overflow-y-auto">
+                    <h3 class="text-3xl md:text-4xl font-bold mb-6 text-gray-900">
+                        "제품별로 정확한<br/>원가를 알게 됐어요"
+                    </h3>
+                    
+                    <blockquote class="text-lg md:text-xl text-gray-600 leading-relaxed mb-8 border-l-4 border-emerald-500 pl-6">
                                 "이제 견적 낼 때 정확한 원가를 기준으로 해요. 원자재, 인건비, 전기료까지 모두 계산되니까 
                                 어떤 제품이 수익성이 좋은지 바로 알 수 있어요."
-                            </blockquote>
-                            
-                            <div class="flex items-center gap-4">
-                                <div class="w-14 h-14 rounded-full bg-emerald-100 flex items-center justify-center text-xl">
-                                    🏭
-                                </div>
-                                <div>
-                                    <p class="font-bold text-gray-900">금속 부품 제조업 대표</p>
-                                    <p class="text-gray-500 text-sm">직원 25명 / 이용 1년</p>
+                    </blockquote>
+                    
+                    <div class="flex items-center gap-4">
+                        <div class="w-14 h-14 rounded-full bg-emerald-100 flex items-center justify-center text-xl">
+                            🏭
+                        </div>
+                        <div>
+                            <p class="font-bold text-gray-900">금속 부품 제조업 대표</p>
+                            <p class="text-gray-500 text-sm">직원 25명 / 이용 1년</p>
                                 </div>
                             </div>
                         </div>
 
                         <!-- 솔루션 2 -->
-                        <div id="manufacturing-solution-2" class="solution-content hidden">
+                        <div id="manufacturing-solution-2" class="solution-content hidden absolute top-0 left-0 w-full h-full overflow-y-auto">
                             <h3 class="text-3xl md:text-4xl font-bold mb-6 text-gray-900">
                                 "거래처 관리가<br/>쉬워졌어요"
                             </h3>
@@ -258,7 +259,7 @@
                         </div>
 
                         <!-- 솔루션 3 -->
-                        <div id="manufacturing-solution-3" class="solution-content hidden">
+                        <div id="manufacturing-solution-3" class="solution-content hidden absolute top-0 left-0 w-full h-full overflow-y-auto">
                             <h3 class="text-3xl md:text-4xl font-bold mb-6 text-gray-900">
                                 "재고 관리가<br/>정확해졌어요"
                             </h3>
@@ -469,6 +470,29 @@
 
     <script>
         function showManufacturingSolution(num) {
+            // 이미 선택된 솔루션이면 아무것도 하지 않음
+            const selectedSolution = document.getElementById('manufacturing-solution-' + num);
+            if (selectedSolution && !selectedSolution.classList.contains('hidden')) {
+                return;
+            }
+            
+            // 고민 카드 강조 처리
+            const problemCards = document.querySelectorAll('.card');
+            const timelineContainers = document.querySelectorAll('.timeline-container');
+            problemCards.forEach((card, index) => {
+                if (index + 1 === num) {
+                    card.classList.add('ring-4', 'ring-emerald-400', 'shadow-2xl', 'scale-105', 'selected');
+                    if (timelineContainers[index]) {
+                        timelineContainers[index].style.transform = 'scale(1.2) translateX(-8px)';
+                    }
+                } else {
+                    card.classList.remove('ring-4', 'ring-emerald-400', 'shadow-2xl', 'scale-105', 'selected');
+                    if (timelineContainers[index]) {
+                        timelineContainers[index].style.transform = '';
+                    }
+                }
+            });
+            
             const solutions = document.querySelectorAll('#manufacturingSolutionBox .solution-content');
             solutions.forEach(solution => {
                 if (!solution.classList.contains('hidden')) {
@@ -556,6 +580,18 @@
             once: true,
             offset: 50,
             easing: 'ease-out-cubic'
+        });
+        
+        // 페이지 로드 시 1번 고민 카드 자동 강조
+        window.addEventListener('load', function() {
+            const firstCard = document.querySelector('.card');
+            const firstTimeline = document.querySelector('.timeline-container');
+            if (firstCard) {
+                firstCard.classList.add('ring-4', 'ring-emerald-400', 'shadow-2xl', 'scale-105', 'selected');
+            }
+            if (firstTimeline) {
+                firstTimeline.style.transform = 'scale(1.2) translateX(-8px)';
+            }
         });
     </script>
 </body>

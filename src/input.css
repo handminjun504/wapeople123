@@ -44,6 +44,15 @@
         box-shadow: 0 10px 30px rgba(37, 99, 235, 0.15);
     }
     
+    /* 선택된 카드는 hover 시에도 확대 상태 유지 */
+    .card.selected {
+        transform: scale(1.05);
+    }
+    
+    .card.selected:hover {
+        transform: scale(1.05);
+    }
+    
     .card:hover .card-icon {
         transform: scale(1.1);
     }

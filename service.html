@@ -163,11 +163,11 @@
                 <!-- Timeline -->
                 <div class="space-y-8">
                     <div data-aos="fade-right" data-aos-duration="800" data-aos-delay="100" class="flex gap-6">
-                        <div class="flex flex-col items-center">
+                        <div class="timeline-container flex flex-col items-center transition-all duration-300">
                             <div class="timeline-dot"></div>
                             <div class="w-0.5 h-full bg-blue-200"></div>
                         </div>
-                        <div class="card rounded-2xl p-8 flex-1 cursor-pointer hover:shadow-2xl transition-all" onclick="showServiceSolution(1)">
+                        <div class="card rounded-2xl p-8 flex-1 cursor-pointer hover:shadow-2xl hover:ring-2 hover:ring-blue-400 transition-all" onclick="showServiceSolution(1)">
                             <span class="text-blue-600 text-sm font-semibold">고민 1</span>
                             <h3 class="text-2xl md:text-3xl font-bold mt-2 mb-4 text-gray-900">프로젝트별 수익이 안 보여요</h3>
                             <p class="text-gray-600 leading-relaxed text-base md:text-lg">
@@ -178,11 +178,11 @@
                     </div>
                     
                     <div data-aos="fade-right" data-aos-duration="800" data-aos-delay="200" class="flex gap-6">
-                        <div class="flex flex-col items-center">
+                        <div class="timeline-container flex flex-col items-center transition-all duration-300">
                             <div class="timeline-dot"></div>
                             <div class="w-0.5 h-full bg-blue-200"></div>
                         </div>
-                        <div class="card rounded-2xl p-8 flex-1 cursor-pointer hover:shadow-2xl transition-all" onclick="showServiceSolution(2)">
+                        <div class="card rounded-2xl p-8 flex-1 cursor-pointer hover:shadow-2xl hover:ring-2 hover:ring-blue-400 transition-all" onclick="showServiceSolution(2)">
                             <span class="text-blue-600 text-sm font-semibold">고민 2</span>
                             <h3 class="text-2xl md:text-3xl font-bold mt-2 mb-4 text-gray-900">고객사 미수금이 계속 쌓여요</h3>
                             <p class="text-gray-600 leading-relaxed text-base md:text-lg">
@@ -193,10 +193,11 @@
                     </div>
                     
                     <div data-aos="fade-right" data-aos-duration="800" data-aos-delay="300" class="flex gap-6">
-                        <div class="flex flex-col items-center">
+                        <div class="timeline-container flex flex-col items-center transition-all duration-300">
                             <div class="timeline-dot"></div>
+                            <div class="w-0.5 h-full bg-blue-200"></div>
                         </div>
-                        <div class="card rounded-2xl p-8 flex-1 cursor-pointer hover:shadow-2xl transition-all" onclick="showServiceSolution(3)">
+                        <div class="card rounded-2xl p-8 flex-1 cursor-pointer hover:shadow-2xl hover:ring-2 hover:ring-blue-400 transition-all" onclick="showServiceSolution(3)">
                             <span class="text-blue-600 text-sm font-semibold">고민 3</span>
                             <h3 class="text-2xl md:text-3xl font-bold mt-2 mb-4 text-gray-900">외주비 지급일에 현금이 없어요</h3>
                             <p class="text-gray-600 leading-relaxed text-base md:text-lg">
@@ -214,9 +215,9 @@
                         <span class="text-white font-bold text-base">✨ 이렇게 해결했습니다</span>
                     </div>
                     
-                    <div class="relative">
+                    <div class="relative h-[450px] overflow-hidden">
                         <!-- 솔루션 1 -->
-                        <div id="service-solution-1" class="solution-content">
+                        <div id="service-solution-1" class="solution-content absolute top-0 left-0 w-full h-full overflow-y-auto">
                         <h3 class="text-3xl md:text-4xl font-bold mb-6 text-gray-900">
                             "이제는 프로젝트별로<br/>수익이 보여요"
                         </h3>
@@ -260,7 +261,7 @@
                     </div>
 
                         <!-- 솔루션 3 -->
-                        <div id="service-solution-3" class="solution-content hidden">
+                        <div id="service-solution-3" class="solution-content hidden absolute top-0 left-0 w-full h-full overflow-y-auto">
                         <h3 class="text-3xl md:text-4xl font-bold mb-6 text-gray-900">
                             "자금 계획을 미리<br/>세울 수 있어요"
                         </h3>
@@ -471,6 +472,29 @@
 
     <script>
         function showServiceSolution(num) {
+            // 이미 선택된 솔루션이면 아무것도 하지 않음
+            const selectedSolution = document.getElementById('service-solution-' + num);
+            if (selectedSolution && !selectedSolution.classList.contains('hidden')) {
+                return;
+            }
+            
+            // 고민 카드 강조 처리
+            const problemCards = document.querySelectorAll('.card');
+            const timelineContainers = document.querySelectorAll('.timeline-container');
+            problemCards.forEach((card, index) => {
+                if (index + 1 === num) {
+                    card.classList.add('ring-4', 'ring-blue-400', 'shadow-2xl', 'scale-105', 'selected');
+                    if (timelineContainers[index]) {
+                        timelineContainers[index].style.transform = 'scale(1.2) translateX(-8px)';
+                    }
+                } else {
+                    card.classList.remove('ring-4', 'ring-blue-400', 'shadow-2xl', 'scale-105', 'selected');
+                    if (timelineContainers[index]) {
+                        timelineContainers[index].style.transform = '';
+                    }
+                }
+            });
+            
             // 모든 솔루션 숨기기
             const solutions = document.querySelectorAll('#serviceSolutionBox .solution-content');
             solutions.forEach(solution => {
@@ -574,6 +598,18 @@
             once: true,
             offset: 50,
             easing: 'ease-out-cubic'
+        });
+        
+        // 페이지 로드 시 1번 고민 카드 자동 강조
+        window.addEventListener('load', function() {
+            const firstCard = document.querySelector('.card');
+            const firstTimeline = document.querySelector('.timeline-container');
+            if (firstCard) {
+                firstCard.classList.add('ring-4', 'ring-blue-400', 'shadow-2xl', 'scale-105', 'selected');
+            }
+            if (firstTimeline) {
+                firstTimeline.style.transform = 'scale(1.2) translateX(-8px)';
+            }
         });
     </script>
 </body>
