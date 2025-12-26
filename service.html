@@ -799,32 +799,52 @@
             // Google Apps Script URL
             const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxKJYvE2f2Nax3C2Y7GFWEhDOW_580wo4vUNdB471aewG654hREO-S3Vr4jLZPpfnFs/exec';
             
-            // FormData 생성
-            const formData = new FormData(form);
+            // 체크박스 데이터 수집 (concerns)
+            const checkboxes = form.querySelectorAll('input[name="concerns"]:checked');
+            const concernsArray = Array.from(checkboxes).map(cb => cb.value);
             
-            // Fetch API로 전송 (더 안정적)
-            fetch(GOOGLE_SCRIPT_URL, {
-                method: 'POST',
-                body: formData,
-                mode: 'no-cors' // Google Apps Script는 CORS를 지원하지 않으므로
-            })
-            .then(function() {
-                // 성공 메시지
-                alert('✅ 상담 신청이 완료되었습니다!\n\n영업시간 내 문의 시, 30분 이내로 연락드리겠습니다.\n감사합니다!');
+            // 기존 체크박스 input들을 숨김
+            checkboxes.forEach(cb => cb.disabled = true);
+            
+            // hidden input으로 통합된 값 추가
+            const concernsInput = document.createElement('input');
+            concernsInput.type = 'hidden';
+            concernsInput.name = 'concerns';
+            concernsInput.value = concernsArray.join(', ');
+            form.appendChild(concernsInput);
+            
+            // 디버깅: 전송 데이터 출력
+            console.log('전송할 고민:', concernsArray.join(', '));
+            
+            // 일반 form submit 방식 (iframe으로)
+            const iframe = document.createElement('iframe');
+            iframe.style.display = 'none';
+            iframe.name = 'hidden_iframe';
+            document.body.appendChild(iframe);
+            
+            form.target = 'hidden_iframe';
+            form.action = GOOGLE_SCRIPT_URL;
+            form.method = 'POST';
+            
+            // form submit
+            form.submit();
+            
+            // 성공 처리
+            setTimeout(function() {
+                // 체크박스 복원
+                checkboxes.forEach(cb => cb.disabled = false);
+                form.removeChild(concernsInput);
+                document.body.removeChild(iframe);
+                
+                alert('✅ 신청이 완료되었습니다!\n\n영업시간 내 문의 시, 30분 이내로 맞춤 솔루션을 안내해드리겠습니다.\n감사합니다!');
                 form.reset();
+                form.target = '';
+                form.action = '';
+                form.method = '';
                 if (typeof closeModal === 'function') closeModal();
                 submitButton.disabled = false;
                 submitButton.innerHTML = originalButtonText;
-            })
-            .catch(function(error) {
-                console.error('전송 오류:', error);
-                // no-cors 모드에서는 에러도 정상적으로 처리됨
-                alert('✅ 상담 신청이 완료되었습니다!\n\n영업시간 내 문의 시, 30분 이내로 연락드리겠습니다.\n감사합니다!');
-                form.reset();
-                if (typeof closeModal === 'function') closeModal();
-                submitButton.disabled = false;
-                submitButton.innerHTML = originalButtonText;
-            });
+            }, 1500);
             
             return false;
         }
