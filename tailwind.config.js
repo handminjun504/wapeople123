@@ -4,6 +4,12 @@ module.exports = {
     "./*.html",
     "./src/**/*.{html,js}"
   ],
+  safelist: [
+    'animate-fadeIn',
+    'animate-fadeOut',
+    'hidden',
+    'selected'
+  ],
   theme: {
     extend: {
       fontFamily: {
