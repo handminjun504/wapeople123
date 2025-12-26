@@ -1216,6 +1216,16 @@
             // FormData 생성
             const formData = new FormData(form);
             
+            // 체크박스 데이터 수집 (concerns)
+            const checkboxes = form.querySelectorAll('input[name="concerns"]:checked');
+            const concernsArray = Array.from(checkboxes).map(cb => cb.value);
+            
+            // 기존 concerns 데이터 제거 후 하나의 문자열로 추가
+            formData.delete('concerns');
+            if (concernsArray.length > 0) {
+                formData.append('concerns', concernsArray.join(', '));
+            }
+            
             // Fetch API로 전송
             fetch(GOOGLE_SCRIPT_URL, {
                 method: 'POST',
