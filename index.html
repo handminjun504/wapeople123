@@ -1220,16 +1220,25 @@
             const checkboxes = form.querySelectorAll('input[name="concerns"]:checked');
             const concernsArray = Array.from(checkboxes).map(cb => cb.value);
             
-            // 기존 concerns 데이터 제거 후 하나의 문자열로 추가
-            formData.delete('concerns');
-            if (concernsArray.length > 0) {
-                formData.append('concerns', concernsArray.join(', '));
+            // URLSearchParams로 변환 (Google Apps Script 호환)
+            const params = new URLSearchParams();
+            for (const [key, value] of formData.entries()) {
+                if (key !== 'concerns') {
+                    params.append(key, value);
+                }
             }
             
+            // 체크박스 데이터를 쉼표로 구분하여 추가
+            if (concernsArray.length > 0) {
+                params.append('concerns', concernsArray.join(', '));
+            }
+            
+            // 디버깅: 전송 데이터 출력
+            console.log('전송 데이터:', params.toString());
+            
             // Fetch API로 전송
-            fetch(GOOGLE_SCRIPT_URL, {
-                method: 'POST',
-                body: formData,
+            fetch(GOOGLE_SCRIPT_URL + '?' + params.toString(), {
+                method: 'GET',
                 mode: 'no-cors'
             })
             .then(function() {
