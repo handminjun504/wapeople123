@@ -774,22 +774,32 @@
             // Google Apps Script URL
             const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxKJYvE2f2Nax3C2Y7GFWEhDOW_580wo4vUNdB471aewG654hREO-S3Vr4jLZPpfnFs/exec';
             
-            // 체크박스 데이터 수집 (concerns)
+            // 체크박스가 있는지 확인 (index.html의 경우)
             const checkboxes = form.querySelectorAll('input[name="concerns"]:checked');
-            const concernsArray = Array.from(checkboxes).map(cb => cb.value);
+            let concernsInput = null;
             
-            // 기존 체크박스 input들을 숨김
-            checkboxes.forEach(cb => cb.disabled = true);
-            
-            // hidden input으로 통합된 값 추가
-            const concernsInput = document.createElement('input');
-            concernsInput.type = 'hidden';
-            concernsInput.name = 'concerns';
-            concernsInput.value = concernsArray.join(', ');
-            form.appendChild(concernsInput);
-            
-            // 디버깅: 전송 데이터 출력
-            console.log('전송할 고민:', concernsArray.join(', '));
+            if (checkboxes.length > 0) {
+                // 체크박스가 있으면 처리
+                const concernsArray = Array.from(checkboxes).map(cb => cb.value);
+                
+                // 기존 체크박스 input들을 숨김
+                checkboxes.forEach(cb => cb.disabled = true);
+                
+                // hidden input으로 통합된 값 추가
+                concernsInput = document.createElement('input');
+                concernsInput.type = 'hidden';
+                concernsInput.name = 'concerns';
+                concernsInput.value = concernsArray.join(', ');
+                form.appendChild(concernsInput);
+                
+                console.log('전송할 고민 (체크박스):', concernsArray.join(', '));
+            } else {
+                // textarea가 있는지 확인 (업종별 페이지)
+                const messageField = form.querySelector('[name="message"]');
+                if (messageField && messageField.value) {
+                    console.log('전송할 고민 (텍스트):', messageField.value);
+                }
+            }
             
             // 일반 form submit 방식 (iframe으로)
             const iframe = document.createElement('iframe');
@@ -806,9 +816,13 @@
             
             // 성공 처리
             setTimeout(function() {
-                // 체크박스 복원
-                checkboxes.forEach(cb => cb.disabled = false);
-                form.removeChild(concernsInput);
+                // 체크박스 복원 (있는 경우만)
+                if (checkboxes.length > 0) {
+                    checkboxes.forEach(cb => cb.disabled = false);
+                }
+                if (concernsInput) {
+                    form.removeChild(concernsInput);
+                }
                 document.body.removeChild(iframe);
                 
                 alert('✅ 신청이 완료되었습니다!\n\n영업시간 내 문의 시, 30분 이내로 맞춤 솔루션을 안내해드리겠습니다.\n감사합니다!');
