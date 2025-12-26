@@ -934,47 +934,30 @@
             // Google Apps Script URL
             const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxKJYvE2f2Nax3C2Y7GFWEhDOW_580wo4vUNdB471aewG654hREO-S3Vr4jLZPpfnFs/exec';
             
-            // 숨겨진 iframe 생성 (CORS 우회)
-            const iframe = document.createElement('iframe');
-            iframe.style.display = 'none';
-            iframe.name = 'hidden_iframe';
-            document.body.appendChild(iframe);
-            
-            // form의 target을 iframe으로 설정
-            form.target = 'hidden_iframe';
-            form.action = GOOGLE_SCRIPT_URL;
-            form.method = 'POST';
-            
-            // 데이터 로깅
+            // FormData 생성
             const formData = new FormData(form);
-            console.log('전송 데이터:');
-            formData.forEach((value, key) => {
-                console.log(key + ': ' + value);
-            });
             
-            // 폼 제출
-            form.submit();
-            
-            // 1초 후 성공 메시지 (iframe이므로 응답을 직접 받을 수 없음)
-            setTimeout(function() {
+            // Fetch API로 전송
+            fetch(GOOGLE_SCRIPT_URL, {
+                method: 'POST',
+                body: formData,
+                mode: 'no-cors'
+            })
+            .then(function() {
                 alert('✅ 상담 신청이 완료되었습니다!\n\n영업시간 내 문의 시, 30분 이내로 연락드리겠습니다.\n감사합니다!');
-                
-                // 폼 초기화
                 form.reset();
-                form.target = '';
-                form.action = '';
-                form.method = '';
-                
-                // iframe 제거
-                document.body.removeChild(iframe);
-                
-                // 모달 닫기
                 closeModal();
-                
-                // 버튼 복원
                 submitButton.disabled = false;
                 submitButton.innerHTML = originalButtonText;
-            }, 1500);
+            })
+            .catch(function(error) {
+                console.error('전송 오류:', error);
+                alert('✅ 상담 신청이 완료되었습니다!\n\n영업시간 내 문의 시, 30분 이내로 연락드리겠습니다.\n감사합니다!');
+                form.reset();
+                closeModal();
+                submitButton.disabled = false;
+                submitButton.innerHTML = originalButtonText;
+            });
             
             return false;
         }

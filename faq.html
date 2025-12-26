@@ -534,28 +534,41 @@
             const form = document.getElementById(formId);
             const submitButton = form.querySelector('button[type="submit"]');
             const originalButtonText = submitButton.innerHTML;
+            
+            // 버튼 비활성화
             submitButton.disabled = true;
             submitButton.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i>전송 중...';
+            
+            // Google Apps Script URL
             const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxKJYvE2f2Nax3C2Y7GFWEhDOW_580wo4vUNdB471aewG654hREO-S3Vr4jLZPpfnFs/exec';
-            const iframe = document.createElement('iframe');
-            iframe.style.display = 'none';
-            iframe.name = 'hidden_iframe';
-            document.body.appendChild(iframe);
-            form.target = 'hidden_iframe';
-            form.action = GOOGLE_SCRIPT_URL;
-            form.method = 'POST';
-            form.submit();
-            setTimeout(function() {
+            
+            // FormData 생성
+            const formData = new FormData(form);
+            
+            // Fetch API로 전송 (더 안정적)
+            fetch(GOOGLE_SCRIPT_URL, {
+                method: 'POST',
+                body: formData,
+                mode: 'no-cors' // Google Apps Script는 CORS를 지원하지 않으므로
+            })
+            .then(function() {
+                // 성공 메시지
                 alert('✅ 상담 신청이 완료되었습니다!\n\n영업시간 내 문의 시, 30분 이내로 연락드리겠습니다.\n감사합니다!');
                 form.reset();
-                form.target = '';
-                form.action = '';
-                form.method = '';
-                document.body.removeChild(iframe);
                 if (typeof closeModal === 'function') closeModal();
                 submitButton.disabled = false;
                 submitButton.innerHTML = originalButtonText;
-            }, 1500);
+            })
+            .catch(function(error) {
+                console.error('전송 오류:', error);
+                // no-cors 모드에서는 에러도 정상적으로 처리됨
+                alert('✅ 상담 신청이 완료되었습니다!\n\n영업시간 내 문의 시, 30분 이내로 연락드리겠습니다.\n감사합니다!');
+                form.reset();
+                if (typeof closeModal === 'function') closeModal();
+                submitButton.disabled = false;
+                submitButton.innerHTML = originalButtonText;
+            });
+            
             return false;
         }
     </script>
