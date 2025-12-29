@@ -8,6 +8,8 @@
     <meta property="og:description" content="건설업 맞춤 경리 솔루션. 현장별 비용 관리, 기성금 정산, 하도급 관리까지.">
     <meta property="og:type" content="website">
     <title>건설업 경리 - 경리업무를잘하는청년들</title>
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="apple-touch-icon" href="favicon.png">
     <link rel="stylesheet" href="dist/output.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard-dynamic-subset.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/fontawesome.min.css" media="print" onload="this.media='all'">
@@ -261,10 +263,10 @@
                         </div>
                         <div class="card rounded-2xl p-8 flex-1 cursor-pointer hover:shadow-2xl hover:ring-2 hover:ring-amber-400 transition-all" onclick="showConstructionSolution(1)">
                             <span class="text-amber-600 text-sm font-semibold">고민 1</span>
-                            <h3 class="text-2xl md:text-3xl font-bold mt-2 mb-4 text-gray-900">현장별 손익을 모르겠어요</h3>
+                            <h3 class="text-2xl md:text-3xl font-bold mt-2 mb-4 text-gray-900">현장별 인건비 계산이 복잡해요</h3>
                             <p class="text-gray-600 leading-relaxed text-base md:text-lg">
-                                "현장이 5개 동시에 돌아가는데, 어떤 현장이 돈을 벌고 어떤 현장이 손해인지 모르겠어요. 
-                                다 끝나고 나서야 '망했네' 하고 알게 돼요."
+                                "각 현장마다 일용직이 몇 명씩 들어가는데, 공수 계산이 너무 복잡해요. 
+                                수기로 하다 보니 계산 실수도 많고 시간도 오래 걸립니다."
                             </p>
                         </div>
                     </div>
@@ -276,10 +278,10 @@
                         </div>
                         <div class="card rounded-2xl p-8 flex-1 cursor-pointer hover:shadow-2xl hover:ring-2 hover:ring-amber-400 transition-all" onclick="showConstructionSolution(2)">
                             <span class="text-amber-600 text-sm font-semibold">고민 2</span>
-                            <h3 class="text-2xl md:text-3xl font-bold mt-2 mb-4 text-gray-900">기성금 일정이 꼬여요</h3>
+                            <h3 class="text-2xl md:text-3xl font-bold mt-2 mb-4 text-gray-900">현장별 지출 추적이 안 돼요</h3>
                             <p class="text-gray-600 leading-relaxed text-base md:text-lg">
-                                "이번 달에 기성 청구해야 하는데, 언제 청구하고 언제 들어오는지 추적이 안 돼요. 
-                                그러다가 타이밍 놓치면 다음 달로 밀려버려요."
+                                "현장마다 자재비, 인건비, 외주비가 얼마나 나가는지 실시간으로 파악이 안 돼요. 
+                                나중에 합산해보면 예산을 훨씬 초과한 경우가 많습니다."
                             </p>
                         </div>
                     </div>
@@ -291,10 +293,10 @@
                         </div>
                         <div class="card rounded-2xl p-8 flex-1 cursor-pointer hover:shadow-2xl hover:ring-2 hover:ring-amber-400 transition-all" onclick="showConstructionSolution(3)">
                             <span class="text-amber-600 text-sm font-semibold">고민 3</span>
-                            <h3 class="text-2xl md:text-3xl font-bold mt-2 mb-4 text-gray-900">하도급 정산이 복잡해요</h3>
+                            <h3 class="text-2xl md:text-3xl font-bold mt-2 mb-4 text-gray-900">관리 오류와 누락이 많아요</h3>
                             <p class="text-gray-600 leading-relaxed text-base md:text-lg">
-                                "하도급업체가 10개 넘는데, 누구한테 얼마 줬고 얼마 더 줘야 하는지 
-                                엑셀로 관리하다가 머리가 터질 것 같아요."
+                                "엑셀로 여러 현장을 관리하다 보니 입력 오류도 많고, 
+                                증빙 누락도 자주 발생해요. 나중에 찾으려면 시간이 너무 오래 걸립니다."
                             </p>
                         </div>
                     </div>
@@ -310,12 +312,12 @@
                         <!-- 솔루션 1 -->
                         <div id="construction-solution-1" class="solution-content absolute top-0 left-0 w-full h-full overflow-y-auto">
                             <h3 class="text-3xl md:text-4xl font-bold mb-6 text-gray-900">
-                                "현장별 손익이 명확해졌어요"
+                                "작업반장으로 인건비 계산이 자동화됐어요"
                             </h3>
                             
                             <blockquote class="text-lg md:text-xl text-gray-600 leading-relaxed mb-8 border-l-4 border-amber-500 pl-6">
-                                "각 현장별로 매출, 재료비, 인건비, 외주비가 자동으로 집계돼요. 
-                                현장이 끝나기 전에 수익성을 파악할 수 있어서 적자 방지가 가능해졌어요."
+                                "자체개발한 작업반장 프로그램으로 현장별 공수를 입력하면 인건비가 자동으로 계산돼요. 
+                                계산 실수도 없고, 현장별 인건비를 한눈에 파악할 수 있어서 정말 편합니다."
                             </blockquote>
                             
                             <div class="flex items-center gap-4">
@@ -332,12 +334,12 @@
                         <!-- 솔루션 2 -->
                         <div id="construction-solution-2" class="solution-content hidden">
                             <h3 class="text-3xl md:text-4xl font-bold mb-6 text-gray-900">
-                                "기성금 관리가 편해졌어요"
+                                "현장별 지출이 실시간으로 보여요"
                             </h3>
                             
                             <blockquote class="text-lg md:text-xl text-gray-600 leading-relaxed mb-8 border-l-4 border-amber-500 pl-6">
-                                "기성 청구 일정을 미리 알림으로 받으니까 타이밍을 놓치지 않아요. 
-                                청구 금액, 입금 예정일, 실제 입금일까지 모두 추적되니까 현금 흐름 관리가 쉬워졌어요."
+                                "작업반장 프로그램으로 각 현장의 자재비, 인건비, 외주비가 실시간으로 집계돼요. 
+                                예산 대비 얼마나 지출됐는지 바로 확인되니까 현장 관리가 훨씬 수월해졌어요."
                             </blockquote>
                             
                             <div class="flex items-center gap-4">
@@ -354,12 +356,12 @@
                         <!-- 솔루션 3 -->
                         <div id="construction-solution-3" class="solution-content hidden absolute top-0 left-0 w-full h-full overflow-y-auto">
                             <h3 class="text-3xl md:text-3xl font-bold mb-6 text-gray-900">
-                                "하도급 정산이 체계적으로 됐어요"
+                                "오류와 누락이 최소화됐어요"
                             </h3>
                             
                             <blockquote class="text-lg md:text-xl text-gray-600 leading-relaxed mb-8 border-l-4 border-amber-500 pl-6">
-                                "하도급업체별로 얼마를 지급했고 얼마가 남았는지 자동으로 계산돼요. 
-                                정산 시기도 알려주니까 하도급 대금을 제때 줄 수 있어서 업체들과 관계도 좋아졌어요."
+                                "작업반장 시스템으로 모든 자료가 자동으로 정리되니까 입력 오류도 줄고 증빙 누락도 거의 없어졌어요. 
+                                필요한 자료를 찾을 때도 클릭 몇 번이면 바로 나와서 시간이 절약됩니다."
                             </blockquote>
                             
                             <div class="flex items-center gap-4">
@@ -443,9 +445,9 @@
                     <div class="w-14 h-14 rounded-2xl bg-sky-50 flex items-center justify-center mb-6">
                         <i class="fas fa-chart-pie text-sky-600 text-xl"></i>
                     </div>
-                    <h3 class="text-xl md:text-2xl font-bold text-gray-900 mb-4">현장별 리포트</h3>
+                    <h3 class="text-xl md:text-2xl font-bold text-gray-900 mb-4">현장별 보고서</h3>
                     <p class="text-gray-600 leading-relaxed text-base md:text-lg">
-                        매월 현장별 손익 현황을 정리한 리포트를 제공합니다.
+                        매월 현장별 손익 현황을 정리한 보고서를 제공합니다.
                     </p>
                 </div>
             </div>
@@ -532,7 +534,7 @@
                         </div>
                         <div>
                             <h3 class="text-2xl font-black text-white">원격경리 서비스</h3>
-                            <p class="text-amber-100 text-sm">전문 경리 팀</p>
+                            <p class="text-amber-100 text-sm">경리업무를잘하는청년들</p>
                         </div>
                     </div>
                     
@@ -642,6 +644,15 @@
                         <i class="fas fa-map-marker-alt text-blue-700 mt-0.5"></i>
                         <span>주소 : 경기 수원시 팔달구 권광로175번길 83 201호</span>
                     </a>
+                </div>
+            </div>
+            <div class="border-t border-gray-200 mt-6 pt-6">
+                <div class="bg-blue-50 rounded-lg p-4 text-center">
+                    <p class="text-gray-700 text-sm leading-relaxed">
+                        <i class="fas fa-info-circle text-blue-600 mr-2"></i>
+                        <strong>경리업무를잘하는청년들</strong>은 경영관리, 관리회계 전문 회사이며,<br class="hidden md:inline">
+                        세무와 관련된 부분은 <strong>세무법인청년들</strong>에서 진행합니다.
+                    </p>
                 </div>
             </div>
             <div class="border-t border-gray-200 mt-6 pt-6 text-center text-gray-400 text-sm">
