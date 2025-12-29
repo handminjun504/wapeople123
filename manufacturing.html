@@ -786,6 +786,43 @@
             window.scrollTo({ top: 0, behavior: 'smooth' });
         });
 
+        // 전화번호 자동 하이픈 기능
+        function formatPhoneNumber(value) {
+            const numbers = value.replace(/[^\d]/g, '');
+            if (numbers.length <= 3) {
+                return numbers;
+            } else if (numbers.length <= 7) {
+                return numbers.slice(0, 3) + '-' + numbers.slice(3);
+            } else if (numbers.length <= 10) {
+                return numbers.slice(0, 3) + '-' + numbers.slice(3, 6) + '-' + numbers.slice(6);
+            } else {
+                return numbers.slice(0, 3) + '-' + numbers.slice(3, 7) + '-' + numbers.slice(7, 11);
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const phoneInputs = document.querySelectorAll('input[type="tel"]');
+            phoneInputs.forEach(function(input) {
+                input.addEventListener('input', function(e) {
+                    const cursorPosition = e.target.selectionStart;
+                    const oldValue = e.target.value;
+                    const oldLength = oldValue.length;
+                    e.target.value = formatPhoneNumber(e.target.value);
+                    const newLength = e.target.value.length;
+                    if (newLength > oldLength) {
+                        e.target.setSelectionRange(cursorPosition + 1, cursorPosition + 1);
+                    } else {
+                        e.target.setSelectionRange(cursorPosition, cursorPosition);
+                    }
+                });
+                input.addEventListener('paste', function(e) {
+                    setTimeout(function() {
+                        e.target.value = formatPhoneNumber(e.target.value);
+                    }, 10);
+                });
+            });
+        });
+
         function handleFormSubmit(event, formId) {
             event.preventDefault();
             const form = document.getElementById(formId);

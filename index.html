@@ -1211,6 +1211,54 @@
             });
         })();
 
+        // 전화번호 자동 하이픈 기능
+        function formatPhoneNumber(value) {
+            // 숫자만 추출
+            const numbers = value.replace(/[^\d]/g, '');
+            
+            // 길이에 따라 포맷팅
+            if (numbers.length <= 3) {
+                return numbers;
+            } else if (numbers.length <= 7) {
+                return numbers.slice(0, 3) + '-' + numbers.slice(3);
+            } else if (numbers.length <= 10) {
+                return numbers.slice(0, 3) + '-' + numbers.slice(3, 6) + '-' + numbers.slice(6);
+            } else {
+                return numbers.slice(0, 3) + '-' + numbers.slice(3, 7) + '-' + numbers.slice(7, 11);
+            }
+        }
+
+        // 페이지 로드 시 모든 전화번호 입력 필드에 이벤트 리스너 추가
+        document.addEventListener('DOMContentLoaded', function() {
+            const phoneInputs = document.querySelectorAll('input[type="tel"]');
+            
+            phoneInputs.forEach(function(input) {
+                input.addEventListener('input', function(e) {
+                    const cursorPosition = e.target.selectionStart;
+                    const oldValue = e.target.value;
+                    const oldLength = oldValue.length;
+                    
+                    // 포맷팅 적용
+                    e.target.value = formatPhoneNumber(e.target.value);
+                    
+                    // 커서 위치 조정 (하이픈이 추가된 경우)
+                    const newLength = e.target.value.length;
+                    if (newLength > oldLength) {
+                        e.target.setSelectionRange(cursorPosition + 1, cursorPosition + 1);
+                    } else {
+                        e.target.setSelectionRange(cursorPosition, cursorPosition);
+                    }
+                });
+                
+                // 붙여넣기 시에도 적용
+                input.addEventListener('paste', function(e) {
+                    setTimeout(function() {
+                        e.target.value = formatPhoneNumber(e.target.value);
+                    }, 10);
+                });
+            });
+        });
+
         function handleFormSubmit(event, formId) {
             event.preventDefault();
             const form = document.getElementById(formId);
