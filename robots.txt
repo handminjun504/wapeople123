@@ -1,0 +1,28 @@
+# 경리업무를잘하는청년들 - robots.txt
+# https://wapeople.kr
+
+User-agent: *
+Allow: /
+
+# 사이트맵 위치
+Sitemap: https://wapeople.kr/sitemap.xml
+
+# 크롤링 지연 (서버 부하 방지)
+Crawl-delay: 1
+
+# 특정 봇 허용
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: Yeti
+Allow: /
+
+User-agent: NaverBot
+Allow: /
+
+User-agent: Daumoa
+Allow: /
+
