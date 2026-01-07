@@ -42,6 +42,9 @@
             });
         }
     </script>
+    
+    <!-- Google reCAPTCHA v3 -->
+    <script src="https://www.google.com/recaptcha/api.js?render=6Le0CEMsAAAAAFGF3Dnci1_SUkC4VWmzqdox2jJZ"></script>
 </head>
 <body class="antialiased">
     
@@ -595,36 +598,60 @@
             
             // 버튼 비활성화
             submitButton.disabled = true;
-            submitButton.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i>전송 중...';
+            submitButton.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i>봇 확인 중...';
             
             // Google Apps Script URL
             const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxKJYvE2f2Nax3C2Y7GFWEhDOW_580wo4vUNdB471aewG654hREO-S3Vr4jLZPpfnFs/exec';
             
-            // FormData 생성
-            const formData = new FormData(form);
-            
-            // Fetch API로 전송 (더 안정적)
-            fetch(GOOGLE_SCRIPT_URL, {
-                method: 'POST',
-                body: formData,
-                mode: 'no-cors' // Google Apps Script는 CORS를 지원하지 않으므로
-            })
-            .then(function() {
-                // 성공 메시지
-                alert('✅ 상담 신청이 완료되었습니다!\n\n영업시간 내 문의 시, 30분 이내로 연락드리겠습니다.\n감사합니다!');
-                form.reset();
-                if (typeof closeModal === 'function') closeModal();
-                submitButton.disabled = false;
-                submitButton.innerHTML = originalButtonText;
-            })
-            .catch(function(error) {
-                console.error('전송 오류:', error);
-                // no-cors 모드에서는 에러도 정상적으로 처리됨
-                alert('✅ 상담 신청이 완료되었습니다!\n\n영업시간 내 문의 시, 30분 이내로 연락드리겠습니다.\n감사합니다!');
-                form.reset();
-                if (typeof closeModal === 'function') closeModal();
-                submitButton.disabled = false;
-                submitButton.innerHTML = originalButtonText;
+            // reCAPTCHA v3 실행
+            grecaptcha.ready(function() {
+                grecaptcha.execute('6Le0CEMsAAAAAFGF3Dnci1_SUkC4VWmzqdox2jJZ', {action: 'submit'}).then(function(token) {
+                    // reCAPTCHA 토큰을 폼에 추가
+                    let recaptchaInput = form.querySelector('input[name="recaptcha_token"]');
+                    if (!recaptchaInput) {
+                        recaptchaInput = document.createElement('input');
+                        recaptchaInput.type = 'hidden';
+                        recaptchaInput.name = 'recaptcha_token';
+                        form.appendChild(recaptchaInput);
+                    }
+                    recaptchaInput.value = token;
+                    
+                    submitButton.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i>전송 중...';
+                    
+                    console.log('reCAPTCHA 토큰:', token.substring(0, 50) + '...');
+                    
+                    // FormData 생성
+                    const formData = new FormData(form);
+                    
+                    // Fetch API로 전송 (더 안정적)
+                    fetch(GOOGLE_SCRIPT_URL, {
+                        method: 'POST',
+                        body: formData,
+                        mode: 'no-cors' // Google Apps Script는 CORS를 지원하지 않으므로
+                    })
+                    .then(function() {
+                        // 성공 메시지
+                        alert('✅ 상담 신청이 완료되었습니다!\n\n영업시간 내 문의 시, 30분 이내로 연락드리겠습니다.\n감사합니다!');
+                        form.reset();
+                        if (typeof closeModal === 'function') closeModal();
+                        submitButton.disabled = false;
+                        submitButton.innerHTML = originalButtonText;
+                    })
+                    .catch(function(error) {
+                        console.error('전송 오류:', error);
+                        // no-cors 모드에서는 에러도 정상적으로 처리됨
+                        alert('✅ 상담 신청이 완료되었습니다!\n\n영업시간 내 문의 시, 30분 이내로 연락드리겠습니다.\n감사합니다!');
+                        form.reset();
+                        if (typeof closeModal === 'function') closeModal();
+                        submitButton.disabled = false;
+                        submitButton.innerHTML = originalButtonText;
+                    });
+                }).catch(function(error) {
+                    console.error('reCAPTCHA 오류:', error);
+                    alert('❌ 봇 확인에 실패했습니다. 페이지를 새로고침하고 다시 시도해주세요.');
+                    submitButton.disabled = false;
+                    submitButton.innerHTML = originalButtonText;
+                });
             });
             
             return false;

@@ -46,6 +46,9 @@
             });
         }
     </script>
+    
+    <!-- Google reCAPTCHA v3 -->
+    <script src="https://www.google.com/recaptcha/api.js?render=6Le0CEMsAAAAAFGF3Dnci1_SUkC4VWmzqdox2jJZ"></script>
 </head>
 <body class="antialiased">
     
@@ -1273,57 +1276,80 @@
             
             // 버튼 비활성화
             submitButton.disabled = true;
-            submitButton.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i>전송 중...';
+            submitButton.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i>봇 확인 중...';
             
             // Google Apps Script URL
             const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxKJYvE2f2Nax3C2Y7GFWEhDOW_580wo4vUNdB471aewG654hREO-S3Vr4jLZPpfnFs/exec';
             
-            // 체크박스 데이터 수집 (concerns)
-            const checkboxes = form.querySelectorAll('input[name="concerns"]:checked');
-            const concernsArray = Array.from(checkboxes).map(cb => cb.value);
-            
-            // 기존 체크박스 input들을 숨김
-            checkboxes.forEach(cb => cb.disabled = true);
-            
-            // hidden input으로 통합된 값 추가
-            const concernsInput = document.createElement('input');
-            concernsInput.type = 'hidden';
-            concernsInput.name = 'concerns';
-            concernsInput.value = concernsArray.join(', ');
-            form.appendChild(concernsInput);
-            
-            // 디버깅: 전송 데이터 출력
-            console.log('전송할 고민:', concernsArray.join(', '));
-            
-            // 일반 form submit 방식 (iframe으로)
-            const iframe = document.createElement('iframe');
-            iframe.style.display = 'none';
-            iframe.name = 'hidden_iframe';
-            document.body.appendChild(iframe);
-            
-            form.target = 'hidden_iframe';
-            form.action = GOOGLE_SCRIPT_URL;
-            form.method = 'POST';
-            
-            // form submit
-            form.submit();
-            
-            // 성공 처리
-            setTimeout(function() {
-                // 체크박스 복원
-                checkboxes.forEach(cb => cb.disabled = false);
-                form.removeChild(concernsInput);
-                document.body.removeChild(iframe);
-                
-                alert('✅ 신청이 완료되었습니다!\n\n영업시간 내 문의 시, 30분 이내로 맞춤 솔루션을 안내해드리겠습니다.\n감사합니다!');
-                form.reset();
-                form.target = '';
-                form.action = '';
-                form.method = '';
-                if (typeof closeModal === 'function') closeModal();
-                submitButton.disabled = false;
-                submitButton.innerHTML = originalButtonText;
-            }, 1500);
+            // reCAPTCHA v3 실행
+            grecaptcha.ready(function() {
+                grecaptcha.execute('6Le0CEMsAAAAAFGF3Dnci1_SUkC4VWmzqdox2jJZ', {action: 'submit'}).then(function(token) {
+                    // reCAPTCHA 토큰을 폼에 추가
+                    let recaptchaInput = form.querySelector('input[name="recaptcha_token"]');
+                    if (!recaptchaInput) {
+                        recaptchaInput = document.createElement('input');
+                        recaptchaInput.type = 'hidden';
+                        recaptchaInput.name = 'recaptcha_token';
+                        form.appendChild(recaptchaInput);
+                    }
+                    recaptchaInput.value = token;
+                    
+                    submitButton.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i>전송 중...';
+                    
+                    // 체크박스 데이터 수집 (concerns)
+                    const checkboxes = form.querySelectorAll('input[name="concerns"]:checked');
+                    const concernsArray = Array.from(checkboxes).map(cb => cb.value);
+                    
+                    // 기존 체크박스 input들을 숨김
+                    checkboxes.forEach(cb => cb.disabled = true);
+                    
+                    // hidden input으로 통합된 값 추가
+                    const concernsInput = document.createElement('input');
+                    concernsInput.type = 'hidden';
+                    concernsInput.name = 'concerns';
+                    concernsInput.value = concernsArray.join(', ');
+                    form.appendChild(concernsInput);
+                    
+                    // 디버깅: 전송 데이터 출력
+                    console.log('전송할 고민:', concernsArray.join(', '));
+                    console.log('reCAPTCHA 토큰:', token.substring(0, 50) + '...');
+                    
+                    // 일반 form submit 방식 (iframe으로)
+                    const iframe = document.createElement('iframe');
+                    iframe.style.display = 'none';
+                    iframe.name = 'hidden_iframe';
+                    document.body.appendChild(iframe);
+                    
+                    form.target = 'hidden_iframe';
+                    form.action = GOOGLE_SCRIPT_URL;
+                    form.method = 'POST';
+                    
+                    // form submit
+                    form.submit();
+                    
+                    // 성공 처리
+                    setTimeout(function() {
+                        // 체크박스 복원
+                        checkboxes.forEach(cb => cb.disabled = false);
+                        form.removeChild(concernsInput);
+                        document.body.removeChild(iframe);
+                        
+                        alert('✅ 신청이 완료되었습니다!\n\n영업시간 내 문의 시, 30분 이내로 맞춤 솔루션을 안내해드리겠습니다.\n감사합니다!');
+                        form.reset();
+                        form.target = '';
+                        form.action = '';
+                        form.method = '';
+                        if (typeof closeModal === 'function') closeModal();
+                        submitButton.disabled = false;
+                        submitButton.innerHTML = originalButtonText;
+                    }, 1500);
+                }).catch(function(error) {
+                    console.error('reCAPTCHA 오류:', error);
+                    alert('❌ 봇 확인에 실패했습니다. 페이지를 새로고침하고 다시 시도해주세요.');
+                    submitButton.disabled = false;
+                    submitButton.innerHTML = originalButtonText;
+                });
+            });
             
             return false;
         }
