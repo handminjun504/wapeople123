@@ -1,32 +1,25 @@
 /* 모바일 최적화 CSS - 모든 페이지에 적용 */
+/* 2026-01-12 전면 개선 */
 
-/* 전역 설정 */
+/* ===== 전역 설정 ===== */
 * {
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0.1);
-    -webkit-touch-callout: none;
     box-sizing: border-box;
+}
+
+html {
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
 }
 
 body {
     overflow-x: hidden;
-    -webkit-text-size-adjust: 100%;
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     word-wrap: break-word;
-}
-
-/* 한글 줄바꿈 최적화 */
-html {
     word-break: keep-all;
     overflow-wrap: break-word;
-}
-
-/* 긴 단어나 URL 줄바꿈 */
-a[href*="http"],
-.url,
-.email {
-    word-break: break-all;
 }
 
 /* 이미지 최적화 */
@@ -35,22 +28,53 @@ img {
     height: auto;
 }
 
-/* 터치 영역 최적화 */
-button, 
-a, 
-input[type="submit"],
-input[type="button"],
-.btn {
-    min-height: 48px;
-    min-width: 48px;
-    touch-action: manipulation;
-}
-
-/* 모바일 전용 스타일 */
+/* ===== 모바일 전용 스타일 (768px 이하) ===== */
 @media (max-width: 768px) {
-    /* 폼 입력 필드 확대 방지 (iOS Safari) */
-    input, 
-    select, 
+    /* 컨테이너 가로 스크롤 완전 방지 */
+    html, body {
+        overflow-x: hidden !important;
+        max-width: 100vw !important;
+    }
+    
+    /* 모든 직계 컨테이너 너비 제한 */
+    .max-w-7xl,
+    .max-w-6xl,
+    .max-w-5xl,
+    .max-w-4xl,
+    .max-w-3xl,
+    .max-w-2xl,
+    .max-w-xl,
+    main,
+    section,
+    footer {
+        max-width: 100% !important;
+        overflow-x: hidden !important;
+    }
+    
+    /* 터치 타겟 - 버튼류만 적용 (링크 제외) */
+    button,
+    input[type="submit"],
+    input[type="button"],
+    .btn {
+        min-height: 44px;
+        touch-action: manipulation;
+    }
+    
+    /* 일반 링크는 터치 타겟 제약 제거 */
+    a {
+        min-height: auto;
+        min-width: auto;
+    }
+    
+    /* 카드 링크 터치 영역 */
+    a.card {
+        min-height: 44px;
+        touch-action: manipulation;
+    }
+    
+    /* 폼 입력 필드 - iOS 확대 방지 */
+    input,
+    select,
     textarea {
         font-size: 16px !important;
         max-width: 100%;
@@ -58,265 +82,157 @@ input[type="button"],
         box-sizing: border-box;
     }
     
-    /* 입력 필드 컨테이너 */
-    .flex.items-center.gap-1,
-    .flex.items-center {
-        flex-wrap: nowrap !important;
-        overflow: visible;
+    /* 이메일 입력 필드 - 완전히 재구성 */
+    .flex.items-center.gap-1 {
+        display: flex !important;
+        flex-wrap: wrap !important;
+        gap: 0.5rem !important;
+        width: 100% !important;
     }
     
-    /* 이메일 입력 필드 최적화 */
-    input[name="email_id"],
-    input[name="email_domain_direct"],
-    select[name="email_domain"] {
+    /* 이메일 ID 입력 - 전체 너비 */
+    .flex.items-center.gap-1 input[name="email_id"] {
+        flex: 1 1 100% !important;
         min-width: 0 !important;
-        flex: 1 1 auto !important;
-        max-width: none !important;
+        max-width: 100% !important;
+        order: 1;
     }
     
-    /* flex 아이템 축소 허용 */
-    .flex-1 {
-        flex: 1 1 0% !important;
+    /* @ 기호 - 숨김 (모바일에서) */
+    .flex.items-center.gap-1 > span.text-gray-500 {
+        display: none !important;
+    }
+    
+    /* 도메인 선택 - 전체 너비 */
+    .flex.items-center.gap-1 select[name="email_domain"],
+    .flex.items-center.gap-1 input[name="email_domain_direct"] {
+        flex: 1 1 100% !important;
         min-width: 0 !important;
-    }
-    
-    .flex-shrink-0 {
-        flex-shrink: 0 !important;
-    }
-    
-    /* 텍스트 줄바꿈 최적화 */
-    p, span, div, label {
-        word-wrap: break-word;
-        word-break: break-word;
-        overflow-wrap: break-word;
-        hyphens: auto;
-    }
-    
-    /* 긴 URL이나 이메일 줄바꿈 */
-    a, .email, .url {
-        word-break: break-all;
-        overflow-wrap: break-word;
-    }
-    
-    /* 테이블 셀 텍스트 줄바꿈 */
-    td, th {
-        word-wrap: break-word;
-        word-break: break-word;
-    }
-    
-    /* 터치 타겟 최소 크기 확보 */
-    button, 
-    a.card,
-    .card {
-        min-height: 44px;
+        max-width: 100% !important;
+        order: 2;
     }
     
     /* 네비게이션 최적화 */
     nav {
-        position: sticky;
-        top: 0;
+        padding-left: 0.5rem !important;
+        padding-right: 0.5rem !important;
     }
     
     .nav-glass {
         padding-top: 0.5rem !important;
         padding-bottom: 0.5rem !important;
-        backdrop-filter: blur(10px);
     }
     
-    /* 카드 터치 효과 */
+    /* 로고 크기 조정 */
+    nav img {
+        height: 2.5rem !important;
+    }
+    
+    /* 상담 바로가기 버튼 */
+    nav a[href="#quickDiagnosis"] {
+        padding: 0.5rem 0.75rem !important;
+        font-size: 0.75rem !important;
+        white-space: nowrap;
+    }
+    
+    /* 모바일 메뉴 버튼 */
+    #mobileMenuBtn {
+        padding: 0.5rem !important;
+        min-width: 40px;
+        min-height: 40px;
+    }
+    
+    /* 카드 스타일 */
+    .card {
+        max-width: 100%;
+        overflow: hidden;
+    }
+    
     .card:active {
         transform: scale(0.98);
         transition: transform 0.1s ease;
     }
     
+    /* 카드 호버 효과 제거 (모바일) */
+    .card:hover {
+        transform: none !important;
+    }
+    
     /* 카드 내부 텍스트 */
     .card p,
     .card span,
+    .card h2,
     .card h3,
     .card h4 {
         word-break: keep-all;
         overflow-wrap: break-word;
     }
     
-    /* 카드 내부 레이아웃 */
-    .card {
-        max-width: 100%;
-        overflow: hidden;
-    }
-    
-    /* 모달 최적화 */
-    .modal {
-        align-items: flex-end;
-        padding: 0 !important;
-    }
-    
-    .modal > div {
-        max-height: 90vh;
-        overflow-y: auto;
-        -webkit-overflow-scrolling: touch;
-        max-width: 100vw !important;
-        width: calc(100vw - 2rem) !important;
-        box-sizing: border-box;
-    }
-    
-    /* 모달 내부 폼 */
-    .modal form {
-        width: 100%;
-        overflow-x: hidden;
-    }
-    
-    .modal input,
-    .modal select,
-    .modal textarea {
-        width: 100% !important;
-        max-width: 100% !important;
-        box-sizing: border-box !important;
-    }
-    
-    /* 스크롤 성능 최적화 */
-    section {
-        overflow-x: hidden;
-        transform: translateZ(0);
-        -webkit-transform: translateZ(0);
+    /* 카드 내 화살표 아이콘 숨기기 */
+    .card .card-arrow {
+        display: none;
     }
     
     /* 제목 크기 조정 */
     h1 {
-        font-size: 2.5rem !important;
-        line-height: 1.2 !important;
+        font-size: 1.75rem !important;
+        line-height: 1.3 !important;
     }
     
     h2 {
-        font-size: 2rem !important;
+        font-size: 1.5rem !important;
         line-height: 1.3 !important;
     }
     
     h3 {
-        font-size: 1.5rem !important;
-    }
-    
-    /* 버튼 크기 최적화 */
-    .btn,
-    button[type="submit"],
-    a[role="button"] {
-        padding: 0.875rem 1.5rem !important;
-        font-size: 1rem !important;
-    }
-    
-    /* 그리드 간격 조정 */
-    .grid {
-        gap: 1rem !important;
+        font-size: 1.25rem !important;
     }
     
     /* 섹션 패딩 조정 */
     section {
-        padding-top: 3rem !important;
-        padding-bottom: 3rem !important;
-    }
-    
-    /* FAQ 아코디언 터치 영역 */
-    .faq-item {
-        padding: 1.25rem !important;
-    }
-    
-    /* 호버 효과를 터치로 변경 */
-    .card:hover {
-        transform: none;
-    }
-    
-    /* 가로 스크롤 방지 */
-    .container,
-    .max-w-7xl,
-    .max-w-6xl,
-    .max-w-5xl,
-    .max-w-4xl,
-    .max-w-3xl,
-    .max-w-2xl,
-    .max-w-xl {
+        padding-left: 1rem !important;
+        padding-right: 1rem !important;
         overflow-x: hidden;
-        max-width: 100%;
-        box-sizing: border-box;
     }
     
-    /* 모든 폼 요소 박스 사이징 */
-    form,
-    form * {
-        box-sizing: border-box;
-    }
-    
-    /* 긴 텍스트가 있는 버튼 */
-    button,
-    .btn {
-        white-space: normal !important;
-        word-wrap: break-word;
-        text-align: center;
-    }
-    
-    /* 이메일 입력 행 전체 최적화 */
-    div:has(input[name="email_id"]) {
-        display: flex !important;
-        gap: 0.25rem !important;
-        align-items: center;
-        width: 100%;
-    }
-    
-    /* @ 기호 고정 너비 */
-    div:has(input[name="email_id"]) > span {
-        flex-shrink: 0 !important;
-        width: auto !important;
-    }
-    
-    /* 입력 필드들의 최소 너비 제거 */
-    input[type="text"],
-    input[type="tel"],
-    input[type="email"] {
-        min-width: 0 !important;
-    }
-    
-    /* 테이블 반응형 */
-    table {
-        display: block;
-        overflow-x: auto;
-        -webkit-overflow-scrolling: touch;
-    }
-}
-
-/* 작은 모바일 기기 (iPhone SE, 갤럭시 Fold 등) */
-@media (max-width: 375px) {
-    h1 {
-        font-size: 2rem !important;
-        word-break: keep-all;
-    }
-    
-    h2 {
-        font-size: 1.75rem !important;
-        word-break: keep-all;
-    }
-    
-    h3 {
-        font-size: 1.25rem !important;
-        word-break: keep-all;
-    }
-    
-    /* 작은 화면에서 간격 축소 */
+    /* 그리드 간격 조정 */
     .grid {
         gap: 0.75rem !important;
     }
     
-    section {
-        padding-top: 2rem !important;
-        padding-bottom: 2rem !important;
-    }
-    
-    /* 버튼 크기 조정 */
-    .btn,
-    button {
-        font-size: 0.875rem !important;
-        padding: 0.75rem 1rem !important;
+    /* 버튼 스타일 */
+    button[type="submit"],
+    .btn {
+        padding: 0.875rem 1.25rem !important;
+        font-size: 1rem !important;
         white-space: normal !important;
+        word-wrap: break-word;
     }
     
-    /* 패딩 축소 */
+    /* 모달 최적화 */
+    .modal {
+        padding: 1rem !important;
+    }
+    
+    .modal > div {
+        max-width: calc(100vw - 2rem) !important;
+        width: 100% !important;
+        max-height: 90vh;
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+    
+    /* FAQ 아코디언 */
+    .faq-item {
+        padding: 1rem !important;
+    }
+    
+    /* 스크롤 성능 */
+    * {
+        -webkit-overflow-scrolling: touch;
+    }
+    
+    /* 가로 스크롤 방지 */
     .px-6 {
         padding-left: 1rem !important;
         padding-right: 1rem !important;
@@ -327,74 +243,227 @@ input[type="button"],
         padding-right: 0.75rem !important;
     }
     
-    .px-3 {
-        padding-left: 0.5rem !important;
-        padding-right: 0.5rem !important;
+    /* 고민 카드 (onclick 있는 카드) */
+    div[onclick*="showSolution"] {
+        cursor: pointer;
     }
     
-    /* 작은 화면에서 입력 필드 */
-    input[type="text"],
-    input[type="tel"],
-    input[type="email"],
+    div[onclick*="showSolution"]:active {
+        transform: scale(0.98);
+    }
+    
+    /* 솔루션 슬라이드 */
+    #solutionSlideContainer {
+        margin-left: -1rem;
+        margin-right: -1rem;
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+    
+    /* 비용 비교 카드 */
+    .grid.md\\:grid-cols-2 > div {
+        max-width: 100%;
+    }
+    
+    /* Footer 최적화 */
+    footer {
+        padding-left: 1rem !important;
+        padding-right: 1rem !important;
+    }
+    
+    footer .grid {
+        gap: 0.5rem !important;
+    }
+    
+    /* 텍스트 줄바꿈 */
+    p, span, div, label, li {
+        word-break: keep-all;
+        overflow-wrap: break-word;
+    }
+    
+    /* 긴 URL/이메일 강제 줄바꿈 */
+    a[href*="http"],
+    a[href*="mailto"],
+    .email,
+    .url {
+        word-break: break-all;
+    }
+    
+    /* 체크박스/라디오 라벨 */
+    label.cursor-pointer {
+        min-height: auto !important;
+    }
+    
+    label.cursor-pointer > div {
+        min-height: 48px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    /* 체크박스 목록 아이템 */
+    label.flex.items-center {
+        min-height: 48px !important;
+        padding: 0.75rem !important;
+    }
+    
+    /* 입력 필드 컨테이너 */
+    .grid.md\\:grid-cols-2 {
+        gap: 0.75rem !important;
+    }
+    
+    /* 신뢰 배지 */
+    .flex.flex-wrap.justify-center {
+        gap: 0.5rem !important;
+    }
+    
+    .flex.flex-wrap.justify-center > div {
+        font-size: 0.75rem;
+    }
+}
+
+/* ===== 작은 모바일 (375px 이하) ===== */
+@media (max-width: 375px) {
+    h1 {
+        font-size: 1.5rem !important;
+    }
+    
+    h2 {
+        font-size: 1.25rem !important;
+    }
+    
+    h3 {
+        font-size: 1.125rem !important;
+    }
+    
+    /* 섹션 패딩 더 줄이기 */
+    section {
+        padding-left: 0.75rem !important;
+        padding-right: 0.75rem !important;
+        padding-top: 1.5rem !important;
+        padding-bottom: 1.5rem !important;
+    }
+    
+    /* 버튼 크기 */
+    button,
+    .btn {
+        font-size: 0.875rem !important;
+        padding: 0.625rem 0.875rem !important;
+    }
+    
+    /* 입력 필드 */
+    input,
     select,
     textarea {
         font-size: 14px !important;
         padding: 0.625rem 0.75rem !important;
     }
     
-    /* 이메일 입력 gap 축소 */
-    div:has(input[name="email_id"]) {
-        gap: 0.125rem !important;
+    /* 카드 패딩 */
+    .card {
+        padding: 1rem !important;
     }
     
-    /* select 요소 패딩 축소 */
-    select {
-        padding-left: 0.5rem !important;
-        padding-right: 0.5rem !important;
+    /* 네비게이션 */
+    nav a[href="#quickDiagnosis"] {
+        padding: 0.375rem 0.5rem !important;
+        font-size: 0.625rem !important;
+    }
+    
+    /* 로고 */
+    nav img {
+        height: 2rem !important;
+    }
+    
+    /* 그리드 */
+    .grid {
+        gap: 0.5rem !important;
+    }
+    
+    /* 고민 카드 제목 */
+    div[onclick*="showSolution"] h3 {
+        font-size: 1rem !important;
+    }
+    
+    /* 라디오 버튼 그리드 */
+    .grid.grid-cols-2 {
+        gap: 0.375rem !important;
+    }
+    
+    .grid.grid-cols-2 label > div {
+        padding: 0.5rem !important;
+        min-height: 44px;
+    }
+    
+    .grid.grid-cols-2 label > div span.text-2xl {
+        font-size: 1.25rem !important;
+        margin-bottom: 0.25rem !important;
+    }
+    
+    .grid.grid-cols-2 label > div span.font-semibold {
+        font-size: 0.75rem !important;
     }
 }
 
-/* 가로 모드 최적화 */
+/* ===== 매우 작은 화면 (320px 이하) ===== */
+@media (max-width: 320px) {
+    h1 {
+        font-size: 1.25rem !important;
+    }
+    
+    h2 {
+        font-size: 1.125rem !important;
+    }
+    
+    section {
+        padding-left: 0.5rem !important;
+        padding-right: 0.5rem !important;
+    }
+    
+    /* 상담 바로가기 버튼 숨기고 메뉴에서만 접근 */
+    nav a[href="#quickDiagnosis"] {
+        display: none !important;
+    }
+}
+
+/* ===== 가로 모드 ===== */
 @media (max-width: 768px) and (orientation: landscape) {
     section {
-        padding-top: 2rem !important;
-        padding-bottom: 2rem !important;
+        padding-top: 1.5rem !important;
+        padding-bottom: 1.5rem !important;
     }
     
     .min-h-screen {
         min-height: auto !important;
     }
+    
+    h1 {
+        font-size: 1.5rem !important;
+    }
 }
 
-/* iOS Safari 전용 최적화 */
+/* ===== iOS Safari 전용 ===== */
 @supports (-webkit-touch-callout: none) {
-    /* iOS에서 input focus 시 줌 방지 */
+    /* iOS 줌 방지 */
     input,
     select,
     textarea {
         font-size: 16px !important;
     }
     
-    /* iOS에서 fixed 포지션 버그 수정 */
-    body {
-        position: relative;
-    }
-    
-    /* iOS에서 bounce 효과 방지 */
+    /* iOS bounce 효과 제어 */
     body {
         overscroll-behavior-y: none;
     }
+    
+    /* iOS fixed 포지션 */
+    nav.fixed {
+        position: -webkit-sticky;
+        position: sticky;
+    }
 }
 
-/* 성능 최적화 */
-.card,
-.btn,
-button,
-a {
-    will-change: transform;
-}
-
-/* 애니메이션 최적화 */
+/* ===== 애니메이션 최적화 ===== */
 @media (prefers-reduced-motion: reduce) {
     *,
     *::before,
@@ -405,12 +474,30 @@ a {
     }
 }
 
-/* 다크모드 지원 */
-@media (prefers-color-scheme: dark) {
-    /* 필요시 다크모드 스타일 추가 */
+/* ===== 터치 디바이스 호버 효과 제거 ===== */
+@media (hover: none) and (pointer: coarse) {
+    .hover\:scale-105:hover,
+    .hover\:shadow-2xl:hover,
+    .hover\:-translate-y-1:hover,
+    .hover\:-translate-y-2:hover {
+        transform: none !important;
+        box-shadow: inherit !important;
+    }
+    
+    .card:hover {
+        transform: none !important;
+        border-color: inherit !important;
+    }
+    
+    /* 대신 active 상태 사용 */
+    .card:active,
+    a:active,
+    button:active {
+        opacity: 0.8;
+    }
 }
 
-/* 레이어 우선순위 */
+/* ===== 레이어 우선순위 ===== */
 nav {
     z-index: 1000 !important;
 }
@@ -433,60 +520,43 @@ section {
     z-index: 1;
 }
 
-/* 모바일 메뉴 최적화 */
+/* ===== 모바일 메뉴 ===== */
 #mobileMenu {
-    max-height: calc(100vh - 80px);
+    max-height: calc(100vh - 60px);
     overflow-y: auto;
     -webkit-overflow-scrolling: touch;
     max-width: 100vw;
     overflow-x: hidden;
 }
 
-/* 네비게이션 링크 줄바꿈 방지 */
-nav a {
-    white-space: nowrap;
+#mobileMenu a {
+    min-height: 44px;
+    display: flex;
+    align-items: center;
 }
 
-/* Footer 텍스트 줄바꿈 */
-footer p,
-footer span,
-footer div {
-    word-break: keep-all;
-    overflow-wrap: break-word;
-}
-
-/* 주소나 긴 텍스트 줄바꿈 */
-footer a[href*="map"],
-footer .address {
-    word-break: break-all;
-    line-height: 1.5;
-}
-
-/* 스크롤 바 스타일링 (Webkit) */
+/* ===== 스크롤바 스타일 ===== */
 ::-webkit-scrollbar {
-    width: 8px;
-    height: 8px;
+    width: 6px;
+    height: 6px;
 }
 
 ::-webkit-scrollbar-track {
-    background: #f1f1f1;
+    background: transparent;
 }
 
 ::-webkit-scrollbar-thumb {
-    background: #888;
-    border-radius: 4px;
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 3px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-    background: #555;
+    background: rgba(0, 0, 0, 0.3);
 }
 
-/* 터치 디바이스에서 호버 효과 제거 */
-@media (hover: none) and (pointer: coarse) {
-    .hover\:scale-105:hover,
-    .hover\:shadow-2xl:hover,
-    .hover\:-translate-y-1:hover {
-        transform: none !important;
-        box-shadow: inherit !important;
-    }
+/* ===== 디버그용 (필요시 활성화) ===== */
+/*
+* {
+    outline: 1px solid red !important;
 }
+*/

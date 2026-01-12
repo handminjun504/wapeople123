@@ -442,7 +442,8 @@
                 </div>
                 <div>
                     <label class="block text-gray-700 font-semibold mb-2">이메일 <span class="text-gray-400 text-sm font-normal">(선택)</span></label>
-                    <div class="flex items-center gap-1">
+                    <!-- 데스크톱: 한 줄 -->
+                    <div class="hidden md:flex items-center gap-1">
                         <input type="text" name="email_id" class="flex-1 min-w-0 border-2 border-gray-200 rounded-xl px-3 py-3 text-gray-900" placeholder="아이디">
                         <span class="text-gray-500 font-medium flex-shrink-0">@</span>
                         <select name="email_domain" class="flex-1 min-w-0 border-2 border-gray-200 rounded-xl px-2 py-3 text-gray-900" onchange="toggleEmailDomain(this)">
@@ -455,6 +456,10 @@
                             <option value="direct">직접입력</option>
                         </select>
                         <input type="text" name="email_domain_direct" class="hidden flex-1 min-w-0 border-2 border-gray-200 rounded-xl px-3 py-3 text-gray-900" placeholder="도메인">
+                    </div>
+                    <!-- 모바일: 단순화 -->
+                    <div class="md:hidden">
+                        <input type="email" name="email_mobile" class="w-full border-2 border-gray-200 rounded-xl px-3 py-3 text-gray-900" placeholder="example@email.com">
                     </div>
                     <input type="hidden" name="email" value="">
                 </div>
@@ -494,10 +499,19 @@
 
         // 이메일 조합 함수
         function combineEmail(form) {
+            const emailHidden = form.querySelector('input[name="email"]');
+            
+            // 모바일 입력 확인
+            const emailMobile = form.querySelector('input[name="email_mobile"]');
+            if (emailMobile && emailMobile.value.trim() && window.innerWidth < 768) {
+                emailHidden.value = emailMobile.value.trim();
+                return;
+            }
+            
+            // 데스크톱 입력
             const emailId = form.querySelector('input[name="email_id"]');
             const emailDomain = form.querySelector('select[name="email_domain"]');
             const emailDomainDirect = form.querySelector('input[name="email_domain_direct"]');
-            const emailHidden = form.querySelector('input[name="email"]');
             
             if (emailId && emailHidden) {
                 const id = emailId.value.trim();
