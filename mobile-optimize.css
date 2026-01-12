@@ -176,12 +176,23 @@ img {
     }
     
     /* 상단 배너 마진 조정 */
-    .mb-12 {
-        margin-bottom: 1.5rem !important;
+    .mb-12, .mb-4 {
+        margin-bottom: 1rem !important;
     }
     
     .mb-14 {
-        margin-bottom: 2rem !important;
+        margin-bottom: 1.5rem !important;
+    }
+    
+    /* Hero 섹션 상단 패딩 확보 */
+    section.min-h-screen {
+        padding-top: 5rem !important;
+    }
+    
+    /* 상단 배너 텍스트 가시성 확보 */
+    .inline-flex.items-center.gap-2.bg-blue-50 {
+        margin-top: 0.5rem !important;
+        margin-bottom: 0.5rem !important;
     }
     
     /* "클릭하여 자세히 보기" 텍스트 줄바꿈 방지 */
