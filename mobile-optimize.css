@@ -143,7 +143,11 @@ img {
     
     /* --- 3.4 이메일 입력 필드 (데스크톱/모바일 분리) --- */
     .hidden.md\:flex { display: none; }
-    .md\:hidden { display: block; }
+    /* 모바일 이메일 입력만 표시 (메뉴 제외) */
+    .md\:hidden:not(#mobileMenu) { display: block; }
+    
+    /* 모바일 메뉴는 hidden 상태 유지 */
+    #mobileMenu.hidden { display: none !important; }
     
     /* --- 3.5 네비게이션 --- */
     nav {
