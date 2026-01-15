@@ -977,7 +977,9 @@
         // 이메일 도메인 직접입력 토글
         function toggleEmailDomain(select) {
             const container = select.closest('.flex');
+            if (!container) return; // null 체크
             const directInput = container.querySelector('input[name="email_domain_direct"]');
+            if (!directInput) return; // null 체크
             if (select.value === 'direct') {
                 directInput.classList.remove('hidden');
                 select.classList.add('hidden');
