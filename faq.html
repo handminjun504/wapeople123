@@ -770,6 +770,9 @@
                         mode: 'no-cors' // Google Apps Script는 CORS를 지원하지 않으므로
                     })
                     .then(function() {
+                        // Google Ads 전환 추적
+                        gtag('event', 'conversion', {'send_to': 'AW-17745262400/IgtoCI-pndMbEMDuzI1C'});
+                        
                         // 성공 메시지
                         alert('✅ 상담 신청이 완료되었습니다!\n\n영업시간 내 문의 시, 30분 이내로 연락드리겠습니다.\n감사합니다!');
                         form.reset();
@@ -779,6 +782,9 @@
                     })
                     .catch(function(error) {
                         console.error('전송 오류:', error);
+                        // Google Ads 전환 추적
+                        gtag('event', 'conversion', {'send_to': 'AW-17745262400/IgtoCI-pndMbEMDuzI1C'});
+                        
                         // no-cors 모드에서는 에러도 정상적으로 처리됨
                         alert('✅ 상담 신청이 완료되었습니다!\n\n영업시간 내 문의 시, 30분 이내로 연락드리겠습니다.\n감사합니다!');
                         form.reset();

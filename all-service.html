@@ -1124,6 +1124,9 @@
                         mode: 'no-cors'
                     })
                     .then(function() {
+                        // Google Ads 전환 추적
+                        gtag('event', 'conversion', {'send_to': 'AW-17745262400/IgtoCI-pndMbEMDuzI1C'});
+                        
                         alert('✅ 상담 신청이 완료되었습니다!\n\n영업시간 내 문의 시, 30분 이내로 연락드리겠습니다.\n감사합니다!');
                         form.reset();
                         closeModal();
@@ -1132,6 +1135,9 @@
                     })
                     .catch(function(error) {
                         console.error('전송 오류:', error);
+                        // Google Ads 전환 추적
+                        gtag('event', 'conversion', {'send_to': 'AW-17745262400/IgtoCI-pndMbEMDuzI1C'});
+                        
                         alert('✅ 상담 신청이 완료되었습니다!\n\n영업시간 내 문의 시, 30분 이내로 연락드리겠습니다.\n감사합니다!');
                         form.reset();
                         closeModal();
