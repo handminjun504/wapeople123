@@ -548,7 +548,16 @@ img {
    9. 레이어 우선순위 (z-index)
    ========================================================================== */
 
-nav { z-index: 1000; }
+nav { 
+    z-index: 1000;
+    height: 60px; /* 모바일 네비게이션 고정 높이 */
+}
+
+@media (min-width: 768px) {
+    nav {
+        height: 80px; /* 데스크톱 네비게이션 고정 높이 */
+    }
+}
 .modal { z-index: 9999; }
 #scrollToTop { z-index: 9998; }
 footer { position: relative; z-index: 10; }
