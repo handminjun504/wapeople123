@@ -34,14 +34,6 @@
     <meta name="twitter:description" content="음식점업 맞춤 경리 솔루션. 메뉴별 손익분석, 식자재비 관리까지.">
     <meta name="twitter:image" content="https://wapeople.kr/logo.webp">
     
-    <!-- Google Analytics 4 -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-SSRBFN700C"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-SSRBFN700C');
-    </script>
     
     <link rel="icon" type="image/x-icon" href="/favicon/favicon.ico">
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png">
@@ -84,14 +76,6 @@
         </style>
     </noscript>
     
-    <!-- Google tag (gtag.js) - Google Ads -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17745262400"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'AW-17745262400');
-    </script>
     
     <!-- Google reCAPTCHA v3 -->
     <script src="https://www.google.com/recaptcha/api.js?render=6Le0CEMsAAAAAFGF3Dnci1_SUkC4VWmzqdox2jJZ"></script>
@@ -1009,8 +993,9 @@
                         }
                         document.body.removeChild(iframe);
                         
-                        // Google Ads 전환 추적
-                        gtag('event', 'conversion', {'send_to': 'AW-17745262400/IgtoCI-pndMbEMDuzI1C'});
+                        // GTM 전환 추적
+                        window.dataLayer = window.dataLayer || [];
+                        window.dataLayer.push({'event': 'form_submit'});
                         
                         alert('✅ 신청이 완료되었습니다!\n\n영업시간 내 문의 시, 30분 이내로 맞춤 솔루션을 안내해드리겠습니다.\n감사합니다!');
                         form.reset();

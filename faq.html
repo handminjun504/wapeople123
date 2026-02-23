@@ -68,14 +68,6 @@
     }
     </script>
     
-    <!-- Google Analytics 4 -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-SSRBFN700C"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-SSRBFN700C');
-    </script>
     
     <link rel="icon" type="image/x-icon" href="/favicon/favicon.ico">
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png">
@@ -118,14 +110,6 @@
         </style>
     </noscript>
     
-    <!-- Google tag (gtag.js) - Google Ads -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17745262400"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'AW-17745262400');
-    </script>
     
     <!-- Google reCAPTCHA v3 -->
     <script src="https://www.google.com/recaptcha/api.js?render=6Le0CEMsAAAAAFGF3Dnci1_SUkC4VWmzqdox2jJZ"></script>
@@ -772,8 +756,9 @@
                         mode: 'no-cors' // Google Apps Script는 CORS를 지원하지 않으므로
                     })
                     .then(function() {
-                        // Google Ads 전환 추적
-                        gtag('event', 'conversion', {'send_to': 'AW-17745262400/IgtoCI-pndMbEMDuzI1C'});
+                        // GTM 전환 추적
+                        window.dataLayer = window.dataLayer || [];
+                        window.dataLayer.push({'event': 'form_submit'});
                         
                         // 성공 메시지
                         alert('✅ 상담 신청이 완료되었습니다!\n\n영업시간 내 문의 시, 30분 이내로 연락드리겠습니다.\n감사합니다!');
@@ -784,8 +769,9 @@
                     })
                     .catch(function(error) {
                         console.error('전송 오류:', error);
-                        // Google Ads 전환 추적
-                        gtag('event', 'conversion', {'send_to': 'AW-17745262400/IgtoCI-pndMbEMDuzI1C'});
+                        // GTM 전환 추적
+                        window.dataLayer = window.dataLayer || [];
+                        window.dataLayer.push({'event': 'form_submit'});
                         
                         // no-cors 모드에서는 에러도 정상적으로 처리됨
                         alert('✅ 상담 신청이 완료되었습니다!\n\n영업시간 내 문의 시, 30분 이내로 연락드리겠습니다.\n감사합니다!');
