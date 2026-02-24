@@ -1010,7 +1010,13 @@
                         // GTM 전환 추적
                         window.dataLayer = window.dataLayer || [];
                         window.dataLayer.push({'event': 'form_submit'});
-                        
+                        // Google Ads 견적 요청 전환
+                        gtag('event', 'conversion', {
+                            'send_to': 'AW-17745262400/CarCCLvL6v0bEMDuzI1C',
+                            'value': 1.0,
+                            'currency': 'KRW'
+                        });
+
                         alert('✅ 신청이 완료되었습니다!\n\n영업시간 내 문의 시, 30분 이내로 맞춤 솔루션을 안내해드리겠습니다.\n감사합니다!');
                         form.reset();
                         form.target = '';
