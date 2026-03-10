@@ -32,7 +32,7 @@
     <meta property="og:description" content="제조업 맞춤 경리 솔루션. 제품별 실제 비용 계산, 재고 자산 관리, 거래처 원장 관리까지.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://wapeople.kr/manufacturing">
-    <meta property="og:image" content="https://wapeople.kr/logo.webp">
+    <meta property="og:image" content="https://wapeople.kr/logo.png?v=20260310b">
     <meta property="og:site_name" content="경리업무를잘하는청년들">
     <meta property="og:locale" content="ko_KR">
     
@@ -40,7 +40,7 @@
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="제조업 경리 - 경리업무를잘하는청년들">
     <meta name="twitter:description" content="제조업 맞춤 경리 솔루션. 제품별 원가 계산, 재고 관리까지.">
-    <meta name="twitter:image" content="https://wapeople.kr/logo.webp">
+    <meta name="twitter:image" content="https://wapeople.kr/logo.png?v=20260310b">
     
     
     <link rel="icon" type="image/x-icon" href="/favicon/favicon.ico">
@@ -52,8 +52,8 @@
     <meta name="msapplication-config" content="/favicon/browserconfig.xml">
     <meta name="theme-color" content="#2563eb">
     <link rel="stylesheet" href="dist/output.css">
-    <link rel="stylesheet" href="mobile-optimize.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard-dynamic-subset.min.css">
+    <link rel="stylesheet" href="mobile-optimize.css?v=20260310a">
+    <link rel="stylesheet" href="fonts/Pretendard-1.3.9/web/static/pretendard-subset.css?v=20260309b">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/fontawesome.min.css" media="print" onload="this.media='all'">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/solid.min.css" media="print" onload="this.media='all'">
     <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
@@ -61,18 +61,25 @@
     <!-- 폰트 로딩 스크립트 -->
     <script>
         document.documentElement.style.opacity = '0';
-        document.documentElement.style.transition = 'opacity 0.3s ease';
-        
+        document.documentElement.style.transition = 'opacity 0.2s ease';
+
+        function revealPageAfterFontLoad() {
+            document.documentElement.style.opacity = '1';
+        }
+
+        const fontLoadFallback = setTimeout(revealPageAfterFontLoad, 3000);
+
         if (document.fonts && document.fonts.ready) {
             document.fonts.ready.then(function() {
-                document.documentElement.style.opacity = '1';
+                clearTimeout(fontLoadFallback);
+                revealPageAfterFontLoad();
+            }).catch(function() {
+                revealPageAfterFontLoad();
             });
         } else {
-            // Fallback for older browsers
             window.addEventListener('load', function() {
-                setTimeout(function() {
-                    document.documentElement.style.opacity = '1';
-                }, 100);
+                clearTimeout(fontLoadFallback);
+                revealPageAfterFontLoad();
             });
         }
     </script>
@@ -96,13 +103,14 @@
     
     <!-- Navigation -->
     <nav class="fixed top-0 left-0 right-0 z-50 nav-glass">
-        <div class="max-w-7xl mx-auto px-3 md:px-6 py-2 flex items-center justify-between">
-            <a href="index.html" class="flex items-center gap-1 hover:opacity-80 transition-opacity touch-manipulation">
-                <img src="logo.webp" alt="경리업무를잘하는청년들" class="h-12 md:h-16 object-contain" fetchpriority="high">
+        <div class="max-w-7xl mx-auto px-3 md:px-6 py-2 flex items-center justify-between gap-2">
+                        <a href="index.html" class="flex items-center gap-1 hover:opacity-80 transition-opacity touch-manipulation min-w-0">
+                <img src="logo.png?v=20260310b" alt="경리업무를잘하는청년들" class="hidden md:block object-contain" style="height:2.125rem;" fetchpriority="high">
+                <img src="logo.png?v=20260310b" alt="경리업무를잘하는청년들" class="block md:hidden mobile-nav-logo object-contain" fetchpriority="high">
             </a>
             
             <!-- 데스크톱 메뉴 -->
-            <div class="hidden md:flex items-center gap-8">
+            <div class="hidden md:flex items-center gap-2 md:gap-8">
                 <!-- 원격경리 -->
                 <a href="about.html" class="px-8 py-5 text-gray-700 hover:text-emerald-600 font-semibold transition-colors whitespace-nowrap">
                     원격경리
@@ -161,6 +169,13 @@
                 <div class="h-6 w-px bg-gray-300"></div>
                 
                 <!-- FAQ -->
+                <a href="reviews.html" class="px-3 py-2 text-gray-700 hover:text-emerald-600 font-semibold transition-colors whitespace-nowrap">
+                    고객후기
+                </a>
+
+                <!-- 구분선 -->
+                <div class="h-6 w-px bg-gray-300"></div>
+
                 <a href="faq.html" class="px-3 py-2 text-gray-700 hover:text-emerald-600 font-semibold transition-colors whitespace-nowrap">
                     FAQ
                 </a>
@@ -172,11 +187,11 @@
             </div>
 
             <!-- 모바일 메뉴 -->
-            <div class="flex md:hidden items-center gap-2">
+            <div class="mobile-nav-actions md:hidden">
                 <button onclick="openModal()" class="flex items-center justify-center bg-emerald-600 hover:bg-emerald-700 text-white px-5 py-2.5 rounded-full font-bold text-sm transition-colors shadow-lg cursor-pointer whitespace-nowrap">
                     상담 바로가기
                 </button>
-                <button id="mobileMenuBtn" class="flex items-center justify-center p-2 text-gray-700 hover:text-emerald-700 transition-colors" aria-label="모바일 메뉴 열기" aria-expanded="false">
+                <button id="mobileMenuBtn" class="flex items-center justify-center p-2 w-10 h-10 flex-shrink-0 text-gray-700 hover:text-emerald-700 transition-colors" aria-label="모바일 메뉴 열기" aria-expanded="false">
                     <i class="fas fa-bars text-2xl"></i>
                 </button>
             </div>
@@ -221,6 +236,9 @@
                 <div class="border-t border-gray-100 mt-2 pt-2">
                     <a href="location.html" class="block py-3 px-4 text-gray-700 hover:bg-emerald-50 hover:text-emerald-700 font-semibold rounded-lg transition-colors">
                         찾아오실 때
+                    </a>
+                    <a href="reviews.html" class="block py-3 px-4 text-gray-700 hover:bg-emerald-50 hover:text-emerald-700 font-semibold rounded-lg transition-colors">
+                        고객후기
                     </a>
                     <a href="faq.html" class="block py-3 px-4 text-gray-700 hover:bg-emerald-50 hover:text-emerald-700 font-semibold rounded-lg transition-colors">
                         FAQ
@@ -268,7 +286,7 @@
 
     <main>
     <!-- Hero Section -->
-    <section class="min-h-[80vh] relative flex items-center pt-24 pb-16 bg-emerald-50">
+    <section class="min-h-[62vh] md:min-h-[80vh] relative flex items-center pt-20 md:pt-24 pb-8 md:pb-16 bg-emerald-50">
         <div class="max-w-7xl mx-auto px-6 relative z-10">
             <div class="max-w-4xl">
                 <a href="index.html" data-aos="fade-up" data-aos-duration="800" class="inline-flex items-center gap-2 text-gray-500 hover:text-emerald-600 transition-colors mb-8">
@@ -286,12 +304,12 @@
                     <span class="text-emerald-600">맞는 건지 모르겠어요</span>
                 </h1>
                 
-                <p data-aos="fade-up" data-aos-duration="800" data-aos-delay="300" class="text-xl md:text-2xl text-gray-600 leading-relaxed text-base md:text-lg mb-16 max-w-2xl">
+                <p data-aos="fade-up" data-aos-duration="800" data-aos-delay="300" class="text-xl md:text-2xl text-gray-600 leading-relaxed text-base md:text-lg mb-10 md:mb-16 max-w-2xl">
                     원자재비는 올랐는데 제품 단가는 그대로...<br/>
                     진짜 남는 게 있는 건지 확인이 안 되시나요?
                 </p>
                 
-                <div data-aos="fade-up" data-aos-duration="800" data-aos-delay="400" class="scroll-down flex flex-col items-center gap-3" onclick="document.querySelector('.section-gray').scrollIntoView({behavior: 'smooth'})">
+                <div data-aos="fade-up" data-aos-duration="800" data-aos-delay="400" class="scroll-down flex flex-col items-center gap-3 hidden md:flex" onclick="document.querySelector('.section-gray').scrollIntoView({behavior: 'smooth'})">
                     <span class="text-sm font-medium text-gray-500">자세히 알아보기</span>
                     <div class="scroll-arrow w-8 h-8 rounded-full border-2 border-emerald-600 flex items-center justify-center">
                         <i class="fas fa-chevron-down text-emerald-600"></i>
@@ -301,6 +319,40 @@
         </div>
     </section>
 
+            <!-- Trust Summary Section -->
+    <section class="py-10 bg-gradient-to-r from-blue-50 via-white to-emerald-50 border-y border-blue-100">
+        <div class="max-w-7xl mx-auto px-4 md:px-6">
+            <div class="rounded-3xl bg-white border border-blue-200 shadow-lg p-6 md:p-8">
+                <div class="mb-6">
+                    <div>
+                        <div class="inline-flex items-center gap-2 bg-blue-600 text-white text-sm font-bold px-4 py-2 rounded-full mb-3">
+                            <i class="fas fa-comments"></i>
+                            <span>중요 요약</span>
+                        </div>
+                        <h2 class="text-2xl md:text-3xl font-black text-gray-900 leading-tight mb-2">제조업 경리 핵심 3가지</h2>
+                        <p class="text-base md:text-lg text-gray-700 leading-relaxed">자재·원가 흐름과 거래처 채권채무, 월 마감 리포트를 동시에 관리해야 합니다.</p>
+                    </div>
+</div>
+                <div class="grid md:grid-cols-3 gap-3">
+                    <div class="rounded-2xl border border-blue-100 bg-blue-50 px-4 py-4">
+                        <p class="text-xs font-bold text-blue-700 mb-1">핵심 1</p>
+                        <p class="text-sm font-semibold text-gray-900 mb-1">자재/원가 흐름 관리</p>
+                        <p class="text-sm text-gray-700">원가 변동을 빠르게 파악해 손익 악화를 미리 차단합니다.</p>
+                    </div>
+                    <div class="rounded-2xl border border-emerald-100 bg-emerald-50 px-4 py-4">
+                        <p class="text-xs font-bold text-emerald-700 mb-1">핵심 2</p>
+                        <p class="text-sm font-semibold text-gray-900 mb-1">채권/채무 일정 관리</p>
+                        <p class="text-sm text-gray-700">거래처별 미수·미지급 일정을 체계적으로 관리합니다.</p>
+                    </div>
+                    <div class="rounded-2xl border border-amber-100 bg-amber-50 px-4 py-4">
+                        <p class="text-xs font-bold text-amber-700 mb-1">핵심 3</p>
+                        <p class="text-sm font-semibold text-gray-900 mb-1">월 마감 리포트 공유</p>
+                        <p class="text-sm text-gray-700">월별 핵심 수치를 정리해 의사결정을 빠르게 돕습니다.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
     <!-- Problem Section -->
     <section class="py-24 section-gray">
         <div class="max-w-7xl mx-auto px-6">
@@ -511,6 +563,59 @@
         </div>
     </section>
 
+                <!-- Audit Reassurance Section -->
+    <section class="py-20 md:py-24 border-y border-gray-200" style="background:#f8fafc;">
+        <div class="max-w-6xl mx-auto px-4 md:px-6">
+            <div class="rounded-3xl bg-white border border-gray-200 shadow-2xl p-8 md:p-12">
+                <div class="inline-flex items-center gap-2 text-sm font-bold px-4 py-2 rounded-full mb-5 -mt-2 md:-mt-3" style="background:#111827;color:#ffffff;">
+                    <i class="fas fa-shield-alt" style="color:#facc15;"></i>
+                    <span>끝까지 안심 운영</span>
+                </div>
+
+                <h2 class="text-2xl md:text-4xl font-black leading-tight mb-4" style="color:#111827;">
+                    연락 누락, 데이터 문제, 세무조사 대비까지
+                </h2>
+                <p class="text-base md:text-lg leading-relaxed max-w-3xl mb-10" style="color:#374151;">
+                    서비스 진행 중 고객이 가장 불안해하는 핵심 이슈를 운영 체계로 관리합니다.
+                    문제가 생긴 뒤 대응하는 방식이 아니라, 처음부터 누락과 리스크를 줄이는 방식으로 설계합니다.
+                </p>
+
+                <div class="grid md:grid-cols-3 gap-5">
+                    <div class="reassurance-card rounded-2xl border px-5 py-5 md:px-6 md:py-6" style="border-color:#bfdbfe;background:#eff6ff;">
+                        <div class="reassurance-icon w-10 h-10 rounded-xl flex items-center justify-center mb-3 shadow-sm" style="background:#ffffff;color:#1d4ed8;">
+                            <i class="fas fa-phone-volume"></i>
+                        </div>
+                        <p class="text-sm font-extrabold mb-2" style="color:#111827;">연락 누락 방지</p>
+                        <p class="text-sm leading-relaxed" style="color:#374151;">요청 사항과 처리 상태를 기록하고 안내 흐름을 정해, 연락 공백이 생기지 않게 운영합니다.</p>
+                    </div>
+
+                    <div class="reassurance-card rounded-2xl border px-5 py-5 md:px-6 md:py-6" style="border-color:#bbf7d0;background:#ecfdf5;">
+                        <div class="reassurance-icon w-10 h-10 rounded-xl flex items-center justify-center mb-3 shadow-sm" style="background:#ffffff;color:#047857;">
+                            <i class="fas fa-database"></i>
+                        </div>
+                        <p class="text-sm font-extrabold mb-2" style="color:#111827;">데이터 백업 체계</p>
+                        <p class="text-sm leading-relaxed" style="color:#374151;">증빙, 거래 내역, 정산 자료를 백업 기준에 맞춰 정리해 데이터 유실과 누락 위험을 낮춥니다.</p>
+                    </div>
+
+                    <div class="reassurance-card rounded-2xl border px-5 py-5 md:px-6 md:py-6" style="border-color:#fde68a;background:#fffbeb;">
+                        <div class="reassurance-icon w-10 h-10 rounded-xl flex items-center justify-center mb-3 shadow-sm" style="background:#ffffff;color:#b45309;">
+                            <i class="fas fa-file-shield"></i>
+                        </div>
+                        <p class="text-sm font-extrabold mb-2" style="color:#111827;">세무조사 대비 자료 준비</p>
+                        <p class="text-sm leading-relaxed" style="color:#374151;">세무조사 이슈가 발생하더라도 필요한 백업자료를 빠르게 제출할 수 있도록 자료를 체계적으로 준비합니다.</p>
+                    </div>
+                </div>
+
+                <div class="reassurance-highlight mt-8 rounded-2xl px-6 py-5 border" style="background:#0f172a;border-color:#1d4ed8;">
+                    <p class="font-black text-base md:text-lg leading-relaxed" style="color:#ffffff;">
+                        <span style="color:#fde047;">세무조사가 나오더라도</span> 필요한 백업자료를 확실히 준비해두기 때문에,
+                        우리와 함께하면 세무조사가 두렵지 않도록 운영할 수 있습니다.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- End Audit Reassurance Section -->
     <!-- Price Comparison Section -->
     <section class="py-16 md:py-24 bg-gradient-to-br from-emerald-50 to-green-50">
         <div class="max-w-6xl mx-auto px-4 md:px-6">
@@ -666,7 +771,7 @@
             </p>
         </div>
     </section>
-    </main>
+</main>
 
     <!-- 맨 위로 버튼 -->
     <button id="scrollToTop" style="position: fixed; bottom: 2rem; right: 2rem; z-index: 9999; transition: all 0.3s ease;" class="bg-blue-600 hover:bg-blue-700 text-white w-12 h-12 md:w-14 md:h-14 rounded-full shadow-lg hover:shadow-2xl opacity-0 invisible flex items-center justify-center group">
@@ -678,7 +783,7 @@
         <div class="max-w-6xl mx-auto px-6">
             <div class="flex flex-col md:flex-row items-start justify-between gap-6">
                 <div class="flex items-center gap-4">
-                    <a href="index.html"><img src="logo.webp" alt="경리업무를잘하는청년들" class="h-16 md:h-20 object-contain"></a>
+                    <a href="index.html"><img src="logo.png?v=20260310b" alt="경리업무를잘하는청년들" class="h-16 md:h-20 object-contain"></a>
                 </div>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-3 text-gray-600 text-sm">
                     <div class="flex items-center gap-2 hover:scale-105 transition-transform duration-300 cursor-pointer" onclick="copyToClipboard('1566-2687', '전화번호')">

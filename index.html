@@ -44,7 +44,7 @@
     <meta property="og:description" content="경리 아웃소싱, 경리대행 전문. 경리 직원 없이 전문가가 온라인으로 관리. 업종별 맞춤 솔루션. 1500+ 기업이 선택!">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://wapeople.kr/">
-    <meta property="og:image" content="https://wapeople.kr/logo.webp">
+    <meta property="og:image" content="https://wapeople.kr/logo.png?v=20260310b">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
     <meta property="og:image:alt" content="경리업무를잘하는청년들 로고">
@@ -55,7 +55,7 @@
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="경리업무를잘하는청년들 - 업종별 맞춤 경리 서비스">
     <meta name="twitter:description" content="경리 직원 없이 전문가가 온라인으로 관리. 1500+ 기업이 선택한 원격 경리 서비스.">
-    <meta name="twitter:image" content="https://wapeople.kr/logo.webp">
+    <meta name="twitter:image" content="https://wapeople.kr/logo.png?v=20260310b">
     
     <!-- 구조화된 데이터 (Schema.org JSON-LD) -->
     <script type="application/ld+json">
@@ -66,8 +66,8 @@
       "alternateName": "청년들",
       "description": "경리 직원 없이 전문가가 온라인으로 관리하는 원격 경리 서비스. 업종별 맞춤 솔루션으로 비용 절감하고 정확도는 높이세요.",
       "url": "https://wapeople.kr",
-      "logo": "https://wapeople.kr/logo.webp",
-      "image": "https://wapeople.kr/logo.webp",
+      "logo": "https://wapeople.kr/logo.png?v=20260310b",
+      "image": "https://wapeople.kr/logo.png?v=20260310b",
       "telephone": "+82-1566-2687",
       "email": "wapeople000@gmail.com",
       "address": {
@@ -159,7 +159,8 @@
     <link rel="preconnect" href="https://www.google-analytics.com" crossorigin>
     
     <!-- Preload 중요 리소스 -->
-    <link rel="preload" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard-dynamic-subset.min.css" as="style">
+    <link rel="preload" href="fonts/Pretendard-1.3.9/web/static/woff2-subset/Pretendard-Regular.subset.woff2?v=20260309b" as="font" type="font/woff2">
+    <link rel="preload" href="fonts/Pretendard-1.3.9/web/static/woff2-subset/Pretendard-Bold.subset.woff2?v=20260309b" as="font" type="font/woff2">
     <link rel="preload" href="dist/output.css" as="style">
     
     
@@ -174,8 +175,8 @@
     -->
     
     <link rel="stylesheet" href="dist/output.css">
-    <link rel="stylesheet" href="mobile-optimize.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard-dynamic-subset.min.css">
+    <link rel="stylesheet" href="mobile-optimize.css?v=20260310a">
+    <link rel="stylesheet" href="fonts/Pretendard-1.3.9/web/static/pretendard-subset.css?v=20260309b">
     <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
     <!-- Font Awesome 필요한 아이콘만 로드하도록 지연 -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/fontawesome.min.css" media="print" onload="this.media='all'">
@@ -184,18 +185,25 @@
     <!-- 폰트 로딩 스크립트 -->
     <script>
         document.documentElement.style.opacity = '0';
-        document.documentElement.style.transition = 'opacity 0.3s ease';
-        
+        document.documentElement.style.transition = 'opacity 0.2s ease';
+
+        function revealPageAfterFontLoad() {
+            document.documentElement.style.opacity = '1';
+        }
+
+        const fontLoadFallback = setTimeout(revealPageAfterFontLoad, 3000);
+
         if (document.fonts && document.fonts.ready) {
             document.fonts.ready.then(function() {
-                document.documentElement.style.opacity = '1';
+                clearTimeout(fontLoadFallback);
+                revealPageAfterFontLoad();
+            }).catch(function() {
+                revealPageAfterFontLoad();
             });
         } else {
-            // Fallback for older browsers
             window.addEventListener('load', function() {
-                setTimeout(function() {
-                    document.documentElement.style.opacity = '1';
-                }, 100);
+                clearTimeout(fontLoadFallback);
+                revealPageAfterFontLoad();
             });
         }
     </script>
@@ -219,9 +227,10 @@
     
     <!-- Navigation -->
     <nav class="fixed top-0 left-0 right-0 z-50 nav-glass">
-        <div class="max-w-7xl mx-auto px-3 md:px-6 py-2 flex items-center justify-between">
-            <a href="index.html" class="flex items-center gap-1 hover:opacity-80 transition-opacity touch-manipulation">
-                <img src="logo.webp" alt="경리업무를잘하는청년들" class="h-12 md:h-16 object-contain" fetchpriority="high">
+        <div class="max-w-7xl mx-auto px-3 md:px-6 py-2 flex items-center justify-between gap-2">
+                        <a href="index.html" class="flex items-center gap-1 hover:opacity-80 transition-opacity touch-manipulation min-w-0">
+                <img src="logo.png?v=20260310b" alt="경리업무를잘하는청년들" class="hidden md:block object-contain" style="height:2.125rem;" fetchpriority="high">
+                <img src="logo.png?v=20260310b" alt="경리업무를잘하는청년들" class="block md:hidden mobile-nav-logo object-contain" fetchpriority="high">
             </a>
             
             <!-- 데스크톱 메뉴 -->
@@ -284,6 +293,13 @@
                 <div class="h-6 w-px bg-gray-300"></div>
                 
                 <!-- FAQ -->
+                <a href="reviews.html" class="px-3 py-2 text-gray-700 hover:text-blue-700 font-semibold transition-colors whitespace-nowrap">
+                    고객후기
+                </a>
+
+                <!-- 구분선 -->
+                <div class="h-6 w-px bg-gray-300"></div>
+
                 <a href="faq.html" class="px-3 py-2 text-gray-700 hover:text-blue-700 font-semibold transition-colors whitespace-nowrap">
                     FAQ
                 </a>
@@ -295,11 +311,11 @@
             </div>
 
             <!-- 모바일 메뉴 -->
-            <div class="flex md:hidden items-center gap-2">
+            <div class="mobile-nav-actions md:hidden">
                 <a href="#quickDiagnosis" class="flex items-center justify-center bg-blue-600 hover:bg-blue-700 text-white px-5 py-2.5 rounded-full font-bold text-sm transition-colors shadow-lg whitespace-nowrap">
                     상담 바로가기
                 </a>
-                <button id="mobileMenuBtn" class="flex items-center justify-center p-2 text-gray-700 hover:text-blue-700 transition-colors" aria-label="모바일 메뉴 열기" aria-expanded="false">
+                <button id="mobileMenuBtn" class="flex items-center justify-center p-2 w-10 h-10 flex-shrink-0 text-gray-700 hover:text-blue-700 transition-colors" aria-label="모바일 메뉴 열기" aria-expanded="false">
                     <i class="fas fa-bars text-2xl"></i>
                 </button>
             </div>
@@ -344,6 +360,9 @@
                 <div class="border-t border-gray-100 mt-2 pt-2">
                     <a href="location.html" class="block py-3 px-4 text-gray-700 hover:bg-blue-50 hover:text-blue-700 font-semibold rounded-lg transition-colors">
                         찾아오실 때
+                    </a>
+                    <a href="reviews.html" class="block py-3 px-4 text-gray-700 hover:bg-blue-50 hover:text-blue-700 font-semibold rounded-lg transition-colors">
+                        고객후기
                     </a>
                     <a href="faq.html" class="block py-3 px-4 text-gray-700 hover:bg-blue-50 hover:text-blue-700 font-semibold rounded-lg transition-colors">
                         FAQ
@@ -529,6 +548,40 @@
     </section>
 
     <!-- 고객 후기 슬라이드 미리보기 -->
+            <!-- Trust Summary Section -->
+    <section class="py-10 bg-gradient-to-r from-blue-50 via-white to-emerald-50 border-y border-blue-100">
+        <div class="max-w-7xl mx-auto px-4 md:px-6">
+            <div class="rounded-3xl bg-white border border-blue-200 shadow-lg p-6 md:p-8">
+                <div class="mb-6">
+                    <div>
+                        <div class="inline-flex items-center gap-2 bg-blue-600 text-white text-sm font-bold px-4 py-2 rounded-full mb-3">
+                            <i class="fas fa-comments"></i>
+                            <span>중요 요약</span>
+                        </div>
+                        <h2 class="text-2xl md:text-3xl font-black text-gray-900 leading-tight mb-2">업종별 경리 서비스 핵심 3가지</h2>
+                        <p class="text-base md:text-lg text-gray-700 leading-relaxed">우리는 경리업무를 원격으로 대행해주는 업체로, 업종마다 다른 고민을 빠르게 진단하고 바로 실행 가능한 해결 방식으로 연결합니다.</p>
+                    </div>
+                </div>
+                <div class="grid md:grid-cols-3 gap-3">
+                    <div class="rounded-2xl border border-blue-100 bg-blue-50 px-4 py-4">
+                        <p class="text-xs font-bold text-blue-700 mb-1">핵심 1</p>
+                        <p class="text-sm font-semibold text-gray-900 mb-1">업종별 맞춤 진단</p>
+                        <p class="text-sm text-gray-700">현재 상황에 맞는 핵심 문제를 먼저 좁힙니다.</p>
+                    </div>
+                    <div class="rounded-2xl border border-emerald-100 bg-emerald-50 px-4 py-4">
+                        <p class="text-xs font-bold text-emerald-700 mb-1">핵심 2</p>
+                        <p class="text-sm font-semibold text-gray-900 mb-1">실제 해결 사례 확인</p>
+                        <p class="text-sm text-gray-700">비슷한 문제를 어떤 방식으로 해결했는지 바로 확인합니다.</p>
+                    </div>
+                    <div class="rounded-2xl border border-amber-100 bg-amber-50 px-4 py-4">
+                        <p class="text-xs font-bold text-amber-700 mb-1">핵심 3</p>
+                        <p class="text-sm font-semibold text-gray-900 mb-1">전담 매니저 진행 공유</p>
+                        <p class="text-sm text-gray-700">요청사항과 처리 현황을 주기적으로 안내받을 수 있습니다.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
     <section class="py-12 md:py-16 bg-white overflow-hidden">
         <div class="max-w-7xl mx-auto px-4 md:px-6 mb-8">
             <div class="flex items-center justify-between">
@@ -1402,7 +1455,7 @@
         <div class="max-w-6xl mx-auto px-4 md:px-6">
             <div class="flex flex-col md:flex-row items-start justify-between gap-6 md:gap-8">
                 <div class="flex items-center gap-4">
-                    <img src="logo.webp" alt="경리업무를잘하는청년들" class="h-16 md:h-20 object-contain">
+                    <img src="logo.png?v=20260310b" alt="경리업무를잘하는청년들" class="h-16 md:h-20 object-contain">
                 </div>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-2.5 md:gap-3 text-gray-600 text-sm md:text-sm w-full md:w-auto">
                     <div class="flex items-center gap-2 hover:scale-105 transition-transform duration-300 cursor-pointer" onclick="copyToClipboard('1566-2687', '전화번호')">
@@ -1492,8 +1545,9 @@
                 return;
             }
             
-            // 스크롤 이벤트 감지
-            window.addEventListener('scroll', function() {
+            // 스크롤 이벤트 감지 (모바일 성능 최적화)
+            let isScrollTicking = false;
+            function updateScrollToTopVisibility() {
                 if (window.pageYOffset > 300) {
                     scrollToTopBtn.style.opacity = '1';
                     scrollToTopBtn.style.visibility = 'visible';
@@ -1501,7 +1555,16 @@
                     scrollToTopBtn.style.opacity = '0';
                     scrollToTopBtn.style.visibility = 'hidden';
                 }
-            });
+                isScrollTicking = false;
+            }
+
+            window.addEventListener('scroll', function() {
+                if (isScrollTicking) return;
+                isScrollTicking = true;
+                window.requestAnimationFrame(updateScrollToTopVisibility);
+            }, { passive: true });
+
+            updateScrollToTopVisibility();
             
             // 버튼 클릭 시 맨 위로 스크롤
             scrollToTopBtn.addEventListener('click', function() {
@@ -1661,12 +1724,31 @@
     </script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-        AOS.init({
-            duration: 400,
-            once: true,
-            offset: 50,
-            easing: 'ease-out-cubic'
-        });
+        const isMobileViewport = window.matchMedia('(max-width: 768px)').matches;
+        const aosElements = document.querySelectorAll('[data-aos]');
+
+        if (isMobileViewport) {
+            // 모바일에서는 스크롤 지연을 줄이기 위해 즉시 표시
+            aosElements.forEach(function(el) {
+                el.classList.add('aos-animate');
+                el.style.opacity = '1';
+                el.style.transform = 'none';
+                el.style.transition = 'none';
+            });
+        } else if (window.AOS && typeof AOS.init === 'function') {
+            AOS.init({
+                duration: 400,
+                once: true,
+                offset: 50,
+                easing: 'ease-out-cubic'
+            });
+        } else {
+            // AOS 로드 실패 시에도 콘텐츠가 보이도록 보정
+            aosElements.forEach(function(el) {
+                el.style.opacity = '1';
+                el.style.transform = 'none';
+            });
+        }
 
         // 해결 방법 슬라이드 표시 함수
         function showSolution(num) {

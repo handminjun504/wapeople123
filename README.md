@@ -31,7 +31,7 @@ npm run watch
 │   └── input.css      # Tailwind 소스 파일
 ├── fonts/             # Pretendard 폰트 파일
 ├── *.html             # 웹페이지 파일들
-├── logo.webp          # 로고 이미지
+├── logo.png          # 로고 이미지
 ├── logo-2.webp        # 로고 이미지 (변형)
 ├── package.json       # 프로젝트 설정
 ├── tailwind.config.js # Tailwind 설정

@@ -72,6 +72,8 @@ html {
     -webkit-text-size-adjust: 100%;
     text-size-adjust: 100%;
     scroll-behavior: smooth;
+    overflow-y: scroll;
+    scrollbar-gutter: stable;
 }
 
 body {
@@ -140,11 +142,10 @@ img {
         width: 100%;
         box-sizing: border-box;
     }
-    
     /* --- 3.4 이메일 입력 필드 (데스크톱/모바일 분리) --- */
     .hidden.md\:flex { display: none; }
-    /* 모바일 이메일 입력만 표시 (메뉴 제외) */
-    .md\:hidden:not(#mobileMenu) { display: block; }
+    /* 모바일 이메일 입력만 표시 (메뉴/네비 액션 제외) */
+    .md\:hidden:not(#mobileMenu):not(.mobile-nav-actions) { display: block; }
     
     /* 모바일 메뉴는 hidden 상태 유지 */
     #mobileMenu.hidden { display: none !important; }
@@ -163,19 +164,49 @@ img {
     nav img {
         height: 2.5rem;
     }
-    
-    nav a[href="#quickDiagnosis"] {
-        padding: var(--spacing-sm) 0.75rem;
-        font-size: 0.75rem;
-        white-space: nowrap;
+
+    .mobile-nav-logo {
+        height: 2.25rem;
+        width: auto;
+        max-width: 150px;
     }
-    
+
+    .mobile-nav-actions {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        gap: var(--spacing-sm);
+        flex-wrap: nowrap;
+        flex-shrink: 0;
+        margin-left: var(--spacing-xs);
+    }
+
+    .mobile-nav-actions.md\:hidden {
+        display: flex !important;
+    }
+
+    .mobile-nav-actions > a,
+    .mobile-nav-actions > button:not(#mobileMenuBtn) {
+        padding: 0.5rem 0.75rem;
+        font-size: 0.75rem;
+        min-height: 40px;
+        white-space: nowrap;
+        line-height: 1;
+    }
+
+    nav .max-w-7xl {
+        flex-wrap: nowrap;
+    }
+
+    nav .max-w-7xl > a {
+        min-width: 0;
+    }
+
     #mobileMenuBtn {
         padding: var(--spacing-sm);
         min-width: 40px;
         min-height: 40px;
     }
-    
     /* --- 3.6 카드 스타일 --- */
     .card {
         max-width: 100%;
@@ -549,6 +580,10 @@ img {
    ========================================================================== */
 
 nav { z-index: 1000; }
+nav > .max-w-7xl { min-height: 64px; }
+@media (min-width: 768px) {
+    nav > .max-w-7xl { min-height: 80px; }
+}
 .modal { z-index: 9999; }
 #scrollToTop { z-index: 9998; }
 footer { position: relative; z-index: 10; }
@@ -594,4 +629,36 @@ section { position: relative; z-index: 1; }
 
 ::-webkit-scrollbar-thumb:hover {
     background: rgba(0, 0, 0, 0.3);
+}
+
+/* ==========================================================================
+   Reassurance Section Interactions
+   ========================================================================== */
+.reassurance-card {
+    transition: transform 0.28s ease, box-shadow 0.28s ease, border-color 0.28s ease;
+    will-change: transform;
+}
+
+.reassurance-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 18px 34px rgba(15, 23, 42, 0.16);
+}
+
+.reassurance-card .reassurance-icon {
+    transition: transform 0.25s ease;
+}
+
+.reassurance-card:hover .reassurance-icon {
+    transform: scale(1.08);
+}
+
+.reassurance-highlight {
+    box-shadow: 0 12px 28px rgba(15, 23, 42, 0.32);
+}
+
+@media (max-width: 768px) {
+    .reassurance-card:hover {
+        transform: none;
+        box-shadow: 0 10px 22px rgba(15, 23, 42, 0.12);
+    }
 }
