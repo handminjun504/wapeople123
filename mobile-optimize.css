@@ -76,9 +76,21 @@ html {
     scrollbar-gutter: stable;
 }
 
+html,
+body,
+button,
+input,
+select,
+textarea {
+    font-family: 'Pretendard', 'Noto Sans KR', 'Apple SD Gothic Neo', 'Malgun Gothic', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+    letter-spacing: 0;
+    word-spacing: normal;
+}
+
 body {
     overflow-x: hidden;
-    text-rendering: optimizeLegibility;
+    text-rendering: auto;
+    font-kerning: normal;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     word-wrap: break-word;
