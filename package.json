@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "description": "경리업무를잘하는청년들 웹사이트",
   "scripts": {
-    "build": "tailwindcss -i ./src/input.css -o ./dist/output.css --minify",
+    "sync:reviews": "node scripts/generate-review-data.js",
+    "build": "npm run sync:reviews && tailwindcss -i ./src/input.css -o ./dist/output.css --minify",
     "watch": "tailwindcss -i ./src/input.css -o ./dist/output.css --watch"
   },
   "keywords": [],

@@ -588,7 +588,10 @@
             <div class="flex items-center justify-between">
                 <div>
                     <span class="accent-text font-semibold tracking-wider text-sm mb-2 block">CLIENT REVIEWS</span>
-                    <h2 class="text-2xl md:text-3xl font-black text-gray-900">대표님들의 <span class="text-blue-600">생생한 후기</span></h2>
+                    <h2 class="text-2xl md:text-3xl font-black text-gray-900">
+                        대표님들의 <span class="text-blue-600">생생한 후기</span>
+                        <span class="ml-2 text-xs md:text-sm font-medium text-gray-400 align-middle">*100% 실제 후기입니다</span>
+                    </h2>
                 </div>
                 <a href="reviews.html" class="hidden md:inline-flex items-center gap-2 text-blue-600 font-bold hover:text-blue-700 transition-colors group">
                     전체 후기 보기
@@ -604,24 +607,86 @@
             }
             .review-slider {
                 display: flex;
-                animation: reviewScroll 30s linear infinite;
+                animation: reviewScroll 45s linear infinite;
                 width: max-content;
             }
             .review-slider:hover {
                 animation-play-state: paused;
             }
             .review-slide-card {
+                --index-review-card-height: 560px;
+                --index-review-body-height: 84px;
                 flex-shrink: 0;
                 width: 280px;
+                height: var(--index-review-card-height);
                 margin-right: 20px;
+                border-radius: 16px;
+                overflow: hidden;
+                border: 2px solid #f3f4f6;
+                background: #fff;
+                display: flex;
+                flex-direction: column;
                 transition: transform 0.3s, box-shadow 0.3s;
             }
             .review-slide-card:hover {
                 transform: translateY(-4px);
                 box-shadow: 0 12px 24px rgba(0,0,0,0.1);
             }
+            .review-slide-media {
+                height: calc(var(--index-review-card-height) - var(--index-review-body-height));
+                overflow: hidden;
+                background: #e5e7eb;
+                flex-shrink: 0;
+            }
+            .review-slide-image {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                object-position: center;
+                transform: scale(1.02);
+                transition: transform 0.25s ease;
+            }
+            .review-slide-card:hover .review-slide-image {
+                transform: scale(1.06);
+            }
+            .review-slide-body {
+                height: var(--index-review-body-height);
+                min-height: var(--index-review-body-height);
+                padding: 14px 16px;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+            }
+            .review-slide-title {
+                margin: 0;
+                font-size: 1rem;
+                line-height: 1.35;
+                font-weight: 700;
+                color: #111827;
+                height: 2.7em;
+                overflow: hidden;
+            }
+            .review-slide-date {
+                margin: 0;
+                font-size: 0.85rem;
+                line-height: 1.2;
+                color: #94a3b8;
+            }
             @media (min-width: 768px) {
-                .review-slide-card { width: 320px; }
+                .review-slide-card {
+                    width: 320px;
+                    --index-review-card-height: 620px;
+                    --index-review-body-height: 96px;
+                }
+            }
+            @media (max-width: 767px) {
+                .review-slide-card {
+                    --index-review-card-height: 460px;
+                    --index-review-body-height: 84px;
+                }
+                .review-slide-title {
+                    font-size: 0.92rem;
+                }
             }
         </style>
 
@@ -1805,12 +1870,10 @@
             }
         }
     </script>
+    <script src="review-data.js?v=20260313a"></script>
     <script>
-        // 고객 후기 슬라이더 - reviews.html과 동일한 데이터를 공유
-        // 후기를 추가하려면 이 배열에 객체를 추가하세요
-        var reviewData = [
-            // { image: 'reviews/photo1.jpg', title: '후기 제목', date: '2026년 1월 1일' },
-        ];
+        // 후기 썸네일 데이터는 review-data.js에서 공통 관리됩니다.
+        var reviewData = Array.isArray(window.WA_REVIEW_DATA) ? window.WA_REVIEW_DATA.slice() : [];
 
         (function() {
             var slider = document.getElementById('reviewSlider');
@@ -1822,20 +1885,21 @@
                 return;
             }
 
-            function createCard(item) {
-                return '<a href="reviews.html" class="review-slide-card block rounded-2xl overflow-hidden bg-white border-2 border-gray-100">'
-                    + '<div class="w-full h-44 bg-gray-100 overflow-hidden">'
-                    + '<img src="' + item.image + '" alt="' + item.title + '" class="w-full h-full object-cover">'
+            function createCard(item, index) {
+                var imageSrc = encodeURI(item.image).replace(/#/g, '%23');
+                return '<a href="reviews.html?review=' + index + '" class="review-slide-card">'
+                    + '<div class="review-slide-media">'
+                    + '<img src="' + imageSrc + '" alt="' + item.title + '" class="review-slide-image">'
                     + '</div>'
-                    + '<div class="p-4">'
-                    + '<h3 class="font-bold text-gray-900 text-sm mb-1 line-clamp-1">' + item.title + '</h3>'
-                    + '<p class="text-gray-400 text-xs">' + item.date + '</p>'
+                    + '<div class="review-slide-body">'
+                    + '<h3 class="review-slide-title">' + item.title + '</h3>'
+                    + '<p class="review-slide-date">' + item.date + '</p>'
                     + '</div></a>';
             }
 
             var html = '';
             for (var i = 0; i < reviewData.length; i++) {
-                html += createCard(reviewData[i]);
+                html += createCard(reviewData[i], i);
             }
             // 무한 스크롤을 위해 복제
             slider.innerHTML = html + html;
