@@ -35,8 +35,8 @@
     }
     
     body {
-        background: #F8FAFC;
-        color: #1E293B;
+        background: var(--color-bg);
+        color: var(--color-text);
         min-height: 100vh;
         overflow-x: hidden;
     }
@@ -50,15 +50,15 @@
 @layer components {
     
     /* --- 3.1 색상 유틸리티 --- */
-    .accent-text { color: #1D4ED8; }
-    .accent-bg { background: #1D4ED8; }
-    .section-gray { background: #F8FAFC; }
+    .accent-text { color: var(--color-primary-hover); }
+    .accent-bg { background: var(--color-primary-hover); }
+    .section-gray { background: var(--color-bg); }
     
     
     /* --- 3.2 카드 컴포넌트 --- */
     .card {
         background: #fff;
-        border: 1px solid #E2E8F0;
+        border: 1px solid var(--color-border);
         transition: all 0.3s ease;
         cursor: pointer;
         box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
@@ -66,7 +66,7 @@
     
     .card:hover {
         transform: translateY(-4px);
-        border-color: #2563EB;
+        border-color: var(--color-primary);
         box-shadow: 0 10px 30px rgba(37, 99, 235, 0.15);
     }
     
@@ -82,7 +82,7 @@
     .card:hover .card-arrow {
         transform: translateX(8px);
         opacity: 1;
-        color: #2563EB;
+        color: var(--color-primary);
     }
     
     .card-icon {
@@ -99,7 +99,7 @@
     .nav-glass {
         background: rgba(255, 255, 255, 0.95);
         backdrop-filter: blur(20px);
-        border-bottom: 1px solid #E2E8F0;
+        border-bottom: 1px solid var(--color-border);
         box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
     }
     
@@ -115,7 +115,7 @@
     .timeline-dot {
         width: 16px;
         height: 16px;
-        background: #2563EB;
+        background: var(--color-primary);
         border-radius: 50%;
         flex-shrink: 0;
     }

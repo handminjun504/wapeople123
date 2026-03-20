@@ -428,6 +428,12 @@ img {
     div[onclick*="showSolution"]:active {
         transform: scale(0.98);
     }
+    
+    /* --- 3.26 Reassurance 카드 모바일 --- */
+    .reassurance-card:hover {
+        transform: none;
+        box-shadow: 0 10px 22px rgba(15, 23, 42, 0.12);
+    }
 }
 
 
@@ -668,9 +674,3 @@ section { position: relative; z-index: 1; }
     box-shadow: 0 12px 28px rgba(15, 23, 42, 0.32);
 }
 
-@media (max-width: 768px) {
-    .reassurance-card:hover {
-        transform: none;
-        box-shadow: 0 10px 22px rgba(15, 23, 42, 0.12);
-    }
-}

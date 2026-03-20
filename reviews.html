@@ -11,6 +11,7 @@
     <!-- Google Ads Tag -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17745262400"></script>
     <script src="review-data.js?v=20260313a"></script>
+    <script src="case-data.js?v=20260320b"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
@@ -44,6 +45,7 @@
     <link rel="stylesheet" href="dist/output.css">
     <link rel="stylesheet" href="mobile-optimize.css?v=20260312b">
     <script src="traffic-attribution.js?v=20260312a" defer></script>
+    <script src="a11y-enhance.js" defer></script>
     <link rel="stylesheet" href="fonts/Pretendard-1.3.9/web/static/pretendard-subset.css?v=20260312c">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/fontawesome.min.css" media="print" onload="this.media='all'">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/solid.min.css" media="print" onload="this.media='all'">
@@ -93,7 +95,7 @@
                 <a href="about.html" class="px-8 py-5 text-gray-700 hover:text-blue-700 font-semibold transition-colors whitespace-nowrap">원격경리</a>
                 <div class="h-6 w-px bg-gray-300"></div>
                 <div class="relative group">
-                    <button class="flex items-center gap-2 px-3 py-2 text-gray-700 hover:text-blue-700 font-semibold transition-colors whitespace-nowrap">
+                    <button class="flex items-center gap-2 px-3 py-2 text-gray-700 hover:text-blue-700 font-semibold transition-colors whitespace-nowrap" aria-haspopup="true" aria-expanded="false">
                         <span>업종별 서비스</span>
                         <i class="fas fa-chevron-down text-sm"></i>
                     </button>
@@ -154,6 +156,12 @@
                 <span class="accent-text font-semibold tracking-wider text-sm mb-4 block">CLIENT REVIEWS</span>
                 <h1 class="text-3xl md:text-5xl font-black text-gray-900 mb-4">대표님들의 <span class="text-blue-600">생생한 후기</span></h1>
                 <p class="text-gray-500 text-base md:text-lg max-w-2xl mx-auto">경리업무를잘하는청년들과 함께한 대표님들의 이야기입니다</p>
+            </div>
+
+            <!-- 탭 전환 -->
+            <div class="flex justify-center mt-10 gap-2">
+                <button id="tabReviews" onclick="switchTab('reviews')" class="px-6 py-3 rounded-full font-bold text-base transition-all border-2 border-blue-600 bg-blue-600 text-white shadow-lg">카톡 후기</button>
+                <button id="tabCases" onclick="switchTab('cases')" class="px-6 py-3 rounded-full font-bold text-base transition-all border-2 border-gray-300 bg-white text-gray-600 hover:border-blue-400 hover:text-blue-600">도입사례</button>
             </div>
         </div>
     </section>
@@ -281,6 +289,21 @@
             </div>
         </div>
     </section>
+    <!-- 도입사례 섹션 -->
+    <section id="casesSection" class="py-12 md:py-20 bg-white hidden">
+        <div class="max-w-5xl mx-auto px-4 md:px-6">
+            <p class="text-center text-gray-500 mb-6 text-base md:text-lg">고객의 경영관리 업무에 대한 고민을 <strong class="text-blue-600">'경청'</strong>하고 해결합니다</p>
+            <p class="text-center text-sm text-gray-400 mb-10" id="caseCount"></p>
+
+            <!-- 업종 필터 -->
+            <div class="flex flex-wrap justify-center gap-2 mb-8" id="caseFilters">
+                <button onclick="filterCases('all')" class="case-filter-btn active px-4 py-2 rounded-full text-sm font-semibold border-2 transition-all" data-filter="all">전체</button>
+            </div>
+
+            <div id="caseGrid" class="space-y-4"></div>
+        </div>
+    </section>
+
     </main>
 
     <!-- Review Detail Modal -->
@@ -500,6 +523,135 @@
 
         renderCards();
         openReviewFromQuery();
+
+        // 탭 전환
+        function switchTab(tab) {
+            var reviewSection = document.querySelector('#reviewGrid').closest('section');
+            var casesSection = document.getElementById('casesSection');
+            var tabReviews = document.getElementById('tabReviews');
+            var tabCases = document.getElementById('tabCases');
+            var activeClass = 'px-6 py-3 rounded-full font-bold text-base transition-all border-2 border-blue-600 bg-blue-600 text-white shadow-lg';
+            var inactiveClass = 'px-6 py-3 rounded-full font-bold text-base transition-all border-2 border-gray-300 bg-white text-gray-600 hover:border-blue-400 hover:text-blue-600';
+
+            if (tab === 'reviews') {
+                reviewSection.classList.remove('hidden');
+                casesSection.classList.add('hidden');
+                tabReviews.className = activeClass;
+                tabCases.className = inactiveClass;
+            } else {
+                reviewSection.classList.add('hidden');
+                casesSection.classList.remove('hidden');
+                tabCases.className = activeClass;
+                tabReviews.className = inactiveClass;
+                renderCaseStudies();
+            }
+        }
+
+        // 도입사례 아코디언
+        function toggleCase(element) {
+            var detail = element.querySelector('.case-detail');
+            var icon = element.querySelector('.case-icon');
+            var isOpen = !detail.classList.contains('hidden');
+            if (isOpen) {
+                detail.classList.add('hidden');
+                icon.style.transform = 'rotate(0deg)';
+            } else {
+                detail.classList.remove('hidden');
+                icon.style.transform = 'rotate(180deg)';
+            }
+        }
+
+        // 도입사례 필터
+        var currentCaseFilter = 'all';
+        var caseDataRendered = false;
+
+        function filterCases(industry) {
+            currentCaseFilter = industry;
+            var btns = document.querySelectorAll('.case-filter-btn');
+            btns.forEach(function(btn) {
+                if (btn.getAttribute('data-filter') === industry) {
+                    btn.classList.add('active');
+                    btn.className = btn.className.replace('border-gray-300 bg-white text-gray-600', 'border-blue-600 bg-blue-600 text-white');
+                } else {
+                    btn.classList.remove('active');
+                    btn.className = btn.className.replace('border-blue-600 bg-blue-600 text-white', 'border-gray-300 bg-white text-gray-600');
+                }
+            });
+            var cards = document.querySelectorAll('.case-card');
+            var count = 0;
+            cards.forEach(function(card) {
+                if (industry === 'all' || card.getAttribute('data-industry') === industry) {
+                    card.style.display = '';
+                    count++;
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+            var countEl = document.getElementById('caseCount');
+            if (countEl) countEl.textContent = '총 ' + count + '건의 도입사례';
+        }
+
+        function renderCaseStudies() {
+            if (caseDataRendered || !window.WA_CASE_DATA) return;
+            caseDataRendered = true;
+
+            var data = window.WA_CASE_DATA;
+            var grid = document.getElementById('caseGrid');
+            var filtersEl = document.getElementById('caseFilters');
+            var countEl = document.getElementById('caseCount');
+
+            var industries = [];
+            data.forEach(function(c) {
+                if (industries.indexOf(c.industry) === -1) industries.push(c.industry);
+            });
+
+            var emojiMap = {};
+            data.forEach(function(c) { emojiMap[c.industry] = c.emoji; });
+
+            industries.forEach(function(ind) {
+                var btn = document.createElement('button');
+                btn.setAttribute('data-filter', ind);
+                btn.className = 'case-filter-btn px-4 py-2 rounded-full text-sm font-semibold border-2 border-gray-300 bg-white text-gray-600 transition-all';
+                btn.textContent = (emojiMap[ind] || '') + ' ' + ind;
+                btn.onclick = function() { filterCases(ind); };
+                filtersEl.appendChild(btn);
+            });
+
+            if (countEl) countEl.textContent = '총 ' + data.length + '건의 도입사례';
+
+            var html = '';
+            data.forEach(function(c) {
+                html += '<div class="case-card bg-white border-2 border-gray-200 rounded-2xl overflow-hidden hover:border-blue-300 hover:shadow-lg transition-all cursor-pointer" data-industry="' + c.industry + '" onclick="toggleCase(this)">';
+                html += '<div class="p-5 md:p-7">';
+                html += '<div class="flex items-start gap-4 mb-3">';
+                html += '<div class="w-11 h-11 rounded-xl bg-' + c.industryColor + '-100 flex items-center justify-center flex-shrink-0 text-xl">' + c.emoji + '</div>';
+                html += '<div class="min-w-0 flex-1">';
+                html += '<span class="text-xs font-bold text-' + c.industryColor + '-600 bg-' + c.industryColor + '-50 px-2 py-1 rounded-full">' + c.industry + '</span>';
+                html += '<h3 class="text-base md:text-lg font-bold text-gray-900 mt-1.5 leading-snug">' + c.title + '</h3>';
+                if (c.subtitle) html += '<p class="text-xs text-gray-500 mt-1">' + c.subtitle + '</p>';
+                html += '</div>';
+                html += '<i class="fas fa-chevron-down text-gray-400 ml-auto flex-shrink-0 case-icon transition-transform text-sm mt-1"></i>';
+                html += '</div>';
+                html += '<p class="text-gray-600 leading-relaxed text-sm line-clamp-2">' + c.summary + '</p>';
+                html += '</div>';
+                html += '<div class="case-detail hidden border-t border-gray-100 bg-gray-50 p-5 md:p-7">';
+                if (c.image) {
+                    var imgs = Array.isArray(c.image) ? c.image : [c.image];
+                    imgs.forEach(function(src) {
+                        html += '<div class="mb-5"><img src="' + encodeURI(src) + '" alt="' + c.title + ' 도입사례 사진" class="w-full max-h-96 object-contain rounded-xl border border-gray-200" loading="lazy"></div>';
+                    });
+                }
+                html += '<div class="prose max-w-none text-gray-700 text-sm md:text-base leading-relaxed space-y-3">' + c.content + '</div>';
+                html += '</div>';
+                html += '</div>';
+            });
+            grid.innerHTML = html;
+        }
+
+        // URL 파라미터로 탭 전환
+        if (window.location.search.indexOf('tab=cases') > -1) {
+            switchTab('cases');
+        }
     </script>
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>

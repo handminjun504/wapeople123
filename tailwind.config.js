@@ -2,13 +2,16 @@
 module.exports = {
   content: [
     "./*.html",
-    "./src/**/*.{html,js}"
+    "./src/**/*.{html,js}",
+    "./case-data.js"
   ],
   safelist: [
     'animate-fadeIn',
     'animate-fadeOut',
     'hidden',
-    'selected'
+    'selected',
+    { pattern: /bg-(amber|emerald|violet|sky|rose|blue|indigo)-(50|100)/ },
+    { pattern: /text-(amber|emerald|violet|sky|rose|blue|indigo)-600/ }
   ],
   theme: {
     extend: {

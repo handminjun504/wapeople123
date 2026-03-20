@@ -54,6 +54,7 @@
     <link rel="stylesheet" href="dist/output.css">
     <link rel="stylesheet" href="mobile-optimize.css?v=20260312b">
     <script src="traffic-attribution.js?v=20260312a" defer></script>
+    <script src="a11y-enhance.js" defer></script>
     <link rel="stylesheet" href="fonts/Pretendard-1.3.9/web/static/pretendard-subset.css?v=20260312c">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/fontawesome.min.css" media="print" onload="this.media='all'">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/solid.min.css" media="print" onload="this.media='all'">
@@ -123,7 +124,7 @@
                 
                 <!-- 업종 퀵메뉴 -->
                 <div class="relative group">
-                    <button class="flex items-center gap-2 px-3 py-2 text-gray-700 hover:text-sky-600 font-semibold transition-colors whitespace-nowrap">
+                    <button class="flex items-center gap-2 px-3 py-2 text-gray-700 hover:text-sky-600 font-semibold transition-colors whitespace-nowrap" aria-haspopup="true" aria-expanded="false">
                         <span>업종별 서비스</span>
                         <i class="fas fa-chevron-down text-sm"></i>
                     </button>
@@ -775,7 +776,7 @@
     </section>
 </main>
 
-    <button id="scrollToTop" style="position: fixed; bottom: 2rem; right: 2rem; z-index: 9999; transition: all 0.3s ease;" class="bg-blue-600 hover:bg-blue-700 text-white w-12 h-12 md:w-14 md:h-14 rounded-full shadow-lg hover:shadow-2xl opacity-0 invisible flex items-center justify-center group"><i class="fas fa-chevron-up text-xl group-hover:animate-bounce"></i></button>
+    <button id="scrollToTop" aria-label="맨 위로 스크롤" style="position: fixed; bottom: 2rem; right: 2rem; z-index: 9999; transition: all 0.3s ease;" class="bg-blue-600 hover:bg-blue-700 text-white w-12 h-12 md:w-14 md:h-14 rounded-full shadow-lg hover:shadow-2xl opacity-0 invisible flex items-center justify-center group"><i class="fas fa-chevron-up text-xl group-hover:animate-bounce"></i></button>
     <!-- Footer -->
     <footer class="bg-white py-8 border-t border-gray-200">
         <div class="max-w-6xl mx-auto px-6">
@@ -815,7 +816,7 @@
     <!-- Modal -->
     <div id="consultModal" class="modal">
         <div class="bg-white rounded-3xl p-8 md:p-12 max-w-xl w-full mx-4 relative max-h-[90vh] overflow-y-auto">
-            <button onclick="closeModal()" class="absolute top-6 right-6 text-gray-400 hover:text-gray-600 text-3xl font-light">&times;</button>
+            <button onclick="closeModal()" class="absolute top-6 right-6 text-gray-400 hover:text-gray-600 text-3xl font-light" aria-label="모달 닫기">&times;</button>
             
             <div class="text-center mb-8">
                 <div class="w-16 h-16 rounded-2xl accent-bg flex items-center justify-center mx-auto mb-4">
