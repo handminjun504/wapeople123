@@ -78,7 +78,6 @@
             industryColor: 'indigo',
             emoji: '🤝',
             subtitle: 'KB x 청년들 시너지 기대!!',
-            image: 'whogi/collab-kb.webp',
             summary: 'KB영통종합금융센터와 청년들이 함께 에너지를 모으기로 하였습니다.',
             content: '<p>KB영통종합금융센터와 청년들이 함께 에너지를 모으기로 하였습니다. 서로 win win 하는 전략으로 고객분들께 더 유익한 서비스를 제공하기 위해 오늘 미팅을 진행하였습니다.</p><p><strong>앞으로 벌어질 일들이 굉장히 기대가 됩니다!!</strong></p>'
         },
