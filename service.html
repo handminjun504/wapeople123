@@ -16,6 +16,23 @@
       gtag('js', new Date());
       gtag('config', 'AW-17745262400');
     </script>
+    <!-- Event snippet for 견적 요청 conversion -->
+    <script>
+    function gtag_report_conversion(url) {
+        var callback = function () {
+            if (typeof(url) != 'undefined') {
+                window.location = url;
+            }
+        };
+        gtag('event', 'conversion', {
+            'send_to': 'AW-17745262400/CarCCLvL6v0bEMDuzI1C',
+            'value': 1.0,
+            'currency': 'KRW',
+            'event_callback': callback
+        });
+        return false;
+    }
+    </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
@@ -1121,7 +1138,12 @@
                     
                     // form submit
                     form.submit();
-                    
+
+                    // GTM dataLayer push (form_submit 트리거가 GA4 + Google Ads 전환 + 리마케팅을 통합 발사)
+                    // alert 직전이 아니라 전송 직후 발사하여 페이지 이탈로 인한 비콘 손실 방지
+                    window.dataLayer = window.dataLayer || [];
+                    window.dataLayer.push({'event': 'form_submit'});
+
                     // 성공 처리
                     setTimeout(function() {
                         // 체크박스 복원 (있는 경우만)
@@ -1132,16 +1154,6 @@
                             form.removeChild(concernsInput);
                         }
                         document.body.removeChild(iframe);
-                        
-                        // GTM 전환 추적
-                        window.dataLayer = window.dataLayer || [];
-                        window.dataLayer.push({'event': 'form_submit'});
-                        // Google Ads 견적 요청 전환
-                        gtag('event', 'conversion', {
-                            'send_to': 'AW-17745262400/CarCCLvL6v0bEMDuzI1C',
-                            'value': 1.0,
-                            'currency': 'KRW'
-                        });
 
                         alert('✅ 신청이 완료되었습니다!\n\n영업시간 내 문의 시, 30분 이내로 맞춤 솔루션을 안내해드리겠습니다.\n감사합니다!');
                         form.reset();

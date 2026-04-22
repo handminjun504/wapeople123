@@ -16,6 +16,23 @@
       gtag('js', new Date());
       gtag('config', 'AW-17745262400');
     </script>
+    <!-- Event snippet for 견적 요청 conversion -->
+    <script>
+    function gtag_report_conversion(url) {
+        var callback = function () {
+            if (typeof(url) != 'undefined') {
+                window.location = url;
+            }
+        };
+        gtag('event', 'conversion', {
+            'send_to': 'AW-17745262400/CarCCLvL6v0bEMDuzI1C',
+            'value': 1.0,
+            'currency': 'KRW',
+            'event_callback': callback
+        });
+        return false;
+    }
+    </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
@@ -975,7 +992,7 @@
                         placeholder="예) 경리 직원이 자주 바뀌어서 업무 공백이 생깁니다&#10;예) 미수금 관리가 안 되어서 자금 흐름이 막혔습니다"></textarea>
                 </div>
                 
-                <button type="submit" 
+                <button type="submit"
                     class="w-full accent-bg text-white font-bold text-lg py-4 rounded-xl hover:bg-blue-700 transition-all">
                     무료 상담 신청하기
                 </button>
@@ -1172,15 +1189,9 @@
                         mode: 'no-cors'
                     })
                     .then(function() {
-                        // GTM 전환 추적
+                        // GTM dataLayer push (form_submit 트리거가 GA4 + Google Ads 전환 + 리마케팅을 통합 발사)
                         window.dataLayer = window.dataLayer || [];
                         window.dataLayer.push({'event': 'form_submit'});
-                        // Google Ads 견적 요청 전환
-                        gtag('event', 'conversion', {
-                            'send_to': 'AW-17745262400/CarCCLvL6v0bEMDuzI1C',
-                            'value': 1.0,
-                            'currency': 'KRW'
-                        });
 
                         alert('✅ 상담 신청이 완료되었습니다!\n\n영업시간 내 문의 시, 30분 이내로 연락드리겠습니다.\n감사합니다!');
                         form.reset();
@@ -1190,15 +1201,9 @@
                     })
                     .catch(function(error) {
                         console.error('전송 오류:', error);
-                        // GTM 전환 추적
+                        // GTM dataLayer push (no-cors 모드는 .catch에도 도달하지만 실제로는 전송 성공인 경우가 많음)
                         window.dataLayer = window.dataLayer || [];
                         window.dataLayer.push({'event': 'form_submit'});
-                        // Google Ads 견적 요청 전환
-                        gtag('event', 'conversion', {
-                            'send_to': 'AW-17745262400/CarCCLvL6v0bEMDuzI1C',
-                            'value': 1.0,
-                            'currency': 'KRW'
-                        });
 
                         alert('✅ 상담 신청이 완료되었습니다!\n\n영업시간 내 문의 시, 30분 이내로 연락드리겠습니다.\n감사합니다!');
                         form.reset();
