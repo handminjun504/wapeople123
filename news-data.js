@@ -15,7 +15,7 @@
     //   cover     : (선택) 썸네일 이미지 경로 — 미지정 시 카테고리별 기본 그라디언트 사용
     //   url       : 'news/{slug}.html'
     window.WA_NEWS_DATA = [
-        {
+            {
         slug: '2026-05-21',
         title: '법인세가 예상보다 많이 나왔다면, 경리업무 문제일 수 있습니다',
         category: '경리뉴스',
