@@ -1150,7 +1150,14 @@ ${body}
 // ─── 이스케이프 헬퍼 ─────────────────────────────────────────────────────────
 function escHtml(s) { return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
 function escAttr(s) { return String(s).replace(/&/g,'&amp;').replace(/"/g,'&quot;'); }
-function escJson(s) { return String(s).replace(/\\/g,'\\\\').replace(/"/g,'\\"'); }
+function escJson(s) {
+    return String(s)
+        .replace(/\\/g, '\\\\')
+        .replace(/'/g, "\\'")
+        .replace(/"/g, '\\"')
+        .replace(/\r?\n/g, ' ')   // 개행 → 공백 (JS 문자열 리터럴 파괴 방지)
+        .replace(/\t/g, ' ');
+}
 
 // ─── 날짜 표시 형식 변환 ──────────────────────────────────────────────────────
 function toDisplayDate(iso) {
