@@ -56,7 +56,7 @@
                     onkeydown="if(event.key==='Enter') doSetup()">
             </div>
             <div id="setupError" class="hidden text-sm text-red-600 bg-red-50 rounded-lg px-3 py-2"></div>
-            <button onclick="doSetup()"
+            <button id="setupBtn" onclick="doSetup()"
                 class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-3 px-4 rounded-xl transition-colors text-sm">
                 설정 완료
             </button>
@@ -535,9 +535,14 @@ function recordFailure() {
 
 // ─── 최초 설정 ────────────────────────────────────────────────────────────────
 async function doSetup() {
+    const btn     = document.getElementById('setupBtn');
+    if (btn.disabled) return;   // 중복 실행 방지
+
     const pw      = document.getElementById('setupPw').value;
     const confirm = document.getElementById('setupPwConfirm').value;
     const errEl   = document.getElementById('setupError');
+
+    errEl.classList.add('hidden');
 
     if (pw.length < 8) {
         errEl.textContent = '비밀번호는 8자 이상이어야 합니다.';
@@ -548,13 +553,29 @@ async function doSetup() {
         errEl.classList.remove('hidden'); return;
     }
 
-    const saltHex    = buf2hex(randomBytes(32));
-    const verifier   = await hashPassword(pw, saltHex);
-    ls('pwSalt',     saltHex);
-    ls('pwVerifier', verifier);
+    // 로딩 상태 (PBKDF2가 1~2초 걸림)
+    btn.disabled = true;
+    btn.textContent = '처리 중...';
+    btn.classList.add('opacity-60', 'cursor-not-allowed');
 
-    document.getElementById('setupScreen').classList.add('hidden');
-    document.getElementById('loginScreen').classList.remove('hidden');
+    try {
+        const saltHex  = buf2hex(randomBytes(32));
+        const verifier = await hashPassword(pw, saltHex);
+        ls('pwSalt',     saltHex);
+        ls('pwVerifier', verifier);
+        // 저장 확인 후 페이지 리로드 → DOMContentLoaded에서 로그인 화면 표시
+        if (ls('pwSalt')) {
+            location.reload();
+        } else {
+            throw new Error('저장 실패: 브라우저의 localStorage가 차단돼 있을 수 있습니다.');
+        }
+    } catch(e) {
+        errEl.textContent = '❌ ' + e.message;
+        errEl.classList.remove('hidden');
+        btn.disabled = false;
+        btn.textContent = '설정 완료';
+        btn.classList.remove('opacity-60', 'cursor-not-allowed');
+    }
 }
 
 // ─── 로그인 ──────────────────────────────────────────────────────────────────
