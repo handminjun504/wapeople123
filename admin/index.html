@@ -784,7 +784,7 @@ const SPECIAL_HTML = {
     cta: `<div style="background:#eff6ff;border:1px solid #bfdbfe;border-radius:1rem;padding:1.5rem;text-align:center;margin:2rem 0;">
   <p style="font-weight:700;font-size:1.1rem;margin-bottom:0.5rem;">경리 고민, 무료로 상담받아보세요</p>
   <p style="color:#6b7280;font-size:0.9rem;margin-bottom:1rem;">전문 경리팀이 직접 진단해드립니다.</p>
-  <a href="https://wapeople.kr/index.html#cta" style="display:inline-block;background:#2563eb;color:white;font-weight:700;padding:0.75rem 2rem;border-radius:0.75rem;text-decoration:none;">무료 상담 신청</a>
+  <button onclick="openModal()" style="display:inline-block;background:#2563eb;color:white;font-weight:700;padding:0.75rem 2rem;border-radius:0.75rem;border:none;cursor:pointer;">무료 상담 신청</button>
 </div>`,
 };
 
@@ -983,6 +983,16 @@ async function ghPutFile(path, content, message, sha) {
         method: 'PUT',
         headers: await ghHeaders(),
         body: JSON.stringify(body)
+    });
+    return res;
+}
+
+async function ghDeleteFile(path, sha, message) {
+    const branch = ls('ghBranch') || DEFAULT_GH_BRANCH;
+    const res = await fetch(`${ghBase()}/${path}`, {
+        method: 'DELETE',
+        headers: await ghHeaders(),
+        body: JSON.stringify({ message, sha, branch })
     });
     return res;
 }
@@ -1362,6 +1372,10 @@ async function loadPostList() {
                         class="px-3 py-1.5 bg-gray-50 hover:bg-gray-100 text-gray-600 font-semibold text-xs rounded-lg transition-colors">
                         🔗 보기
                     </a>
+                    <button onclick="deletePost('${post.slug}')"
+                        class="px-3 py-1.5 bg-red-50 hover:bg-red-100 text-red-600 font-semibold text-xs rounded-lg transition-colors">
+                        🗑️ 삭제
+                    </button>
                 </div>
             `;
             items.appendChild(card);
@@ -1420,6 +1434,62 @@ async function loadPostForEdit(slug) {
 
     } catch(e) {
         showAlert('❌ 불러오기 실패: ' + e.message, 'error');
+    }
+}
+
+// ─── 글 삭제 ──────────────────────────────────────────────────────────────────
+async function deletePost(slug) {
+    if (!confirm(`"${slug}" 글을 삭제하시겠어요?\n\n⚠️ 이 작업은 되돌릴 수 없습니다.`)) return;
+
+    const listError = document.getElementById('listError');
+    listError.classList.add('hidden');
+
+    try {
+        // 1. HTML 파일 삭제
+        const htmlFile = await ghGetFile(`news/${slug}.html`);
+        if (!htmlFile) throw new Error(`"${slug}.html" 파일을 찾을 수 없습니다.`);
+
+        const htmlRes = await ghDeleteFile(
+            `news/${slug}.html`,
+            htmlFile.sha,
+            `[경리소식] 삭제: ${slug}`
+        );
+        if (!htmlRes.ok) {
+            const err = await htmlRes.json();
+            throw new Error('HTML 파일 삭제 실패: ' + (err.message || htmlRes.status));
+        }
+
+        // 2. news-data.js에서 항목 제거
+        const dataFile = await ghGetFile('news-data.js');
+        if (dataFile) {
+            const currentContent = decodeURIComponent(escape(atob(dataFile.content.replace(/\n/g,''))));
+            const slugEsc = slug.replace(/[-]/g, '\\-');
+            const entryRegex = new RegExp(`\\s*\\{[^{}]*?slug:\\s*'${slugEsc}'[^{}]*?\\},?`, 's');
+            const updatedContent = currentContent.replace(entryRegex, '');
+
+            const dataRes = await ghPutFile(
+                'news-data.js',
+                updatedContent,
+                `[경리소식] news-data.js에서 ${slug} 항목 제거`,
+                dataFile.sha
+            );
+            if (!dataRes.ok) {
+                const err = await dataRes.json();
+                throw new Error('news-data.js 업데이트 실패: ' + (err.message || dataRes.status));
+            }
+        }
+
+        // 3. 수정 모드였으면 해제
+        if (editingSlug === slug) cancelEdit();
+
+        // 4. 목록 새로고침
+        alert(`✅ "${slug}" 글이 삭제되었습니다.`);
+        loadPostList();
+
+    } catch(e) {
+        listError.classList.remove('hidden');
+        listError.textContent = '삭제 오류: ' + e.message;
+        console.error(e);
     }
 }
 
