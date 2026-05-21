@@ -402,6 +402,15 @@ const DEFAULT_GH_BRANCH = 'master';
 let SESSION_KEY = null;   // CryptoKey: PAT 복호화용 (로그인 시에만 메모리에 존재)
 
 // ─── Quill 에디터 초기화 ──────────────────────────────────────────────────────
+// Quill 커스텀 Blot: <hr> 구분선
+(function() {
+    const BlockEmbed = Quill.import('blots/block/embed');
+    class DividerBlot extends BlockEmbed {}
+    DividerBlot.blotName = 'divider';
+    DividerBlot.tagName  = 'hr';
+    Quill.register(DividerBlot);
+})();
+
 let quill;
 function initQuill() {
     const Font = Quill.import('formats/font');
@@ -815,6 +824,13 @@ function insertSpecial(type) {
         if (!url) return;
         const range = quill.getSelection(true);
         quill.insertEmbed(range ? range.index : quill.getLength(), 'image', url);
+        return;
+    }
+    if (type === 'divider') {
+        const range = quill.getSelection(true);
+        const idx = range ? range.index : quill.getLength();
+        quill.insertEmbed(idx, 'divider', true, 'user');
+        quill.setSelection(idx + 1, 0, 'user');
         return;
     }
     const html = SPECIAL_HTML[type];
