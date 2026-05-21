@@ -32,4 +32,10 @@
         event.preventDefault();
         target.click();
     });
+
+    // 카피라이트 연도 자동 갱신: <span class="copyright-year">YYYY</span>
+    var currentYear = new Date().getFullYear();
+    document.querySelectorAll('.copyright-year').forEach(function (el) {
+        el.textContent = currentYear;
+    });
 })();

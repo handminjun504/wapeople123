@@ -32,8 +32,37 @@
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://wapeople.kr/reviews">
     <meta property="og:image" content="https://wapeople.kr/logo.png?v=20260310b">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
     <meta property="og:site_name" content="경리업무를잘하는청년들">
     <meta property="og:locale" content="ko_KR">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="고객 후기 - 경리업무를잘하는청년들">
+    <meta name="twitter:description" content="경리업무를잘하는청년들과 함께한 대표님들의 생생한 후기.">
+    <meta name="twitter:image" content="https://wapeople.kr/logo.png?v=20260310b">
+
+    <!-- 빵부스러기 구조화 데이터 -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "홈",
+          "item": "https://wapeople.kr/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "고객 후기",
+          "item": "https://wapeople.kr/reviews"
+        }
+      ]
+    }
+    </script>
 
     <link rel="icon" type="image/x-icon" href="/favicon/favicon.ico">
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png">
@@ -101,17 +130,17 @@
                     </button>
                     <div class="absolute top-full left-0 mt-2 w-48 bg-white rounded-xl shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 border border-gray-100">
                         <div class="py-2">
-                            <a href="service.html" class="flex items-center gap-3 px-4 py-3 hover:bg-blue-50 transition-colors"><span class="text-xl">💼</span><span class="text-gray-700 font-medium">서비스업</span></a>
-                            <a href="manufacturing.html" class="flex items-center gap-3 px-4 py-3 hover:bg-emerald-50 transition-colors"><span class="text-xl">🏭</span><span class="text-gray-700 font-medium">제조업</span></a>
-                            <a href="construction.html" class="flex items-center gap-3 px-4 py-3 hover:bg-amber-50 transition-colors"><span class="text-xl">🏗️</span><span class="text-gray-700 font-medium">건설업</span></a>
-                            <a href="wholesale.html" class="flex items-center gap-3 px-4 py-3 hover:bg-sky-50 transition-colors"><span class="text-xl">📦</span><span class="text-gray-700 font-medium">도소매업</span></a>
-                            <a href="restaurant.html" class="flex items-center gap-3 px-4 py-3 hover:bg-rose-50 transition-colors"><span class="text-xl">🍽️</span><span class="text-gray-700 font-medium">음식점업</span></a>
-                            <a href="ecommerce.html" class="flex items-center gap-3 px-4 py-3 hover:bg-violet-50 transition-colors"><span class="text-xl">🛒</span><span class="text-gray-700 font-medium">쇼핑몰업</span></a>
+                            <a href="service.html" class="flex items-center gap-3 px-4 py-3 hover:bg-blue-50 transition-colors"><img src="assets/industry/icons/service.svg" alt="" width="24" height="24" class="w-6 h-6 rounded-xl object-contain flex-shrink-0"><span class="text-gray-700 font-medium">서비스업</span></a>
+                            <a href="manufacturing.html" class="flex items-center gap-3 px-4 py-3 hover:bg-emerald-50 transition-colors"><img src="assets/industry/icons/manufacturing.svg" alt="" width="24" height="24" class="w-6 h-6 rounded-xl object-contain flex-shrink-0"><span class="text-gray-700 font-medium">제조업</span></a>
+                            <a href="construction.html" class="flex items-center gap-3 px-4 py-3 hover:bg-amber-50 transition-colors"><img src="assets/industry/icons/construction.svg" alt="" width="24" height="24" class="w-6 h-6 rounded-xl object-contain flex-shrink-0"><span class="text-gray-700 font-medium">건설업</span></a>
+                            <a href="wholesale.html" class="flex items-center gap-3 px-4 py-3 hover:bg-sky-50 transition-colors"><img src="assets/industry/icons/wholesale.svg" alt="" width="24" height="24" class="w-6 h-6 rounded-xl object-contain flex-shrink-0"><span class="text-gray-700 font-medium">도소매업</span></a>
+                            <a href="restaurant.html" class="flex items-center gap-3 px-4 py-3 hover:bg-rose-50 transition-colors"><img src="assets/industry/icons/restaurant.svg" alt="" width="24" height="24" class="w-6 h-6 rounded-xl object-contain flex-shrink-0"><span class="text-gray-700 font-medium">음식점업</span></a>
+                            <a href="ecommerce.html" class="flex items-center gap-3 px-4 py-3 hover:bg-violet-50 transition-colors"><img src="assets/industry/icons/ecommerce.svg" alt="" width="24" height="24" class="w-6 h-6 rounded-xl object-contain flex-shrink-0"><span class="text-gray-700 font-medium">쇼핑몰업</span></a>
                         </div>
                     </div>
                 </div>
                 <div class="h-6 w-px bg-gray-300"></div>
-                <a href="location.html" class="px-3 py-2 text-gray-700 hover:text-blue-700 font-semibold transition-colors whitespace-nowrap">찾아오실 때</a>
+                <a href="location.html" class="px-3 py-2 text-gray-700 hover:text-blue-700 font-semibold transition-colors whitespace-nowrap">오시는 길</a>
                 <div class="h-6 w-px bg-gray-300"></div>
                 <a href="reviews.html" class="px-3 py-2 text-blue-700 font-semibold whitespace-nowrap">고객 후기</a>
                 <div class="h-6 w-px bg-gray-300"></div>
@@ -132,15 +161,15 @@
                 <a href="about.html" class="block py-3 px-4 text-gray-700 hover:bg-blue-50 hover:text-blue-700 font-semibold rounded-lg transition-colors">원격경리</a>
                 <div class="border-t border-gray-100 mt-2 pt-2">
                     <p class="px-4 py-2 text-sm font-bold text-gray-500">업종별 서비스</p>
-                    <a href="service.html" class="flex items-center gap-3 py-3 px-4 text-gray-700 hover:bg-blue-50 rounded-lg transition-colors"><span class="text-xl">💼</span><span class="font-medium">서비스업</span></a>
-                    <a href="manufacturing.html" class="flex items-center gap-3 py-3 px-4 text-gray-700 hover:bg-emerald-50 rounded-lg transition-colors"><span class="text-xl">🏭</span><span class="font-medium">제조업</span></a>
-                    <a href="construction.html" class="flex items-center gap-3 py-3 px-4 text-gray-700 hover:bg-amber-50 rounded-lg transition-colors"><span class="text-xl">🏗️</span><span class="font-medium">건설업</span></a>
-                    <a href="wholesale.html" class="flex items-center gap-3 py-3 px-4 text-gray-700 hover:bg-sky-50 rounded-lg transition-colors"><span class="text-xl">📦</span><span class="font-medium">도소매업</span></a>
-                    <a href="restaurant.html" class="flex items-center gap-3 py-3 px-4 text-gray-700 hover:bg-rose-50 rounded-lg transition-colors"><span class="text-xl">🍽️</span><span class="font-medium">음식점업</span></a>
-                    <a href="ecommerce.html" class="flex items-center gap-3 py-3 px-4 text-gray-700 hover:bg-violet-50 rounded-lg transition-colors"><span class="text-xl">🛒</span><span class="font-medium">쇼핑몰업</span></a>
+                    <a href="service.html" class="flex items-center gap-3 py-3 px-4 text-gray-700 hover:bg-blue-50 rounded-lg transition-colors"><img src="assets/industry/icons/service.svg" alt="" width="24" height="24" class="w-6 h-6 rounded-xl object-contain flex-shrink-0"><span class="font-medium">서비스업</span></a>
+                    <a href="manufacturing.html" class="flex items-center gap-3 py-3 px-4 text-gray-700 hover:bg-emerald-50 rounded-lg transition-colors"><img src="assets/industry/icons/manufacturing.svg" alt="" width="24" height="24" class="w-6 h-6 rounded-xl object-contain flex-shrink-0"><span class="font-medium">제조업</span></a>
+                    <a href="construction.html" class="flex items-center gap-3 py-3 px-4 text-gray-700 hover:bg-amber-50 rounded-lg transition-colors"><img src="assets/industry/icons/construction.svg" alt="" width="24" height="24" class="w-6 h-6 rounded-xl object-contain flex-shrink-0"><span class="font-medium">건설업</span></a>
+                    <a href="wholesale.html" class="flex items-center gap-3 py-3 px-4 text-gray-700 hover:bg-sky-50 rounded-lg transition-colors"><img src="assets/industry/icons/wholesale.svg" alt="" width="24" height="24" class="w-6 h-6 rounded-xl object-contain flex-shrink-0"><span class="font-medium">도소매업</span></a>
+                    <a href="restaurant.html" class="flex items-center gap-3 py-3 px-4 text-gray-700 hover:bg-rose-50 rounded-lg transition-colors"><img src="assets/industry/icons/restaurant.svg" alt="" width="24" height="24" class="w-6 h-6 rounded-xl object-contain flex-shrink-0"><span class="font-medium">음식점업</span></a>
+                    <a href="ecommerce.html" class="flex items-center gap-3 py-3 px-4 text-gray-700 hover:bg-violet-50 rounded-lg transition-colors"><img src="assets/industry/icons/ecommerce.svg" alt="" width="24" height="24" class="w-6 h-6 rounded-xl object-contain flex-shrink-0"><span class="font-medium">쇼핑몰업</span></a>
                 </div>
                 <div class="border-t border-gray-100 mt-2 pt-2">
-                    <a href="location.html" class="block py-3 px-4 text-gray-700 hover:bg-blue-50 hover:text-blue-700 font-semibold rounded-lg transition-colors">찾아오실 때</a>
+                    <a href="location.html" class="block py-3 px-4 text-gray-700 hover:bg-blue-50 hover:text-blue-700 font-semibold rounded-lg transition-colors">오시는 길</a>
                     <a href="reviews.html" class="block py-3 px-4 text-blue-700 font-semibold rounded-lg">고객 후기</a>
                     <a href="faq.html" class="block py-3 px-4 text-gray-700 hover:bg-blue-50 hover:text-blue-700 font-semibold rounded-lg transition-colors">FAQ</a>
                 </div>
@@ -153,7 +182,7 @@
     <section class="pt-28 md:pt-36 pb-12 md:pb-16 bg-gray-50">
         <div class="max-w-7xl mx-auto px-4 md:px-6">
             <div class="text-center">
-                <span class="accent-text font-semibold tracking-wider text-sm mb-4 block">CLIENT REVIEWS</span>
+                <span class="accent-text font-semibold tracking-wider text-sm mb-4 block">고객 후기</span>
                 <h1 class="text-3xl md:text-5xl font-black text-gray-900 mb-4">대표님들의 <span class="text-blue-600">생생한 후기</span></h1>
                 <p class="text-gray-500 text-base md:text-lg max-w-2xl mx-auto">경리업무를잘하는청년들과 함께한 대표님들의 이야기입니다</p>
             </div>
@@ -350,7 +379,7 @@
                 </div>
             </div>
             <div class="border-t border-gray-200 mt-6 pt-6 text-center text-gray-400 text-sm">
-                <p>&copy; 2025 경리업무를잘하는청년들. All rights reserved.</p>
+                <p>&copy; <span class="copyright-year">2026</span> 경리업무를잘하는청년들. All rights reserved.</p>
             </div>
         </div>
     </footer>

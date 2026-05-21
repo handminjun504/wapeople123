@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-labelledby="title desc">
+  <title id="title">제조업 아이콘</title>
+  <desc id="desc">공장과 생산 라인을 상징하는 제조업 아이콘</desc>
+  <rect width="64" height="64" rx="18" fill="#ecfdf5"/>
+  <path d="M12 44V27l13 7V24l13 8V21h8v23" fill="#10b981"/>
+  <rect x="12" y="44" width="40" height="7" rx="2" fill="#047857"/>
+  <rect x="18" y="38" width="5" height="6" rx="1" fill="#d1fae5"/>
+  <rect x="28" y="38" width="5" height="6" rx="1" fill="#d1fae5"/>
+  <rect x="38" y="38" width="5" height="6" rx="1" fill="#d1fae5"/>
+  <circle cx="47" cy="19" r="5" fill="#6ee7b7"/>
+  <path d="M46 11v5m0 6v5m-8-8h5m6 0h5" stroke="#047857" stroke-width="2" stroke-linecap="round"/>
+</svg>

@@ -38,7 +38,7 @@
     
     <!-- 기본 SEO -->
     <title>전체 서비스 안내 - 경리업무를잘하는청년들 | 원격 경리 서비스</title>
-    <meta name="description" content="모든 업종 대응 가능한 원격 경리 서비스 전체 안내. 월별 손익 보고서, 자금 흐름 관리, 세금신고 준비 자료 제공까지. 1500+ 기업이 선택한 이유를 확인하고 경리 걱정 없이 사업에 집중하세요.">
+    <meta name="description" content="모든 업종 대응 가능한 원격 경리 서비스 전체 안내. 월별 손익 보고서, 자금 흐름 관리, 세금신고 준비 자료 제공까지. 1,500+ 기업이 선택한 이유를 확인하고 경리 걱정 없이 사업에 집중하세요.">
     <meta name="keywords" content="경리서비스, 원격경리서비스, 경리대행서비스, 경리아웃소싱, 경리 아웃소싱, 손익보고서, 자금관리, 경리업무대행, 경리대행업체">
     <meta name="robots" content="index, follow">
     <meta name="naver-site-verification" content="aefffa7a6d4cad21b90328c862b8ce5725188412">
@@ -50,6 +50,8 @@
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://wapeople.kr/all-service">
     <meta property="og:image" content="https://wapeople.kr/logo.png?v=20260310b">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
     <meta property="og:site_name" content="경리업무를잘하는청년들">
     <meta property="og:locale" content="ko_KR">
     
@@ -58,6 +60,28 @@
     <meta name="twitter:title" content="전체 서비스 안내 - 경리업무를잘하는청년들">
     <meta name="twitter:description" content="모든 업종을 위한 원격 경리 서비스. 월별 손익 보고서, 자금 관리까지.">
     <meta name="twitter:image" content="https://wapeople.kr/logo.png?v=20260310b">
+
+    <!-- 빵부스러기 구조화 데이터 -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "홈",
+          "item": "https://wapeople.kr/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "전체 서비스",
+          "item": "https://wapeople.kr/all-service"
+        }
+      ]
+    }
+    </script>
     
     
     <link rel="icon" type="image/x-icon" href="/favicon/favicon.ico">
@@ -149,28 +173,28 @@
                     <div class="absolute top-full left-0 mt-2 w-48 bg-white rounded-xl shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 border border-gray-100">
                         <div class="py-2">
                             <a href="service.html" class="flex items-center gap-3 px-4 py-3 hover:bg-blue-50 transition-colors">
-                                <span class="text-xl">💼</span>
+                                <img src="assets/industry/icons/service.svg" alt="" width="24" height="24" class="w-6 h-6 rounded-xl object-contain flex-shrink-0">
                                 <span class="text-gray-700 font-medium">서비스업</span>
                             </a>
                             <a href="manufacturing.html" class="flex items-center gap-3 px-4 py-3 hover:bg-emerald-50 transition-colors">
-                                <span class="text-xl">🏭</span>
+                                <img src="assets/industry/icons/manufacturing.svg" alt="" width="24" height="24" class="w-6 h-6 rounded-xl object-contain flex-shrink-0">
                                 <span class="text-gray-700 font-medium">제조업</span>
                             </a>
                             <a href="construction.html" class="flex items-center gap-3 px-4 py-3 hover:bg-amber-50 transition-colors">
-                                <span class="text-xl">🏗️</span>
+                                <img src="assets/industry/icons/construction.svg" alt="" width="24" height="24" class="w-6 h-6 rounded-xl object-contain flex-shrink-0">
                                 <span class="text-gray-700 font-medium">건설업</span>
                             </a>
                             <a href="wholesale.html" class="flex items-center gap-3 px-4 py-3 hover:bg-sky-50 transition-colors">
-                                <span class="text-xl">📦</span>
+                                <img src="assets/industry/icons/wholesale.svg" alt="" width="24" height="24" class="w-6 h-6 rounded-xl object-contain flex-shrink-0">
                                 <span class="text-gray-700 font-medium">도소매업</span>
                             </a>
                             <a href="restaurant.html" class="flex items-center gap-3 px-4 py-3 hover:bg-rose-50 transition-colors">
-                                <span class="text-xl">🍽️</span>
-                                <span class="text-gray-700 font-medium">음식점</span>
+                                <img src="assets/industry/icons/restaurant.svg" alt="" width="24" height="24" class="w-6 h-6 rounded-xl object-contain flex-shrink-0">
+                                <span class="text-gray-700 font-medium">음식점업</span>
                             </a>
                             <a href="ecommerce.html" class="flex items-center gap-3 px-4 py-3 hover:bg-violet-50 transition-colors">
-                                <span class="text-xl">🛒</span>
-                                <span class="text-gray-700 font-medium">쇼핑몰</span>
+                                <img src="assets/industry/icons/ecommerce.svg" alt="" width="24" height="24" class="w-6 h-6 rounded-xl object-contain flex-shrink-0">
+                                <span class="text-gray-700 font-medium">쇼핑몰업</span>
                             </a>
                         </div>
                     </div>
@@ -179,9 +203,9 @@
                 <!-- 구분선 -->
                 <div class="h-6 w-px bg-gray-300"></div>
                 
-                <!-- 찾아오실 때 -->
+                <!-- 오시는 길 -->
                 <a href="location.html" class="px-3 py-2 text-gray-700 hover:text-blue-700 font-semibold transition-colors whitespace-nowrap">
-                    찾아오실 때
+                    오시는 길
                 </a>
                 
                 <!-- 구분선 -->
@@ -227,34 +251,34 @@
                 <div class="border-t border-gray-100 mt-2 pt-2">
                     <p class="px-4 py-2 text-sm font-bold text-gray-500">업종별 서비스</p>
                     <a href="service.html" class="flex items-center gap-3 py-3 px-4 text-gray-700 hover:bg-blue-50 rounded-lg transition-colors">
-                        <span class="text-xl">💼</span>
+                        <img src="assets/industry/icons/service.svg" alt="" width="24" height="24" class="w-6 h-6 rounded-xl object-contain flex-shrink-0">
                         <span class="font-medium">서비스업</span>
                     </a>
                     <a href="manufacturing.html" class="flex items-center gap-3 py-3 px-4 text-gray-700 hover:bg-emerald-50 rounded-lg transition-colors">
-                        <span class="text-xl">🏭</span>
+                        <img src="assets/industry/icons/manufacturing.svg" alt="" width="24" height="24" class="w-6 h-6 rounded-xl object-contain flex-shrink-0">
                         <span class="font-medium">제조업</span>
                     </a>
                     <a href="construction.html" class="flex items-center gap-3 py-3 px-4 text-gray-700 hover:bg-amber-50 rounded-lg transition-colors">
-                        <span class="text-xl">🏗️</span>
+                        <img src="assets/industry/icons/construction.svg" alt="" width="24" height="24" class="w-6 h-6 rounded-xl object-contain flex-shrink-0">
                         <span class="font-medium">건설업</span>
                     </a>
                     <a href="wholesale.html" class="flex items-center gap-3 py-3 px-4 text-gray-700 hover:bg-sky-50 rounded-lg transition-colors">
-                        <span class="text-xl">📦</span>
+                        <img src="assets/industry/icons/wholesale.svg" alt="" width="24" height="24" class="w-6 h-6 rounded-xl object-contain flex-shrink-0">
                         <span class="font-medium">도소매업</span>
                     </a>
                     <a href="restaurant.html" class="flex items-center gap-3 py-3 px-4 text-gray-700 hover:bg-rose-50 rounded-lg transition-colors">
-                        <span class="text-xl">🍽️</span>
-                        <span class="font-medium">음식점</span>
+                        <img src="assets/industry/icons/restaurant.svg" alt="" width="24" height="24" class="w-6 h-6 rounded-xl object-contain flex-shrink-0">
+                        <span class="font-medium">음식점업</span>
                     </a>
                     <a href="ecommerce.html" class="flex items-center gap-3 py-3 px-4 text-gray-700 hover:bg-violet-50 rounded-lg transition-colors">
-                        <span class="text-xl">🛒</span>
-                        <span class="font-medium">쇼핑몰</span>
+                        <img src="assets/industry/icons/ecommerce.svg" alt="" width="24" height="24" class="w-6 h-6 rounded-xl object-contain flex-shrink-0">
+                        <span class="font-medium">쇼핑몰업</span>
                     </a>
                 </div>
                 
                 <div class="border-t border-gray-100 mt-2 pt-2">
                     <a href="location.html" class="block py-3 px-4 text-gray-700 hover:bg-blue-50 hover:text-blue-700 font-semibold rounded-lg transition-colors">
-                        찾아오실 때
+                        오시는 길
                     </a>
                     <a href="reviews.html" class="block py-3 px-4 text-gray-700 hover:bg-blue-50 hover:text-blue-700 font-semibold rounded-lg transition-colors">
                         고객후기
@@ -310,7 +334,7 @@
             <div class="max-w-4xl">
                 <div data-aos="fade-up" data-aos-duration="800" class="inline-flex items-center gap-2 bg-white border-2 border-blue-300 px-4 py-2 rounded-full mb-8 shadow-sm">
                     <span class="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span>
-                    <span class="text-sm text-gray-600">현재 1500+ 기업이 함께하고 있습니다</span>
+                    <span class="text-sm text-gray-600">현재 1,500+ 기업이 함께하고 있습니다</span>
                 </div>
                 
                 <h1 data-aos="fade-up" data-aos-duration="800" data-aos-delay="100" class="text-5xl md:text-7xl font-black leading-tight mb-8 tracking-tight text-gray-900">
@@ -357,24 +381,24 @@
                             <span>중요 요약</span>
                         </div>
                         <h2 class="text-2xl md:text-3xl font-black text-gray-900 leading-tight mb-2">통합 서비스 핵심 3가지</h2>
-                        <p class="text-base md:text-lg text-gray-700 leading-relaxed">한 페이지에서 업종별 문제와 해결 방향을 비교하고, 가장 적합한 서비스를 선택할 수 있습니다.</p>
+                        <p class="text-base md:text-lg text-gray-700 leading-relaxed">한 페이지에서 업종별 고민과 해결 방향을 비교해 보고, 가장 잘 맞는 서비스를 선택하실 수 있습니다.</p>
                     </div>
 </div>
                 <div class="grid md:grid-cols-3 gap-3">
                     <div class="rounded-2xl border border-blue-100 bg-blue-50 px-4 py-4">
                         <p class="text-xs font-bold text-blue-700 mb-1">핵심 1</p>
                         <p class="text-sm font-semibold text-gray-900 mb-1">업종 맞춤 진단</p>
-                        <p class="text-sm text-gray-700">업종별로 꼭 관리해야 할 포인트를 빠르게 파악합니다.</p>
+                        <p class="text-sm text-gray-700">업종별로 꼭 챙겨야 할 포인트를 빠르게 짚어 드립니다.</p>
                     </div>
                     <div class="rounded-2xl border border-emerald-100 bg-emerald-50 px-4 py-4">
                         <p class="text-xs font-bold text-emerald-700 mb-1">핵심 2</p>
                         <p class="text-sm font-semibold text-gray-900 mb-1">사례 기반 해결안</p>
-                        <p class="text-sm text-gray-700">실제 고객 사례를 바탕으로 적용 가능한 해결 방법을 정리합니다.</p>
+                        <p class="text-sm text-gray-700">실제 고객 사례를 바탕으로 바로 적용할 수 있는 방법을 정리해 드립니다.</p>
                     </div>
                     <div class="rounded-2xl border border-amber-100 bg-amber-50 px-4 py-4">
                         <p class="text-xs font-bold text-amber-700 mb-1">핵심 3</p>
                         <p class="text-sm font-semibold text-gray-900 mb-1">진행 상황 정기 안내</p>
-                        <p class="text-sm text-gray-700">전담 매니저가 단계별 진행 상황을 정기적으로 안내합니다.</p>
+                        <p class="text-sm text-gray-700">전담 매니저가 단계별 진행 상황을 정기적으로 안내해 드립니다.</p>
                     </div>
                 </div>
             </div>
@@ -384,7 +408,7 @@
     <section id="story" class="py-24 bg-white">
         <div class="max-w-7xl mx-auto px-6">
             <div class="text-center mb-16">
-                <span class="accent-text font-semibold tracking-wider text-sm mb-4 block">REAL STORIES</span>
+                <span class="accent-text font-semibold tracking-wider text-sm mb-4 block">실제 사례</span>
                 <h2 class="text-4xl md:text-5xl font-black text-gray-900 mb-6">
                     어느 대표님의 이야기
                 </h2>
@@ -435,7 +459,7 @@
                             <h3 class="text-2xl md:text-3xl font-bold mt-2 mb-4 text-gray-900">세무조사 통보를 받았습니다</h3>
                             <p class="text-gray-600 leading-relaxed text-base md:text-lg">
                                 "2년 전 누락된 세금이 문제였어요. 가산세만 수천만 원. 
-                                그때서야 깨달았죠. 경리 업무 문제는 '나중에'가 없다는 걸요."
+                                그제야 깨달았죠. 경리 업무 문제는 '나중에'가 없다는 걸요."
                             </p>
                         </div>
                     </div>
@@ -536,7 +560,7 @@
                     <h3 class="text-xl md:text-2xl font-bold text-gray-900 mb-4">마감일 직전에야 문제 발견</h3>
                     <p class="text-gray-600 leading-relaxed text-base md:text-lg">
                         부가세 마감 전날, 세금 납부 당일... 항상 촉박하게 처리하다 보니 
-                        실수도 많고 스트레스가 이만저만이 아닙니다.
+                        실수도 많고 스트레스가 큽니다.
                     </p>
                 </div>
                 
@@ -611,7 +635,7 @@
                     </div>
                     <h3 class="text-xl md:text-2xl font-bold text-gray-900 mb-4">솔루션 운영 대행</h3>
                     <p class="text-gray-600 leading-relaxed text-base md:text-lg mb-4">
-                        경리나라, 더존 등 <span class="accent-text font-semibold">프로그램 셋팅부터 운영까지</span> 모두 대행합니다.
+                        경리나라, 더존 등 <span class="accent-text font-semibold">프로그램 세팅부터 운영까지</span> 모두 대행합니다.
                     </p>
                     <p class="text-gray-400 text-sm">
                         웹케시, 아이퀘스트 등 공식 파트너
@@ -638,7 +662,7 @@
                     </div>
                     <h3 class="text-xl md:text-2xl font-bold text-gray-900 mb-4">세금신고 준비 자료 제공</h3>
                     <p class="text-gray-600 leading-relaxed text-base md:text-lg mb-4">
-                        <span class="accent-text font-semibold">세무대리인에게 제공해야할 자료를 만들어드립니다.</span>
+                        <span class="accent-text font-semibold">세무대리인에게 제공해야 할 자료를 만들어드립니다.</span>
                     </p>
                     <p class="text-gray-400 text-sm">
                         경리-세무 간 소통 문제 완전 해결
@@ -667,7 +691,7 @@
         <div class="max-w-7xl mx-auto px-6">
             <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
                 <div class="text-center p-8">
-                    <div class="text-5xl md:text-6xl font-black accent-text stat-number mb-2">1500+</div>
+                    <div class="text-5xl md:text-6xl font-black accent-text stat-number mb-2">1,500+</div>
                     <p class="text-gray-600 font-medium">현재 이용 기업</p>
                 </div>
                 <div class="text-center p-8">
@@ -676,10 +700,10 @@
                 </div>
                 <div class="text-center p-8">
                     <div class="text-5xl md:text-6xl font-black accent-text stat-number mb-2">68%</div>
-                    <p class="text-gray-600 font-medium">평균 공헌이익률</p>
+                    <p class="text-gray-600 font-medium">평균 수익 개선율</p>
                 </div>
                 <div class="text-center p-8">
-                    <div class="text-5xl md:text-6xl font-black accent-text stat-number mb-2">4.3/5점</div>
+                    <div class="text-5xl md:text-6xl font-black accent-text stat-number mb-2">4.9/5점</div>
                     <p class="text-gray-600 font-medium">평균 만족도</p>
                 </div>
             </div>
@@ -706,7 +730,7 @@
                         <i class="fas fa-star text-amber-400"></i>
                     </div>
                     <blockquote class="text-lg md:text-xl text-gray-600 leading-relaxed mb-8">
-                        "경리 직원 구하느라 3개월을 날렸어요. 그냥 진작 여기 맡길 걸 후회됩니다. 
+                        "경리 직원 구하느라 3개월을 날렸어요. 진작 맡길걸 그랬습니다. 
                         이제는 통장만 보는 게 아니라 <span class="text-gray-900 font-medium">실제 우리 회사가 어떻게 돌아가는지</span> 
                         숫자로 보이니까 의사결정이 빨라졌어요."
                     </blockquote>
@@ -802,10 +826,10 @@
                     경리 직원 1명 비용으로 <span class="accent-text">전문 경리팀 전체를</span> 활용하세요
                 </h3>
                 <p class="text-xl md:text-2xl text-gray-600 mb-8">
-                    월 <span class="text-gray-900 font-bold">10만 원</span>부터 시작 가능
+                    월 <span class="text-gray-900 font-bold">30만 원</span>부터 시작 가능
                 </p>
                 <p class="text-gray-600 text-base md:text-lg mb-10">
-                    회사 규모와 업무량에 따라 10만~200만 원의 합리적인 비용
+                    회사 규모와 업무량에 따라 30만~200만 원의 합리적인 비용
                 </p>
                 <button onclick="openModal()" class="btn-primary text-white font-bold text-lg px-12 py-5 rounded-full">
                     우리 회사 맞춤 견적 받기
@@ -896,14 +920,14 @@
                     <ul class="space-y-2 text-gray-600">
                         <li class="hover:scale-105 transition-transform duration-300 cursor-pointer" onclick="copyToClipboard('1566-2687', '전화번호')"><i class="fas fa-phone mr-2 text-blue-700"></i>1566-2687</li>
                         <li class="hover:scale-105 transition-transform duration-300 cursor-pointer" onclick="copyToClipboard('wapeople000@gmail.com', '이메일')"><i class="fas fa-envelope mr-2 text-blue-700"></i>wapeople000@gmail.com</li>
-                        <li class="hover:scale-105 transition-transform duration-300 cursor-pointer"><i class="fas fa-user mr-2 text-blue-700"></i>대표이사 : 금종석</li>
-                        <li class="hover:scale-105 transition-transform duration-300 cursor-pointer"><i class="fas fa-clock mr-2 text-blue-700"></i>평일 09:00 - 18:00</li>
-                        <li class="hover:scale-105 transition-transform duration-300 cursor-pointer"><a href="https://map.naver.com/p/entry/place/1245812255?c=17.59,0,0,0,dh&placePath=/home?from=map&from=map&fromPanelNum=1&additionalHeight=76&timestamp=202512121734&locale=ko&svcName=map_pcv5" target="_blank" rel="noopener noreferrer"><i class="fas fa-map-marker-alt mr-2 text-blue-700"></i>경기도 수원시 팔달구 권광로 175번길 83 2층 3층</a></li>
+                        <li><i class="fas fa-user mr-2 text-blue-700"></i>대표이사 : 금종석</li>
+                        <li><i class="fas fa-clock mr-2 text-blue-700"></i>평일 09:00 - 18:00</li>
+                        <li class="hover:scale-105 transition-transform duration-300 cursor-pointer"><a href="https://map.naver.com/p/entry/place/1245812255?c=17.59,0,0,0,dh&placePath=/home?from=map&from=map&fromPanelNum=1&additionalHeight=76&timestamp=202512121734&locale=ko&svcName=map_pcv5" target="_blank" rel="noopener noreferrer"><i class="fas fa-map-marker-alt mr-2 text-blue-700"></i>경기 수원시 팔달구 권광로175번길 83 201호</a></li>
                     </ul>
                 </div>
             </div>
             <div class="border-t border-gray-200 pt-8 text-center text-gray-400 text-sm">
-                <p>&copy; 2025 경리업무를잘하는청년들. All rights reserved.</p>
+                <p>&copy; <span class="copyright-year">2026</span> 경리업무를잘하는청년들. All rights reserved.</p>
             </div>
         </div>
     </footer>
@@ -950,26 +974,7 @@
                 
                 <div>
                     <label class="block text-gray-700 font-semibold mb-2">이메일 <span class="text-gray-400 text-sm font-normal">(선택)</span></label>
-                    <!-- 데스크톱 -->
-                    <div class="hidden md:flex items-center gap-1">
-                        <input type="text" name="email_id" class="flex-1 min-w-0 border-2 border-gray-200 rounded-xl px-3 py-3 text-gray-900" placeholder="아이디">
-                        <span class="text-gray-500 font-medium flex-shrink-0">@</span>
-                        <select name="email_domain" class="flex-1 min-w-0 border-2 border-gray-200 rounded-xl px-2 py-3 text-gray-900" onchange="toggleEmailDomain(this)">
-                            <option value="">선택</option>
-                            <option value="naver.com">naver.com</option>
-                            <option value="gmail.com">gmail.com</option>
-                            <option value="daum.net">daum.net</option>
-                            <option value="kakao.com">kakao.com</option>
-                            <option value="hanmail.net">hanmail.net</option>
-                            <option value="direct">직접입력</option>
-                        </select>
-                        <input type="text" name="email_domain_direct" class="hidden flex-1 min-w-0 border-2 border-gray-200 rounded-xl px-3 py-3 text-gray-900" placeholder="도메인">
-                    </div>
-                    <!-- 모바일 -->
-                    <div class="md:hidden">
-                        <input type="email" name="email_mobile" class="w-full border-2 border-gray-200 rounded-xl px-3 py-3 text-gray-900" placeholder="example@email.com">
-                    </div>
-                    <input type="hidden" name="email" value="">
+                    <input type="email" name="email" autocomplete="email" inputmode="email" class="w-full border-2 border-gray-200 rounded-xl px-4 py-3 text-gray-900" placeholder="example@email.com">
                 </div>
                 
                 <div>
@@ -1048,44 +1053,11 @@
             });
         }
 
-        // 이메일 도메인 직접입력 토글
-        function toggleEmailDomain(select) {
-            const container = select.closest('.flex');
-            if (!container) return; // null 체크
-            const directInput = container.querySelector('input[name="email_domain_direct"]');
-            if (!directInput) return; // null 체크
-            if (select.value === 'direct') {
-                directInput.classList.remove('hidden');
-                select.classList.add('hidden');
-                directInput.focus();
-            }
-        }
-
-        // 이메일 조합 함수
+        // 이메일 입력 정규화 (단일 input[name="email"]로 단순화됨)
         function combineEmail(form) {
-            const emailHidden = form.querySelector('input[name="email"]');
-            
-            // 모바일 입력 확인
-            const emailMobile = form.querySelector('input[name="email_mobile"]');
-            if (emailMobile && emailMobile.value.trim() && window.innerWidth < 768) {
-                emailHidden.value = emailMobile.value.trim();
-                return;
-            }
-            
-            // 데스크톱 입력
-            const emailId = form.querySelector('input[name="email_id"]');
-            const emailDomain = form.querySelector('select[name="email_domain"]');
-            const emailDomainDirect = form.querySelector('input[name="email_domain_direct"]');
-            
-            if (emailId && emailHidden) {
-                const id = emailId.value.trim();
-                let domain = '';
-                if (emailDomainDirect && !emailDomainDirect.classList.contains('hidden')) {
-                    domain = emailDomainDirect.value.trim();
-                } else if (emailDomain && emailDomain.value && emailDomain.value !== 'direct') {
-                    domain = emailDomain.value;
-                }
-                emailHidden.value = id && domain ? id + '@' + domain : '';
+            const emailInput = form.querySelector('input[name="email"]');
+            if (emailInput) {
+                emailInput.value = emailInput.value.trim();
             }
         }
 

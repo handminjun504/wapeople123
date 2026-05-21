@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-labelledby="title desc">
+  <title id="title">건설업 아이콘</title>
+  <desc id="desc">크레인과 안전모를 상징하는 건설업 아이콘</desc>
+  <rect width="64" height="64" rx="18" fill="#fffbeb"/>
+  <path d="M17 18h31" stroke="#f59e0b" stroke-width="4" stroke-linecap="round"/>
+  <path d="M22 18v30" stroke="#b45309" stroke-width="4" stroke-linecap="round"/>
+  <path d="M22 24l18 8" stroke="#f59e0b" stroke-width="3" stroke-linecap="round"/>
+  <path d="M40 18v16" stroke="#b45309" stroke-width="3" stroke-linecap="round"/>
+  <rect x="36" y="34" width="8" height="8" rx="2" fill="#fbbf24"/>
+  <path d="M14 50h36" stroke="#92400e" stroke-width="4" stroke-linecap="round"/>
+  <path d="M28 42c1-7 6-11 12-11s11 4 12 11" fill="#fbbf24"/>
+  <path d="M27 43h26" stroke="#92400e" stroke-width="3" stroke-linecap="round"/>
+</svg>

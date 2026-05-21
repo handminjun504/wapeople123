@@ -74,6 +74,8 @@ html {
     scroll-behavior: smooth;
     overflow-y: scroll;
     scrollbar-gutter: stable;
+    /* 고정 네비게이션(약 72~80px) 높이만큼 앵커 점프 시 여백 확보 */
+    scroll-padding-top: 80px;
 }
 
 html,
