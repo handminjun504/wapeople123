@@ -15,7 +15,7 @@
     //   cover     : (선택) 썸네일 이미지 경로 — 미지정 시 카테고리별 기본 그라디언트 사용
     //   url       : 'news/{slug}.html'
     window.WA_NEWS_DATA = [
-    {
+        {
         slug: '2026-05-21-1',
         title: '우리 회사의 정확한 수익이 얼마인지 잘 모르시나요?',
         category: '경리뉴스',
