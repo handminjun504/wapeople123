@@ -132,7 +132,7 @@
                 <a href="../news.html" class="text-blue-700 font-bold transition-colors">경리소식</a>
                 <a href="../faq.html" class="text-gray-700 hover:text-blue-700 font-semibold transition-colors">자주 묻는 질문</a>
             </div>
-            <a href="../index.html#cta" class="bg-blue-600 hover:bg-blue-700 text-white font-bold px-5 py-2 rounded-xl transition-colors text-sm whitespace-nowrap">상담 바로가기</a>
+            <button onclick="openModal()" class="bg-blue-600 hover:bg-blue-700 text-white font-bold px-5 py-2 rounded-xl transition-colors text-sm whitespace-nowrap cursor-pointer">상담 바로가기</button>
         </div>
     </nav>
 
@@ -172,7 +172,7 @@
         <div class="mt-14 bg-blue-50 border border-blue-200 rounded-2xl p-7 text-center">
             <p class="text-lg font-bold text-gray-900 mb-2">경리 고민, 지금 바로 해결하세요</p>
             <p class="text-sm text-gray-600 mb-5">무료 상담으로 우리 회사에 맞는 솔루션을 확인해 보세요.</p>
-            <a href="../index.html#cta" class="inline-block bg-blue-600 hover:bg-blue-700 text-white font-bold px-8 py-3 rounded-xl transition-colors text-sm">무료 상담 신청</a>
+            <button onclick="openModal()" class="inline-block bg-blue-600 hover:bg-blue-700 text-white font-bold px-8 py-3 rounded-xl transition-colors text-sm cursor-pointer">무료 상담 신청</button>
         </div>
 
         <!-- 목록으로 -->
@@ -188,8 +188,57 @@
         <div class="max-w-5xl mx-auto px-4 text-center text-xs space-y-1">
             <p class="font-semibold text-white">경리업무를잘하는청년들</p>
             <p>경기 수원시 팔달구 권광로175번길 83 201호 · 1566-2687 · wapeople000@gmail.com</p>
-            <p>© 2026 경리업무를잘하는청년들. All rights reserved.</p>
+            <p>&copy; 2026 경리업무를잘하는청년들. All rights reserved.</p>
         </div>
     </footer>
+
+    <!-- 상담 모달 -->
+    <div id="consultModal" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.5);z-index:9999;align-items:center;justify-content:center;">
+        <div style="background:white;border-radius:1.5rem;padding:2rem;max-width:36rem;width:100%;margin:1rem;position:relative;max-height:90vh;overflow-y:auto;">
+            <button onclick="closeModal()" style="position:absolute;top:1.25rem;right:1.25rem;font-size:2rem;font-weight:300;color:#9ca3af;cursor:pointer;background:none;border:none;" aria-label="닫기">&times;</button>
+            <div style="text-align:center;margin-bottom:2rem;">
+                <div style="width:4rem;height:4rem;border-radius:1rem;background:#2563eb;display:flex;align-items:center;justify-content:center;margin:0 auto 1rem;"><i class="fas fa-paper-plane" style="color:white;font-size:1.5rem;"></i></div>
+                <h3 style="font-size:1.75rem;font-weight:700;color:#111827;margin-bottom:0.5rem;">무료 상담 신청</h3>
+                <p style="color:#6b7280;">원격경리 서비스에 대해 안내해드립니다.</p>
+            </div>
+            <form id="consultForm" style="display:flex;flex-direction:column;gap:1.25rem;" onsubmit="return handleFormSubmit(event, 'consultForm')">
+                <input type="hidden" name="industry" value="경리소식">
+                <div><label style="display:block;font-weight:600;color:#374151;margin-bottom:0.5rem;">회사명 <span style="color:#f43f5e;">*</span></label><input type="text" name="company" required style="width:100%;border:2px solid #e5e7eb;border-radius:0.75rem;padding:0.75rem 1rem;color:#111827;box-sizing:border-box;" placeholder="회사명을 입력해주세요"></div>
+                <div><label style="display:block;font-weight:600;color:#374151;margin-bottom:0.5rem;">대표님 성함 <span style="color:#f43f5e;">*</span></label><input type="text" name="name" required style="width:100%;border:2px solid #e5e7eb;border-radius:0.75rem;padding:0.75rem 1rem;color:#111827;box-sizing:border-box;" placeholder="성함을 입력해주세요"></div>
+                <div><label style="display:block;font-weight:600;color:#374151;margin-bottom:0.5rem;">연락처 <span style="color:#f43f5e;">*</span></label><input type="tel" name="phone" required style="width:100%;border:2px solid #e5e7eb;border-radius:0.75rem;padding:0.75rem 1rem;color:#111827;box-sizing:border-box;" placeholder="연락받으실 번호를 입력해주세요"></div>
+                <div><label style="display:block;font-weight:600;color:#374151;margin-bottom:0.5rem;">이메일 <span style="font-weight:400;color:#9ca3af;font-size:0.875rem;">(선택)</span></label><input type="email" name="email" style="width:100%;border:2px solid #e5e7eb;border-radius:0.75rem;padding:0.75rem 1rem;color:#111827;box-sizing:border-box;" placeholder="example@email.com"></div>
+                <div><label style="display:block;font-weight:600;color:#374151;margin-bottom:0.5rem;">현재 가장 큰 고민 <span style="color:#f43f5e;">*</span></label><textarea name="message" required rows="4" style="width:100%;border:2px solid #e5e7eb;border-radius:0.75rem;padding:0.75rem 1rem;color:#111827;resize:none;box-sizing:border-box;" placeholder="예) 경리 직원 채용이 어려워요&#10;예) 장부 정리가 복잡해요"></textarea></div>
+                <button type="submit" style="width:100%;background:#2563eb;color:white;font-weight:700;font-size:1.125rem;padding:1rem;border-radius:0.75rem;border:none;cursor:pointer;">무료 상담 신청하기</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        function openModal() { var m = document.getElementById('consultModal'); m.style.display = 'flex'; document.body.style.overflow = 'hidden'; }
+        function closeModal() { var m = document.getElementById('consultModal'); m.style.display = 'none'; document.body.style.overflow = 'auto'; }
+        document.getElementById('consultModal').addEventListener('click', function(e) { if (e.target === this) closeModal(); });
+        document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeModal(); });
+        function combineEmail(form) { var el = form.querySelector('input[name="email"]'); if (el) el.value = el.value.trim(); }
+        function handleFormSubmit(event, formId) {
+            event.preventDefault();
+            var form = document.getElementById(formId);
+            var btn = form.querySelector('button[type="submit"]');
+            var orig = btn.innerHTML;
+            combineEmail(form);
+            btn.disabled = true; btn.innerHTML = '봇 확인 중...';
+            var URL = 'https://script.google.com/macros/s/AKfycbwLkpVI-zFipUtirkixwbaiTg-NdJP99UajSA_eoBs7MB5QPh20zkgpesZ9uDJJkHAQ/exec';
+            grecaptcha.ready(function() {
+                grecaptcha.execute('6Le0CEMsAAAAAFGF3Dnci1_SUkC4VWmzqdox2jJZ', {action:'submit'}).then(function(token) {
+                    var r = form.querySelector('input[name="recaptcha_token"]');
+                    if (!r) { r = document.createElement('input'); r.type='hidden'; r.name='recaptcha_token'; form.appendChild(r); }
+                    r.value = token; btn.innerHTML = '전송 중...';
+                    fetch(URL, {method:'POST', body:new FormData(form), mode:'no-cors'})
+                        .then(function() { window.dataLayer=window.dataLayer||[]; window.dataLayer.push({event:'form_submit'}); alert('✅ 상담 신청이 완료되었습니다!\n\n영업시간 내 문의 시, 30분 이내로 연락드리겠습니다.'); form.reset(); closeModal(); btn.disabled=false; btn.innerHTML=orig; })
+                        .catch(function() { window.dataLayer=window.dataLayer||[]; window.dataLayer.push({event:'form_submit'}); alert('✅ 상담 신청이 완료되었습니다!\n\n영업시간 내 문의 시, 30분 이내로 연락드리겠습니다.'); form.reset(); closeModal(); btn.disabled=false; btn.innerHTML=orig; });
+                }).catch(function() { alert('❌ 봇 확인 실패. 페이지를 새로고침해주세요.'); btn.disabled=false; btn.innerHTML=orig; });
+            });
+            return false;
+        }
+    </script>
 </body>
 </html>
