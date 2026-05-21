@@ -1,7 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-labelledby="title desc">
   <title id="title">서비스업 아이콘</title>
   <desc id="desc">상담과 프로젝트 관리를 상징하는 노트북, 대화 말풍선, 체크 표시 아이콘</desc>
-  <rect width="64" height="64" rx="18" fill="#eff6ff"/>
   <rect x="13" y="18" width="31" height="22" rx="4" fill="#2563eb"/>
   <rect x="16" y="21" width="25" height="15" rx="2" fill="#dbeafe"/>
   <path d="M21 30h6l3-5 3 8 3-5h4" fill="none" stroke="#2563eb" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>

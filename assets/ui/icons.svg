@@ -1,0 +1,94 @@
+<svg xmlns="http://www.w3.org/2000/svg" style="display:none">
+  <symbol id="money-bag" viewBox="0 0 64 64">
+    <path d="M24 12h16l-4 8h-8l-4-8Z" fill="currentColor" opacity=".18"/>
+    <path d="M20 28c2.6-5.2 7.1-8 12-8s9.4 2.8 12 8c5.2 10.4 1.1 24-12 24S14.8 38.4 20 28Z" fill="none" stroke="currentColor" stroke-width="4" stroke-linejoin="round"/>
+    <path d="M25 12h14M28 20h8M32 30v14M27 35h10M27 43h10" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round"/>
+  </symbol>
+  <symbol id="chart-report" viewBox="0 0 64 64">
+    <rect x="14" y="10" width="36" height="44" rx="6" fill="none" stroke="currentColor" stroke-width="4"/>
+    <path d="M23 43V31M32 43V22M41 43V35" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round"/>
+    <path d="M23 18h10" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round"/>
+  </symbol>
+  <symbol id="card-receivable" viewBox="0 0 64 64">
+    <rect x="10" y="18" width="44" height="30" rx="6" fill="none" stroke="currentColor" stroke-width="4"/>
+    <path d="M10 28h44M18 39h12M42 37l6 4-6 4" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+  </symbol>
+  <symbol id="briefcase" viewBox="0 0 64 64">
+    <rect x="10" y="22" width="44" height="28" rx="6" fill="none" stroke="currentColor" stroke-width="4"/>
+    <path d="M24 22v-5a4 4 0 0 1 4-4h8a4 4 0 0 1 4 4v5M10 34h44M29 34v4h6v-4" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round"/>
+  </symbol>
+  <symbol id="clipboard-list" viewBox="0 0 64 64">
+    <rect x="16" y="12" width="32" height="44" rx="6" fill="none" stroke="currentColor" stroke-width="4"/>
+    <path d="M25 12a7 7 0 0 1 14 0M24 28h16M24 38h16M24 48h10" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round"/>
+  </symbol>
+  <symbol id="cash-flow" viewBox="0 0 64 64">
+    <path d="M16 24h28a8 8 0 0 1 0 16H24" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round"/>
+    <path d="M24 16l-8 8 8 8M40 48l8-8-8-8" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+  </symbol>
+  <symbol id="cash-leak" viewBox="0 0 64 64">
+    <path d="M17 22h30v24H17z" fill="none" stroke="currentColor" stroke-width="4" stroke-linejoin="round"/>
+    <path d="M22 30h13M22 38h8M42 22l6-8M47 30l8-2M44 38l7 6" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round"/>
+  </symbol>
+  <symbol id="package-box" viewBox="0 0 64 64">
+    <path d="M14 24 32 14l18 10v20L32 54 14 44V24Z" fill="none" stroke="currentColor" stroke-width="4" stroke-linejoin="round"/>
+    <path d="m14 24 18 10 18-10M32 34v20M23 19l18 10" fill="none" stroke="currentColor" stroke-width="4" stroke-linejoin="round"/>
+  </symbol>
+  <symbol id="office-building" viewBox="0 0 64 64">
+    <path d="M16 54V14h24v40M40 28h10v26M10 54h44" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M24 24h2M32 24h2M24 34h2M32 34h2M24 44h2M32 44h2" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round"/>
+  </symbol>
+  <symbol id="document-pen" viewBox="0 0 64 64">
+    <path d="M18 10h22l8 8v36H18V10Z" fill="none" stroke="currentColor" stroke-width="4" stroke-linejoin="round"/>
+    <path d="M40 10v10h8M24 30h16M24 40h9M39 48l10-10 5 5-10 10-6 1 1-6Z" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+  </symbol>
+  <symbol id="refresh-cycle" viewBox="0 0 64 64">
+    <path d="M48 24a18 18 0 0 0-30-6l-4 4M16 40a18 18 0 0 0 30 6l4-4" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round"/>
+    <path d="M14 14v8h8M50 50v-8h-8" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+  </symbol>
+  <symbol id="clock" viewBox="0 0 64 64">
+    <circle cx="32" cy="34" r="20" fill="none" stroke="currentColor" stroke-width="4"/>
+    <path d="M32 22v13l9 6M24 10h16" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round"/>
+  </symbol>
+  <symbol id="mail" viewBox="0 0 64 64">
+    <rect x="10" y="18" width="44" height="30" rx="5" fill="none" stroke="currentColor" stroke-width="4"/>
+    <path d="m12 22 20 16 20-16" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+  </symbol>
+  <symbol id="phone" viewBox="0 0 64 64">
+    <path d="M22 12 15 19c-2 2 0 12 10 22s20 12 22 10l7-7-11-9-5 5c-5-2-10-7-12-12l5-5-9-11Z" fill="none" stroke="currentColor" stroke-width="4" stroke-linejoin="round"/>
+  </symbol>
+  <symbol id="map-pin" viewBox="0 0 64 64">
+    <path d="M32 56s18-16 18-30a18 18 0 0 0-36 0c0 14 18 30 18 30Z" fill="none" stroke="currentColor" stroke-width="4" stroke-linejoin="round"/>
+    <circle cx="32" cy="26" r="6" fill="none" stroke="currentColor" stroke-width="4"/>
+  </symbol>
+  <symbol id="question" viewBox="0 0 64 64">
+    <circle cx="32" cy="32" r="22" fill="none" stroke="currentColor" stroke-width="4"/>
+    <path d="M25 25a8 8 0 1 1 11 7c-3 2-4 4-4 7M32 48h.1" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round"/>
+  </symbol>
+  <symbol id="sparkle-check" viewBox="0 0 64 64">
+    <path d="M24 12 28 24l12 4-12 4-4 12-4-12-12-4 12-4 4-12ZM42 38l5 5 10-12" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+  </symbol>
+  <symbol id="warning" viewBox="0 0 64 64">
+    <path d="M32 10 56 52H8L32 10Z" fill="none" stroke="currentColor" stroke-width="4" stroke-linejoin="round"/>
+    <path d="M32 25v12M32 46h.1" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round"/>
+  </symbol>
+  <symbol id="person-tie" viewBox="0 0 64 64">
+    <circle cx="32" cy="21" r="9" fill="none" stroke="currentColor" stroke-width="4"/>
+    <path d="M16 54c2-10 8-16 16-16s14 6 16 16M28 39l4 5 4-5M32 44v10" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+  </symbol>
+  <symbol id="developer" viewBox="0 0 64 64">
+    <circle cx="32" cy="20" r="8" fill="none" stroke="currentColor" stroke-width="4"/>
+    <path d="M14 54c2-10 9-16 18-16s16 6 18 16M22 31l-8 6 8 6M42 31l8 6-8 6" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+  </symbol>
+  <symbol id="accountant" viewBox="0 0 64 64">
+    <circle cx="32" cy="20" r="8" fill="none" stroke="currentColor" stroke-width="4"/>
+    <path d="M16 54c2-10 8-16 16-16s14 6 16 16M44 14h8v12h-8zM48 14v12M44 20h8" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+  </symbol>
+  <symbol id="factory" viewBox="0 0 64 64">
+    <path d="M12 54V30l14 8v-8l14 8V18h12v36H12Z" fill="none" stroke="currentColor" stroke-width="4" stroke-linejoin="round"/>
+    <path d="M20 46h4M32 46h4M44 46h4" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round"/>
+  </symbol>
+  <symbol id="confused" viewBox="0 0 64 64">
+    <circle cx="32" cy="32" r="22" fill="none" stroke="currentColor" stroke-width="4"/>
+    <path d="M24 26h.1M40 26h.1M24 43c4-4 12-4 16 0M23 18l8 4M41 18l-8 4" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round"/>
+  </symbol>
+</svg>

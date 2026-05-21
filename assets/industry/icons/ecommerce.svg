@@ -1,7 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-labelledby="title desc">
   <title id="title">쇼핑몰업 아이콘</title>
   <desc id="desc">온라인 쇼핑 장바구니와 주문 관리를 상징하는 쇼핑몰업 아이콘</desc>
-  <rect width="64" height="64" rx="18" fill="#f5f3ff"/>
   <path d="M15 18h5l4 22h22l5-15H25" fill="none" stroke="#7c3aed" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
   <circle cx="29" cy="48" r="3.5" fill="#5b21b6"/>
   <circle cx="43" cy="48" r="3.5" fill="#5b21b6"/>

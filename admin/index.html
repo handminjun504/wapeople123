@@ -1,0 +1,1248 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>경리소식 관리자 패널</title>
+    <meta name="robots" content="noindex, nofollow">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Quill Rich Text Editor -->
+    <link href="https://cdn.quilljs.com/1.3.7/quill.snow.css" rel="stylesheet">
+    <script src="https://cdn.quilljs.com/1.3.7/quill.min.js"></script>
+    <style>
+        body { font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; }
+
+        /* Quill 에디터 커스텀 스타일 */
+        .ql-container { font-family: 'Pretendard', -apple-system, sans-serif; font-size: 0.9375rem; border-bottom-left-radius: 0.75rem; border-bottom-right-radius: 0.75rem; border-color: #e5e7eb; min-height: 400px; }
+        .ql-toolbar { border-top-left-radius: 0.75rem; border-top-right-radius: 0.75rem; border-color: #e5e7eb; background: #f9fafb; flex-wrap: wrap; }
+        .ql-editor { min-height: 400px; line-height: 1.8; color: #374151; }
+        .ql-editor h2 { font-size: 1.5rem; font-weight: 800; color: #111827; margin: 1.5rem 0 0.75rem; border-bottom: 2px solid #2563eb; padding-bottom: 0.4rem; }
+        .ql-editor h3 { font-size: 1.15rem; font-weight: 700; color: #1f2937; margin: 1.25rem 0 0.5rem; }
+        .ql-editor blockquote { border-left: 4px solid #93c5fd; background: #eff6ff; padding: 0.75rem 1rem; margin: 1rem 0; border-radius: 0 0.5rem 0.5rem 0; color: #1e3a8a; }
+        .ql-editor pre { background: #1e293b; color: #e2e8f0; border-radius: 0.5rem; padding: 1rem; font-size: 0.85rem; }
+
+        /* 특수 삽입 버튼 */
+        .insert-btn { display: inline-flex; align-items: center; gap: 4px; padding: 4px 10px; font-size: 0.75rem; background: white; border: 1px solid #d1d5db; border-radius: 6px; color: #374151; cursor: pointer; transition: background 0.15s; white-space: nowrap; }
+        .insert-btn:hover { background: #f3f4f6; }
+    </style>
+</head>
+<body class="bg-gray-50 min-h-screen">
+
+<!-- ══════════════════════ 최초 설정 화면 ══════════════════════ -->
+<div id="setupScreen" class="hidden min-h-screen flex items-center justify-center px-4">
+    <div class="bg-white rounded-2xl shadow-xl p-8 w-full max-w-sm">
+        <div class="text-center mb-6">
+            <div class="w-14 h-14 bg-emerald-600 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"/>
+                </svg>
+            </div>
+            <h1 class="text-xl font-bold text-gray-900">최초 비밀번호 설정</h1>
+            <p class="text-sm text-gray-500 mt-1">관리자 비밀번호를 새로 설정해주세요</p>
+        </div>
+        <div class="bg-amber-50 border border-amber-200 rounded-xl px-4 py-3 mb-5 text-xs text-amber-800">
+            ⚠️ 이 비밀번호는 GitHub 토큰 암호화 키로도 사용됩니다. 반드시 기억해 주세요.
+        </div>
+        <div class="space-y-4">
+            <div>
+                <label class="block text-sm font-semibold text-gray-700 mb-1">새 비밀번호 <span class="font-normal text-gray-400">(8자 이상)</span></label>
+                <input id="setupPw" type="password" placeholder="비밀번호 입력"
+                    class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-emerald-500 text-sm">
+            </div>
+            <div>
+                <label class="block text-sm font-semibold text-gray-700 mb-1">비밀번호 확인</label>
+                <input id="setupPwConfirm" type="password" placeholder="비밀번호 재입력"
+                    class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-emerald-500 text-sm"
+                    onkeydown="if(event.key==='Enter') doSetup()">
+            </div>
+            <div id="setupError" class="hidden text-sm text-red-600 bg-red-50 rounded-lg px-3 py-2"></div>
+            <button onclick="doSetup()"
+                class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-3 px-4 rounded-xl transition-colors text-sm">
+                설정 완료
+            </button>
+        </div>
+    </div>
+</div>
+
+<!-- ══════════════════════ 로그인 화면 ══════════════════════ -->
+<div id="loginScreen" class="hidden min-h-screen flex items-center justify-center px-4">
+    <div class="bg-white rounded-2xl shadow-xl p-8 w-full max-w-sm">
+        <div class="text-center mb-8">
+            <div class="w-14 h-14 bg-blue-600 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/>
+                </svg>
+            </div>
+            <h1 class="text-xl font-bold text-gray-900">경리소식 관리자</h1>
+            <p class="text-sm text-gray-500 mt-1">관리자만 접근할 수 있습니다</p>
+        </div>
+        <div class="space-y-4">
+            <div>
+                <label class="block text-sm font-semibold text-gray-700 mb-1">비밀번호</label>
+                <input id="loginPw" type="password" placeholder="비밀번호 입력"
+                    class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-sm"
+                    onkeydown="if(event.key==='Enter') doLogin()">
+            </div>
+            <div id="loginError" class="hidden text-sm text-red-600 bg-red-50 rounded-lg px-3 py-2">
+                비밀번호가 틀렸습니다.
+            </div>
+            <div id="lockoutMsg" class="hidden text-sm text-orange-700 bg-orange-50 border border-orange-200 rounded-lg px-3 py-2"></div>
+            <button id="loginBtn" onclick="doLogin()"
+                class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-4 rounded-xl transition-colors text-sm">
+                로그인
+            </button>
+        </div>
+        <p class="text-center text-xs text-gray-400 mt-6">경리업무를잘하는청년들</p>
+    </div>
+</div>
+
+<!-- ══════════════════════ 어드민 패널 ══════════════════════ -->
+<div id="adminPanel" class="hidden">
+
+    <!-- 헤더 -->
+    <header class="bg-white border-b border-gray-200 sticky top-0 z-40">
+        <div class="max-w-5xl mx-auto px-4 py-3 flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <div class="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center">
+                    <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+                    </svg>
+                </div>
+                <span class="font-bold text-gray-900">경리소식 관리자</span>
+            </div>
+            <div class="flex items-center gap-2">
+                <button onclick="showTab('write')" id="tabWrite"
+                    class="px-4 py-2 text-sm font-semibold rounded-lg transition-colors bg-blue-600 text-white">
+                    새 글 작성
+                </button>
+                <button onclick="showTab('settings')" id="tabSettings"
+                    class="px-4 py-2 text-sm font-semibold rounded-lg transition-colors text-gray-600 hover:bg-gray-100">
+                    설정
+                </button>
+                <button onclick="doLogout()"
+                    class="px-4 py-2 text-sm text-gray-500 hover:text-red-600 transition-colors">
+                    로그아웃
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- ───── 새 글 작성 탭 ───── -->
+    <div id="writeTab" class="max-w-5xl mx-auto px-4 py-8">
+        
+        <!-- 알림 배너 -->
+        <div id="alertBanner" class="hidden mb-6 rounded-xl px-5 py-4 text-sm font-semibold"></div>
+
+        <div class="grid lg:grid-cols-3 gap-6">
+
+            <!-- 메인 폼 -->
+            <div class="lg:col-span-2 space-y-5">
+
+                <!-- 제목 -->
+                <div class="bg-white rounded-2xl p-6 shadow-sm border border-gray-100">
+                    <label class="block text-sm font-bold text-gray-700 mb-2">글 제목 <span class="text-red-500">*</span></label>
+                    <input id="title" type="text" placeholder="예: 2026년 상반기 중소기업 정책자금 총정리"
+                        class="w-full px-4 py-3 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-900 text-sm"
+                        oninput="autoSlug()">
+                </div>
+
+                <!-- 요약 -->
+                <div class="bg-white rounded-2xl p-6 shadow-sm border border-gray-100">
+                    <label class="block text-sm font-bold text-gray-700 mb-2">
+                        글 요약 <span class="text-red-500">*</span>
+                        <span id="summaryCount" class="font-normal text-gray-400 ml-2">0자</span>
+                    </label>
+                    <textarea id="summary" rows="3" placeholder="100~150자 권장. meta description과 카드 미리보기에 그대로 사용됩니다."
+                        class="w-full px-4 py-3 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-900 text-sm resize-none"
+                        oninput="document.getElementById('summaryCount').textContent = this.value.length+'자'"></textarea>
+                </div>
+
+                <!-- 본문 에디터 -->
+                <div class="bg-white rounded-2xl p-6 shadow-sm border border-gray-100">
+                    <div class="flex items-center justify-between mb-3">
+                        <label class="text-sm font-bold text-gray-700">본문 <span class="text-red-500">*</span></label>
+                        <div class="flex items-center gap-2">
+                            <button type="button" onclick="toggleHtmlMode()"
+                                id="htmlModeBtn"
+                                class="text-xs px-3 py-1.5 border border-gray-300 rounded-lg text-gray-600 hover:bg-gray-50 transition-colors font-semibold">
+                                HTML 보기
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- 특수 요소 삽입 버튼 (에디터 위) -->
+                    <div class="flex flex-wrap gap-1.5 mb-3 p-2.5 bg-blue-50 rounded-xl border border-blue-100">
+                        <span class="text-xs font-bold text-blue-700 self-center mr-1">빠른 삽입:</span>
+                        <button type="button" onclick="insertSpecial('table')" class="insert-btn">📊 표</button>
+                        <button type="button" onclick="insertSpecial('divider')" class="insert-btn">— 구분선</button>
+                        <button type="button" onclick="insertSpecial('callout')" class="insert-btn">💡 강조박스</button>
+                        <button type="button" onclick="insertSpecial('warning')" class="insert-btn">⚠️ 주의박스</button>
+                        <button type="button" onclick="insertSpecial('image')" class="insert-btn">🖼 이미지</button>
+                        <button type="button" onclick="insertSpecial('cta')" class="insert-btn">📢 CTA 버튼</button>
+                    </div>
+
+                    <!-- Quill 에디터 -->
+                    <div id="quillEditor"></div>
+
+                    <!-- HTML 직접 편집 모드 (토글) -->
+                    <div id="htmlModePanel" class="hidden mt-3">
+                        <p class="text-xs text-amber-700 bg-amber-50 border border-amber-200 rounded-lg px-3 py-2 mb-2">
+                            ⚠️ HTML 직접 편집 후 "에디터로 돌아가기"를 누르면 에디터에 반영됩니다.
+                        </p>
+                        <textarea id="htmlRaw" rows="16"
+                            class="w-full px-4 py-3 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-900 text-xs font-mono"></textarea>
+                    </div>
+
+                    <p class="text-xs text-gray-400 mt-2">
+                        위 에디터에서 직접 작성하거나, "HTML 보기"로 코드를 확인·수정할 수 있습니다.
+                    </p>
+                </div>
+
+            </div>
+
+            <!-- 사이드바 -->
+            <div class="space-y-5">
+
+                <!-- 게시 -->
+                <div class="bg-white rounded-2xl p-6 shadow-sm border border-gray-100">
+                    <h3 class="font-bold text-gray-900 mb-4">게시 설정</h3>
+                    
+                    <div class="space-y-4">
+                        <!-- 날짜 -->
+                        <div>
+                            <label class="block text-sm font-semibold text-gray-700 mb-1">작성일 <span class="text-red-500">*</span></label>
+                            <input id="date" type="date" class="w-full px-3 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm" oninput="autoSlug()">
+                        </div>
+
+                        <!-- 카테고리 -->
+                        <div>
+                            <label class="block text-sm font-semibold text-gray-700 mb-1">카테고리 <span class="text-red-500">*</span></label>
+                            <select id="category" class="w-full px-3 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm bg-white">
+                                <option value="">선택하세요</option>
+                                <option value="정책자금">정책자금</option>
+                                <option value="지원금">지원금</option>
+                                <option value="경리뉴스">경리뉴스</option>
+                                <option value="실무팁">실무팁</option>
+                            </select>
+                        </div>
+
+                        <!-- 슬러그 -->
+                        <div>
+                            <label class="block text-sm font-semibold text-gray-700 mb-1">슬러그 (URL) <span class="text-red-500">*</span></label>
+                            <input id="slug" type="text" placeholder="2026-05-21-policy-fund"
+                                class="w-full px-3 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm font-mono"
+                                oninput="this.value = this.value.replace(/[^a-z0-9\-]/g,'')">
+                            <p class="text-xs text-gray-400 mt-1">영문·숫자·하이픈만. 제목 입력 시 자동 생성됩니다.</p>
+                        </div>
+
+                        <!-- 키워드 -->
+                        <div>
+                            <label class="block text-sm font-semibold text-gray-700 mb-1">키워드 (선택)</label>
+                            <input id="keywords" type="text" placeholder="정책자금, 중소기업, 운전자금"
+                                class="w-full px-3 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm">
+                            <p class="text-xs text-gray-400 mt-1">쉼표로 구분</p>
+                        </div>
+                    </div>
+
+                    <button id="publishBtn" onclick="publishPost()"
+                        class="mt-6 w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-4 rounded-xl transition-colors text-sm flex items-center justify-center gap-2">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"/>
+                        </svg>
+                        GitHub에 게시하기
+                    </button>
+                    
+                    <div id="publishSpinner" class="hidden mt-3 text-center text-sm text-gray-500">
+                        <svg class="animate-spin inline w-4 h-4 mr-2 text-blue-500" fill="none" viewBox="0 0 24 24">
+                            <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"/>
+                            <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8H4z"/>
+                        </svg>
+                        GitHub에 저장 중...
+                    </div>
+                </div>
+
+                <!-- 미리보기 카드 -->
+                <div class="bg-white rounded-2xl p-6 shadow-sm border border-gray-100">
+                    <h3 class="font-bold text-gray-900 mb-4">카드 미리보기</h3>
+                    <div class="border border-gray-200 rounded-xl overflow-hidden">
+                        <div id="previewCategoryBg" class="h-2 bg-blue-500"></div>
+                        <div class="p-4">
+                            <span id="previewCategory" class="inline-block text-xs font-bold px-2 py-0.5 rounded-full bg-blue-100 text-blue-700 mb-2">카테고리</span>
+                            <h4 id="previewTitle" class="font-bold text-gray-900 text-sm leading-tight mb-2">제목이 여기 표시됩니다</h4>
+                            <p id="previewSummary" class="text-xs text-gray-500 leading-relaxed line-clamp-2">요약이 여기 표시됩니다</p>
+                            <p id="previewDate" class="text-xs text-gray-400 mt-3">날짜</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- ───── 설정 탭 ───── -->
+    <div id="settingsTab" class="hidden max-w-2xl mx-auto px-4 py-8 space-y-6">
+
+        <!-- GitHub 설정 -->
+        <div class="bg-white rounded-2xl p-6 shadow-sm border border-gray-100">
+            <h3 class="font-bold text-gray-900 mb-1">GitHub 연결 설정</h3>
+            <p class="text-sm text-gray-500 mb-5">글 게시 시 GitHub API로 직접 저장됩니다.</p>
+
+            <div class="space-y-4">
+                <div>
+                    <label class="block text-sm font-semibold text-gray-700 mb-1">레포지토리 주인 (owner)</label>
+                    <input id="ghOwner" type="text" placeholder="handminjun504"
+                        class="w-full px-3 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm font-mono">
+                </div>
+                <div>
+                    <label class="block text-sm font-semibold text-gray-700 mb-1">레포지토리 이름</label>
+                    <input id="ghRepo" type="text" placeholder="wapeople123"
+                        class="w-full px-3 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm font-mono">
+                </div>
+                <div>
+                    <label class="block text-sm font-semibold text-gray-700 mb-1">브랜치</label>
+                    <input id="ghBranch" type="text" placeholder="main"
+                        class="w-full px-3 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm font-mono">
+                </div>
+                <div>
+                    <label class="block text-sm font-semibold text-gray-700 mb-1">
+                        GitHub Personal Access Token
+                        <a href="https://github.com/settings/tokens/new?description=wapeople-admin&scopes=repo" target="_blank" class="font-normal text-blue-600 text-xs ml-1">발급 방법 →</a>
+                    </label>
+                    <input id="ghPat" type="password" placeholder="ghp_xxxxxxxxxxxxxxxxxxxx"
+                        class="w-full px-3 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm font-mono">
+                    <p class="text-xs text-gray-400 mt-1">repo 권한 필요. <strong class="text-gray-600">AES-256으로 암호화</strong>되어 저장되며, 비밀번호 없이는 복호화 불가.</p>
+                </div>
+            </div>
+
+            <div class="flex gap-3 mt-5">
+                <button onclick="saveGitHubSettings()"
+                    class="flex-1 bg-blue-600 hover:bg-blue-700 text-white font-bold py-2.5 px-4 rounded-xl transition-colors text-sm">
+                    저장
+                </button>
+                <button onclick="testGitHubConnection()"
+                    class="flex-1 bg-gray-100 hover:bg-gray-200 text-gray-700 font-bold py-2.5 px-4 rounded-xl transition-colors text-sm">
+                    연결 테스트
+                </button>
+            </div>
+            <div id="ghTestResult" class="hidden mt-3 text-sm rounded-lg px-3 py-2"></div>
+        </div>
+
+        <!-- 비밀번호 변경 -->
+        <div class="bg-white rounded-2xl p-6 shadow-sm border border-gray-100">
+            <h3 class="font-bold text-gray-900 mb-1">비밀번호 변경</h3>
+            <p class="text-sm text-gray-500 mb-5">최초 로그인 후 반드시 변경해 주세요.</p>
+            <div class="space-y-4">
+                <div>
+                    <label class="block text-sm font-semibold text-gray-700 mb-1">현재 비밀번호</label>
+                    <input id="currentPw" type="password" class="w-full px-3 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm">
+                </div>
+                <div>
+                    <label class="block text-sm font-semibold text-gray-700 mb-1">새 비밀번호</label>
+                    <input id="newPw" type="password" class="w-full px-3 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm">
+                </div>
+                <div>
+                    <label class="block text-sm font-semibold text-gray-700 mb-1">새 비밀번호 확인</label>
+                    <input id="confirmPw" type="password" class="w-full px-3 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm">
+                </div>
+            </div>
+            <button onclick="changePassword()"
+                class="mt-5 w-full bg-gray-800 hover:bg-gray-900 text-white font-bold py-2.5 px-4 rounded-xl transition-colors text-sm">
+                비밀번호 변경
+            </button>
+            <div id="pwChangeResult" class="hidden mt-3 text-sm rounded-lg px-3 py-2"></div>
+        </div>
+
+    </div>
+</div>
+
+<!-- ══════════════════════ 스크립트 ══════════════════════ -->
+<script>
+// ─── 기본값 (소스에 비밀번호 없음) ───────────────────────────────────────────
+const DEFAULT_GH_OWNER  = 'handminjun504';
+const DEFAULT_GH_REPO   = 'wapeople123';
+const DEFAULT_GH_BRANCH = 'main';
+
+// ─── 세션 메모리 (로그아웃 시 소멸, localStorage에 저장 안 함) ────────────────
+let SESSION_KEY = null;   // CryptoKey: PAT 복호화용 (로그인 시에만 메모리에 존재)
+
+// ─── Quill 에디터 초기화 ──────────────────────────────────────────────────────
+let quill;
+function initQuill() {
+    const Font = Quill.import('formats/font');
+    const Size = Quill.import('attributors/style/size');
+    Size.whitelist = ['0.75em', '0.875em', false, '1.125em', '1.25em', '1.5em', '1.875em', '2.25em'];
+    Quill.register(Size, true);
+
+    quill = new Quill('#quillEditor', {
+        theme: 'snow',
+        placeholder: '여기에 본문을 작성하세요. 위 툴바에서 서식을 적용할 수 있습니다.',
+        modules: {
+            toolbar: {
+                container: [
+                    [{ 'header': [2, 3, false] }],
+                    ['bold', 'italic', 'underline', 'strike'],
+                    [{ 'size': ['0.75em', '0.875em', false, '1.125em', '1.25em', '1.5em', '1.875em', '2.25em'] }],
+                    [{ 'color': [] }, { 'background': [] }],
+                    [{ 'list': 'ordered' }, { 'list': 'bullet' }],
+                    [{ 'align': [] }],
+                    ['blockquote', 'code-block'],
+                    ['link'],
+                    ['clean']
+                ],
+                handlers: {}
+            }
+        }
+    });
+
+    // 툴바 크기 선택 레이블 한국어화
+    const sizeLabels = {
+        '0.75em': '소', '0.875em': '소+', 'false': '기본', 
+        '1.125em': '중', '1.25em': '중+', '1.5em': '대', 
+        '1.875em': '대+', '2.25em': '특대'
+    };
+    const sizePicker = document.querySelector('.ql-size .ql-picker-label');
+    if (sizePicker) sizePicker.setAttribute('data-value', '기본');
+    document.querySelectorAll('.ql-size .ql-picker-item').forEach(item => {
+        const val = item.getAttribute('data-value') || 'false';
+        item.textContent = sizeLabels[val] || '기본';
+    });
+}
+
+// ─── 초기화 ─────────────────────────────────────────────────────────────────
+window.addEventListener('DOMContentLoaded', () => {
+    initQuill();
+
+    // 비밀번호 설정 여부에 따라 화면 분기
+    if (!ls('pwSalt')) {
+        // 최초 접속: 비밀번호 설정 화면
+        document.getElementById('setupScreen').classList.remove('hidden');
+    } else {
+        // 이미 설정됨: 로그인 화면
+        document.getElementById('loginScreen').classList.remove('hidden');
+        checkLockout();
+    }
+
+    // 실시간 미리보기
+    ['title','summary','date','category'].forEach(id => {
+        document.getElementById(id).addEventListener('input', updatePreview);
+    });
+    document.getElementById('category').addEventListener('change', updatePreview);
+    updatePreview();
+});
+
+// ─── LocalStorage 헬퍼 ──────────────────────────────────────────────────────
+function ls(key, val) {
+    if (val === undefined) return localStorage.getItem('wa_admin_' + key);
+    if (val === null) { localStorage.removeItem('wa_admin_' + key); return; }
+    localStorage.setItem('wa_admin_' + key, val);
+}
+
+// ─── 암호화 유틸 (PBKDF2 + AES-GCM) ────────────────────────────────────────
+const enc = new TextEncoder();
+const dec = new TextDecoder();
+
+function randomBytes(n) {
+    return crypto.getRandomValues(new Uint8Array(n));
+}
+
+function buf2hex(buf) {
+    return Array.from(new Uint8Array(buf)).map(b => b.toString(16).padStart(2,'0')).join('');
+}
+function hex2buf(hex) {
+    return new Uint8Array(hex.match(/.{2}/g).map(b => parseInt(b, 16)));
+}
+
+// PBKDF2로 비밀번호 → CryptoKey 파생
+async function deriveKey(password, saltHex) {
+    const salt    = hex2buf(saltHex);
+    const keyMat  = await crypto.subtle.importKey('raw', enc.encode(password), 'PBKDF2', false, ['deriveKey']);
+    return crypto.subtle.deriveKey(
+        { name: 'PBKDF2', salt, iterations: 310000, hash: 'SHA-256' },
+        keyMat,
+        { name: 'AES-GCM', length: 256 },
+        false,
+        ['encrypt', 'decrypt']
+    );
+}
+
+// 비밀번호 해시 (인증 검증용): PBKDF2 기반
+async function hashPassword(password, saltHex) {
+    const key = await deriveKey(password, saltHex);
+    // 고정 메시지를 암호화한 결과를 verifier로 사용
+    const iv  = hex2buf(saltHex.slice(0, 24));
+    const ct  = await crypto.subtle.encrypt({ name: 'AES-GCM', iv }, key, enc.encode('wa_admin_verify'));
+    return buf2hex(ct);
+}
+
+// PAT 암호화
+async function encryptPat(pat, key) {
+    const iv = randomBytes(12);
+    const ct = await crypto.subtle.encrypt({ name: 'AES-GCM', iv }, key, enc.encode(pat));
+    return buf2hex(iv) + ':' + buf2hex(ct);
+}
+
+// PAT 복호화
+async function decryptPat(encryptedHex, key) {
+    const [ivHex, ctHex] = encryptedHex.split(':');
+    const pt = await crypto.subtle.decrypt({ name: 'AES-GCM', iv: hex2buf(ivHex) }, key, hex2buf(ctHex));
+    return dec.decode(pt);
+}
+
+// ─── 잠금 관리 (5회 실패 → 10분 잠금) ───────────────────────────────────────
+const MAX_ATTEMPTS = 5;
+const LOCKOUT_MS   = 10 * 60 * 1000;   // 10분
+
+function checkLockout() {
+    const lockUntil = parseInt(ls('lockUntil') || '0');
+    const now       = Date.now();
+    const btn       = document.getElementById('loginBtn');
+    const msg       = document.getElementById('lockoutMsg');
+    const inp       = document.getElementById('loginPw');
+    if (now < lockUntil) {
+        const remain = Math.ceil((lockUntil - now) / 60000);
+        btn.disabled = true;
+        btn.classList.add('opacity-50', 'cursor-not-allowed');
+        inp.disabled = true;
+        msg.textContent = `🔒 로그인 시도 초과로 ${remain}분간 잠겼습니다. 잠시 후 다시 시도하세요.`;
+        msg.classList.remove('hidden');
+        // 잠금 해제 타이머
+        setTimeout(() => {
+            ls('lockUntil', null);
+            ls('failCount', null);
+            btn.disabled = false; btn.classList.remove('opacity-50','cursor-not-allowed');
+            inp.disabled = false;
+            msg.classList.add('hidden');
+        }, lockUntil - now);
+        return true;
+    }
+    return false;
+}
+
+function recordFailure() {
+    const count = parseInt(ls('failCount') || '0') + 1;
+    ls('failCount', count);
+    if (count >= MAX_ATTEMPTS) {
+        ls('lockUntil', Date.now() + LOCKOUT_MS);
+        ls('failCount', null);
+        checkLockout();
+        return true;
+    }
+    const remain = MAX_ATTEMPTS - count;
+    document.getElementById('loginError').textContent = `비밀번호가 틀렸습니다. (${remain}회 남음)`;
+    document.getElementById('loginError').classList.remove('hidden');
+    return false;
+}
+
+// ─── 최초 설정 ────────────────────────────────────────────────────────────────
+async function doSetup() {
+    const pw      = document.getElementById('setupPw').value;
+    const confirm = document.getElementById('setupPwConfirm').value;
+    const errEl   = document.getElementById('setupError');
+
+    if (pw.length < 8) {
+        errEl.textContent = '비밀번호는 8자 이상이어야 합니다.';
+        errEl.classList.remove('hidden'); return;
+    }
+    if (pw !== confirm) {
+        errEl.textContent = '비밀번호가 일치하지 않습니다.';
+        errEl.classList.remove('hidden'); return;
+    }
+
+    const saltHex    = buf2hex(randomBytes(32));
+    const verifier   = await hashPassword(pw, saltHex);
+    ls('pwSalt',     saltHex);
+    ls('pwVerifier', verifier);
+
+    document.getElementById('setupScreen').classList.add('hidden');
+    document.getElementById('loginScreen').classList.remove('hidden');
+}
+
+// ─── 로그인 ──────────────────────────────────────────────────────────────────
+async function doLogin() {
+    if (checkLockout()) return;
+    const pw = document.getElementById('loginPw').value;
+    if (!pw) return;
+
+    const saltHex  = ls('pwSalt');
+    const stored   = ls('pwVerifier');
+    const verifier = await hashPassword(pw, saltHex);
+
+    if (verifier === stored) {
+        // 성공: 세션 키 메모리에 파생, 실패 카운터 초기화
+        SESSION_KEY = await deriveKey(pw, saltHex);
+        ls('failCount', null);
+        document.getElementById('loginPw').value = '';
+        document.getElementById('loginScreen').classList.add('hidden');
+        document.getElementById('adminPanel').classList.remove('hidden');
+        document.getElementById('loginError').classList.add('hidden');
+
+        // 설정 탭: GitHub 설정 불러오기
+        document.getElementById('ghOwner').value  = ls('ghOwner')  || DEFAULT_GH_OWNER;
+        document.getElementById('ghRepo').value   = ls('ghRepo')   || DEFAULT_GH_REPO;
+        document.getElementById('ghBranch').value = ls('ghBranch') || DEFAULT_GH_BRANCH;
+        // PAT는 복호화해서 필드에 표시 (입력 화면에서만 사용, 저장 시 재암호화)
+        const encPat = ls('ghPatEnc');
+        if (encPat && SESSION_KEY) {
+            try {
+                document.getElementById('ghPat').value = await decryptPat(encPat, SESSION_KEY);
+            } catch { document.getElementById('ghPat').value = ''; }
+        }
+
+        // 오늘 날짜 기본값
+        document.getElementById('date').value = new Date().toISOString().split('T')[0];
+        updatePreview();
+
+        // 2시간 자동 로그아웃
+        clearTimeout(window._autoLogoutTimer);
+        window._autoLogoutTimer = setTimeout(() => {
+            alert('보안을 위해 자동 로그아웃됩니다.');
+            doLogout();
+        }, 2 * 60 * 60 * 1000);
+
+    } else {
+        document.getElementById('loginPw').value = '';
+        document.getElementById('loginPw').focus();
+        recordFailure();
+    }
+}
+
+// ─── 로그아웃 ────────────────────────────────────────────────────────────────
+function doLogout() {
+    SESSION_KEY = null;   // 메모리에서 키 제거
+    clearTimeout(window._autoLogoutTimer);
+    document.getElementById('adminPanel').classList.add('hidden');
+    document.getElementById('loginScreen').classList.remove('hidden');
+    document.getElementById('loginPw').value = '';
+    document.getElementById('loginError').classList.add('hidden');
+    // PAT 필드 비우기
+    document.getElementById('ghPat').value = '';
+}
+
+// ─── 탭 전환 ────────────────────────────────────────────────────────────────
+function showTab(tab) {
+    document.getElementById('writeTab').classList.toggle('hidden', tab !== 'write');
+    document.getElementById('settingsTab').classList.toggle('hidden', tab !== 'settings');
+    document.getElementById('tabWrite').className    = 'px-4 py-2 text-sm font-semibold rounded-lg transition-colors ' + (tab==='write' ? 'bg-blue-600 text-white' : 'text-gray-600 hover:bg-gray-100');
+    document.getElementById('tabSettings').className = 'px-4 py-2 text-sm font-semibold rounded-lg transition-colors ' + (tab==='settings' ? 'bg-blue-600 text-white' : 'text-gray-600 hover:bg-gray-100');
+}
+
+// ─── 슬러그 자동 생성 ────────────────────────────────────────────────────────
+const SLUG_MAP = {'가':'ga','나':'na','다':'da','라':'ra','마':'ma','바':'ba','사':'sa','아':'a','자':'ja','차':'cha','카':'ka','타':'ta','파':'pa','하':'ha','정':'jeong','책':'book','금':'fund','자':'ja','원':'won','기':'gi','업':'up','뉴':'news','스':'s','팁':'tip','지':'ji','원':'support','금':'fund','경':'kyung','리':'ri','회':'hoe','계':'gye','실':'sil','무':'mu','정':'policy','책':'policy'};
+
+function titleToSlug(title) {
+    return title.normalize('NFD')
+        .replace(/[\u0300-\u036f]/g, '')
+        .replace(/[^a-zA-Z0-9\s]/g, '-')
+        .toLowerCase()
+        .replace(/\s+/g, '-')
+        .replace(/-{2,}/g, '-')
+        .replace(/^-|-$/g, '')
+        .substring(0, 50);
+}
+
+function autoSlug() {
+    const title = document.getElementById('title').value;
+    const date  = document.getElementById('date').value || new Date().toISOString().split('T')[0];
+    if (!title) return;
+    const slug = date + '-' + titleToSlug(title) || 'new-post';
+    document.getElementById('slug').value = slug.replace(/[^a-z0-9\-]/g, '');
+    updatePreview();
+}
+
+// ─── 미리보기 업데이트 ────────────────────────────────────────────────────────
+const CAT_COLORS = {
+    '정책자금': { bg: 'bg-blue-500',    badge: 'bg-blue-100 text-blue-700' },
+    '지원금':   { bg: 'bg-emerald-500', badge: 'bg-emerald-100 text-emerald-700' },
+    '경리뉴스': { bg: 'bg-amber-500',   badge: 'bg-amber-100 text-amber-700' },
+    '실무팁':   { bg: 'bg-rose-500',    badge: 'bg-rose-100 text-rose-700' },
+};
+
+function updatePreview() {
+    const title    = document.getElementById('title').value    || '제목이 여기 표시됩니다';
+    const summary  = document.getElementById('summary').value  || '요약이 여기 표시됩니다';
+    const date     = document.getElementById('date').value     || '';
+    const category = document.getElementById('category').value || '';
+
+    document.getElementById('previewTitle').textContent   = title;
+    document.getElementById('previewSummary').textContent = summary;
+    document.getElementById('previewDate').textContent    = date.replace(/-/g, '. ') + (date ? '.' : '');
+
+    const colors = CAT_COLORS[category] || { bg: 'bg-gray-400', badge: 'bg-gray-100 text-gray-700' };
+    document.getElementById('previewCategoryBg').className = 'h-2 ' + colors.bg;
+    const badge = document.getElementById('previewCategory');
+    badge.textContent  = category || '카테고리';
+    badge.className    = 'inline-block text-xs font-bold px-2 py-0.5 rounded-full mb-2 ' + colors.badge;
+}
+
+// ─── HTML 모드 토글 ───────────────────────────────────────────────────────────
+let htmlMode = false;
+function toggleHtmlMode() {
+    htmlMode = !htmlMode;
+    const editorEl  = document.getElementById('quillEditor');
+    const htmlPanel = document.getElementById('htmlModePanel');
+    const btn       = document.getElementById('htmlModeBtn');
+    if (htmlMode) {
+        // 에디터 → HTML: quill 내용을 textarea에
+        document.getElementById('htmlRaw').value = quill.root.innerHTML;
+        editorEl.classList.add('hidden');
+        htmlPanel.classList.remove('hidden');
+        btn.textContent = '에디터로 돌아가기';
+        btn.classList.add('bg-blue-50', 'text-blue-700', 'border-blue-300');
+    } else {
+        // HTML → 에디터: textarea 내용을 quill에
+        const html = document.getElementById('htmlRaw').value;
+        quill.root.innerHTML = html;
+        editorEl.classList.remove('hidden');
+        htmlPanel.classList.add('hidden');
+        btn.textContent = 'HTML 보기';
+        btn.classList.remove('bg-blue-50', 'text-blue-700', 'border-blue-300');
+    }
+}
+
+// ─── 특수 요소 삽입 ──────────────────────────────────────────────────────────
+const SPECIAL_HTML = {
+    table: `<table>
+  <thead><tr><th>항목</th><th>내용</th><th>비고</th></tr></thead>
+  <tbody>
+    <tr><td>행 1</td><td>값 1</td><td></td></tr>
+    <tr><td>행 2</td><td>값 2</td><td></td></tr>
+  </tbody>
+</table>`,
+    divider: `<hr>`,
+    callout: `<div style="background:#eff6ff;border-left:4px solid #2563eb;padding:1rem 1.25rem;border-radius:0 0.75rem 0.75rem 0;margin:1.5rem 0;color:#1e3a8a;">
+  <strong>💡 핵심 포인트</strong><br>
+  여기에 강조할 내용을 입력하세요.
+</div>`,
+    warning: `<div style="background:#fff7ed;border-left:4px solid #f97316;padding:1rem 1.25rem;border-radius:0 0.75rem 0.75rem 0;margin:1.5rem 0;color:#7c2d12;">
+  <strong>⚠️ 주의사항</strong><br>
+  여기에 주의할 내용을 입력하세요.
+</div>`,
+    image: null,   // 프롬프트로 처리
+    cta: `<div style="background:#eff6ff;border:1px solid #bfdbfe;border-radius:1rem;padding:1.5rem;text-align:center;margin:2rem 0;">
+  <p style="font-weight:700;font-size:1.1rem;margin-bottom:0.5rem;">경리 고민, 무료로 상담받아보세요</p>
+  <p style="color:#6b7280;font-size:0.9rem;margin-bottom:1rem;">전문 경리팀이 직접 진단해드립니다.</p>
+  <a href="https://wapeople.kr/index.html#cta" style="display:inline-block;background:#2563eb;color:white;font-weight:700;padding:0.75rem 2rem;border-radius:0.75rem;text-decoration:none;">무료 상담 신청</a>
+</div>`,
+};
+
+function insertSpecial(type) {
+    // HTML 모드일 때는 textarea에 직접 삽입
+    if (htmlMode) {
+        if (type === 'image') {
+            const url = prompt('이미지 URL 또는 경로를 입력하세요 (예: ../assets/news/파일명.webp)');
+            const alt = url ? prompt('이미지 설명(alt)을 입력하세요') || '' : '';
+            if (!url) return;
+            const ta = document.getElementById('htmlRaw');
+            const pos = ta.selectionStart;
+            const html = `<img src="${url}" alt="${alt}">`;
+            ta.value = ta.value.slice(0, pos) + '\n' + html + '\n' + ta.value.slice(pos);
+            return;
+        }
+        const html = SPECIAL_HTML[type];
+        const ta = document.getElementById('htmlRaw');
+        const pos = ta.selectionStart;
+        ta.value = ta.value.slice(0, pos) + '\n' + html + '\n' + ta.value.slice(pos);
+        return;
+    }
+
+    // 에디터 모드: Quill에 삽입
+    if (type === 'image') {
+        const url = prompt('이미지 URL 또는 경로를 입력하세요 (예: ../assets/news/파일명.webp)');
+        const alt = url ? prompt('이미지 설명(alt)을 입력하세요') || '' : '';
+        if (!url) return;
+        const range = quill.getSelection(true);
+        quill.insertEmbed(range ? range.index : quill.getLength(), 'image', url);
+        return;
+    }
+    const html = SPECIAL_HTML[type];
+    const range = quill.getSelection(true);
+    const idx = range ? range.index : quill.getLength();
+    // Delta에 HTML 삽입은 clipboard paste 방식 사용
+    const delta = quill.clipboard.convert(html);
+    quill.updateContents(delta, 'user');
+    quill.setSelection(quill.getLength());
+}
+
+// ─── 알림 배너 ────────────────────────────────────────────────────────────────
+function showAlert(msg, type = 'success') {
+    const el = document.getElementById('alertBanner');
+    el.textContent = msg;
+    el.className = `mb-6 rounded-xl px-5 py-4 text-sm font-semibold ${type === 'success' ? 'bg-green-50 text-green-800 border border-green-200' : 'bg-red-50 text-red-800 border border-red-200'}`;
+    el.classList.remove('hidden');
+    el.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    if (type === 'success') setTimeout(() => el.classList.add('hidden'), 6000);
+}
+
+// ─── GitHub 설정 저장 (PAT 암호화) ───────────────────────────────────────────
+async function saveGitHubSettings() {
+    const el = document.getElementById('ghTestResult');
+    ls('ghOwner',  document.getElementById('ghOwner').value.trim());
+    ls('ghRepo',   document.getElementById('ghRepo').value.trim());
+    ls('ghBranch', document.getElementById('ghBranch').value.trim());
+
+    const pat = document.getElementById('ghPat').value.trim();
+    if (pat) {
+        if (!SESSION_KEY) {
+            el.textContent = '❌ 세션이 만료됐습니다. 다시 로그인해주세요.';
+            el.className = 'mt-3 text-sm rounded-lg px-3 py-2 bg-red-50 text-red-700';
+            el.classList.remove('hidden'); return;
+        }
+        const encPat = await encryptPat(pat, SESSION_KEY);
+        ls('ghPatEnc', encPat);
+        ls('ghPat', null);   // 평문 혹시 남아있으면 삭제
+    }
+
+    el.textContent = '✅ 설정이 저장됐습니다. (PAT 암호화 저장됨)';
+    el.className = 'mt-3 text-sm rounded-lg px-3 py-2 bg-green-50 text-green-700';
+    el.classList.remove('hidden');
+}
+
+async function testGitHubConnection() {
+    const owner  = document.getElementById('ghOwner').value.trim()  || DEFAULT_GH_OWNER;
+    const repo   = document.getElementById('ghRepo').value.trim()   || DEFAULT_GH_REPO;
+    // 필드에 직접 입력된 PAT 우선, 없으면 저장된 암호화 PAT 복호화
+    const fieldPat = document.getElementById('ghPat').value.trim();
+    const pat      = fieldPat || await getDecryptedPat();
+    const el     = document.getElementById('ghTestResult');
+    el.textContent = '연결 테스트 중...';
+    el.className = 'mt-3 text-sm rounded-lg px-3 py-2 bg-gray-50 text-gray-600';
+    el.classList.remove('hidden');
+    try {
+        const res = await fetch(`https://api.github.com/repos/${owner}/${repo}`, {
+            headers: pat ? { Authorization: `token ${pat}` } : {}
+        });
+        if (res.ok) {
+            el.textContent = `✅ 연결 성공! (${owner}/${repo})`;
+            el.className = 'mt-3 text-sm rounded-lg px-3 py-2 bg-green-50 text-green-700';
+        } else {
+            const err = await res.json();
+            el.textContent = `❌ 연결 실패: ${err.message}`;
+            el.className = 'mt-3 text-sm rounded-lg px-3 py-2 bg-red-50 text-red-700';
+        }
+    } catch(e) {
+        el.textContent = '❌ 네트워크 오류: ' + e.message;
+        el.className = 'mt-3 text-sm rounded-lg px-3 py-2 bg-red-50 text-red-700';
+    }
+}
+
+// ─── 비밀번호 변경 (PAT 재암호화 포함) ───────────────────────────────────────
+async function changePassword() {
+    const current  = document.getElementById('currentPw').value;
+    const newPw    = document.getElementById('newPw').value;
+    const confirm  = document.getElementById('confirmPw').value;
+    const resultEl = document.getElementById('pwChangeResult');
+
+    // 현재 비밀번호 검증
+    const saltHex  = ls('pwSalt');
+    const stored   = ls('pwVerifier');
+    const verifier = await hashPassword(current, saltHex);
+
+    if (verifier !== stored) {
+        resultEl.textContent = '❌ 현재 비밀번호가 틀렸습니다.';
+        resultEl.className   = 'mt-3 text-sm rounded-lg px-3 py-2 bg-red-50 text-red-700';
+        resultEl.classList.remove('hidden'); return;
+    }
+    if (newPw.length < 8) {
+        resultEl.textContent = '❌ 새 비밀번호는 8자 이상이어야 합니다.';
+        resultEl.className   = 'mt-3 text-sm rounded-lg px-3 py-2 bg-red-50 text-red-700';
+        resultEl.classList.remove('hidden'); return;
+    }
+    if (newPw !== confirm) {
+        resultEl.textContent = '❌ 새 비밀번호가 일치하지 않습니다.';
+        resultEl.className   = 'mt-3 text-sm rounded-lg px-3 py-2 bg-red-50 text-red-700';
+        resultEl.classList.remove('hidden'); return;
+    }
+
+    // 새 salt + verifier 생성
+    const newSalt = buf2hex(randomBytes(32));
+    const newVerifier = await hashPassword(newPw, newSalt);
+    ls('pwSalt',     newSalt);
+    ls('pwVerifier', newVerifier);
+
+    // PAT를 새 키로 재암호화
+    const encPat = ls('ghPatEnc');
+    if (encPat && SESSION_KEY) {
+        try {
+            const plainPat = await decryptPat(encPat, SESSION_KEY);
+            SESSION_KEY    = await deriveKey(newPw, newSalt);
+            ls('ghPatEnc', await encryptPat(plainPat, SESSION_KEY));
+        } catch {
+            // 재암호화 실패 시 PAT 삭제 (재입력 필요)
+            ls('ghPatEnc', null);
+            SESSION_KEY = await deriveKey(newPw, newSalt);
+        }
+    } else {
+        SESSION_KEY = await deriveKey(newPw, newSalt);
+    }
+
+    ['currentPw','newPw','confirmPw'].forEach(id => document.getElementById(id).value = '');
+    resultEl.textContent = '✅ 비밀번호가 변경됐습니다. (PAT도 새 비밀번호로 재암호화됨)';
+    resultEl.className   = 'mt-3 text-sm rounded-lg px-3 py-2 bg-green-50 text-green-700';
+    resultEl.classList.remove('hidden');
+}
+
+// ─── GitHub API 헬퍼 ─────────────────────────────────────────────────────────
+async function getDecryptedPat() {
+    const encPat = ls('ghPatEnc');
+    if (!encPat || !SESSION_KEY) return '';
+    try { return await decryptPat(encPat, SESSION_KEY); }
+    catch { return ''; }
+}
+
+async function ghHeaders() {
+    const pat = await getDecryptedPat();
+    const headers = { 'Content-Type': 'application/json' };
+    if (pat) headers['Authorization'] = `token ${pat}`;
+    return headers;
+}
+
+function ghBase() {
+    const owner  = ls('ghOwner')  || DEFAULT_GH_OWNER;
+    const repo   = ls('ghRepo')   || DEFAULT_GH_REPO;
+    return `https://api.github.com/repos/${owner}/${repo}/contents`;
+}
+
+async function ghGetFile(path) {
+    const branch = ls('ghBranch') || DEFAULT_GH_BRANCH;
+    const res = await fetch(`${ghBase()}/${path}?ref=${branch}`, { headers: await ghHeaders() });
+    if (!res.ok) return null;
+    return res.json();
+}
+
+async function ghPutFile(path, content, message, sha) {
+    const branch = ls('ghBranch') || DEFAULT_GH_BRANCH;
+    const body = { message, content: btoa(unescape(encodeURIComponent(content))), branch };
+    if (sha) body.sha = sha;
+    const res = await fetch(`${ghBase()}/${path}`, {
+        method: 'PUT',
+        headers: await ghHeaders(),
+        body: JSON.stringify(body)
+    });
+    return res;
+}
+
+// ─── HTML 템플릿 생성 ─────────────────────────────────────────────────────────
+function categoryBadgeClass(cat) {
+    const map = {
+        '정책자금': 'bg-blue-100 text-blue-700 border-blue-200',
+        '지원금':   'bg-emerald-100 text-emerald-700 border-emerald-200',
+        '경리뉴스': 'bg-amber-100 text-amber-700 border-amber-200',
+        '실무팁':   'bg-rose-100 text-rose-700 border-rose-200',
+    };
+    return map[cat] || 'bg-gray-100 text-gray-700 border-gray-200';
+}
+
+function buildHtml({ title, summary, slug, date, displayDate, category, keywords, body }) {
+    const badgeClass = categoryBadgeClass(category);
+    const kw = keywords ? keywords + ', ' : '';
+
+    return `<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-THPPR46Q');<\/script>
+    <!-- End Google Tag Manager -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17745262400"><\/script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'AW-17745262400');
+    <\/script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>${escHtml(title)} - 경리소식 | 경리업무를잘하는청년들</title>
+    <meta name="description" content="${escAttr(summary)}">
+    <meta name="keywords" content="${escAttr(kw)}경리소식, 경리업무를잘하는청년들">
+    <meta name="robots" content="index, follow">
+    <meta name="naver-site-verification" content="aefffa7a6d4cad21b90328c862b8ce5725188412">
+    <link rel="canonical" href="https://wapeople.kr/news/${slug}">
+    <meta property="og:title" content="${escAttr(title)} - 경리소식">
+    <meta property="og:description" content="${escAttr(summary)}">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://wapeople.kr/news/${slug}">
+    <meta property="og:image" content="https://wapeople.kr/logo.png?v=20260310b">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:site_name" content="경리업무를잘하는청년들">
+    <meta property="og:locale" content="ko_KR">
+    <meta property="article:published_time" content="${date}">
+    <meta property="article:section" content="${category}">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="${escAttr(title)} - 경리소식">
+    <meta name="twitter:description" content="${escAttr(summary)}">
+    <meta name="twitter:image" content="https://wapeople.kr/logo.png?v=20260310b">
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "홈",       "item": "https://wapeople.kr/" },
+        { "@type": "ListItem", "position": 2, "name": "경리소식", "item": "https://wapeople.kr/news" },
+        { "@type": "ListItem", "position": 3, "name": "${escJson(title)}", "item": "https://wapeople.kr/news/${slug}" }
+      ]
+    }
+    <\/script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "NewsArticle",
+      "headline": "${escJson(title)}",
+      "description": "${escJson(summary)}",
+      "datePublished": "${date}",
+      "dateModified": "${date}",
+      "inLanguage": "ko-KR",
+      "articleSection": "${category}",
+      "image": "https://wapeople.kr/logo.png?v=20260310b",
+      "author": { "@type": "Organization", "name": "경리업무를잘하는청년들", "url": "https://wapeople.kr" },
+      "publisher": {
+        "@type": "Organization",
+        "name": "경리업무를잘하는청년들",
+        "url": "https://wapeople.kr",
+        "logo": { "@type": "ImageObject", "url": "https://wapeople.kr/logo.png?v=20260310b" }
+      },
+      "mainEntityOfPage": { "@type": "WebPage", "@id": "https://wapeople.kr/news/${slug}" }
+    }
+    <\/script>
+    <link rel="icon" type="image/x-icon" href="/favicon/favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-icon-180x180.png">
+    <meta name="theme-color" content="#2563eb">
+    <link rel="stylesheet" href="../dist/output.css">
+    <link rel="stylesheet" href="../mobile-optimize.css?v=20260312b">
+    <script src="../traffic-attribution.js?v=20260312a" defer><\/script>
+    <script src="../a11y-enhance.js" defer><\/script>
+    <link rel="stylesheet" href="../fonts/Pretendard-1.3.9/web/static/pretendard-subset.css?v=20260312c">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/fontawesome.min.css" media="print" onload="this.media='all'">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/solid.min.css" media="print" onload="this.media='all'">
+    <script>
+        document.documentElement.style.opacity = '0';
+        document.documentElement.style.transition = 'opacity 0.2s ease';
+        function revealPageAfterFontLoad() { document.documentElement.style.opacity = '1'; }
+        const fontLoadFallback = setTimeout(revealPageAfterFontLoad, 3000);
+        if (document.fonts && document.fonts.ready) {
+            document.fonts.ready.then(function() { clearTimeout(fontLoadFallback); revealPageAfterFontLoad(); }).catch(revealPageAfterFontLoad);
+        } else { window.addEventListener('load', function() { clearTimeout(fontLoadFallback); revealPageAfterFontLoad(); }); }
+    <\/script>
+    <noscript><style>html { opacity: 1 !important; }<\/style><\/noscript>
+    <style>
+        .article-body { font-size: 1.0625rem; line-height: 1.85; color: #374151; }
+        .article-body h2 { font-size: 1.625rem; font-weight: 800; color: #111827; margin: 2.5rem 0 1rem; padding-bottom: 0.5rem; border-bottom: 2px solid #2563eb; }
+        .article-body h3 { font-size: 1.25rem; font-weight: 700; color: #1f2937; margin: 2rem 0 0.75rem; }
+        .article-body p { margin: 1rem 0; }
+        .article-body ul, .article-body ol { margin: 1rem 0 1rem 1.5rem; }
+        .article-body ul { list-style: disc; } .article-body ol { list-style: decimal; }
+        .article-body li { margin: 0.4rem 0; }
+        .article-body strong { color: #1f2937; font-weight: 700; }
+        .article-body a { color: #2563eb; text-decoration: underline; text-underline-offset: 3px; }
+        .article-body blockquote { border-left: 4px solid #93c5fd; background: #eff6ff; padding: 1rem 1.25rem; margin: 1.5rem 0; border-radius: 0 0.75rem 0.75rem 0; color: #1e3a8a; font-style: italic; }
+        .article-body code { background: #f3f4f6; padding: 0.15rem 0.4rem; border-radius: 0.25rem; font-size: 0.9em; color: #be185d; }
+        .article-body img { max-width: 100%; height: auto; border-radius: 0.75rem; margin: 1.5rem 0; }
+        .article-body table { width: 100%; border-collapse: collapse; margin: 1.25rem 0; font-size: 0.95rem; }
+        .article-body th, .article-body td { border: 1px solid #e5e7eb; padding: 0.6rem 0.8rem; text-align: left; }
+        .article-body th { background: #f9fafb; font-weight: 700; }
+    <\/style>
+</head>
+<body class="antialiased">
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-THPPR46Q" height="0" width="0" style="display:none;visibility:hidden"><\/iframe><\/noscript>
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 right-0 z-50 nav-glass">
+        <div class="max-w-7xl mx-auto px-3 md:px-6 py-2 flex items-center justify-between gap-2">
+            <a href="../index.html" class="flex items-center gap-1 hover:opacity-80 transition-opacity touch-manipulation min-w-0">
+                <img src="../logo.png?v=20260310b" alt="경리업무를잘하는청년들" class="hidden md:block object-contain" style="height:2.125rem;" fetchpriority="high">
+                <img src="../logo.png?v=20260310b" alt="경리업무를잘하는청년들" class="block md:hidden mobile-nav-logo object-contain" fetchpriority="high">
+            </a>
+            <div class="hidden md:flex items-center gap-6">
+                <a href="../about.html" class="text-gray-700 hover:text-blue-700 font-semibold transition-colors">원격경리</a>
+                <a href="../news.html" class="text-blue-700 font-bold transition-colors">경리소식</a>
+                <a href="../faq.html" class="text-gray-700 hover:text-blue-700 font-semibold transition-colors">자주 묻는 질문</a>
+            </div>
+            <a href="../index.html#cta" class="bg-blue-600 hover:bg-blue-700 text-white font-bold px-5 py-2 rounded-xl transition-colors text-sm whitespace-nowrap">상담 바로가기</a>
+        </div>
+    </nav>
+
+    <!-- 히어로 -->
+    <section class="pt-20 md:pt-24 pb-10 bg-white border-b border-gray-100">
+        <div class="max-w-3xl mx-auto px-4">
+            <a href="../news.html" class="inline-flex items-center gap-1 text-sm text-blue-600 hover:text-blue-700 font-semibold mb-6 transition-colors">
+                <i class="fas fa-arrow-left text-xs"></i> 경리소식 목록
+            </a>
+            <div class="flex flex-wrap items-center gap-2 mb-4">
+                <span class="text-xs font-bold px-3 py-1 rounded-full border ${badgeClass}">${escHtml(category)}</span>
+                <time datetime="${date}" class="text-sm text-gray-500">${escHtml(displayDate)}</time>
+            </div>
+            <h1 class="text-2xl md:text-3xl lg:text-4xl font-black text-gray-900 leading-tight mb-4">${escHtml(title)}</h1>
+            <p class="text-base md:text-lg text-gray-600 leading-relaxed">${escHtml(summary)}</p>
+            <div class="mt-6 pt-6 border-t border-gray-100 flex items-center gap-3">
+                <div class="w-9 h-9 rounded-full bg-blue-100 flex items-center justify-center flex-shrink-0">
+                    <i class="fas fa-pen-nib text-blue-600 text-sm"></i>
+                </div>
+                <div>
+                    <p class="text-sm font-semibold text-gray-900">경리업무를잘하는청년들</p>
+                    <p class="text-xs text-gray-400">원격 경리 전문 서비스</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 본문 -->
+    <main class="max-w-3xl mx-auto px-4 py-10 md:py-14">
+        <article class="article-body">
+${body}
+        </article>
+
+        <!-- CTA -->
+        <div class="mt-14 bg-blue-50 border border-blue-200 rounded-2xl p-7 text-center">
+            <p class="text-lg font-bold text-gray-900 mb-2">경리 고민, 지금 바로 해결하세요</p>
+            <p class="text-sm text-gray-600 mb-5">무료 상담으로 우리 회사에 맞는 솔루션을 확인해 보세요.</p>
+            <a href="../index.html#cta" class="inline-block bg-blue-600 hover:bg-blue-700 text-white font-bold px-8 py-3 rounded-xl transition-colors text-sm">무료 상담 신청</a>
+        </div>
+
+        <!-- 목록으로 -->
+        <div class="mt-8 text-center">
+            <a href="../news.html" class="inline-flex items-center gap-2 text-sm text-gray-500 hover:text-blue-600 transition-colors font-semibold">
+                <i class="fas fa-arrow-left text-xs"></i> 경리소식 목록으로 돌아가기
+            </a>
+        </div>
+    </main>
+
+    <!-- 푸터 -->
+    <footer class="bg-gray-900 text-gray-400 py-10">
+        <div class="max-w-5xl mx-auto px-4 text-center text-xs space-y-1">
+            <p class="font-semibold text-white">경리업무를잘하는청년들</p>
+            <p>경기 수원시 팔달구 권광로175번길 83 201호 · 1566-2687 · wapeople000@gmail.com</p>
+            <p>© 2026 경리업무를잘하는청년들. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>`;
+}
+
+// ─── 이스케이프 헬퍼 ─────────────────────────────────────────────────────────
+function escHtml(s) { return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
+function escAttr(s) { return String(s).replace(/&/g,'&amp;').replace(/"/g,'&quot;'); }
+function escJson(s) { return String(s).replace(/\\/g,'\\\\').replace(/"/g,'\\"'); }
+
+// ─── 날짜 표시 형식 변환 ──────────────────────────────────────────────────────
+function toDisplayDate(iso) {
+    if (!iso) return '';
+    const [y,m,d] = iso.split('-');
+    return `${y}. ${m}. ${d}.`;
+}
+
+// ─── 게시 (GitHub API) ────────────────────────────────────────────────────────
+async function publishPost() {
+    const title    = document.getElementById('title').value.trim();
+    const summary  = document.getElementById('summary').value.trim();
+    const slug     = document.getElementById('slug').value.trim();
+    const date     = document.getElementById('date').value;
+    const category = document.getElementById('category').value;
+    const keywords = document.getElementById('keywords').value.trim();
+
+    // HTML 모드 상태면 textarea에서, 아니면 Quill에서 가져오기
+    let body;
+    if (htmlMode) {
+        body = document.getElementById('htmlRaw').value.trim();
+        // 에디터에도 동기화
+        quill.root.innerHTML = body;
+    } else {
+        body = quill.root.innerHTML.trim();
+    }
+    // Quill 빈 상태 감지 (<p><br></p>)
+    if (!body || body === '<p><br></p>') body = '';
+
+    // 유효성 검사
+    if (!title)    return showAlert('제목을 입력해주세요.', 'error');
+    if (!summary)  return showAlert('요약을 입력해주세요.', 'error');
+    if (!slug)     return showAlert('슬러그가 필요합니다.', 'error');
+    if (!date)     return showAlert('날짜를 선택해주세요.', 'error');
+    if (!category) return showAlert('카테고리를 선택해주세요.', 'error');
+    if (!body)     return showAlert('본문을 입력해주세요.', 'error');
+    if (!/^[a-z0-9\-]+$/.test(slug)) return showAlert('슬러그는 영문 소문자·숫자·하이픈만 사용 가능합니다.', 'error');
+    if (!ls('ghPatEnc')) return showAlert('설정 탭에서 GitHub Personal Access Token을 먼저 입력해주세요.', 'error');
+
+    const btn = document.getElementById('publishBtn');
+    const spinner = document.getElementById('publishSpinner');
+    btn.disabled = true;
+    btn.classList.add('opacity-50');
+    spinner.classList.remove('hidden');
+
+    try {
+        const displayDate = toDisplayDate(date);
+        const htmlContent = buildHtml({ title, summary, slug, date, displayDate, category, keywords, body });
+        const newsPath    = `news/${slug}.html`;
+
+        // 1. 기존 파일 확인 (sha 필요)
+        const existing = await ghGetFile(newsPath);
+        if (existing && existing.sha) {
+            if (!confirm(`"${slug}.html" 파일이 이미 존재합니다. 덮어쓰시겠어요?`)) {
+                btn.disabled = false; btn.classList.remove('opacity-50'); spinner.classList.add('hidden');
+                return;
+            }
+        }
+
+        // 2. 뉴스 HTML 파일 저장
+        const htmlRes = await ghPutFile(
+            newsPath,
+            htmlContent,
+            `[경리소식] ${title} (${date})`,
+            existing?.sha
+        );
+        if (!htmlRes.ok) {
+            const err = await htmlRes.json();
+            throw new Error('HTML 저장 실패: ' + (err.message || htmlRes.status));
+        }
+
+        // 3. news-data.js 업데이트
+        const dataFile = await ghGetFile('news-data.js');
+        if (dataFile) {
+            const currentContent = decodeURIComponent(escape(atob(dataFile.content.replace(/\n/g,''))));
+            const newEntry = `    {
+        slug: '${slug}',
+        title: '${escJson(title)}',
+        category: '${category}',
+        date: '${date}',
+        summary: '${escJson(summary)}',
+        cover: '',
+        url: 'news/${slug}.html'
+    },`;
+            // window.WA_NEWS_DATA = [ 바로 뒤에 삽입
+            const insertAfter = 'window.WA_NEWS_DATA = [';
+            const idx = currentContent.indexOf(insertAfter);
+            if (idx === -1) throw new Error('news-data.js 형식을 인식할 수 없습니다. 수동으로 추가해주세요.');
+
+            const updatedContent = currentContent.slice(0, idx + insertAfter.length) + '\n' + newEntry + '\n' + currentContent.slice(idx + insertAfter.length);
+            const dataRes = await ghPutFile('news-data.js', updatedContent, `[경리소식] news-data.js 업데이트 — ${slug}`, dataFile.sha);
+            if (!dataRes.ok) {
+                const err = await dataRes.json();
+                throw new Error('news-data.js 업데이트 실패: ' + (err.message || dataRes.status));
+            }
+        }
+
+        showAlert(`✅ 게시 완료! "${slug}.html" 이 GitHub에 저장됐습니다. 배포 후 /news 에서 확인하세요.`);
+
+        // 폼 초기화
+        ['title','summary','slug','keywords'].forEach(id => document.getElementById(id).value = '');
+        document.getElementById('category').value = '';
+        document.getElementById('date').value = new Date().toISOString().split('T')[0];
+        quill.setContents([]);   // Quill 초기화
+        if (htmlMode) { toggleHtmlMode(); }  // HTML 모드였으면 에디터 모드로 전환
+        updatePreview();
+
+    } catch(e) {
+        showAlert('❌ 오류: ' + e.message, 'error');
+        console.error(e);
+    } finally {
+        btn.disabled = false;
+        btn.classList.remove('opacity-50');
+        spinner.classList.add('hidden');
+    }
+}
+</script>
+</body>
+</html>

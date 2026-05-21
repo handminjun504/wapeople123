@@ -1,7 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-labelledby="title desc">
   <title id="title">도소매업 아이콘</title>
   <desc id="desc">재고 박스와 물류 흐름을 상징하는 도소매업 아이콘</desc>
-  <rect width="64" height="64" rx="18" fill="#f0f9ff"/>
   <path d="M18 23l14-7 14 7-14 7-14-7Z" fill="#38bdf8"/>
   <path d="M18 23v17l14 8V30L18 23Z" fill="#0284c7"/>
   <path d="M46 23v17l-14 8V30l14-7Z" fill="#0ea5e9"/>

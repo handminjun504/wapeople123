@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<!--
+=================================================================
+  경리소식 글 템플릿
+  ─────────────────────────────────────────────────────────────
+  새 글을 쓰려면 이 파일을 다음 이름으로 복사하세요:
+      news/{slug}.html       (예: news/2026-05-21-vat-deadline.html)
+
+  그리고 아래 [[ ]]로 표시된 부분을 모두 채우세요.
+
+  마지막으로 /news-data.js 의 WA_NEWS_DATA 배열 맨 앞에 한 줄을
+  추가하면 목록 페이지(news.html)에 카드가 자동으로 노출됩니다.
+=================================================================
+-->
+<html lang="ko">
+<head>
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-THPPR46Q');</script>
+    <!-- End Google Tag Manager -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17745262400"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'AW-17745262400');
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- ━━━━━━━━━━━━━━━ 글 정보 (반드시 수정) ━━━━━━━━━━━━━━━ -->
+    <title>[[글 제목]] - 경리소식 | 경리업무를잘하는청년들</title>
+    <meta name="description" content="[[글 요약 1~2줄, 100~150자 권장]]">
+    <meta name="keywords" content="[[키워드,쉼표로,구분]], 경리소식, 경리업무를잘하는청년들">
+    <meta name="robots" content="index, follow">
+    <meta name="naver-site-verification" content="aefffa7a6d4cad21b90328c862b8ce5725188412">
+    <link rel="canonical" href="https://wapeople.kr/news/[[slug]]">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="[[글 제목]] - 경리소식">
+    <meta property="og:description" content="[[글 요약]]">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://wapeople.kr/news/[[slug]]">
+    <meta property="og:image" content="https://wapeople.kr/logo.png?v=20260310b">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:site_name" content="경리업무를잘하는청년들">
+    <meta property="og:locale" content="ko_KR">
+    <meta property="article:published_time" content="[[YYYY-MM-DD]]">
+    <meta property="article:section" content="[[카테고리]]">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="[[글 제목]] - 경리소식">
+    <meta name="twitter:description" content="[[글 요약]]">
+    <meta name="twitter:image" content="https://wapeople.kr/logo.png?v=20260310b">
+
+    <!-- 빵부스러기 구조화 데이터 -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "홈",       "item": "https://wapeople.kr/" },
+        { "@type": "ListItem", "position": 2, "name": "경리소식", "item": "https://wapeople.kr/news" },
+        { "@type": "ListItem", "position": 3, "name": "[[글 제목]]", "item": "https://wapeople.kr/news/[[slug]]" }
+      ]
+    }
+    </script>
+
+    <!-- NewsArticle 구조화 데이터 -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "NewsArticle",
+      "headline": "[[글 제목]]",
+      "description": "[[글 요약]]",
+      "datePublished": "[[YYYY-MM-DD]]",
+      "dateModified": "[[YYYY-MM-DD]]",
+      "inLanguage": "ko-KR",
+      "articleSection": "[[카테고리]]",
+      "image": "https://wapeople.kr/logo.png?v=20260310b",
+      "author": {
+        "@type": "Organization",
+        "name": "경리업무를잘하는청년들",
+        "url": "https://wapeople.kr"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "경리업무를잘하는청년들",
+        "url": "https://wapeople.kr",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://wapeople.kr/logo.png?v=20260310b"
+        }
+      },
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://wapeople.kr/news/[[slug]]"
+      }
+    }
+    </script>
+
+    <link rel="icon" type="image/x-icon" href="/favicon/favicon.ico">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="/favicon/favicon-96x96.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-icon-180x180.png">
+    <link rel="manifest" href="/favicon/manifest.json">
+    <meta name="msapplication-config" content="/favicon/browserconfig.xml">
+    <meta name="theme-color" content="#2563eb">
+    <link rel="stylesheet" href="../dist/output.css">
+    <link rel="stylesheet" href="../mobile-optimize.css?v=20260312b">
+    <script src="../traffic-attribution.js?v=20260312a" defer></script>
+    <script src="../a11y-enhance.js" defer></script>
+    <link rel="stylesheet" href="../fonts/Pretendard-1.3.9/web/static/pretendard-subset.css?v=20260312c">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/fontawesome.min.css" media="print" onload="this.media='all'">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/solid.min.css" media="print" onload="this.media='all'">
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
+
+    <script>
+        document.documentElement.style.opacity = '0';
+        document.documentElement.style.transition = 'opacity 0.2s ease';
+        function revealPageAfterFontLoad() { document.documentElement.style.opacity = '1'; }
+        const fontLoadFallback = setTimeout(revealPageAfterFontLoad, 3000);
+        if (document.fonts && document.fonts.ready) {
+            document.fonts.ready.then(function() { clearTimeout(fontLoadFallback); revealPageAfterFontLoad(); }).catch(revealPageAfterFontLoad);
+        } else {
+            window.addEventListener('load', function() { clearTimeout(fontLoadFallback); revealPageAfterFontLoad(); });
+        }
+    </script>
+    <noscript><style>html { opacity: 1 !important; }</style></noscript>
+
+    <script src="https://www.google.com/recaptcha/api.js?render=6Le0CEMsAAAAAFGF3Dnci1_SUkC4VWmzqdox2jJZ"></script>
+
+    <style>
+        .article-body { font-size: 1.0625rem; line-height: 1.85; color: #374151; }
+        .article-body h2 { font-size: 1.625rem; font-weight: 800; color: #111827; margin: 2.5rem 0 1rem; padding-bottom: 0.5rem; border-bottom: 2px solid #2563eb; }
+        .article-body h3 { font-size: 1.25rem; font-weight: 700; color: #1f2937; margin: 2rem 0 0.75rem; }
+        .article-body p { margin: 1rem 0; }
+        .article-body ul, .article-body ol { margin: 1rem 0 1rem 1.5rem; }
+        .article-body ul { list-style: disc; }
+        .article-body ol { list-style: decimal; }
+        .article-body li { margin: 0.4rem 0; }
+        .article-body strong { color: #1f2937; font-weight: 700; }
+        .article-body a { color: #2563eb; text-decoration: underline; text-underline-offset: 3px; }
+        .article-body a:hover { color: #1d4ed8; }
+        .article-body blockquote { border-left: 4px solid #93c5fd; background: #eff6ff; padding: 1rem 1.25rem; margin: 1.5rem 0; border-radius: 0 0.75rem 0.75rem 0; color: #1e3a8a; font-style: italic; }
+        .article-body code { background: #f3f4f6; padding: 0.15rem 0.4rem; border-radius: 0.25rem; font-size: 0.9em; color: #be185d; }
+        .article-body img { max-width: 100%; height: auto; border-radius: 0.75rem; margin: 1.5rem 0; }
+        .article-body table { width: 100%; border-collapse: collapse; margin: 1.25rem 0; font-size: 0.95rem; }
+        .article-body th, .article-body td { border: 1px solid #e5e7eb; padding: 0.6rem 0.8rem; text-align: left; }
+        .article-body th { background: #f9fafb; font-weight: 700; }
+    </style>
+</head>
+<body class="antialiased">
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-THPPR46Q" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 right-0 z-50 nav-glass">
+        <div class="max-w-7xl mx-auto px-3 md:px-6 py-2 flex items-center justify-between gap-2">
+            <a href="../index.html" class="flex items-center gap-1 hover:opacity-80 transition-opacity touch-manipulation min-w-0">
+                <img src="../logo.png?v=20260310b" alt="경리업무를잘하는청년들" class="hidden md:block object-contain" style="height:2.125rem;" fetchpriority="high">
+                <img src="../logo.png?v=20260310b" alt="경리업무를잘하는청년들" class="block md:hidden mobile-nav-logo object-contain" fetchpriority="high">
+            </a>
+
+            <div class="hidden md:flex items-center gap-2 md:gap-8">
+                <a href="../about.html" class="px-8 py-5 text-gray-700 hover:text-blue-700 font-semibold transition-colors whitespace-nowrap">원격경리</a>
+                <div class="h-6 w-px bg-gray-300"></div>
+                <div class="relative group">
+                    <button class="flex items-center gap-2 px-3 py-2 text-gray-700 hover:text-blue-700 font-semibold transition-colors whitespace-nowrap" aria-haspopup="true" aria-expanded="false">
+                        <span>업종별 서비스</span>
+                        <i class="fas fa-chevron-down text-sm"></i>
+                    </button>
+                    <div class="absolute top-full left-0 mt-2 w-48 bg-white rounded-xl shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 border border-gray-100">
+                        <div class="py-2">
+                            <a href="../service.html" class="flex items-center gap-3 px-4 py-3 hover:bg-blue-50 transition-colors"><img src="../assets/industry/icons/service.svg" alt="" width="24" height="24" class="w-6 h-6 rounded-xl object-contain flex-shrink-0"><span class="text-gray-700 font-medium">서비스업</span></a>
+                            <a href="../manufacturing.html" class="flex items-center gap-3 px-4 py-3 hover:bg-emerald-50 transition-colors"><img src="../assets/industry/icons/manufacturing.svg" alt="" width="24" height="24" class="w-6 h-6 rounded-xl object-contain flex-shrink-0"><span class="text-gray-700 font-medium">제조업</span></a>
+                            <a href="../construction.html" class="flex items-center gap-3 px-4 py-3 hover:bg-amber-50 transition-colors"><img src="../assets/industry/icons/construction.svg" alt="" width="24" height="24" class="w-6 h-6 rounded-xl object-contain flex-shrink-0"><span class="text-gray-700 font-medium">건설업</span></a>
+                            <a href="../wholesale.html" class="flex items-center gap-3 px-4 py-3 hover:bg-sky-50 transition-colors"><img src="../assets/industry/icons/wholesale.svg" alt="" width="24" height="24" class="w-6 h-6 rounded-xl object-contain flex-shrink-0"><span class="text-gray-700 font-medium">도소매업</span></a>
+                            <a href="../restaurant.html" class="flex items-center gap-3 px-4 py-3 hover:bg-rose-50 transition-colors"><img src="../assets/industry/icons/restaurant.svg" alt="" width="24" height="24" class="w-6 h-6 rounded-xl object-contain flex-shrink-0"><span class="text-gray-700 font-medium">음식점업</span></a>
+                            <a href="../ecommerce.html" class="flex items-center gap-3 px-4 py-3 hover:bg-violet-50 transition-colors"><img src="../assets/industry/icons/ecommerce.svg" alt="" width="24" height="24" class="w-6 h-6 rounded-xl object-contain flex-shrink-0"><span class="text-gray-700 font-medium">쇼핑몰업</span></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="h-6 w-px bg-gray-300"></div>
+                <a href="../location.html" class="px-3 py-2 text-gray-700 hover:text-blue-700 font-semibold transition-colors whitespace-nowrap">오시는 길</a>
+                <div class="h-6 w-px bg-gray-300"></div>
+                <a href="../news.html" class="px-3 py-2 text-blue-700 font-semibold transition-colors whitespace-nowrap" aria-current="page">경리소식</a>
+                <div class="h-6 w-px bg-gray-300"></div>
+                <a href="../reviews.html" class="px-3 py-2 text-gray-700 hover:text-blue-700 font-semibold transition-colors whitespace-nowrap">고객후기</a>
+                <div class="h-6 w-px bg-gray-300"></div>
+                <a href="../faq.html" class="px-3 py-2 text-gray-700 hover:text-blue-700 font-semibold transition-colors whitespace-nowrap">FAQ</a>
+                <button onclick="openModal()" class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-full font-bold transition-colors shadow-lg cursor-pointer whitespace-nowrap ml-2">상담 바로가기</button>
+            </div>
+
+            <div class="mobile-nav-actions md:hidden">
+                <button onclick="openModal()" class="flex items-center justify-center bg-blue-600 hover:bg-blue-700 text-white px-5 py-2.5 rounded-full font-bold text-sm transition-colors shadow-lg cursor-pointer whitespace-nowrap">상담 바로가기</button>
+                <button id="mobileMenuBtn" class="flex items-center justify-center p-2 w-10 h-10 flex-shrink-0 text-gray-700 hover:text-blue-700 transition-colors" aria-label="모바일 메뉴 열기" aria-expanded="false"><i class="fas fa-bars text-2xl"></i></button>
+            </div>
+        </div>
+
+        <div id="mobileMenu" class="hidden md:hidden bg-white border-t border-gray-200 shadow-lg">
+            <div class="max-w-7xl mx-auto px-4 py-4">
+                <a href="../about.html" class="block py-3 px-4 text-gray-700 hover:bg-blue-50 hover:text-blue-700 font-semibold rounded-lg transition-colors">원격경리</a>
+                <div class="border-t border-gray-100 mt-2 pt-2">
+                    <p class="px-4 py-2 text-sm font-bold text-gray-500">업종별 서비스</p>
+                    <a href="../service.html" class="flex items-center gap-3 py-3 px-4 text-gray-700 hover:bg-blue-50 rounded-lg transition-colors"><img src="../assets/industry/icons/service.svg" alt="" width="24" height="24" class="w-6 h-6 rounded-xl object-contain flex-shrink-0"><span class="font-medium">서비스업</span></a>
+                    <a href="../manufacturing.html" class="flex items-center gap-3 py-3 px-4 text-gray-700 hover:bg-emerald-50 rounded-lg transition-colors"><img src="../assets/industry/icons/manufacturing.svg" alt="" width="24" height="24" class="w-6 h-6 rounded-xl object-contain flex-shrink-0"><span class="font-medium">제조업</span></a>
+                    <a href="../construction.html" class="flex items-center gap-3 py-3 px-4 text-gray-700 hover:bg-amber-50 rounded-lg transition-colors"><img src="../assets/industry/icons/construction.svg" alt="" width="24" height="24" class="w-6 h-6 rounded-xl object-contain flex-shrink-0"><span class="font-medium">건설업</span></a>
+                    <a href="../wholesale.html" class="flex items-center gap-3 py-3 px-4 text-gray-700 hover:bg-sky-50 rounded-lg transition-colors"><img src="../assets/industry/icons/wholesale.svg" alt="" width="24" height="24" class="w-6 h-6 rounded-xl object-contain flex-shrink-0"><span class="font-medium">도소매업</span></a>
+                    <a href="../restaurant.html" class="flex items-center gap-3 py-3 px-4 text-gray-700 hover:bg-rose-50 rounded-lg transition-colors"><img src="../assets/industry/icons/restaurant.svg" alt="" width="24" height="24" class="w-6 h-6 rounded-xl object-contain flex-shrink-0"><span class="font-medium">음식점업</span></a>
+                    <a href="../ecommerce.html" class="flex items-center gap-3 py-3 px-4 text-gray-700 hover:bg-violet-50 rounded-lg transition-colors"><img src="../assets/industry/icons/ecommerce.svg" alt="" width="24" height="24" class="w-6 h-6 rounded-xl object-contain flex-shrink-0"><span class="font-medium">쇼핑몰업</span></a>
+                </div>
+                <div class="border-t border-gray-100 mt-2 pt-2">
+                    <a href="../location.html" class="block py-3 px-4 text-gray-700 hover:bg-blue-50 hover:text-blue-700 font-semibold rounded-lg transition-colors">오시는 길</a>
+                    <a href="../news.html" class="block py-3 px-4 text-blue-700 bg-blue-50 font-semibold rounded-lg transition-colors" aria-current="page">경리소식</a>
+                    <a href="../reviews.html" class="block py-3 px-4 text-gray-700 hover:bg-blue-50 hover:text-blue-700 font-semibold rounded-lg transition-colors">고객후기</a>
+                    <a href="../faq.html" class="block py-3 px-4 text-gray-700 hover:bg-blue-50 hover:text-blue-700 font-semibold rounded-lg transition-colors">FAQ</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <script>
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        if (mobileMenuBtn && mobileMenu) {
+            mobileMenuBtn.addEventListener('click', function() {
+                mobileMenu.classList.toggle('hidden');
+                const icon = this.querySelector('i');
+                const isHidden = mobileMenu.classList.contains('hidden');
+                if (isHidden) { icon.classList.remove('fa-times'); icon.classList.add('fa-bars'); this.setAttribute('aria-expanded', 'false'); this.setAttribute('aria-label', '모바일 메뉴 열기'); }
+                else { icon.classList.remove('fa-bars'); icon.classList.add('fa-times'); this.setAttribute('aria-expanded', 'true'); this.setAttribute('aria-label', '모바일 메뉴 닫기'); }
+            });
+            mobileMenu.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', function() { mobileMenu.classList.add('hidden'); const icon = mobileMenuBtn.querySelector('i'); icon.classList.remove('fa-times'); icon.classList.add('fa-bars'); });
+            });
+        }
+    </script>
+
+    <!-- 글 헤더 -->
+    <header class="bg-gradient-to-br from-blue-50 to-white pt-28 md:pt-32 pb-12 md:pb-16 border-b border-gray-100">
+        <div class="max-w-3xl mx-auto px-4 md:px-6">
+            <!-- 빵부스러기 -->
+            <nav aria-label="현재 위치" class="text-sm text-gray-500 mb-6">
+                <a href="../index.html" class="hover:text-blue-600 transition-colors">홈</a>
+                <span class="mx-2 text-gray-300">/</span>
+                <a href="../news.html" class="hover:text-blue-600 transition-colors">경리소식</a>
+                <span class="mx-2 text-gray-300">/</span>
+                <span class="text-gray-700">[[카테고리]]</span>
+            </nav>
+
+            <!-- 카테고리 배지 + 날짜 -->
+            <div class="flex items-center gap-2 mb-4">
+                <!--
+                  카테고리 배지 색상 + 아이콘 가이드 (필요한 색상으로 클래스 변경):
+                    정책자금 : bg-blue-100    text-blue-700    fa-building-columns
+                    지원금   : bg-emerald-100 text-emerald-700 fa-hand-holding-heart
+                    경리뉴스 : bg-amber-100   text-amber-700   fa-newspaper
+                    실무팁   : bg-rose-100    text-rose-700    fa-lightbulb
+                -->
+                <span class="inline-flex items-center gap-1 px-3 py-1 rounded-full text-xs font-bold bg-blue-100 text-blue-700">
+                    <i class="fas fa-newspaper text-[10px]"></i>
+                    [[카테고리]]
+                </span>
+                <span class="text-sm text-gray-400">[[YYYY. MM. DD.]]</span>
+            </div>
+
+            <h1 class="text-3xl md:text-4xl lg:text-5xl font-black text-gray-900 leading-tight mb-4">
+                [[글 제목]]
+            </h1>
+            <p class="text-lg md:text-xl text-gray-600 leading-relaxed">
+                [[부제 또는 한 줄 요약 - 본문 첫 인상]]
+            </p>
+        </div>
+    </header>
+
+    <!-- 본문 -->
+    <main class="bg-white py-12 md:py-16">
+        <article class="max-w-3xl mx-auto px-4 md:px-6">
+
+            <!-- 핵심 요약 박스 (선택) -->
+            <aside class="bg-blue-50 border-l-4 border-blue-500 rounded-r-xl p-5 mb-10">
+                <h2 class="text-base font-bold text-blue-900 mb-2">
+                    <i class="fas fa-bookmark mr-1"></i> 한눈에 보기
+                </h2>
+                <ul class="text-sm md:text-base text-gray-700 leading-relaxed space-y-1 list-disc list-inside">
+                    <li>[[핵심 포인트 1]]</li>
+                    <li>[[핵심 포인트 2]]</li>
+                    <li>[[핵심 포인트 3]]</li>
+                </ul>
+            </aside>
+
+            <div class="article-body">
+                <!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
+                <!--                  본문 시작                       -->
+                <!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
+
+                <p>[[도입 단락 — 어떤 이슈인지, 왜 지금 다루는지 1~2문단]]</p>
+
+                <h2>[[중제목 1]]</h2>
+                <p>[[본문 단락]]</p>
+                <ul>
+                    <li>[[리스트 항목]]</li>
+                    <li>[[리스트 항목]]</li>
+                </ul>
+
+                <h2>[[중제목 2]]</h2>
+                <p>[[본문 단락]]</p>
+
+                <blockquote>
+                    [[강조하고 싶은 인용/포인트]]
+                </blockquote>
+
+                <h2>마무리하며</h2>
+                <p>[[정리 단락 — 독자에게 남기고 싶은 메시지]]</p>
+
+                <!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
+                <!--                  본문 끝                         -->
+                <!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
+            </div>
+
+            <!-- 작성자 / 공유 -->
+            <div class="mt-12 pt-8 border-t border-gray-100 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+                <div class="flex items-center gap-3">
+                    <div class="w-12 h-12 rounded-full bg-blue-600 flex items-center justify-center">
+                        <i class="fas fa-pen-nib text-white"></i>
+                    </div>
+                    <div>
+                        <p class="text-sm text-gray-500">작성</p>
+                        <p class="text-base font-bold text-gray-900">경리업무를잘하는청년들</p>
+                    </div>
+                </div>
+                <div class="flex items-center gap-2">
+                    <button type="button" onclick="copyShareUrl()" class="inline-flex items-center gap-2 bg-gray-100 hover:bg-gray-200 text-gray-700 px-4 py-2 rounded-full text-sm font-semibold transition-colors">
+                        <i class="fas fa-link"></i> 링크 복사
+                    </button>
+                </div>
+            </div>
+
+            <!-- 다음 글 / 목록으로 -->
+            <div class="mt-10 grid grid-cols-1 sm:grid-cols-2 gap-3">
+                <a href="../news.html" class="flex items-center justify-center gap-2 bg-white border-2 border-gray-200 hover:border-blue-300 hover:text-blue-700 text-gray-700 font-semibold py-3 rounded-xl transition-colors">
+                    <i class="fas fa-th-list"></i> 목록으로
+                </a>
+                <button type="button" onclick="openModal()" class="flex items-center justify-center gap-2 bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 rounded-xl transition-colors shadow-lg">
+                    <i class="fas fa-paper-plane"></i> 무료 상담 신청
+                </button>
+            </div>
+        </article>
+    </main>
+
+    <!-- 맨 위로 -->
+    <button id="scrollToTop" aria-label="맨 위로 스크롤" style="position: fixed; bottom: 2rem; right: 2rem; z-index: 9999; transition: all 0.3s ease;" class="bg-blue-600 hover:bg-blue-700 text-white w-12 h-12 md:w-14 md:h-14 rounded-full shadow-lg hover:shadow-2xl opacity-0 invisible flex items-center justify-center group">
+        <i class="fas fa-chevron-up text-xl group-hover:animate-bounce"></i>
+    </button>
+
+    <!-- Footer -->
+    <footer class="bg-white py-8 border-t border-gray-200">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="flex flex-col md:flex-row items-start justify-between gap-6">
+                <div class="flex items-center gap-4">
+                    <a href="../index.html"><img src="../logo.png?v=20260310b" alt="경리업무를잘하는청년들" class="h-16 md:h-20 object-contain"></a>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-3 text-gray-600 text-sm">
+                    <div class="flex items-center gap-2 hover:scale-105 transition-transform duration-300 cursor-pointer" onclick="copyToClipboard('1566-2687', '전화번호')"><i class="fas fa-phone text-blue-700"></i><span>전화번호 : 1566-2687</span></div>
+                    <div class="flex items-center gap-2 hover:scale-105 transition-transform duration-300 cursor-pointer" onclick="copyToClipboard('wapeople000@gmail.com', '이메일')"><i class="fas fa-envelope text-blue-700"></i><span>wapeople000@gmail.com</span></div>
+                    <div class="flex items-center gap-2"><i class="fas fa-user text-blue-700"></i><span>대표이사 : 금종석</span></div>
+                    <div class="flex items-center gap-2"><i class="fas fa-clock text-blue-700"></i><span>평일 09:00 - 18:00</span></div>
+                    <a href="https://map.naver.com/p/entry/place/1245812255" target="_blank" rel="noopener noreferrer" class="flex items-start gap-2 md:col-span-2 hover:scale-105 transition-transform duration-300 cursor-pointer"><i class="fas fa-map-marker-alt text-blue-700 mt-0.5"></i><span>주소 : 경기 수원시 팔달구 권광로175번길 83 201호</span></a>
+                </div>
+            </div>
+            <div class="border-t border-gray-200 mt-6 pt-6 text-center text-gray-400 text-sm">
+                <p>&copy; <span class="copyright-year">2026</span> 경리업무를잘하는청년들. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modal -->
+    <div id="consultModal" class="modal">
+        <div class="bg-white rounded-3xl p-8 md:p-12 max-w-xl w-full mx-4 relative max-h-[90vh] overflow-y-auto">
+            <button onclick="closeModal()" class="absolute top-6 right-6 text-gray-400 hover:text-gray-600 text-3xl font-light" aria-label="모달 닫기">&times;</button>
+            <div class="text-center mb-8">
+                <div class="w-16 h-16 rounded-2xl bg-blue-600 flex items-center justify-center mx-auto mb-4"><i class="fas fa-paper-plane text-white text-2xl"></i></div>
+                <h3 class="text-3xl font-bold text-gray-900 mb-2">무료 상담 신청</h3>
+                <p class="text-gray-500">원격경리 서비스에 대해 안내해드립니다.</p>
+            </div>
+            <form id="consultForm" class="space-y-5" onsubmit="return handleFormSubmit(event, 'consultForm')">
+                <input type="hidden" name="industry" value="경리소식">
+                <div><label class="block text-gray-700 font-semibold mb-2">회사명 <span class="text-rose-500">*</span></label><input type="text" name="company" required class="w-full border-2 border-gray-200 rounded-xl px-4 py-3 text-gray-900" placeholder="회사명을 입력해주세요"></div>
+                <div><label class="block text-gray-700 font-semibold mb-2">대표님 성함 <span class="text-rose-500">*</span></label><input type="text" name="name" required class="w-full border-2 border-gray-200 rounded-xl px-4 py-3 text-gray-900" placeholder="성함을 입력해주세요"></div>
+                <div><label class="block text-gray-700 font-semibold mb-2">연락처 <span class="text-rose-500">*</span></label><input type="tel" name="phone" required class="w-full border-2 border-gray-200 rounded-xl px-4 py-3 text-gray-900" placeholder="연락받으실 번호를 입력해주세요"></div>
+                <div><label class="block text-gray-700 font-semibold mb-2">이메일 <span class="text-gray-400 text-sm font-normal">(선택)</span></label><input type="email" name="email" autocomplete="email" inputmode="email" class="w-full border-2 border-gray-200 rounded-xl px-4 py-3 text-gray-900" placeholder="example@email.com"></div>
+                <div><label class="block text-gray-700 font-semibold mb-2">현재 가장 큰 고민 <span class="text-rose-500">*</span></label><textarea name="message" required rows="4" class="w-full border-2 border-gray-200 rounded-xl px-4 py-3 text-gray-900 resize-none" placeholder="예) 경리 직원 채용이 어려워요&#10;예) 장부 정리가 복잡해요"></textarea></div>
+                <button type="submit" class="w-full bg-blue-600 text-white font-bold text-lg py-4 rounded-xl hover:bg-blue-700 transition-all shadow-lg hover:shadow-2xl hover:-translate-y-1">무료 상담 신청하기</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        function openModal() { document.getElementById('consultModal').classList.add('active'); document.body.style.overflow = 'hidden'; }
+        function closeModal() { document.getElementById('consultModal').classList.remove('active'); document.body.style.overflow = 'auto'; }
+        document.getElementById('consultModal').addEventListener('click', function(e) { if (e.target === this) closeModal(); });
+        document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeModal(); });
+
+        function copyToClipboard(text, type) {
+            navigator.clipboard.writeText(text).then(() => { alert(type + '이(가) 복사되었습니다!\n' + text); }).catch(err => { console.error('복사 실패:', err); });
+        }
+
+        function copyShareUrl() {
+            navigator.clipboard.writeText(window.location.href).then(() => { alert('링크가 복사되었습니다!'); }).catch(() => { alert('링크 복사에 실패했습니다.'); });
+        }
+
+        function combineEmail(form) { const emailInput = form.querySelector('input[name="email"]'); if (emailInput) { emailInput.value = emailInput.value.trim(); } }
+
+        (function() {
+            const scrollToTopBtn = document.getElementById('scrollToTop'); if (!scrollToTopBtn) return;
+            window.addEventListener('scroll', function() {
+                if (window.pageYOffset > 300) { scrollToTopBtn.style.opacity = '1'; scrollToTopBtn.style.visibility = 'visible'; }
+                else { scrollToTopBtn.style.opacity = '0'; scrollToTopBtn.style.visibility = 'hidden'; }
+            });
+            scrollToTopBtn.addEventListener('click', function() { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+        })();
+
+        function formatPhoneNumber(value) {
+            const numbers = value.replace(/[^\d]/g, '');
+            if (numbers.length <= 3) return numbers;
+            if (numbers.length <= 7) return numbers.slice(0, 3) + '-' + numbers.slice(3);
+            if (numbers.length <= 10) return numbers.slice(0, 3) + '-' + numbers.slice(3, 6) + '-' + numbers.slice(6);
+            return numbers.slice(0, 3) + '-' + numbers.slice(3, 7) + '-' + numbers.slice(7, 11);
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            document.querySelectorAll('input[type="tel"]').forEach(function(input) {
+                input.addEventListener('input', function(e) {
+                    const cursorPosition = e.target.selectionStart;
+                    const oldLength = e.target.value.length;
+                    e.target.value = formatPhoneNumber(e.target.value);
+                    const newLength = e.target.value.length;
+                    if (newLength > oldLength) e.target.setSelectionRange(cursorPosition + 1, cursorPosition + 1);
+                    else e.target.setSelectionRange(cursorPosition, cursorPosition);
+                });
+                input.addEventListener('paste', function(e) { setTimeout(function() { e.target.value = formatPhoneNumber(e.target.value); }, 10); });
+            });
+        });
+
+        function handleFormSubmit(event, formId) {
+            event.preventDefault();
+            const form = document.getElementById(formId);
+            const submitButton = form.querySelector('button[type="submit"]');
+            const originalButtonText = submitButton.innerHTML;
+            combineEmail(form);
+            submitButton.disabled = true;
+            submitButton.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i>봇 확인 중...';
+            const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwLkpVI-zFipUtirkixwbaiTg-NdJP99UajSA_eoBs7MB5QPh20zkgpesZ9uDJJkHAQ/exec';
+            grecaptcha.ready(function() {
+                grecaptcha.execute('6Le0CEMsAAAAAFGF3Dnci1_SUkC4VWmzqdox2jJZ', {action: 'submit'}).then(function(token) {
+                    let recaptchaInput = form.querySelector('input[name="recaptcha_token"]');
+                    if (!recaptchaInput) { recaptchaInput = document.createElement('input'); recaptchaInput.type = 'hidden'; recaptchaInput.name = 'recaptcha_token'; form.appendChild(recaptchaInput); }
+                    recaptchaInput.value = token;
+                    submitButton.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i>전송 중...';
+                    const formData = new FormData(form);
+                    fetch(GOOGLE_SCRIPT_URL, { method: 'POST', body: formData, mode: 'no-cors' })
+                        .then(function() {
+                            window.dataLayer = window.dataLayer || [];
+                            window.dataLayer.push({'event': 'form_submit'});
+                            alert('✅ 상담 신청이 완료되었습니다!\n\n영업시간 내 문의 시, 30분 이내로 연락드리겠습니다.\n감사합니다!');
+                            form.reset(); if (typeof closeModal === 'function') closeModal();
+                            submitButton.disabled = false; submitButton.innerHTML = originalButtonText;
+                        })
+                        .catch(function() {
+                            window.dataLayer = window.dataLayer || [];
+                            window.dataLayer.push({'event': 'form_submit'});
+                            alert('✅ 상담 신청이 완료되었습니다!\n\n영업시간 내 문의 시, 30분 이내로 연락드리겠습니다.\n감사합니다!');
+                            form.reset(); if (typeof closeModal === 'function') closeModal();
+                            submitButton.disabled = false; submitButton.innerHTML = originalButtonText;
+                        });
+                }).catch(function() {
+                    alert('❌ 봇 확인에 실패했습니다. 페이지를 새로고침하고 다시 시도해주세요.');
+                    submitButton.disabled = false; submitButton.innerHTML = originalButtonText;
+                });
+            });
+            return false;
+        }
+    </script>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>AOS.init({ once: true, mirror: false });</script>
+</body>
+</html>

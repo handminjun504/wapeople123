@@ -9,3 +9,4 @@ Disallow: /dist/
 Disallow: /fonts/
 Disallow: /favicon/
 Disallow: /node_modules/
+Disallow: /admin/
