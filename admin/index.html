@@ -412,6 +412,9 @@ function initQuill() {
 window.addEventListener('DOMContentLoaded', () => {
     initQuill();
 
+    // localStorage에 저장된 잘못된 브랜치값 자동 수정
+    if (!ls('ghBranch') || ls('ghBranch') === 'main') ls('ghBranch', DEFAULT_GH_BRANCH);
+
     // 비밀번호 설정 여부에 따라 화면 분기
     if (!ls('pwSalt')) {
         // 최초 접속: 비밀번호 설정 화면
