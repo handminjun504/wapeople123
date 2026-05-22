@@ -43,12 +43,12 @@
     // ───────────────────────────────────────────────────────────────────
 
     var CATEGORY_STYLE = {
-        '정책자금': { bg: 'bg-blue-100',    text: 'text-blue-700',    grad: 'from-blue-100 to-blue-50',       icon: 'fa-building-columns' },
-        '지원금':   { bg: 'bg-emerald-100', text: 'text-emerald-700', grad: 'from-emerald-100 to-emerald-50', icon: 'fa-hand-holding-heart' },
-        '경리뉴스': { bg: 'bg-amber-100',   text: 'text-amber-700',   grad: 'from-amber-100 to-amber-50',     icon: 'fa-newspaper' },
-        '실무팁':   { bg: 'bg-rose-100',    text: 'text-rose-700',    grad: 'from-rose-100 to-rose-50',       icon: 'fa-lightbulb' }
+        '정책자금': { bg: 'bg-blue-100',    text: 'text-blue-700',    grad: 'from-blue-100 to-blue-50',       icon: 'fa-building-columns',  bar: '#2563eb', border: '#93c5fd', tint: 'rgba(37,99,235,0.04)' },
+        '지원금':   { bg: 'bg-emerald-100', text: 'text-emerald-700', grad: 'from-emerald-100 to-emerald-50', icon: 'fa-hand-holding-heart', bar: '#059669', border: '#6ee7b7', tint: 'rgba(5,150,105,0.04)' },
+        '경리뉴스': { bg: 'bg-amber-100',   text: 'text-amber-700',   grad: 'from-amber-100 to-amber-50',     icon: 'fa-newspaper',         bar: '#d97706', border: '#fcd34d', tint: 'rgba(217,119,6,0.04)' },
+        '실무팁':   { bg: 'bg-rose-100',    text: 'text-rose-700',    grad: 'from-rose-100 to-rose-50',       icon: 'fa-lightbulb',         bar: '#e11d48', border: '#fda4af', tint: 'rgba(225,29,72,0.04)' }
     };
-    var DEFAULT_STYLE = { bg: 'bg-gray-100', text: 'text-gray-700', grad: 'from-gray-100 to-gray-50', icon: 'fa-newspaper' };
+    var DEFAULT_STYLE = { bg: 'bg-gray-100', text: 'text-gray-700', grad: 'from-gray-100 to-gray-50', icon: 'fa-newspaper', bar: '#6b7280', border: '#d1d5db', tint: 'transparent' };
 
     function escapeHtml(value) {
         if (value == null) return '';
@@ -79,35 +79,44 @@
         var displayDate = formatDate(post.date);
         var url = escapeHtml(post.url || '#');
 
-        var cover;
-        if (post.cover) {
-            cover = '<img src="' + escapeHtml(post.cover) + '" alt="" loading="lazy" class="w-full h-44 object-cover">';
-        } else {
-            cover = '<div class="w-full h-44 bg-gradient-to-br ' + style.grad + ' flex items-center justify-center">' +
-                    '<i class="fas ' + style.icon + ' text-5xl ' + style.text + ' opacity-70"></i>' +
-                    '</div>';
-        }
+        var hasImage = !!post.cover;
+        var coverHtml = hasImage
+            ? '<div class="relative">' +
+                  '<img src="' + escapeHtml(post.cover) + '" alt="" loading="lazy" class="w-full h-40 object-cover">' +
+                  '<span class="absolute top-3 left-3 inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-bold bg-white/90 backdrop-blur ' + style.text + ' shadow-sm">' +
+                      '<i class="fas ' + style.icon + ' text-[11px]"></i>' +
+                      '<span>' + safeCategory + '</span>' +
+                  '</span>' +
+              '</div>'
+            : '';
+
+        var metaRow = hasImage
+            ? '<p class="text-xs text-gray-400 mb-2">' + displayDate + '</p>'
+            : '<div class="flex items-center gap-2 mb-3">' +
+                '<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-bold ' + style.bg + ' ' + style.text + '">' +
+                    '<i class="fas ' + style.icon + ' text-[11px]"></i>' +
+                    '<span>' + safeCategory + '</span>' +
+                '</span>' +
+                '<span class="text-xs text-gray-400">' + displayDate + '</span>' +
+              '</div>';
+
+        var cardStyle = 'border:2px solid ' + style.border + ';border-left:4px solid ' + style.bar + ';background:linear-gradient(to right,' + style.tint + ',#ffffff 60%);';
 
         return '' +
-            '<a href="' + url + '" class="news-card group block bg-white rounded-2xl overflow-hidden border border-gray-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300" ' +
+            '<a href="' + url + '" class="news-card group flex flex-col rounded-2xl overflow-hidden shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300" ' +
+                'style="' + cardStyle + '" ' +
                 'data-category="' + safeCategory + '" ' +
                 'data-search="' + escapeHtml(((post.title || '') + ' ' + (post.summary || '')).toLowerCase()) + '">' +
-                cover +
-                '<div class="p-5 md:p-6">' +
-                    '<div class="flex items-center gap-2 mb-3">' +
-                        '<span class="inline-flex items-center gap-1 px-3 py-1 rounded-full text-xs font-bold ' + style.bg + ' ' + style.text + '">' +
-                            '<i class="fas ' + style.icon + ' text-[10px]"></i>' +
-                            safeCategory +
-                        '</span>' +
-                        '<span class="text-xs text-gray-400">' + displayDate + '</span>' +
-                    '</div>' +
-                    '<h3 class="text-lg md:text-xl font-bold text-gray-900 mb-2 leading-snug group-hover:text-blue-700 transition-colors line-clamp-2">' +
+                coverHtml +
+                '<div class="flex-1 flex flex-col p-5 md:p-6">' +
+                    metaRow +
+                    '<h3 class="text-base md:text-lg font-bold text-gray-900 mb-2 leading-snug group-hover:text-blue-700 transition-colors line-clamp-2">' +
                         safeTitle +
                     '</h3>' +
-                    '<p class="text-sm text-gray-600 leading-relaxed line-clamp-3">' +
+                    '<p class="text-sm text-gray-600 leading-relaxed line-clamp-3 mb-4">' +
                         safeSummary +
                     '</p>' +
-                    '<div class="mt-4 flex items-center text-blue-600 font-semibold text-sm group-hover:gap-2 gap-1 transition-all">' +
+                    '<div class="mt-auto inline-flex items-center gap-1 text-blue-600 font-semibold text-sm group-hover:gap-2 transition-all">' +
                         '<span>읽어보기</span>' +
                         '<i class="fas fa-arrow-right text-xs"></i>' +
                     '</div>' +
