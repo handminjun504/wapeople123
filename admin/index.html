@@ -1126,13 +1126,16 @@ function buildHtml({ title, summary, slug, date, displayDate, category, keywords
         .modal { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.5); z-index: 9999; align-items: center; justify-content: center; }
         .modal.active { display: flex; }
         .article-body { font-size: 1.0625rem; line-height: 1.85; color: #374151; }
-        .article-body h2 { font-size: 1.625rem; font-weight: 800; color: #111827; margin: 2.5rem 0 1rem; padding-bottom: 0.5rem; border-bottom: 2px solid #2563eb; }
-        .article-body h3 { font-size: 1.25rem; font-weight: 700; color: #1f2937; margin: 2rem 0 0.75rem; }
-        .article-body p { margin: 1rem 0; }
+        .article-body > p:first-of-type { font-size: 1.125rem; font-weight: 500; color: #1e293b; }
+        .article-body h2 { font-size: 1.5rem; font-weight: 800; color: #111827; margin: 2.5rem 0 1rem; padding-bottom: 0.5rem; border-bottom: 2px solid #2563eb; }
+        .article-body h3 { font-size: 1.2rem; font-weight: 700; color: #1f2937; margin: 2rem 0 0.75rem; }
+        .article-body p { margin: 1.25rem 0; }
+        .article-body p:has(> br:only-child) { margin: 0; line-height: 0; height: 0; overflow: hidden; }
+        .article-body hr { border: none; border-top: 2px solid #e5e7eb; margin: 2.5rem 0; }
         .article-body ul, .article-body ol { margin: 1rem 0 1rem 1.5rem; }
         .article-body ul { list-style: disc; } .article-body ol { list-style: decimal; }
-        .article-body li { margin: 0.4rem 0; }
-        .article-body strong { color: #1f2937; font-weight: 700; }
+        .article-body li { margin: 0.5rem 0; }
+        .article-body strong { color: #111827; font-weight: 700; }
         .article-body a { color: #2563eb; text-decoration: underline; text-underline-offset: 3px; }
         .article-body blockquote { border-left: 4px solid #93c5fd; background: #eff6ff; padding: 1rem 1.25rem; margin: 1.5rem 0; border-radius: 0 0.75rem 0.75rem 0; color: #1e3a8a; font-style: italic; }
         .article-body code { background: #f3f4f6; padding: 0.15rem 0.4rem; border-radius: 0.25rem; font-size: 0.9em; color: #be185d; }
@@ -1161,59 +1164,103 @@ function buildHtml({ title, summary, slug, date, displayDate, category, keywords
         </div>
     </nav>
 
-    <!-- 히어로 -->
-    <section class="pt-20 md:pt-24 pb-10 bg-white border-b border-gray-100">
-        <div class="max-w-3xl mx-auto px-4">
-            <a href="../news.html" class="inline-flex items-center gap-1 text-sm text-blue-600 hover:text-blue-700 font-semibold mb-6 transition-colors">
-                <i class="fas fa-arrow-left text-xs"></i> 경리소식 목록
-            </a>
-            <div class="flex flex-wrap items-center gap-2 mb-4">
+    <!-- 글 헤더 -->
+    <header class="bg-gradient-to-br from-blue-50 via-white to-white pt-28 md:pt-32 pb-12 md:pb-16 border-b border-gray-100">
+        <div class="max-w-3xl mx-auto px-4 md:px-6">
+            <!-- 빵부스러기 -->
+            <nav aria-label="현재 위치" class="text-sm text-gray-500 mb-6">
+                <a href="../index.html" class="hover:text-blue-600 transition-colors">홈</a>
+                <span class="mx-2 text-gray-300">/</span>
+                <a href="../news.html" class="hover:text-blue-600 transition-colors">경리소식</a>
+                <span class="mx-2 text-gray-300">/</span>
+                <span class="text-gray-700">${escHtml(category)}</span>
+            </nav>
+
+            <!-- 카테고리 배지 + 날짜 -->
+            <div class="flex flex-wrap items-center gap-2 mb-5">
                 <span class="text-xs font-bold px-3 py-1 rounded-full border ${badgeClass}">${escHtml(category)}</span>
-                <time datetime="${date}" class="text-sm text-gray-500">${escHtml(displayDate)}</time>
+                <time datetime="${date}" class="text-sm text-gray-400">${escHtml(displayDate)}</time>
             </div>
-            <h1 class="text-2xl md:text-3xl lg:text-4xl font-black text-gray-900 leading-tight mb-4">${escHtml(title)}</h1>
-            <p class="text-base md:text-lg text-gray-600 leading-relaxed">${escHtml(summary)}</p>
-            <div class="mt-6 pt-6 border-t border-gray-100 flex items-center gap-3">
-                <div class="w-9 h-9 rounded-full bg-blue-100 flex items-center justify-center flex-shrink-0">
-                    <i class="fas fa-pen-nib text-blue-600 text-sm"></i>
-                </div>
-                <div>
-                    <p class="text-sm font-semibold text-gray-900">경리업무를잘하는청년들</p>
-                    <p class="text-xs text-gray-400">원격 경리 전문 서비스</p>
-                </div>
-            </div>
-        </div>
-    </section>
+
+            <h1 class="text-3xl md:text-4xl font-black text-gray-900 leading-tight mb-5">${escHtml(title)}</h1>
+            <p class="text-lg md:text-xl text-gray-600 leading-relaxed">${escHtml(summary)}</p>
+
+            <!-- 저자 -->
+            <div class="mt-8 pt-6 border-t border-gray-100 flex items-center justify-between gap-4">
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-full bg-blue-600 flex items-center justify-center flex-shrink-0">
+                        <i class="fas fa-pen-nib text-white text-sm"><\/i>
+                    <\/div>
+                    <div>
+                        <p class="text-sm font-bold text-gray-900">경리업무를잘하는청년들</p>
+                        <p class="text-xs text-gray-400">원격 경리 전문 서비스</p>
+                    <\/div>
+                <\/div>
+                <button type="button" onclick="copyShareUrl()" class="inline-flex items-center gap-2 bg-gray-100 hover:bg-gray-200 text-gray-600 px-3 py-1.5 rounded-full text-xs font-semibold transition-colors">
+                    <i class="fas fa-link text-xs"><\/i> 링크 복사
+                <\/button>
+            <\/div>
+        <\/div>
+    <\/header>
 
     <!-- 본문 -->
-    <main class="max-w-3xl mx-auto px-4 py-10 md:py-14">
-        <article class="article-body">
+    <main class="bg-white py-12 md:py-16">
+        <article class="max-w-3xl mx-auto px-4 md:px-6">
+            <div class="article-body">
 ${body}
-        </article>
+            <\/div>
 
-        <!-- CTA -->
-        <div class="mt-14 bg-blue-50 border border-blue-200 rounded-2xl p-7 text-center">
-            <p class="text-lg font-bold text-gray-900 mb-2">경리 고민, 지금 바로 해결하세요</p>
-            <p class="text-sm text-gray-600 mb-5">무료 상담으로 우리 회사에 맞는 솔루션을 확인해 보세요.</p>
-            <button onclick="openModal()" class="inline-block bg-blue-600 hover:bg-blue-700 text-white font-bold px-8 py-3 rounded-xl transition-colors text-sm cursor-pointer">무료 상담 신청<\/button>
-        </div>
+            <!-- 저자 / 공유 하단 -->
+            <div class="mt-12 pt-8 border-t border-gray-100 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+                <div class="flex items-center gap-3">
+                    <div class="w-12 h-12 rounded-full bg-blue-600 flex items-center justify-center">
+                        <i class="fas fa-pen-nib text-white"><\/i>
+                    <\/div>
+                    <div>
+                        <p class="text-xs text-gray-400">작성</p>
+                        <p class="text-sm font-bold text-gray-900">경리업무를잘하는청년들</p>
+                    <\/div>
+                <\/div>
+                <button type="button" onclick="copyShareUrl()" class="inline-flex items-center gap-2 bg-gray-100 hover:bg-gray-200 text-gray-700 px-4 py-2 rounded-full text-sm font-semibold transition-colors">
+                    <i class="fas fa-link text-xs"><\/i> 링크 복사
+                <\/button>
+            <\/div>
 
-        <!-- 목록으로 -->
-        <div class="mt-8 text-center">
-            <a href="../news.html" class="inline-flex items-center gap-2 text-sm text-gray-500 hover:text-blue-600 transition-colors font-semibold">
-                <i class="fas fa-arrow-left text-xs"><\/i> 경리소식 목록으로 돌아가기
-            </a>
-        </div>
-    </main>
+            <!-- 하단 네비게이션 -->
+            <div class="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-3">
+                <a href="../news.html" class="flex items-center justify-center gap-2 bg-white border-2 border-gray-200 hover:border-blue-300 hover:text-blue-700 text-gray-700 font-semibold py-3 rounded-xl transition-colors text-sm">
+                    <i class="fas fa-th-list"><\/i> 목록으로
+                <\/a>
+                <button type="button" onclick="openModal()" class="flex items-center justify-center gap-2 bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 rounded-xl transition-colors shadow-md text-sm">
+                    <i class="fas fa-paper-plane"><\/i> 무료 상담 신청
+                <\/button>
+            <\/div>
+        <\/article>
+    <\/main>
+
+    <!-- 맨 위로 -->
+    <button id="scrollToTop" aria-label="맨 위로 스크롤" style="position:fixed;bottom:2rem;right:2rem;z-index:9999;transition:all 0.3s ease;" class="bg-blue-600 hover:bg-blue-700 text-white w-12 h-12 rounded-full shadow-lg opacity-0 invisible flex items-center justify-center">
+        <i class="fas fa-chevron-up"><\/i>
+    <\/button>
 
     <!-- 푸터 -->
-    <footer class="bg-gray-900 text-gray-400 py-10">
-        <div class="max-w-5xl mx-auto px-4 text-center text-xs space-y-1">
-            <p class="font-semibold text-white">경리업무를잘하는청년들</p>
-            <p>경기 수원시 팔달구 권광로175번길 83 201호 · 1566-2687 · wapeople000@gmail.com</p>
-            <p>&copy; 2026 경리업무를잘하는청년들. All rights reserved.</p>
-        </div>
-    </footer>
+    <footer class="bg-white py-8 border-t border-gray-200">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="flex flex-col md:flex-row items-start justify-between gap-6">
+                <a href="../index.html"><img src="../logo.png?v=20260310b" alt="경리업무를잘하는청년들" class="h-14 md:h-16 object-contain"><\/a>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-3 text-gray-600 text-sm">
+                    <div class="flex items-center gap-2"><i class="fas fa-phone text-blue-700"><\/i><span>전화번호 : 1566-2687</span><\/div>
+                    <div class="flex items-center gap-2"><i class="fas fa-envelope text-blue-700"><\/i><span>wapeople000@gmail.com</span><\/div>
+                    <div class="flex items-center gap-2"><i class="fas fa-user text-blue-700"><\/i><span>대표이사 : 금종석</span><\/div>
+                    <div class="flex items-center gap-2"><i class="fas fa-clock text-blue-700"><\/i><span>평일 09:00 - 18:00</span><\/div>
+                    <div class="flex items-start gap-2 md:col-span-2"><i class="fas fa-map-marker-alt text-blue-700 mt-0.5"><\/i><span>주소 : 경기 수원시 팔달구 권광로175번길 83 201호</span><\/div>
+                <\/div>
+            <\/div>
+            <div class="border-t border-gray-200 mt-6 pt-6 text-center text-gray-400 text-sm">
+                <p>&copy; <span class="copyright-year">2026</span> 경리업무를잘하는청년들. All rights reserved.</p>
+            <\/div>
+        <\/div>
+    <\/footer>
 
     <!-- 상담 모달 -->
     <div id="consultModal" class="modal">
@@ -1241,6 +1288,13 @@ ${body}
         function closeModal() { document.getElementById('consultModal').classList.remove('active'); document.body.style.overflow = 'auto'; }
         document.getElementById('consultModal').addEventListener('click', function(e) { if (e.target === this) closeModal(); });
         document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeModal(); });
+        function copyShareUrl() { navigator.clipboard.writeText(window.location.href).then(function(){ alert('링크가 복사되었습니다!'); }).catch(function(){ alert('링크 복사에 실패했습니다.'); }); }
+        (function() {
+            var btn = document.getElementById('scrollToTop'); if (!btn) return;
+            window.addEventListener('scroll', function() { if (window.pageYOffset > 300) { btn.style.opacity='1'; btn.style.visibility='visible'; } else { btn.style.opacity='0'; btn.style.visibility='hidden'; } });
+            btn.addEventListener('click', function() { window.scrollTo({top:0,behavior:'smooth'}); });
+        })();
+        document.querySelectorAll('.copyright-year').forEach(function(el){ el.textContent = new Date().getFullYear(); });
         function combineEmail(form) { const el = form.querySelector('input[name="email"]'); if (el) el.value = el.value.trim(); }
         function handleFormSubmit(event, formId) {
             event.preventDefault();
@@ -1529,6 +1583,11 @@ async function publishPost() {
     }
     // Quill 빈 상태 감지 (<p><br></p>)
     if (!body || body === '<p><br></p>') body = '';
+
+    // <hr> 앞뒤의 <p><br></p> 빈 단락 제거 (Quill이 자동 삽입하는 불필요한 공백)
+    body = body
+        .replace(/<p><br\s*\/?><\/p>\s*(<hr\s*\/?>)/gi, '$1')   // hr 앞 빈 단락
+        .replace(/(<hr\s*\/?>\s*)<p><br\s*\/?><\/p>/gi, '$1');  // hr 뒤 빈 단락
 
     // 유효성 검사
     if (!title)    return showAlert('제목을 입력해주세요.', 'error');
