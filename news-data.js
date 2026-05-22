@@ -80,19 +80,29 @@
         var url = escapeHtml(post.url || '#');
 
         var hasImage = !!post.cover;
+        var thumbBg = {
+            '정책자금': 'linear-gradient(135deg,#1d4ed8 0%,#2563eb 60%,#3b82f6 100%)',
+            '지원금':   'linear-gradient(135deg,#065f46 0%,#059669 60%,#10b981 100%)',
+            '경리뉴스': 'linear-gradient(135deg,#92400e 0%,#d97706 60%,#f59e0b 100%)',
+            '실무팁':   'linear-gradient(135deg,#9f1239 0%,#e11d48 60%,#fb7185 100%)'
+        }[post.category] || 'linear-gradient(135deg,#374151 0%,#6b7280 100%)';
+
         var coverHtml = hasImage
             ? '<div class="relative">' +
-                  '<img src="' + escapeHtml(post.cover) + '" alt="" loading="lazy" class="w-full h-40 object-cover">' +
+                  '<img src="' + escapeHtml(post.cover) + '" alt="" loading="lazy" class="w-full h-44 object-cover">' +
                   '<span class="absolute top-3 left-3 inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-bold bg-white/90 backdrop-blur ' + style.text + ' shadow-sm">' +
                       '<i class="fas ' + style.icon + ' text-[11px]"></i>' +
                       '<span>' + safeCategory + '</span>' +
                   '</span>' +
               '</div>'
-            : '';
+            : '<div style="background:' + thumbBg + ';padding:1.5rem 1.25rem 1rem;display:flex;flex-direction:column;justify-content:space-between;min-height:140px;">' +
+                  '<p style="font-size:1.1rem;font-weight:800;color:#fff;line-height:1.5;letter-spacing:-0.02em;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;margin:0;">' +
+                      safeTitle +
+                  '</p>' +
+                  '<p style="font-size:0.7rem;color:rgba(255,255,255,0.7);margin:0.75rem 0 0;letter-spacing:0.02em;">경리업무를잘하는청년들 &middot; wapeople.kr</p>' +
+              '</div>';
 
-        var metaRow = hasImage
-            ? '<p class="text-xs text-gray-400 mb-2">' + displayDate + '</p>'
-            : '<div class="flex items-center gap-2 mb-3">' +
+        var metaRow = '<div class="flex items-center gap-2 mb-3">' +
                 '<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-bold ' + style.bg + ' ' + style.text + '">' +
                     '<i class="fas ' + style.icon + ' text-[11px]"></i>' +
                     '<span>' + safeCategory + '</span>' +
@@ -110,9 +120,7 @@
                 coverHtml +
                 '<div class="flex-1 flex flex-col p-5 md:p-6">' +
                     metaRow +
-                    '<h3 class="text-base md:text-lg font-bold text-gray-900 mb-2 leading-snug group-hover:text-blue-700 transition-colors line-clamp-2">' +
-                        safeTitle +
-                    '</h3>' +
+                    (hasImage ? '<h3 class="text-base md:text-lg font-bold text-gray-900 mb-2 leading-snug group-hover:text-blue-700 transition-colors line-clamp-2">' + safeTitle + '</h3>' : '') +
                     '<p class="text-sm text-gray-600 leading-relaxed line-clamp-3 mb-4">' +
                         safeSummary +
                     '</p>' +
