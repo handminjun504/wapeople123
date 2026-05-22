@@ -81,11 +81,11 @@
 
         var hasImage = !!post.cover;
         var thumbBg = {
-            '정책자금': 'linear-gradient(135deg,#1d4ed8 0%,#2563eb 60%,#3b82f6 100%)',
-            '지원금':   'linear-gradient(135deg,#065f46 0%,#059669 60%,#10b981 100%)',
-            '경리뉴스': 'linear-gradient(135deg,#92400e 0%,#d97706 60%,#f59e0b 100%)',
-            '실무팁':   'linear-gradient(135deg,#9f1239 0%,#e11d48 60%,#fb7185 100%)'
-        }[post.category] || 'linear-gradient(135deg,#374151 0%,#6b7280 100%)';
+            '정책자금': '#2563eb',
+            '지원금':   '#059669',
+            '경리뉴스': '#d97706',
+            '실무팁':   '#e11d48'
+        }[post.category] || '#6b7280';
 
         var coverHtml = hasImage
             ? '<div class="relative">' +
@@ -110,7 +110,7 @@
                 '<span class="text-xs text-gray-400">' + displayDate + '</span>' +
               '</div>';
 
-        var cardStyle = 'border:2px solid ' + style.border + ';border-left:4px solid ' + style.bar + ';background:linear-gradient(to right,' + style.tint + ',#ffffff 60%);';
+        var cardStyle = 'border:1px solid #e5e7eb;background:#ffffff;';
 
         return '' +
             '<a href="' + url + '" class="news-card group flex flex-col rounded-2xl overflow-hidden shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300" ' +
