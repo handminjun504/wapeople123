@@ -105,8 +105,20 @@ function main() {
     return;
   }
 
+  const rawItems = [];
+  walkImages(SOURCE_DIR, rawItems);
+
+  // macOS HFS+/APFS는 파일명을 NFD로, 일반 환경은 NFC로 다루기 때문에
+  // git 인덱스에 두 형태가 동시에 들어가면 같은 파일이 두 번 잡혀 중복 카드가 나온다.
+  // 항상 NFC로 정규화하고 dedup하여 빌드 환경에 관계없이 동일한 결과를 보장한다.
+  const seen = new Set();
   const items = [];
-  walkImages(SOURCE_DIR, items);
+  for (const item of rawItems) {
+    const normalized = item.image.normalize('NFC');
+    if (seen.has(normalized)) continue;
+    seen.add(normalized);
+    items.push({ image: normalized });
+  }
   items.sort((a, b) => a.image.localeCompare(b.image, 'ko'));
 
   const displayItems = items.map((item, index) => ({
