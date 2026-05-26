@@ -5,27 +5,30 @@ const ROOT_DIR = process.cwd();
 const SOURCE_DIR = path.join(ROOT_DIR, 'gnrl');
 const OUTPUT_FILE = path.join(ROOT_DIR, 'review-data.js');
 const IMAGE_EXTENSIONS = new Set(['.png', '.jpg', '.jpeg', '.webp']);
+// 익명성을 유지하면서도 placeholder("OO") 보다 자연스럽게 보이도록 한 글자만 ●로 가린다.
+// 한국 중소기업에서 흔한 두 글자 한자식 작명 + 업종 패턴.
+// 대기업/유명 브랜드와 명확히 겹치는 표기는 회피.
 const DISPLAY_TITLES = [
-  'OO건설',
-  'OO주식회사',
-  '(주)OO',
-  'OO이엔씨',
-  'OO개발',
-  'OO물류',
-  'OO유통',
-  'OO푸드',
-  'OO메디칼',
-  'OO플랜트',
-  '(주)OO건설',
-  'OO솔루션',
-  '(주)OO전기',
-  'OO파트너스',
-  '(주)OO개발',
-  'OO시스템',
-  '(주)OO기공',
-  'OO팩토리',
-  '(주)OO',
-  'OO홀딩스',
+  '동●건설',
+  '한●산업',
+  '(주)신●',
+  '정●이엔씨',
+  '우●개발',
+  '명●물류',
+  '청●유통',
+  '대●푸드',
+  '진●메디칼',
+  '성●플랜트',
+  '(주)미●건설',
+  '강●솔루션',
+  '(주)광●전기',
+  '태●파트너스',
+  '(주)윤●개발',
+  '인●시스템',
+  '(주)길●기공',
+  '영●팩토리',
+  '(주)민●',
+  '지●홀딩스',
 ];
 const DISPLAY_DATES = [
   '2026.03.04',
