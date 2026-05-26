@@ -28,6 +28,7 @@
             'send_to': 'AW-17745262400/CarCCLvL6v0bEMDuzI1C',
             'value': 1.0,
             'currency': 'KRW',
+            'transaction_id': 'wa_' + Date.now() + '_' + Math.random().toString(36).substring(2, 9),
             'event_callback': callback
         });
         return false;
@@ -1129,10 +1130,13 @@
                     // form submit
                     form.submit();
 
-                    // GTM dataLayer push (form_submit 트리거가 GA4 + Google Ads 전환 + 리마케팅을 통합 발사)
+                    // GA4·리마케팅: GTM dataLayer push
                     // alert 직전이 아니라 전송 직후 발사하여 페이지 이탈로 인한 비콘 손실 방지
                     window.dataLayer = window.dataLayer || [];
                     window.dataLayer.push({'event': 'form_submit'});
+
+                    // Google Ads 전환: gtag 직접 발사 (GTM 의존성 제거, transaction_id로 디덥)
+                    if (typeof gtag_report_conversion === 'function') gtag_report_conversion();
 
                     // 성공 처리
                     setTimeout(function() {

@@ -15,6 +15,24 @@
       gtag('js', new Date());
       gtag('config', 'AW-17745262400');
     </script>
+    <!-- Event snippet for 견적 요청 conversion -->
+    <script>
+    function gtag_report_conversion(url) {
+        var callback = function () {
+            if (typeof(url) != 'undefined') {
+                window.location = url;
+            }
+        };
+        gtag('event', 'conversion', {
+            'send_to': 'AW-17745262400/CarCCLvL6v0bEMDuzI1C',
+            'value': 1.0,
+            'currency': 'KRW',
+            'transaction_id': 'wa_' + Date.now() + '_' + Math.random().toString(36).substring(2, 9),
+            'event_callback': callback
+        });
+        return false;
+    }
+    </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>매출은 나오는데 남는 게 없는 느낌, 기분 탓이 아닙니다 - 경리소식 | 경리업무를잘하는청년들</title>
@@ -264,8 +282,8 @@
                     if (!r) { r = document.createElement('input'); r.type='hidden'; r.name='recaptcha_token'; form.appendChild(r); }
                     r.value = token; btn.innerHTML = '전송 중...';
                     fetch(URL, {method:'POST', body:new FormData(form), mode:'no-cors'})
-                        .then(function() { window.dataLayer=window.dataLayer||[]; window.dataLayer.push({event:'form_submit'}); alert('✅ 상담 신청이 완료되었습니다!\n\n영업시간 내 문의 시, 30분 이내로 연락드리겠습니다.'); form.reset(); closeModal(); btn.disabled=false; btn.innerHTML=orig; })
-                        .catch(function() { window.dataLayer=window.dataLayer||[]; window.dataLayer.push({event:'form_submit'}); alert('✅ 상담 신청이 완료되었습니다!\n\n영업시간 내 문의 시, 30분 이내로 연락드리겠습니다.'); form.reset(); closeModal(); btn.disabled=false; btn.innerHTML=orig; });
+                        .then(function() { window.dataLayer=window.dataLayer||[]; window.dataLayer.push({event:'form_submit'}); if (typeof gtag_report_conversion === 'function') gtag_report_conversion(); alert('✅ 상담 신청이 완료되었습니다!\n\n영업시간 내 문의 시, 30분 이내로 연락드리겠습니다.'); form.reset(); closeModal(); btn.disabled=false; btn.innerHTML=orig; })
+                        .catch(function() { window.dataLayer=window.dataLayer||[]; window.dataLayer.push({event:'form_submit'}); if (typeof gtag_report_conversion === 'function') gtag_report_conversion(); alert('✅ 상담 신청이 완료되었습니다!\n\n영업시간 내 문의 시, 30분 이내로 연락드리겠습니다.'); form.reset(); closeModal(); btn.disabled=false; btn.innerHTML=orig; });
                 }).catch(function() { alert('❌ 봇 확인 실패. 페이지를 새로고침해주세요.'); btn.disabled=false; btn.innerHTML=orig; });
             });
             return false;
