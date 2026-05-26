@@ -958,6 +958,16 @@
                     <input type="email" name="email" autocomplete="email" inputmode="email" class="w-full border-2 border-gray-200 rounded-xl px-4 py-3 text-gray-900" placeholder="example@email.com">
                 </div>
                 <div>
+                    <label class="block text-gray-700 font-semibold mb-2">유입경로 <span class="text-gray-400 text-sm font-normal">(선택)</span></label>
+                    <select name="referral_source" class="w-full border-2 border-gray-200 rounded-xl px-4 py-3 text-gray-900 bg-white">
+                        <option value="">선택해주세요</option>
+                        <option value="검색">검색</option>
+                        <option value="유튜브">유튜브</option>
+                        <option value="스레드">스레드</option>
+                        <option value="기타">기타</option>
+                    </select>
+                </div>
+                <div>
                     <label class="block text-gray-700 font-semibold mb-2">현재 가장 큰 고민 <span class="text-rose-500">*</span></label>
                     <textarea name="message" required rows="4" class="w-full border-2 border-gray-200 rounded-xl px-4 py-3 text-gray-900 resize-none" placeholder="예) 제품별 원가 계산이 안 돼요&#10;예) 거래처가 너무 많아서 관리가 힘들어요"></textarea>
                 </div>
