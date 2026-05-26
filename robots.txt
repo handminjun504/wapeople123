@@ -5,8 +5,8 @@ Allow: /
 Sitemap: https://wapeople.kr/sitemap.xml
 
 # 크롤링 제외할 경로 (필요시)
+# /favicon/ 은 Disallow 하지 않음 — Google 검색 결과 파비콘은 Googlebot-Image가 해당 URL을 크롤링해야 표시됨
 Disallow: /dist/
 Disallow: /fonts/
-Disallow: /favicon/
 Disallow: /node_modules/
 Disallow: /admin/
