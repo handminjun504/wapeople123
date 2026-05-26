@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-THPPR46Q');</script>
+    <!-- End Google Tag Manager -->
+    <!-- Google Ads Tag -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17745262400"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'AW-17745262400');
+    </script>
+    <!-- Event snippet for 견적 요청 conversion (Enhanced Conversions 지원) -->
+    <script>
+    function wapeopleGetUserData(form) {
+        if (!form) return {};
+        var fd = new FormData(form);
+        var email = ((fd.get('email') || '') + '').trim().toLowerCase();
+        var phone = ((fd.get('phone') || '') + '').trim();
+        var data = {};
+        if (email && email.indexOf('@') > 0) data.email = email;
+        if (phone) {
+            var digits = phone.replace(/\D/g, '');
+            if (digits.length >= 10) {
+                if (digits.indexOf('82') === 0) data.phone_number = '+' + digits;
+                else if (digits.charAt(0) === '0') data.phone_number = '+82' + digits.substring(1);
+                else data.phone_number = '+' + digits;
+            }
+        }
+        return data;
+    }
+
+    function gtag_report_conversion(url, userData) {
+        var callback = function () {
+            if (typeof(url) != 'undefined') {
+                window.location = url;
+            }
+        };
+        var payload = {
+            'send_to': 'AW-17745262400/CarCCLvL6v0bEMDuzI1C',
+            'value': 1.0,
+            'currency': 'KRW',
+            'transaction_id': 'wa_' + Date.now() + '_' + Math.random().toString(36).substring(2, 9),
+            'event_callback': callback
+        };
+        if (userData && (userData.email || userData.phone_number)) {
+            payload.user_data = userData;
+        }
+        gtag('event', 'conversion', payload);
+        return false;
+    }
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- 광고 LP는 검색 색인 제외 (메인 사이트와 중복 콘텐츠 방지) -->
+    <meta name="robots" content="noindex, follow">
+    <title>원격경리·경리아웃소싱 - 월 30만원부터 | 경리업무를잘하는청년들</title>
+    <meta name="description" content="경리 직원 채용 부담 없이 전문 경리팀이 맡습니다. 1,500+ 기업이 선택한 원격경리 서비스. 무료 상담 신청 후 30분 이내 연락드립니다.">
+
+    <link rel="canonical" href="https://wapeople.kr/lp-remote.html">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="원격경리·경리아웃소싱 - 월 30만원부터">
+    <meta property="og:description" content="경리 직원 채용 부담 없이 전문 경리팀이 맡습니다. 무료 상담 신청 후 30분 이내 연락드립니다.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://wapeople.kr/lp-remote.html">
+    <meta property="og:image" content="https://wapeople.kr/logo.png?v=20260310b">
+    <meta property="og:site_name" content="경리업무를잘하는청년들">
+    <meta property="og:locale" content="ko_KR">
+
+    <link rel="icon" type="image/x-icon" href="/favicon/favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-icon-180x180.png">
+    <meta name="theme-color" content="#2563eb">
+
+    <link rel="stylesheet" href="dist/output.css?v=20260526a">
+    <link rel="stylesheet" href="mobile-optimize.css?v=20260312b">
+    <script src="traffic-attribution.js?v=20260312a" defer></script>
+    <link rel="stylesheet" href="fonts/Pretendard-1.3.9/web/static/pretendard-subset.css?v=20260312c">
+    <link rel="preload" href="fonts/Pretendard-1.3.9/web/static/woff2-subset/Pretendard-Regular.subset.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+    <link rel="preload" href="fonts/Pretendard-1.3.9/web/static/woff2-subset/Pretendard-Bold.subset.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/fontawesome.min.css" media="print" onload="this.media='all'">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/solid.min.css" media="print" onload="this.media='all'">
+
+    <!-- 폰트 로딩 페이드인 -->
+    <script>
+        document.documentElement.style.opacity = '0';
+        document.documentElement.style.transition = 'opacity 0.2s ease';
+        function revealPageAfterFontLoad() { document.documentElement.style.opacity = '1'; }
+        const fontLoadFallback = setTimeout(revealPageAfterFontLoad, 3000);
+        if (document.fonts && document.fonts.ready) {
+            document.fonts.ready.then(function() { clearTimeout(fontLoadFallback); revealPageAfterFontLoad(); }).catch(revealPageAfterFontLoad);
+        } else {
+            window.addEventListener('load', function() { clearTimeout(fontLoadFallback); revealPageAfterFontLoad(); });
+        }
+    </script>
+    <noscript><style>html { opacity: 1 !important; }</style></noscript>
+
+    <!-- Google reCAPTCHA v3 -->
+    <script src="https://www.google.com/recaptcha/api.js?render=6Le0CEMsAAAAAFGF3Dnci1_SUkC4VWmzqdox2jJZ"></script>
+
+    <style>
+        /* LP 전용 미세 스타일 */
+        .hero-bg {
+            background:
+                radial-gradient(circle at 20% 10%, rgba(37,99,235,0.12) 0%, transparent 45%),
+                radial-gradient(circle at 80% 50%, rgba(59,130,246,0.08) 0%, transparent 55%),
+                linear-gradient(180deg, #f8fafc 0%, #ffffff 100%);
+        }
+        .form-card {
+            box-shadow: 0 20px 50px -12px rgba(37,99,235,0.18), 0 8px 16px -8px rgba(0,0,0,0.06);
+        }
+        input:focus, select:focus, textarea:focus {
+            outline: none;
+            border-color: #2563eb;
+            box-shadow: 0 0 0 3px rgba(37,99,235,0.12);
+        }
+    </style>
+</head>
+<body class="antialiased text-gray-900">
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-THPPR46Q" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+    <!-- 미니멀 헤더: 로고 + 전체 서비스 + 전화번호 -->
+    <header class="bg-white border-b border-gray-100 sticky top-0 z-40">
+        <div class="max-w-6xl mx-auto px-4 md:px-6 h-14 md:h-16 flex items-center justify-between gap-3">
+            <a href="index.html" class="flex items-center" aria-label="홈으로 이동">
+                <img src="logo.png?v=20260310b" alt="경리업무를잘하는청년들" class="object-contain" style="height:2rem;" fetchpriority="high">
+            </a>
+            <div class="flex items-center gap-2 md:gap-4">
+                <a href="index.html" class="hidden sm:inline-flex items-center gap-1.5 text-xs md:text-sm font-semibold text-gray-500 hover:text-blue-700 transition-colors">
+                    <i class="fas fa-house text-[11px]"></i>
+                    <span>전체 서비스 보기</span>
+                </a>
+                <span class="hidden sm:block h-4 w-px bg-gray-300"></span>
+                <a href="tel:1566-2687" class="inline-flex items-center gap-2 text-sm md:text-base font-bold text-blue-700 hover:text-blue-800">
+                    <i class="fas fa-phone text-xs md:text-sm"></i>
+                    <span class="hidden sm:inline">1566-2687</span>
+                    <span class="sm:hidden">전화 상담</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- HERO: 좌측 카피 + 우측 폼 (위 fold에서 폼이 바로 보임) -->
+    <section class="hero-bg">
+        <div class="max-w-6xl mx-auto px-4 md:px-6 py-8 md:py-16">
+            <div class="grid lg:grid-cols-5 gap-8 lg:gap-12 items-start">
+                <!-- 좌측: 핵심 메시지 -->
+                <div class="lg:col-span-3 lg:pr-4">
+                    <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-blue-100 text-blue-700 font-bold text-xs md:text-sm mb-5">
+                        <i class="fas fa-bolt text-[10px]"></i>
+                        <span>1,500+ 기업이 선택한 원격경리</span>
+                    </div>
+
+                    <h1 class="text-3xl md:text-5xl font-extrabold leading-tight tracking-tight mb-5">
+                        경리 직원 채용 부담 없이<br>
+                        <span class="text-blue-600">전문 경리팀</span>에 맡기세요
+                    </h1>
+
+                    <p class="text-base md:text-xl text-gray-600 leading-relaxed mb-8">
+                        경리나라 시스템과 경력 5년 이상 전문가가<br class="hidden md:inline">
+                        대표님 회사의 경리·회계 업무를 온라인으로 관리합니다.
+                    </p>
+
+                    <!-- 핵심 베네핏 3가지 -->
+                    <div class="space-y-3 mb-6">
+                        <div class="flex items-start gap-3">
+                            <div class="w-7 h-7 rounded-full bg-blue-600 text-white flex items-center justify-center flex-shrink-0 mt-0.5">
+                                <i class="fas fa-check text-xs"></i>
+                            </div>
+                            <div>
+                                <p class="font-bold text-gray-900">월 30~200만원 고정 비용</p>
+                                <p class="text-sm text-gray-500">경력직 채용 대비 연 최대 2,000만원 절감</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <div class="w-7 h-7 rounded-full bg-blue-600 text-white flex items-center justify-center flex-shrink-0 mt-0.5">
+                                <i class="fas fa-check text-xs"></i>
+                            </div>
+                            <div>
+                                <p class="font-bold text-gray-900">4대보험·퇴직금·복리후생 부담 없음</p>
+                                <p class="text-sm text-gray-500">채용·관리·교육 스트레스 0</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <div class="w-7 h-7 rounded-full bg-blue-600 text-white flex items-center justify-center flex-shrink-0 mt-0.5">
+                                <i class="fas fa-check text-xs"></i>
+                            </div>
+                            <div>
+                                <p class="font-bold text-gray-900">실시간 회계 현황 확인</p>
+                                <p class="text-sm text-gray-500">매출·미수금·현금흐름까지 언제든 조회</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 신뢰 지표 -->
+                    <div class="flex flex-wrap gap-x-6 gap-y-2 pt-5 border-t border-gray-200">
+                        <div class="flex items-center gap-2">
+                            <i class="fas fa-star text-amber-400"></i>
+                            <span class="font-bold">4.9</span>
+                            <span class="text-sm text-gray-500">평균 만족도</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <i class="fas fa-users text-blue-600"></i>
+                            <span class="font-bold">1,500+</span>
+                            <span class="text-sm text-gray-500">기업 이용 중</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <i class="fas fa-shield-halved text-emerald-600"></i>
+                            <span class="font-bold">개인정보 보호</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 우측: 상담 신청 폼 -->
+                <div class="lg:col-span-2">
+                    <div class="form-card bg-white rounded-2xl p-6 md:p-7 border border-gray-100">
+                        <div class="text-center mb-5">
+                            <h2 class="text-xl md:text-2xl font-extrabold text-gray-900 mb-1">무료 상담 신청</h2>
+                            <p class="text-sm text-gray-500">영업시간 내 문의 시 30분 이내 연락</p>
+                        </div>
+
+                        <form id="lpForm" class="space-y-3" onsubmit="return handleFormSubmit(event, 'lpForm')">
+                            <input type="hidden" name="industry" value="광고 LP">
+
+                            <div>
+                                <label class="block text-gray-700 font-semibold mb-1 text-sm">회사명 <span class="text-rose-500">*</span></label>
+                                <input type="text" name="company" required class="w-full border-2 border-gray-200 rounded-xl px-4 py-2.5 text-[15px]" placeholder="회사명">
+                            </div>
+                            <div>
+                                <label class="block text-gray-700 font-semibold mb-1 text-sm">대표님 성함 <span class="text-rose-500">*</span></label>
+                                <input type="text" name="name" required class="w-full border-2 border-gray-200 rounded-xl px-4 py-2.5 text-[15px]" placeholder="홍길동">
+                            </div>
+                            <div>
+                                <label class="block text-gray-700 font-semibold mb-1 text-sm">연락처 <span class="text-rose-500">*</span></label>
+                                <input type="tel" name="phone" required class="w-full border-2 border-gray-200 rounded-xl px-4 py-2.5 text-[15px]" placeholder="010-0000-0000">
+                            </div>
+                            <div>
+                                <label class="block text-gray-700 font-semibold mb-1 text-sm">이메일 <span class="text-gray-400 font-normal">(선택)</span></label>
+                                <input type="email" name="email" autocomplete="email" inputmode="email" class="w-full border-2 border-gray-200 rounded-xl px-4 py-2.5 text-[15px]" placeholder="example@email.com">
+                            </div>
+                            <div>
+                                <label class="block text-gray-700 font-semibold mb-1 text-sm">직원 수 <span class="text-gray-400 font-normal">(선택)</span></label>
+                                <select name="employees" class="w-full border-2 border-gray-200 rounded-xl px-4 py-2.5 text-[15px] bg-white">
+                                    <option value="">선택해주세요</option>
+                                    <option value="1-5명">1-5명</option>
+                                    <option value="6-10명">6-10명</option>
+                                    <option value="11-20명">11-20명</option>
+                                    <option value="20명 이상">20명 이상</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="block text-gray-700 font-semibold mb-1 text-sm">현재 가장 큰 고민 <span class="text-gray-400 font-normal">(선택)</span></label>
+                                <textarea name="message" rows="2" class="w-full border-2 border-gray-200 rounded-xl px-4 py-2.5 text-[15px] resize-none" placeholder="예) 경리 직원 채용이 어려워요"></textarea>
+                            </div>
+
+                            <button type="submit" class="w-full bg-blue-600 text-white font-bold text-base py-3.5 rounded-xl hover:bg-blue-700 transition-all shadow-lg hover:shadow-xl mt-2">
+                                <i class="fas fa-paper-plane mr-1.5 text-sm"></i>
+                                무료 상담 신청하기
+                            </button>
+
+                            <p class="text-[11px] text-center text-gray-400 leading-relaxed pt-1">
+                                전송 시 <a href="#" class="underline hover:text-gray-600">개인정보 처리방침</a>에 동의하는 것으로 간주됩니다.<br>
+                                영업 전화 없이 안내 1회만 드립니다.
+                            </p>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 정의 섹션: 원격경리란? 경리아웃소싱이란? -->
+    <section class="py-12 md:py-20 bg-white">
+        <div class="max-w-5xl mx-auto px-4 md:px-6">
+            <div class="text-center mb-10 md:mb-14">
+                <h2 class="text-2xl md:text-4xl font-extrabold text-gray-900 mb-3">원격경리·경리아웃소싱이란?</h2>
+                <p class="text-gray-500">대표님이 자주 헷갈려하시는 두 단어를 정확히 정리해드립니다.</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-5 md:gap-7">
+                <div class="bg-gradient-to-br from-blue-50 to-white border-2 border-blue-100 rounded-2xl p-6 md:p-8">
+                    <div class="w-12 h-12 rounded-xl bg-blue-600 text-white flex items-center justify-center mb-4">
+                        <i class="fas fa-laptop text-lg"></i>
+                    </div>
+                    <h3 class="text-xl md:text-2xl font-extrabold text-gray-900 mb-3">원격경리</h3>
+                    <p class="text-gray-700 leading-relaxed mb-4">
+                        경리 담당자가 <strong>회사에 출근하지 않고</strong> 온라인으로 회사의 경리·회계 업무를 처리하는 방식.
+                    </p>
+                    <ul class="space-y-2 text-sm text-gray-600">
+                        <li class="flex gap-2"><i class="fas fa-check text-blue-600 mt-1 flex-shrink-0"></i><span>경리나라 등 클라우드 회계 시스템 활용</span></li>
+                        <li class="flex gap-2"><i class="fas fa-check text-blue-600 mt-1 flex-shrink-0"></i><span>실시간으로 자료 공유·확인 가능</span></li>
+                        <li class="flex gap-2"><i class="fas fa-check text-blue-600 mt-1 flex-shrink-0"></i><span>전담 매니저가 정기적으로 진행 상황 보고</span></li>
+                    </ul>
+                </div>
+
+                <div class="bg-gradient-to-br from-emerald-50 to-white border-2 border-emerald-100 rounded-2xl p-6 md:p-8">
+                    <div class="w-12 h-12 rounded-xl bg-emerald-600 text-white flex items-center justify-center mb-4">
+                        <i class="fas fa-handshake text-lg"></i>
+                    </div>
+                    <h3 class="text-xl md:text-2xl font-extrabold text-gray-900 mb-3">경리아웃소싱</h3>
+                    <p class="text-gray-700 leading-relaxed mb-4">
+                        회사 내부에서 처리하던 경리 업무를 <strong>외부 전문 업체에 위탁</strong>하는 형태.
+                    </p>
+                    <ul class="space-y-2 text-sm text-gray-600">
+                        <li class="flex gap-2"><i class="fas fa-check text-emerald-600 mt-1 flex-shrink-0"></i><span>장부정리·세무자료·자금관리·매출관리 일괄 처리</span></li>
+                        <li class="flex gap-2"><i class="fas fa-check text-emerald-600 mt-1 flex-shrink-0"></i><span>인건비 부담 없이 전문 인력 활용</span></li>
+                        <li class="flex gap-2"><i class="fas fa-check text-emerald-600 mt-1 flex-shrink-0"></i><span>경리 직원 퇴사·공백 리스크 제거</span></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- 차이점 요약 -->
+            <div class="mt-8 bg-gray-50 rounded-2xl p-5 md:p-6 border border-gray-200">
+                <p class="text-sm md:text-base text-gray-700 leading-relaxed">
+                    <span class="font-bold text-gray-900">한 줄 정리:</span>
+                    "원격경리"는 <span class="text-blue-700 font-semibold">방식</span>이고, "경리아웃소싱"은 <span class="text-emerald-700 font-semibold">계약 형태</span>입니다.
+                    경리업무를잘하는청년들은 <strong>두 가지를 결합</strong>하여, 출근 없이 외부 전문가가 회사 경리를 통째로 운영합니다.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 비용 비교 섹션 -->
+    <section class="py-12 md:py-20 bg-slate-50">
+        <div class="max-w-5xl mx-auto px-4 md:px-6">
+            <div class="text-center mb-10">
+                <h2 class="text-2xl md:text-4xl font-extrabold text-gray-900 mb-3">경력직 채용보다 훨씬 저렴합니다</h2>
+                <p class="text-gray-500">연간 최대 2,000만원 이상 절감 가능</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-5">
+                <div class="bg-white rounded-2xl p-6 md:p-7 border-2 border-gray-200">
+                    <div class="flex items-center gap-2 mb-4">
+                        <span class="px-2.5 py-1 rounded-full bg-gray-100 text-gray-600 text-xs font-bold">자체 채용</span>
+                        <span class="text-sm text-gray-500">경력직 1인</span>
+                    </div>
+                    <p class="text-3xl md:text-4xl font-extrabold text-gray-400 line-through mb-1">약 4,000만원 ↑</p>
+                    <p class="text-sm text-gray-500 mb-5">연간 비용</p>
+                    <ul class="space-y-2 text-sm text-gray-600">
+                        <li class="flex gap-2"><i class="fas fa-times text-gray-400 mt-0.5 flex-shrink-0"></i>매월 인건비 고정 지출</li>
+                        <li class="flex gap-2"><i class="fas fa-times text-gray-400 mt-0.5 flex-shrink-0"></i>4대보험·퇴직금 부담</li>
+                        <li class="flex gap-2"><i class="fas fa-times text-gray-400 mt-0.5 flex-shrink-0"></i>식대·복리후생비 발생</li>
+                        <li class="flex gap-2"><i class="fas fa-times text-gray-400 mt-0.5 flex-shrink-0"></i>퇴사 시 인수인계 공백</li>
+                    </ul>
+                </div>
+
+                <div class="bg-blue-600 rounded-2xl p-6 md:p-7 text-white shadow-xl relative overflow-hidden">
+                    <div class="absolute top-3 right-3 px-2.5 py-1 rounded-full bg-yellow-300 text-blue-900 text-xs font-extrabold">추천</div>
+                    <div class="flex items-center gap-2 mb-4">
+                        <span class="px-2.5 py-1 rounded-full bg-blue-500 text-white text-xs font-bold">원격경리</span>
+                        <span class="text-sm text-blue-100">경리업무를잘하는청년들</span>
+                    </div>
+                    <p class="text-3xl md:text-4xl font-extrabold mb-1">월 30~200만원</p>
+                    <p class="text-sm text-blue-100 mb-5">고정 구독료</p>
+                    <ul class="space-y-2 text-sm text-blue-50">
+                        <li class="flex gap-2"><i class="fas fa-check text-yellow-300 mt-0.5 flex-shrink-0"></i>월 고정 비용만 부담</li>
+                        <li class="flex gap-2"><i class="fas fa-check text-yellow-300 mt-0.5 flex-shrink-0"></i>4대보험·퇴직금 0원</li>
+                        <li class="flex gap-2"><i class="fas fa-check text-yellow-300 mt-0.5 flex-shrink-0"></i>복리후생 비용 0원</li>
+                        <li class="flex gap-2"><i class="fas fa-check text-yellow-300 mt-0.5 flex-shrink-0"></i>채용 걱정 없이 바로 시작</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 두 번째 CTA -->
+    <section class="py-12 md:py-16 bg-gradient-to-r from-blue-600 to-blue-700 text-white">
+        <div class="max-w-3xl mx-auto px-4 md:px-6 text-center">
+            <h2 class="text-2xl md:text-4xl font-extrabold mb-3">경리 업무, 더는 혼자 끌어안지 마세요</h2>
+            <p class="text-blue-100 mb-6 md:mb-8 text-base md:text-lg">1,500+ 기업이 선택한 원격경리, 무료 진단부터 받아보세요.</p>
+            <div class="flex flex-col sm:flex-row gap-3 justify-center">
+                <a href="#lpForm" class="inline-flex items-center justify-center gap-2 bg-white text-blue-700 px-8 py-4 rounded-full font-extrabold text-base md:text-lg hover:bg-yellow-300 hover:text-blue-900 transition-colors shadow-xl">
+                    <i class="fas fa-paper-plane"></i>
+                    무료 상담 신청
+                </a>
+                <a href="tel:1566-2687" class="inline-flex items-center justify-center gap-2 bg-blue-500 text-white px-8 py-4 rounded-full font-extrabold text-base md:text-lg hover:bg-blue-400 transition-colors">
+                    <i class="fas fa-phone"></i>
+                    1566-2687 전화 상담
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 미니멀 푸터 -->
+    <footer class="bg-gray-900 text-gray-400 text-sm">
+        <div class="max-w-6xl mx-auto px-4 md:px-6 py-8">
+            <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+                <div>
+                    <a href="index.html" class="text-white font-bold mb-1 hover:text-blue-300 transition-colors inline-block">경리업무를잘하는청년들</a>
+                    <p class="text-xs mt-1">경기 수원시 팔달구 권광로175번길 83 201호 · 1566-2687</p>
+                </div>
+                <div class="flex flex-wrap items-center gap-x-4 gap-y-2 text-xs">
+                    <a href="index.html" class="inline-flex items-center gap-1.5 text-gray-300 hover:text-white transition-colors">
+                        <i class="fas fa-house text-[10px]"></i>
+                        <span>메인 사이트로 이동</span>
+                    </a>
+                    <span class="text-gray-600">|</span>
+                    <span>© 2026 경리업무를잘하는청년들</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // 이메일 정규화
+        function combineEmail(form) {
+            const emailInput = form.querySelector('input[name="email"]');
+            if (emailInput) emailInput.value = emailInput.value.trim();
+        }
+
+        // 전화번호 자동 하이픈
+        function formatPhoneNumber(value) {
+            const numbers = value.replace(/[^\d]/g, '');
+            if (numbers.length <= 3) return numbers;
+            if (numbers.length <= 7) return numbers.slice(0, 3) + '-' + numbers.slice(3);
+            if (numbers.length <= 10) return numbers.slice(0, 3) + '-' + numbers.slice(3, 6) + '-' + numbers.slice(6);
+            return numbers.slice(0, 3) + '-' + numbers.slice(3, 7) + '-' + numbers.slice(7, 11);
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            document.querySelectorAll('input[type="tel"]').forEach(function(input) {
+                input.addEventListener('input', function(e) {
+                    const cursorPosition = e.target.selectionStart;
+                    const oldLength = e.target.value.length;
+                    e.target.value = formatPhoneNumber(e.target.value);
+                    const newLength = e.target.value.length;
+                    const offset = newLength > oldLength ? 1 : 0;
+                    e.target.setSelectionRange(cursorPosition + offset, cursorPosition + offset);
+                });
+                input.addEventListener('paste', function(e) {
+                    setTimeout(function() { e.target.value = formatPhoneNumber(e.target.value); }, 10);
+                });
+            });
+        });
+
+        function handleFormSubmit(event, formId) {
+            event.preventDefault();
+            const form = document.getElementById(formId);
+            const submitButton = form.querySelector('button[type="submit"]');
+            const originalButtonText = submitButton.innerHTML;
+
+            combineEmail(form);
+
+            submitButton.disabled = true;
+            submitButton.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i>봇 확인 중...';
+
+            const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwLkpVI-zFipUtirkixwbaiTg-NdJP99UajSA_eoBs7MB5QPh20zkgpesZ9uDJJkHAQ/exec';
+
+            grecaptcha.ready(function() {
+                grecaptcha.execute('6Le0CEMsAAAAAFGF3Dnci1_SUkC4VWmzqdox2jJZ', {action: 'submit'}).then(function(token) {
+                    let recaptchaInput = form.querySelector('input[name="recaptcha_token"]');
+                    if (!recaptchaInput) {
+                        recaptchaInput = document.createElement('input');
+                        recaptchaInput.type = 'hidden';
+                        recaptchaInput.name = 'recaptcha_token';
+                        form.appendChild(recaptchaInput);
+                    }
+                    recaptchaInput.value = token;
+
+                    submitButton.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i>전송 중...';
+
+                    const formData = new FormData(form);
+
+                    fetch(GOOGLE_SCRIPT_URL, {
+                        method: 'POST',
+                        body: formData,
+                        mode: 'no-cors'
+                    })
+                    .then(function() {
+                        // GA4·리마케팅: GTM dataLayer push
+                        window.dataLayer = window.dataLayer || [];
+                        window.dataLayer.push({'event': 'form_submit'});
+
+                        // Google Ads 전환: gtag 직접 발사 (Enhanced Conversions 포함)
+                        if (typeof gtag_report_conversion === 'function') {
+                            var _ud = (typeof wapeopleGetUserData === 'function') ? wapeopleGetUserData(form) : {};
+                            gtag_report_conversion(undefined, _ud);
+                        }
+
+                        alert('✅ 상담 신청이 완료되었습니다!\n\n영업시간 내 문의 시, 30분 이내로 연락드리겠습니다.\n감사합니다!');
+                        form.reset();
+                        submitButton.disabled = false;
+                        submitButton.innerHTML = originalButtonText;
+                    })
+                    .catch(function(error) {
+                        console.error('전송 오류:', error);
+                        window.dataLayer = window.dataLayer || [];
+                        window.dataLayer.push({'event': 'form_submit'});
+                        if (typeof gtag_report_conversion === 'function') {
+                            var _ud = (typeof wapeopleGetUserData === 'function') ? wapeopleGetUserData(form) : {};
+                            gtag_report_conversion(undefined, _ud);
+                        }
+                        alert('✅ 상담 신청이 완료되었습니다!\n\n영업시간 내 문의 시, 30분 이내로 연락드리겠습니다.\n감사합니다!');
+                        form.reset();
+                        submitButton.disabled = false;
+                        submitButton.innerHTML = originalButtonText;
+                    });
+                }).catch(function(error) {
+                    console.error('reCAPTCHA 오류:', error);
+                    alert('❌ 봇 확인에 실패했습니다. 페이지를 새로고침하고 다시 시도해주세요.');
+                    submitButton.disabled = false;
+                    submitButton.innerHTML = originalButtonText;
+                });
+            });
+
+            return false;
+        }
+    </script>
+</body>
+</html>
