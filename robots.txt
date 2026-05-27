@@ -1,12 +1,54 @@
+# 일반 검색엔진 ─────────────────────────────────────────────
 User-agent: *
 Allow: /
 
-# Sitemap
-Sitemap: https://wapeople.kr/sitemap.xml
+# AI 검색·LLM 크롤러 명시적 허용 (GEO: Generative Engine Optimization)
+# 사이트 인덱싱 및 답변 인용을 환영합니다.
+User-agent: GPTBot
+Allow: /
 
-# 크롤링 제외할 경로 (필요시)
-# /favicon/ 은 Disallow 하지 않음 — Google 검색 결과 파비콘은 Googlebot-Image가 해당 URL을 크롤링해야 표시됨
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Perplexity-User
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
+User-agent: cohere-ai
+Allow: /
+
+User-agent: Bytespider
+Allow: /
+
+# 크롤링 제외 ────────────────────────────────────────────────
+# /favicon/은 Disallow하지 않음 — Googlebot-Image가 크롤링해야 검색 결과 파비콘 표시됨
 Disallow: /dist/
 Disallow: /fonts/
 Disallow: /node_modules/
 Disallow: /admin/
+
+# Sitemap ──────────────────────────────────────────────────
+Sitemap: https://wapeople.kr/sitemap.xml
