@@ -236,8 +236,7 @@
                     <div class="flex items-center justify-between mb-3">
                         <label class="text-sm font-bold text-gray-700">본문 <span class="text-red-500">*</span></label>
                         <div class="flex items-center gap-2">
-                            <button type="button" onclick="toggleHtmlMode()"
-                                id="htmlModeBtn"
+                            <button type="button" id="htmlModeBtn" onclick="handleHtmlModeBtn()"
                                 class="text-xs px-3 py-1.5 border border-gray-300 rounded-lg text-gray-600 hover:bg-gray-50 transition-colors font-semibold">
                                 HTML 보기
                             </button>
@@ -258,13 +257,36 @@
                     <!-- Quill 에디터 -->
                     <div id="quillEditor"></div>
 
-                    <!-- HTML 직접 편집 모드 (토글) -->
+                    <!-- HTML 직접 편집 모드 -->
                     <div id="htmlModePanel" class="hidden mt-3">
-                        <p class="text-xs text-amber-700 bg-amber-50 border border-amber-200 rounded-lg px-3 py-2 mb-2">
-                            ⚠️ HTML 직접 편집 후 "에디터로 돌아가기"를 누르면 에디터에 반영됩니다.
-                        </p>
+                        <div class="flex items-center justify-between mb-2">
+                            <p class="text-xs text-amber-700 bg-amber-50 border border-amber-200 rounded-lg px-3 py-2">
+                                ✏️ HTML을 직접 수정하세요. 완료 후 <strong>미리보기</strong>로 확인하세요.
+                            </p>
+                            <button type="button" onclick="showQuillFromHtml()"
+                                class="ml-2 text-xs text-gray-400 hover:text-gray-600 underline whitespace-nowrap flex-shrink-0">
+                                Quill 에디터로
+                            </button>
+                        </div>
                         <textarea id="htmlRaw" rows="16"
                             class="w-full px-4 py-3 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-900 text-xs font-mono"></textarea>
+                    </div>
+
+                    <!-- 미리보기 패널 -->
+                    <div id="htmlPreviewPanel" class="hidden mt-3">
+                        <div class="flex items-center justify-between mb-2">
+                            <p class="text-xs text-blue-700 bg-blue-50 border border-blue-200 rounded-lg px-3 py-2">
+                                👁 실제 사용자 화면 미리보기 — 발행 시 이 모습으로 표시됩니다.
+                            </p>
+                            <button type="button" onclick="showHtmlFromPreview()"
+                                class="ml-2 text-xs text-gray-500 hover:text-gray-700 underline whitespace-nowrap flex-shrink-0 font-semibold">
+                                HTML 편집으로
+                            </button>
+                        </div>
+                        <div id="htmlPreviewContent"
+                            class="border border-gray-200 rounded-xl p-5 bg-white overflow-auto"
+                            style="min-height:200px; max-height:600px;">
+                        </div>
                     </div>
 
                     <p class="text-xs text-gray-400 mt-2">
@@ -953,28 +975,102 @@ function updatePreview() {
 }
 
 // ─── HTML 모드 토글 ───────────────────────────────────────────────────────────
-let htmlMode = false;
-function toggleHtmlMode() {
-    htmlMode = !htmlMode;
-    const editorEl  = document.getElementById('quillEditor');
+// htmlMode: 'quill' | 'html' | 'preview'
+let htmlMode = false;   // 하위 호환: false = quill, true = html 또는 preview
+let editorState = 'quill';  // 'quill' | 'html' | 'preview'
+
+function _setEditorState(state) {
+    editorState = state;
+    htmlMode = (state !== 'quill');
+
+    const quillEl   = document.getElementById('quillEditor');
     const htmlPanel = document.getElementById('htmlModePanel');
+    const previewEl = document.getElementById('htmlPreviewPanel');
     const btn       = document.getElementById('htmlModeBtn');
-    if (htmlMode) {
-        // 에디터 → HTML: quill 내용을 textarea에
-        document.getElementById('htmlRaw').value = quill.root.innerHTML;
-        editorEl.classList.add('hidden');
-        htmlPanel.classList.remove('hidden');
-        btn.textContent = '에디터로 돌아가기';
-        btn.classList.add('bg-blue-50', 'text-blue-700', 'border-blue-300');
-    } else {
-        // HTML → 에디터: textarea 내용을 quill에
-        const html = document.getElementById('htmlRaw').value;
-        quill.root.innerHTML = html;
-        editorEl.classList.remove('hidden');
-        htmlPanel.classList.add('hidden');
+
+    quillEl.classList.toggle('hidden',   state !== 'quill');
+    htmlPanel.classList.toggle('hidden', state !== 'html');
+    previewEl.classList.toggle('hidden', state !== 'preview');
+
+    if (state === 'quill') {
         btn.textContent = 'HTML 보기';
-        btn.classList.remove('bg-blue-50', 'text-blue-700', 'border-blue-300');
+        btn.className = 'text-xs px-3 py-1.5 border border-gray-300 rounded-lg text-gray-600 hover:bg-gray-50 transition-colors font-semibold';
+    } else if (state === 'html') {
+        btn.textContent = '미리보기';
+        btn.className = 'text-xs px-3 py-1.5 border border-blue-300 rounded-lg bg-blue-50 text-blue-700 hover:bg-blue-100 transition-colors font-semibold';
+    } else {
+        btn.textContent = 'HTML 편집';
+        btn.className = 'text-xs px-3 py-1.5 border border-purple-300 rounded-lg bg-purple-50 text-purple-700 hover:bg-purple-100 transition-colors font-semibold';
     }
+}
+
+function handleHtmlModeBtn() {
+    if (editorState === 'quill') {
+        // Quill → HTML 편집
+        document.getElementById('htmlRaw').value = quill.root.innerHTML;
+        _setEditorState('html');
+    } else if (editorState === 'html') {
+        // HTML 편집 → 미리보기
+        renderHtmlPreview();
+        _setEditorState('preview');
+    } else {
+        // 미리보기 → HTML 편집
+        _setEditorState('html');
+    }
+}
+
+function toggleHtmlMode() {
+    // 외부 호출 호환: quill ↔ html 토글
+    if (editorState === 'quill') {
+        document.getElementById('htmlRaw').value = quill.root.innerHTML;
+        _setEditorState('html');
+    } else {
+        _setEditorState('quill');
+    }
+}
+
+function showQuillFromHtml() {
+    // HTML 패널 → Quill (표/script 있으면 경고)
+    const html = document.getElementById('htmlRaw').value;
+    if (/<table[\s>]|<script[\s>]|<style[\s>]/i.test(html)) {
+        if (!confirm('표나 <script>/<style> 태그는 Quill 에디터에서 제거됩니다.\n계속하시겠습니까?')) return;
+    }
+    quill.root.innerHTML = html;
+    _setEditorState('quill');
+}
+
+function showHtmlFromPreview() {
+    _setEditorState('html');
+}
+
+// 미리보기 렌더링 — 발행 페이지와 동일한 article-body 스타일 적용
+function renderHtmlPreview() {
+    const body = document.getElementById('htmlRaw').value;
+    const previewContainer = document.getElementById('htmlPreviewContent');
+
+    const style = `
+        <style>
+        .preview-body { font-family: 'Noto Sans KR', sans-serif; font-size: 1rem; line-height: 1.8; color: #1e293b; }
+        .preview-body p { margin: 0 0 1rem; }
+        .preview-body h2 { font-size: 1.4rem; font-weight: 700; color: #0f172a; margin: 2rem 0 0.75rem; padding-bottom: 0.4rem; border-bottom: 2px solid #e2e8f0; }
+        .preview-body h3 { font-size: 1.15rem; font-weight: 700; color: #1e3a5f; margin: 1.5rem 0 0.5rem; }
+        .preview-body ul, .preview-body ol { margin: 0 0 1rem 1.5rem; }
+        .preview-body li { margin-bottom: 0.3rem; }
+        .preview-body strong { color: #0f172a; font-weight: 700; }
+        .preview-body em { font-style: italic; color: #334155; }
+        .preview-body blockquote { border-left: 4px solid #93c5fd; background: #eff6ff; padding: 1rem 1.25rem; margin: 1.5rem 0; border-radius: 0 0.75rem 0.75rem 0; color: #1e3a8a; font-style: italic; }
+        .preview-body code { background: #f3f4f6; padding: 0.15rem 0.4rem; border-radius: 0.25rem; font-size: 0.9em; color: #be185d; }
+        .preview-body img { max-width: 100%; height: auto; border-radius: 0.75rem; margin: 1.5rem 0; }
+        .preview-body hr { border: none; border-top: 2px solid #e2e8f0; margin: 2rem 0; }
+        .preview-body table { width: 100%; border-collapse: collapse; font-size: 0.9375rem; margin: 1.25rem 0; }
+        .preview-body thead tr { background: #1a3a5c; color: #fff; }
+        .preview-body thead th { padding: 0.75rem 1rem; text-align: left; font-weight: 600; }
+        .preview-body tbody td { padding: 0.7rem 1rem; border-bottom: 1px solid #e5e5e0; color: #444; }
+        .preview-body tbody tr:nth-child(even) { background: #f7f7f5; }
+        </style>
+    `;
+
+    previewContainer.innerHTML = style + `<div class="preview-body">${body}</div>`;
 }
 
 // ─── 특수 요소 삽입 ──────────────────────────────────────────────────────────
