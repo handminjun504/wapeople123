@@ -15,7 +15,7 @@
     //   cover     : (선택) 썸네일 이미지 경로 — 미지정 시 카테고리별 기본 그라디언트 사용
     //   url       : 'news/{slug}.html'
     window.WA_NEWS_DATA = [
-        {
+            {
         slug: '2026-05-27-vs',
         title: '세무사 vs 경리대행, 무엇이 다른가요?',
         category: '경리뉴스',
