@@ -28,6 +28,40 @@
 </head>
 <body class="bg-gray-50 min-h-screen">
 
+<!-- ══════════════════════ 표 삽입 팝오버 ══════════════════════ -->
+<div id="tablePickerOverlay" class="hidden fixed inset-0 bg-black/30 z-50 flex items-center justify-center" onclick="if(event.target===this) closeTablePicker()">
+    <div class="bg-white rounded-2xl shadow-xl p-6 w-72">
+        <h3 class="text-base font-bold text-gray-800 mb-4">표 삽입</h3>
+        <div class="grid grid-cols-2 gap-3 mb-4">
+            <div>
+                <label class="block text-xs font-semibold text-gray-600 mb-1">열 수</label>
+                <input id="tableCols" type="number" value="3" min="1" max="10"
+                    class="w-full px-3 py-2 border border-gray-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500">
+            </div>
+            <div>
+                <label class="block text-xs font-semibold text-gray-600 mb-1">행 수 (헤더 제외)</label>
+                <input id="tableRows" type="number" value="3" min="1" max="50"
+                    class="w-full px-3 py-2 border border-gray-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500">
+            </div>
+        </div>
+        <div class="flex gap-2">
+            <button type="button" onclick="doInsertTable()" class="flex-1 bg-blue-600 text-white text-sm font-semibold py-2 rounded-lg hover:bg-blue-700 transition">삽입</button>
+            <button type="button" onclick="closeTablePicker()" class="flex-1 bg-gray-100 text-gray-700 text-sm font-semibold py-2 rounded-lg hover:bg-gray-200 transition">취소</button>
+        </div>
+    </div>
+</div>
+
+<!-- ══════════════════════ 로딩 화면 ══════════════════════ -->
+<div id="loadingScreen" class="min-h-screen flex items-center justify-center px-4">
+    <div class="text-center text-gray-400">
+        <svg class="animate-spin inline w-7 h-7 mb-3 text-blue-400" fill="none" viewBox="0 0 24 24">
+            <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"/>
+            <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8H4z"/>
+        </svg>
+        <p class="text-sm">인증 정보 확인 중...</p>
+    </div>
+</div>
+
 <!-- ══════════════════════ 최초 설정 화면 ══════════════════════ -->
 <div id="setupScreen" class="hidden min-h-screen flex items-center justify-center px-4">
     <div class="bg-white rounded-2xl shadow-xl p-8 w-full max-w-sm">
@@ -40,8 +74,9 @@
             <h1 class="text-xl font-bold text-gray-900">최초 비밀번호 설정</h1>
             <p class="text-sm text-gray-500 mt-1">관리자 비밀번호를 새로 설정해주세요</p>
         </div>
-        <div class="bg-amber-50 border border-amber-200 rounded-xl px-4 py-3 mb-5 text-xs text-amber-800">
-            ⚠️ 이 비밀번호는 GitHub 토큰 암호화 키로도 사용됩니다. 반드시 기억해 주세요.
+        <div class="bg-amber-50 border border-amber-200 rounded-xl px-4 py-3 mb-5 text-xs text-amber-800 space-y-1">
+            <p>⚠️ 이 비밀번호는 다른 기기에서도 로그인에 사용됩니다. 반드시 기억해 주세요.</p>
+            <p>🔒 영문 대소문자·숫자·특수문자를 섞어 <strong>12자 이상</strong>으로 설정하세요.</p>
         </div>
         <div class="space-y-4">
             <div>
@@ -158,7 +193,7 @@
                     </label>
                     <textarea id="summary" rows="3" placeholder="100~150자 권장. meta description과 카드 미리보기에 그대로 사용됩니다."
                         class="w-full px-4 py-3 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-900 text-sm resize-none"
-                        oninput="document.getElementById('summaryCount').textContent = this.value.length+'자'"></textarea>
+                        oninput="(function(el){const len=el.value.length; const cnt=document.getElementById('summaryCount'); cnt.textContent=len+'자'; cnt.className='font-normal ml-2 text-xs '+(len>150?'text-red-500 font-semibold':len>130?'text-amber-500':'text-gray-400');})(this)"></textarea>
                 </div>
 
                 <!-- 본문 에디터 -->
@@ -177,7 +212,7 @@
                     <!-- 특수 요소 삽입 버튼 (에디터 위) -->
                     <div class="flex flex-wrap gap-1.5 mb-3 p-2.5 bg-blue-50 rounded-xl border border-blue-100">
                         <span class="text-xs font-bold text-blue-700 self-center mr-1">빠른 삽입:</span>
-                        <button type="button" onclick="insertSpecial('table')" class="insert-btn">📊 표</button>
+                        <button type="button" onclick="openTablePicker()" class="insert-btn">📊 표</button>
                         <button type="button" onclick="insertSpecial('divider')" class="insert-btn">— 구분선</button>
                         <button type="button" onclick="insertSpecial('callout')" class="insert-btn">💡 강조박스</button>
                         <button type="button" onclick="insertSpecial('warning')" class="insert-btn">⚠️ 주의박스</button>
@@ -239,12 +274,41 @@
                             <p class="text-xs text-gray-400 mt-1">영문·숫자·하이픈만. 제목 입력 시 자동 생성됩니다.</p>
                         </div>
 
+                        <!-- SEO 제목 -->
+                        <div>
+                            <label class="block text-sm font-semibold text-gray-700 mb-1">
+                                검색 제목 <span class="font-normal text-gray-400">(선택)</span>
+                                <span id="seoTitleCount" class="font-normal text-gray-400 ml-1 text-xs">0자</span>
+                            </label>
+                            <input id="seoTitle" type="text" placeholder="비우면 글 제목이 그대로 사용됩니다"
+                                class="w-full px-3 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm"
+                                oninput="document.getElementById('seoTitleCount').textContent=this.value.length+'자'; updateSeoTitleCount()">
+                            <p class="text-xs text-gray-400 mt-1">구글 탭·검색 결과 제목. <strong class="text-gray-600">30~60자</strong> 권장.</p>
+                        </div>
+
                         <!-- 키워드 -->
                         <div>
                             <label class="block text-sm font-semibold text-gray-700 mb-1">키워드 (선택)</label>
                             <input id="keywords" type="text" placeholder="정책자금, 중소기업, 운전자금"
                                 class="w-full px-3 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm">
                             <p class="text-xs text-gray-400 mt-1">쉼표로 구분</p>
+                        </div>
+                    </div>
+
+                    <!-- FAQ 설정 -->
+                    <div class="mt-4">
+                        <button type="button" onclick="toggleFaqSection()" class="flex items-center gap-2 w-full text-left">
+                            <svg id="faqChevron" class="w-4 h-4 text-gray-400 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                            </svg>
+                            <span class="text-sm font-semibold text-gray-700">FAQ 설정 <span class="font-normal text-gray-400">(선택 · Google 리치 스니펫)</span></span>
+                        </button>
+                        <div id="faqSection" class="hidden mt-3 space-y-3">
+                            <div id="faqList" class="space-y-3"></div>
+                            <button type="button" onclick="addFaqItem()"
+                                class="w-full py-2 border-2 border-dashed border-gray-200 rounded-xl text-sm text-gray-500 hover:border-blue-300 hover:text-blue-500 transition">
+                                + 질문 추가
+                            </button>
                         </div>
                     </div>
 
@@ -317,6 +381,17 @@
 
     <!-- ───── 설정 탭 ───── -->
     <div id="settingsTab" class="hidden max-w-2xl mx-auto px-4 py-8 space-y-6">
+
+        <!-- 새 기기 안내 배너 -->
+        <div id="newDeviceBanner" class="hidden bg-blue-50 border border-blue-200 rounded-xl px-5 py-4 flex items-start gap-3">
+            <svg class="w-5 h-5 text-blue-500 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+            </svg>
+            <div>
+                <p class="text-sm font-bold text-blue-800">새 기기에서 처음 접속하셨나요?</p>
+                <p class="text-xs text-blue-700 mt-0.5">GitHub PAT(토큰)를 아래에 입력해야 글 게시·수정이 가능합니다. 입력 후 저장하면 이 기기에 안전하게 보관됩니다.</p>
+            </div>
+        </div>
 
         <!-- GitHub 설정 -->
         <div class="bg-white rounded-2xl p-6 shadow-sm border border-gray-100">
@@ -479,18 +554,30 @@ function initQuill() {
 }
 
 // ─── 초기화 ─────────────────────────────────────────────────────────────────
-window.addEventListener('DOMContentLoaded', () => {
+window.addEventListener('DOMContentLoaded', async () => {
     initQuill();
 
     // localStorage에 저장된 잘못된 브랜치값 자동 수정
     if (!ls('ghBranch') || ls('ghBranch') === 'main') ls('ghBranch', DEFAULT_GH_BRANCH);
 
+    const hideLoading = () => document.getElementById('loadingScreen').classList.add('hidden');
+
     // 비밀번호 설정 여부에 따라 화면 분기
     if (!ls('pwSalt')) {
-        // 최초 접속: 비밀번호 설정 화면
-        document.getElementById('setupScreen').classList.remove('hidden');
+        // localStorage 없음 → GitHub에서 원격 config 시도 (다른 기기 접속 대비)
+        const loaded = await loadRemoteConfig();
+        hideLoading();
+        if (loaded) {
+            // 원격 config 로드 성공 → 로그인 화면
+            document.getElementById('loginScreen').classList.remove('hidden');
+            checkLockout();
+        } else {
+            // 최초 접속: 비밀번호 설정 화면
+            document.getElementById('setupScreen').classList.remove('hidden');
+        }
     } else {
         // 이미 설정됨: 로그인 화면
+        hideLoading();
         document.getElementById('loginScreen').classList.remove('hidden');
         checkLockout();
     }
@@ -508,6 +595,51 @@ function ls(key, val) {
     if (val === undefined) return localStorage.getItem('wa_admin_' + key);
     if (val === null) { localStorage.removeItem('wa_admin_' + key); return; }
     localStorage.setItem('wa_admin_' + key, val);
+}
+
+// ─── 원격 인증 설정 로드 (GitHub raw) ────────────────────────────────────────
+// PAT는 포함하지 않음 — 각 기기 localStorage에만 존재
+async function loadRemoteConfig() {
+    const owner  = ls('ghOwner')  || DEFAULT_GH_OWNER;
+    const repo   = ls('ghRepo')   || DEFAULT_GH_REPO;
+    const branch = ls('ghBranch') || DEFAULT_GH_BRANCH;
+    const url = `https://raw.githubusercontent.com/${owner}/${repo}/${branch}/admin/auth-config.json`;
+    try {
+        const res = await fetch(url, { cache: 'no-cache' });
+        if (!res.ok) return false;
+        const cfg = await res.json();
+        if (!cfg.salt || !cfg.verifier) return false;
+        ls('pwSalt',     cfg.salt);
+        ls('pwVerifier', cfg.verifier);
+        if (cfg.ghOwner)  ls('ghOwner',  cfg.ghOwner);
+        if (cfg.ghRepo)   ls('ghRepo',   cfg.ghRepo);
+        if (cfg.ghBranch) ls('ghBranch', cfg.ghBranch);
+        return true;
+    } catch { return false; }
+}
+
+// ─── 인증 설정 GitHub에 동기화 ────────────────────────────────────────────────
+// PAT는 절대 포함하지 않음 — salt + verifier + gh 설정만 저장
+async function syncConfigToGitHub() {
+    if (!SESSION_KEY) return;
+    const cfg = {
+        salt:     ls('pwSalt'),
+        verifier: ls('pwVerifier'),
+        ghOwner:  ls('ghOwner')  || DEFAULT_GH_OWNER,
+        ghRepo:   ls('ghRepo')   || DEFAULT_GH_REPO,
+        ghBranch: ls('ghBranch') || DEFAULT_GH_BRANCH,
+    };
+    if (!cfg.salt || !cfg.verifier) return;
+    try {
+        const existing = await ghGetFile('admin/auth-config.json');
+        const res = await ghPutFile(
+            'admin/auth-config.json',
+            JSON.stringify(cfg, null, 2),
+            'chore(admin): sync auth config',
+            existing?.sha
+        );
+        if (!res.ok) console.warn('auth-config.json 동기화 실패');
+    } catch(e) { console.warn('auth-config 동기화 오류:', e.message); }
 }
 
 // ─── 암호화 유틸 (PBKDF2 + AES-GCM) ────────────────────────────────────────
@@ -686,6 +818,12 @@ async function doLogin() {
         document.getElementById('date').value = new Date().toISOString().split('T')[0];
         updatePreview();
 
+        // 새 기기 안내: PAT가 없으면 설정 탭 안내 배너 표시
+        if (!ls('ghPatEnc')) {
+            const banner = document.getElementById('newDeviceBanner');
+            if (banner) banner.classList.remove('hidden');
+        }
+
         // 2시간 자동 로그아웃
         clearTimeout(window._autoLogoutTimer);
         window._autoLogoutTimer = setTimeout(() => {
@@ -753,6 +891,14 @@ const CAT_COLORS = {
     '경리뉴스': { bg: 'bg-amber-500',   badge: 'bg-amber-100 text-amber-700' },
     '실무팁':   { bg: 'bg-rose-500',    badge: 'bg-rose-100 text-rose-700' },
 };
+
+function updateSeoTitleCount() {
+    const len = (document.getElementById('seoTitle')?.value || '').length;
+    const el  = document.getElementById('seoTitleCount');
+    if (!el) return;
+    el.textContent = len + '자';
+    el.className = 'font-normal ml-1 text-xs ' + (len > 0 && (len < 30 || len > 60) ? 'text-amber-500' : 'text-gray-400');
+}
 
 function updatePreview() {
     const title    = document.getElementById('title').value    || '제목이 여기 표시됩니다';
@@ -893,6 +1039,93 @@ function insertSpecial(type) {
     quill.setSelection(quill.getLength());
 }
 
+// ─── FAQ 설정 ────────────────────────────────────────────────────────────────
+function toggleFaqSection() {
+    const sec     = document.getElementById('faqSection');
+    const chevron = document.getElementById('faqChevron');
+    const open    = sec.classList.toggle('hidden');
+    chevron.style.transform = open ? '' : 'rotate(90deg)';
+}
+
+let faqIdCounter = 0;
+
+function addFaqItem(q = '', a = '') {
+    const id   = ++faqIdCounter;
+    const list = document.getElementById('faqList');
+    const div  = document.createElement('div');
+    div.id        = `faqItem-${id}`;
+    div.className = 'bg-gray-50 rounded-xl p-3 border border-gray-200 space-y-2';
+    div.innerHTML = `
+        <div class="flex items-center justify-between">
+            <span class="text-xs font-bold text-gray-500">Q${list.children.length + 1}</span>
+            <button type="button" onclick="document.getElementById('faqItem-${id}').remove(); renumberFaq()"
+                class="text-gray-400 hover:text-red-500 transition text-xs">삭제</button>
+        </div>
+        <input type="text" placeholder="질문을 입력하세요" value="${q.replace(/"/g, '&quot;')}"
+            data-faq-q="${id}"
+            class="w-full px-3 py-2 border border-gray-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500">
+        <textarea placeholder="답변을 입력하세요" rows="2"
+            data-faq-a="${id}"
+            class="w-full px-3 py-2 border border-gray-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 resize-none">${a}</textarea>
+    `;
+    list.appendChild(div);
+}
+
+function renumberFaq() {
+    document.querySelectorAll('#faqList > div').forEach((div, i) => {
+        const label = div.querySelector('span');
+        if (label) label.textContent = `Q${i + 1}`;
+    });
+}
+
+function collectFaqItems() {
+    const items = [];
+    document.querySelectorAll('#faqList > div').forEach(div => {
+        const id = div.id.replace('faqItem-', '');
+        const q  = (div.querySelector(`[data-faq-q="${id}"]`)?.value || '').trim();
+        const a  = (div.querySelector(`[data-faq-a="${id}"]`)?.value || '').trim();
+        if (q && a) items.push({ q, a });
+    });
+    return items;
+}
+
+function clearFaqItems() {
+    document.getElementById('faqList').innerHTML = '';
+    faqIdCounter = 0;
+}
+
+// ─── 표 삽입 팝오버 ────────────────────────────────────────────────────────────
+function openTablePicker() {
+    document.getElementById('tablePickerOverlay').classList.remove('hidden');
+    document.getElementById('tableCols').focus();
+}
+function closeTablePicker() {
+    document.getElementById('tablePickerOverlay').classList.add('hidden');
+}
+function doInsertTable() {
+    const cols = Math.max(1, Math.min(10, parseInt(document.getElementById('tableCols').value) || 3));
+    const rows = Math.max(1, Math.min(50, parseInt(document.getElementById('tableRows').value) || 3));
+    closeTablePicker();
+
+    const header   = Array.from({length: cols}, (_, i) => `<th>항목 ${i + 1}</th>`).join('');
+    const bodyRows = Array.from({length: rows}, () =>
+        '<tr>' + Array.from({length: cols}, () => '<td></td>').join('') + '</tr>'
+    ).join('');
+    const html = `<table><thead><tr>${header}</tr></thead><tbody>${bodyRows}</tbody></table>`;
+
+    if (htmlMode) {
+        const ta  = document.getElementById('htmlRaw');
+        const pos = ta.selectionStart;
+        ta.value  = ta.value.slice(0, pos) + '\n' + html + '\n' + ta.value.slice(pos);
+    } else {
+        const range = quill.getSelection(true);
+        const idx   = range ? range.index : quill.getLength();
+        const delta = quill.clipboard.convert(html);
+        quill.updateContents(delta, 'user');
+        quill.setSelection(quill.getLength());
+    }
+}
+
 // ─── 알림 배너 ────────────────────────────────────────────────────────────────
 function showAlert(msg, type = 'success') {
     const el = document.getElementById('alertBanner');
@@ -928,6 +1161,13 @@ async function saveGitHubSettings() {
     el.textContent = '✅ 설정이 저장됐습니다. (PAT 암호화 저장됨)';
     el.className = 'mt-3 text-sm rounded-lg px-3 py-2 bg-green-50 text-green-700';
     el.classList.remove('hidden');
+
+    // 새 기기 배너 숨김
+    const banner = document.getElementById('newDeviceBanner');
+    if (banner) banner.classList.add('hidden');
+
+    // 비밀번호 검증 정보를 GitHub에 동기화 (PAT 제외)
+    syncConfigToGitHub().catch(() => {});
 }
 
 async function testGitHubConnection() {
@@ -1012,6 +1252,9 @@ async function changePassword() {
     resultEl.textContent = '✅ 비밀번호가 변경됐습니다. (PAT도 새 비밀번호로 재암호화됨)';
     resultEl.className   = 'mt-3 text-sm rounded-lg px-3 py-2 bg-green-50 text-green-700';
     resultEl.classList.remove('hidden');
+
+    // 새 비밀번호 검증 정보를 GitHub에 동기화 (PAT 제외)
+    syncConfigToGitHub().catch(() => {});
 }
 
 // ─── GitHub API 헬퍼 ─────────────────────────────────────────────────────────
@@ -1120,9 +1363,10 @@ function categoryBadgeClass(cat) {
     return map[cat] || 'bg-gray-100 text-gray-700 border-gray-200';
 }
 
-function buildHtml({ title, summary, slug, date, displayDate, category, keywords, body }) {
+function buildHtml({ title, seoTitle, summary, slug, date, displayDate, category, keywords, faqItems, body }) {
     const badgeClass = categoryBadgeClass(category);
     const kw = keywords ? keywords + ', ' : '';
+    const finalTitle = (seoTitle || '').trim() || title;  // SEO 제목 없으면 글 제목 사용
 
     return `<!DOCTYPE html>
 <html lang="ko">
@@ -1183,13 +1427,13 @@ function buildHtml({ title, summary, slug, date, displayDate, category, keywords
     <\/script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>${escHtml(title)} - 경리소식 | 경리업무를잘하는청년들</title>
+    <title>${escHtml(finalTitle)} - 경리소식 | 경리업무를잘하는청년들</title>
     <meta name="description" content="${escAttr(summary)}">
     <meta name="keywords" content="${escAttr(kw)}경리소식, 경리업무를잘하는청년들">
     <meta name="robots" content="index, follow">
     <meta name="naver-site-verification" content="aefffa7a6d4cad21b90328c862b8ce5725188412">
     <link rel="canonical" href="https://wapeople.kr/news/${slug}">
-    <meta property="og:title" content="${escAttr(title)} - 경리소식">
+    <meta property="og:title" content="${escAttr(finalTitle)} - 경리소식">
     <meta property="og:description" content="${escAttr(summary)}">
     <meta property="og:type" content="article">
     <meta property="og:url" content="https://wapeople.kr/news/${slug}">
@@ -1201,7 +1445,7 @@ function buildHtml({ title, summary, slug, date, displayDate, category, keywords
     <meta property="article:published_time" content="${date}">
     <meta property="article:section" content="${category}">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="${escAttr(title)} - 경리소식">
+    <meta name="twitter:title" content="${escAttr(finalTitle)} - 경리소식">
     <meta name="twitter:description" content="${escAttr(summary)}">
     <meta name="twitter:image" content="https://wapeople.kr/logo.png?v=20260310b">
     <script type="application/ld+json">
@@ -1219,7 +1463,7 @@ function buildHtml({ title, summary, slug, date, displayDate, category, keywords
     {
       "@context": "https://schema.org",
       "@type": "NewsArticle",
-      "headline": "${escJson(title)}",
+      "headline": "${escJson(finalTitle)}",
       "description": "${escJson(summary)}",
       "datePublished": "${date}",
       "dateModified": "${date}",
@@ -1236,6 +1480,17 @@ function buildHtml({ title, summary, slug, date, displayDate, category, keywords
       "mainEntityOfPage": { "@type": "WebPage", "@id": "https://wapeople.kr/news/${slug}" }
     }
     <\/script>
+${faqItems && faqItems.length > 0 ? `    <script type="application/ld+json">
+    ${JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": faqItems.map(({q, a}) => ({
+        "@type": "Question",
+        "name": q,
+        "acceptedAnswer": { "@type": "Answer", "text": a }
+      }))
+    }, null, 2).replace(/<\/script>/gi, '<\\/script>')}
+    <\/script>` : ''}
     <link rel="icon" type="image/x-icon" href="/favicon/favicon.ico">
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png">
     <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-icon-180x180.png">
@@ -1272,14 +1527,16 @@ function buildHtml({ title, summary, slug, date, displayDate, category, keywords
         .article-body ul, .article-body ol { margin: 1rem 0 1rem 1.5rem; }
         .article-body ul { list-style: disc; } .article-body ol { list-style: decimal; }
         .article-body li { margin: 0.5rem 0; }
-        .article-body strong { color: #0f172a; font-weight: 700; background: linear-gradient(transparent 60%, #fef08a 60%); padding: 0 2px; }
+        .article-body strong { color: #0f172a; font-weight: 700; }
         .article-body a { color: #2563eb; text-decoration: underline; text-underline-offset: 3px; }
         .article-body blockquote { border-left: 4px solid #93c5fd; background: #eff6ff; padding: 1rem 1.25rem; margin: 1.5rem 0; border-radius: 0 0.75rem 0.75rem 0; color: #1e3a8a; font-style: italic; }
         .article-body code { background: #f3f4f6; padding: 0.15rem 0.4rem; border-radius: 0.25rem; font-size: 0.9em; color: #be185d; }
         .article-body img { max-width: 100%; height: auto; border-radius: 0.75rem; margin: 1.5rem 0; }
-        .article-body table { width: 100%; border-collapse: collapse; margin: 1.25rem 0; font-size: 0.95rem; }
-        .article-body th, .article-body td { border: 1px solid #e5e7eb; padding: 0.6rem 0.8rem; text-align: left; }
-        .article-body th { background: #f9fafb; font-weight: 700; }
+        .article-body table { width: 100%; border-collapse: collapse; font-size: 0.9375rem; margin: 1.25rem 0; }
+        .article-body thead tr { background: #1a3a5c; color: #fff; }
+        .article-body thead th { padding: 0.75rem 1rem; text-align: left; font-weight: 600; }
+        .article-body tbody td { padding: 0.7rem 1rem; border-bottom: 1px solid #e5e5e0; color: #444; }
+        .article-body tbody tr:nth-child(even) { background: #f7f7f5; }
     <\/style>
 </head>
 <body class="antialiased">
@@ -1480,11 +1737,14 @@ function cancelEdit() {
     editingSlug = null;
     document.getElementById('editModeBanner').classList.add('hidden');
     document.getElementById('publishBtnText').textContent = 'GitHub에 게시하기';
-    ['title','summary','slug','keywords'].forEach(id => document.getElementById(id).value = '');
+    ['title','summary','slug','keywords','seoTitle'].forEach(id => { const el = document.getElementById(id); if (el) el.value = ''; });
     document.getElementById('category').value = '';
     document.getElementById('date').value = new Date().toISOString().split('T')[0];
+    document.getElementById('seoTitleCount').textContent = '0자';
+    document.getElementById('summaryCount').textContent  = '0자';
     if (quill) quill.setContents([]);
     if (htmlMode) toggleHtmlMode();
+    clearFaqItems();
     updatePreview();
     showAlert('새 글 작성 모드로 전환했습니다.');
 }
@@ -1604,6 +1864,11 @@ async function loadPostForEdit(slug) {
         const metaKw   = doc.querySelector('meta[name="keywords"]')?.getAttribute('content') || '';
         const keywords = metaKw.replace(/,?\s*(경리소식|경리업무를잘하는청년들)\s*/g, '').replace(/^,\s*/, '').trim();
 
+        // SEO 제목 복원: <title> 태그에서 " - 경리소식..." 부분 제거, 글 제목과 다를 때만 채움
+        const rawTitle = doc.querySelector('title')?.textContent?.trim() || '';
+        const titlePart = rawTitle.replace(/\s*-\s*경리소식.*$/i, '').trim();
+        const seoTitle = titlePart !== title ? titlePart : '';
+
         // 본문 추출
         const articleEl = doc.querySelector('.article-body');
         const body = articleEl ? articleEl.innerHTML : '';
@@ -1615,10 +1880,35 @@ async function loadPostForEdit(slug) {
         document.getElementById('date').value     = date;
         document.getElementById('category').value = category;
         document.getElementById('keywords').value = keywords;
+        document.getElementById('seoTitle').value = seoTitle;
+        document.getElementById('seoTitleCount').textContent = seoTitle.length + '자';
+        updateSeoTitleCount();
 
-        // 에디터에 본문 적용
-        if (htmlMode) toggleHtmlMode();   // 에디터 모드로 전환
-        if (quill) quill.root.innerHTML = body;
+        // FAQ JSON-LD 복원
+        clearFaqItems();
+        const faqScripts = doc.querySelectorAll('script[type="application/ld+json"]');
+        faqScripts.forEach(s => {
+            try {
+                const schema = JSON.parse(s.textContent);
+                if (schema['@type'] === 'FAQPage' && Array.isArray(schema.mainEntity)) {
+                    // FAQ 섹션 열기
+                    const sec = document.getElementById('faqSection');
+                    if (sec.classList.contains('hidden')) toggleFaqSection();
+                    schema.mainEntity.forEach(item => {
+                        addFaqItem(item.name || '', item.acceptedAnswer?.text || '');
+                    });
+                }
+            } catch (_) {}
+        });
+
+        // 에디터에 본문 적용: <script>/<style> 포함 시 HTML 모드로 자동 전환
+        if (/<script[\s>]|<style[\s>]/i.test(body)) {
+            if (!htmlMode) toggleHtmlMode();
+            document.getElementById('htmlRaw').value = body;
+        } else {
+            if (htmlMode) toggleHtmlMode();
+            if (quill) quill.root.innerHTML = body;
+        }
 
         updatePreview();
         setEditMode(slug);
@@ -1672,10 +1962,13 @@ async function deletePost(slug) {
             }
         }
 
-        // 3. 수정 모드였으면 해제
+        // 3. sitemap.xml에서 항목 제거 (실패해도 삭제는 완료로 처리)
+        await updateSitemap('remove', slug, '').catch(() => {});
+
+        // 4. 수정 모드였으면 해제
         if (editingSlug === slug) cancelEdit();
 
-        // 4. 목록 새로고침
+        // 5. 목록 새로고침
         alert(`✅ "${slug}" 글이 삭제되었습니다.`);
         loadPostList();
 
@@ -1686,6 +1979,36 @@ async function deletePost(slug) {
     }
 }
 
+// ─── 사이트맵 업데이트 (게시·수정·삭제 연동) ──────────────────────────────────
+async function updateSitemap(action, slug, date) {
+    const sitemapFile = await ghGetFile('sitemap.xml');
+    if (!sitemapFile) return;
+
+    const currentXml = decodeURIComponent(escape(atob(sitemapFile.content.replace(/\n/g, ''))));
+    const slugEsc = slug.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+
+    // 해당 슬러그의 기존 항목 제거
+    const entryRegex = new RegExp(
+        `[ \\t]*<url>[\\s\\S]*?<loc>https://wapeople\\.kr/news/${slugEsc}</loc>[\\s\\S]*?</url>\\n?`,
+        'g'
+    );
+    let updatedXml = currentXml.replace(entryRegex, '');
+
+    if (action !== 'remove') {
+        const newEntry = `  <url>\n    <loc>https://wapeople.kr/news/${slug}</loc>\n    <lastmod>${date}</lastmod>\n    <changefreq>monthly</changefreq>\n    <priority>0.6</priority>\n  </url>`;
+        updatedXml = updatedXml.replace('</urlset>', `${newEntry}\n</urlset>`);
+    }
+
+    const verb = action === 'remove' ? '삭제' : action === 'update' ? '수정' : '추가';
+    const res = await ghPutFile(
+        'sitemap.xml',
+        updatedXml,
+        `[sitemap] ${verb}: /news/${slug}`,
+        sitemapFile.sha
+    );
+    if (!res.ok) console.warn('sitemap.xml 업데이트 실패');
+}
+
 // ─── 게시 (GitHub API) ────────────────────────────────────────────────────────
 async function publishPost() {
     const title    = document.getElementById('title').value.trim();
@@ -1694,13 +2017,13 @@ async function publishPost() {
     const date     = document.getElementById('date').value;
     const category = document.getElementById('category').value;
     const keywords = document.getElementById('keywords').value.trim();
+    const seoTitle = document.getElementById('seoTitle').value.trim();
 
     // HTML 모드 상태면 textarea에서, 아니면 Quill에서 가져오기
     let body;
     if (htmlMode) {
         body = document.getElementById('htmlRaw').value.trim();
-        // 에디터에도 동기화
-        quill.root.innerHTML = body;
+        // Quill 역동기화 없음 — <script>/<style> 포함 HTML 원문 그대로 사용
     } else {
         body = quill.root.innerHTML.trim();
     }
@@ -1730,7 +2053,7 @@ async function publishPost() {
 
     try {
         const displayDate = toDisplayDate(date);
-        const htmlContent = buildHtml({ title, summary, slug, date, displayDate, category, keywords, body });
+        const htmlContent = buildHtml({ title, seoTitle, summary, slug, date, displayDate, category, keywords, faqItems: collectFaqItems(), body });
         const newsPath    = `news/${slug}.html`;
 
         const isEditing = (editingSlug !== null);
@@ -1788,6 +2111,9 @@ async function publishPost() {
                 throw new Error('news-data.js 업데이트 실패: ' + (err.message || dataRes.status));
             }
         }
+
+        // 3. sitemap.xml 업데이트 (실패해도 게시는 완료로 처리)
+        await updateSitemap(isEditing ? 'update' : 'add', slug, date).catch(() => {});
 
         const successMsg = isEditing
             ? `✅ 수정 완료! "${slug}.html"이 GitHub에 저장됐습니다.`
