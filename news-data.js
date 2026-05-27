@@ -16,6 +16,16 @@
     //   url       : 'news/{slug}.html'
     window.WA_NEWS_DATA = [
     {
+        slug: 'hagwon-gyeongri-unyeong',
+        title: '학원 경리업무, 이렇게 하면 됩니다!',
+        category: '경리뉴스',
+        date: '2026-05-27',
+        summary: '선생님별 담당 수강생 수, 매출, 수업 시간을 기준으로 인센티브를 계산합니다. 이를 자동화하려면 수강생 관리 시스템과 급여 시스템을 연동하거나, 경리대행 서비스를 통해 매월 정확하게 처리할 수 있습니다.',
+        cover: '',
+        url: 'news/hagwon-gyeongri-unyeong.html'
+    },
+
+    {
         slug: 'semusa-vs-gyeongri-daehang-chaijeom',
         title: '세무사 vs 경리대행, 무엇이 다른가요?',
         category: '경리뉴스',
