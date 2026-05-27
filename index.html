@@ -104,13 +104,14 @@
       "@context": "https://schema.org",
       "@type": "LocalBusiness",
       "name": "경리업무를잘하는청년들",
-      "alternateName": "청년들",
-      "description": "경리 직원 없이 전문가가 온라인으로 관리하는 원격 경리 서비스. 업종별 맞춤 솔루션으로 비용 절감하고 정확도는 높이세요.",
+      "alternateName": ["청년들", "경청"],
+      "description": "중소기업·스타트업 전문 원격 경리 대행 서비스. 장부 정리, 매입매출 관리, 미수금 관리, 급여 처리를 월 정액으로 대행합니다. 건설업·제조업·도소매업 등 업종별 맞춤 대행 가능. 서울을 포함한 전국 비대면 서비스 가능.",
       "url": "https://wapeople.kr",
       "logo": "https://wapeople.kr/logo.png?v=20260310b",
       "image": "https://wapeople.kr/logo.png?v=20260310b",
       "telephone": "+82-1566-2687",
       "email": "wapeople000@gmail.com",
+      "foundingDate": "2017",
       "address": {
         "@type": "PostalAddress",
         "streetAddress": "권광로175번길 83 201호",
@@ -134,9 +135,14 @@
       "priceRange": "₩₩",
       "areaServed": {
         "@type": "Country",
-        "name": "South Korea"
+        "name": "대한민국"
       },
-      "serviceType": ["경리대행", "원격경리", "회계관리", "경리아웃소싱", "경리 아웃소싱"],
+      "serviceType": [
+        "경리 대행", "경리대행", "경리 아웃소싱", "경리아웃소싱",
+        "원격 경리", "원격경리", "경리업무 대행",
+        "장부 정리", "매입매출 관리", "미수금 관리", "급여 처리",
+        "회계관리", "자금 흐름 관리", "세무 자료 정리"
+      ],
       "knowsAbout": [
         "원격경리", "원격 경리", "경리 아웃소싱", "경리아웃소싱", "경리대행",
         "음식점 경리", "쇼핑몰 경리", "이커머스 경리", "도소매 경리",
@@ -1655,6 +1661,21 @@
     <button id="scrollToTop" aria-label="맨 위로 스크롤" style="position: fixed; bottom: 2rem; right: 2rem; z-index: 9999; transition: all 0.3s ease;" class="bg-blue-600 hover:bg-blue-700 text-white w-12 h-12 md:w-14 md:h-14 rounded-full shadow-lg hover:shadow-2xl opacity-0 invisible flex items-center justify-center group">
         <i class="fas fa-chevron-up text-xl group-hover:animate-bounce"></i>
     </button>
+
+    <!-- 서비스 소개 텍스트 (SEO·GEO용 본문 텍스트) -->
+    <section class="bg-gray-50 border-t border-gray-100 py-10 md:py-14">
+        <div class="max-w-4xl mx-auto px-4 md:px-6">
+            <h2 class="text-lg md:text-xl font-bold text-gray-800 mb-4">경리업무를잘하는청년들 서비스 소개</h2>
+            <p class="text-gray-600 leading-relaxed text-sm md:text-base">
+                경리업무를잘하는청년들은 중소기업 및 스타트업을 대상으로 하는
+                원격 경리 대행 전문 서비스입니다. 장부 정리, 매입매출 관리,
+                미수금 관리, 급여 처리를 월 정액으로 대행하며, 서울을 포함한
+                전국 비대면 서비스가 가능합니다. 건설업·제조업·도소매업·
+                음식업 등 업종별 맞춤 대행을 제공하며, 현재 1,500개 이상의
+                기업이 이용 중입니다. 1달 무료 체험이 가능합니다.
+            </p>
+        </div>
+    </section>
 
     <!-- Footer -->
     <footer class="bg-gray-50 py-8 md:py-12 border-t border-gray-200 relative z-10">
