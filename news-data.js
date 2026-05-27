@@ -25,16 +25,6 @@
         url: 'news/semusa-vs-gyeongri-daehang-chaijeom.html'
     },
 
-            {
-        slug: '2026-05-27-vs',
-        title: '세무사 vs 경리대행, 무엇이 다른가요?',
-        category: '경리뉴스',
-        date: '2026-05-27',
-        summary: '— 서비스 범위 완벽 비교',
-        cover: '',
-        url: 'news/2026-05-27-vs.html'
-    },
-
     {
         slug: '2026-05-22',
         title: '매출은 나오는데 남는 게 없는 느낌, 기분 탓이 아닙니다',
