@@ -1113,17 +1113,19 @@ function doInsertTable() {
     ).join('');
     const html = `<table><thead><tr>${header}</tr></thead><tbody>${bodyRows}</tbody></table>`;
 
-    if (htmlMode) {
-        const ta  = document.getElementById('htmlRaw');
-        const pos = ta.selectionStart;
-        ta.value  = ta.value.slice(0, pos) + '\n' + html + '\n' + ta.value.slice(pos);
-    } else {
-        const range = quill.getSelection(true);
-        const idx   = range ? range.index : quill.getLength();
-        const delta = quill.clipboard.convert(html);
-        quill.updateContents(delta, 'user');
-        quill.setSelection(quill.getLength());
+    // Quill은 <table>을 지원하지 않으므로 항상 HTML 모드에서 삽입
+    if (!htmlMode) {
+        // 현재 Quill 내용을 HTML로 변환한 뒤 HTML 모드로 전환
+        const currentHtml = quill ? quill.root.innerHTML : '';
+        toggleHtmlMode();
+        const ta = document.getElementById('htmlRaw');
+        ta.value = (currentHtml && currentHtml !== '<p><br></p>' ? currentHtml : '');
     }
+    const ta  = document.getElementById('htmlRaw');
+    const pos = ta.selectionStart ?? ta.value.length;
+    ta.value  = ta.value.slice(0, pos) + '\n' + html + '\n' + ta.value.slice(pos);
+    ta.focus();
+    ta.setSelectionRange(pos + html.length + 2, pos + html.length + 2);
 }
 
 // ─── 알림 배너 ────────────────────────────────────────────────────────────────
