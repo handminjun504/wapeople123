@@ -28,25 +28,60 @@
 </head>
 <body class="bg-gray-50 min-h-screen">
 
-<!-- ══════════════════════ 표 삽입 팝오버 ══════════════════════ -->
-<div id="tablePickerOverlay" class="hidden fixed inset-0 bg-black/30 z-50 flex items-center justify-center" onclick="if(event.target===this) closeTablePicker()">
-    <div class="bg-white rounded-2xl shadow-xl p-6 w-72">
-        <h3 class="text-base font-bold text-gray-800 mb-4">표 삽입</h3>
-        <div class="grid grid-cols-2 gap-3 mb-4">
-            <div>
-                <label class="block text-xs font-semibold text-gray-600 mb-1">열 수</label>
-                <input id="tableCols" type="number" value="3" min="1" max="10"
-                    class="w-full px-3 py-2 border border-gray-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500">
-            </div>
-            <div>
-                <label class="block text-xs font-semibold text-gray-600 mb-1">행 수 (헤더 제외)</label>
-                <input id="tableRows" type="number" value="3" min="1" max="50"
-                    class="w-full px-3 py-2 border border-gray-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500">
+<!-- ══════════════════════ 표 편집기 모달 ══════════════════════ -->
+<div id="tablePickerOverlay" class="hidden fixed inset-0 bg-black/40 z-50 flex items-center justify-center p-4" onclick="if(event.target===this) closeTablePicker()">
+    <div class="bg-white rounded-2xl shadow-2xl flex flex-col" style="max-width:90vw; max-height:88vh; min-width:320px;">
+        <!-- 헤더 -->
+        <div class="flex items-center justify-between px-5 py-4 border-b border-gray-100">
+            <h3 class="text-base font-bold text-gray-800">표 편집</h3>
+            <button type="button" onclick="closeTablePicker()" class="text-gray-400 hover:text-gray-600 transition text-lg leading-none">&times;</button>
+        </div>
+
+        <!-- Step 1: 크기 설정 -->
+        <div id="tableStep1" class="p-5">
+            <p class="text-xs text-gray-500 mb-3">열·행 수를 입력하고 <strong>표 만들기</strong>를 클릭하세요.</p>
+            <div class="flex items-center gap-3 mb-4">
+                <div class="flex-1">
+                    <label class="block text-xs font-semibold text-gray-600 mb-1">열 수</label>
+                    <input id="tableCols" type="number" value="3" min="1" max="10"
+                        class="w-full px-3 py-2 border border-gray-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                        onkeydown="if(event.key==='Enter') buildTableEditor()">
+                </div>
+                <div class="flex-1">
+                    <label class="block text-xs font-semibold text-gray-600 mb-1">행 수 (내용 행)</label>
+                    <input id="tableRows" type="number" value="3" min="1" max="30"
+                        class="w-full px-3 py-2 border border-gray-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                        onkeydown="if(event.key==='Enter') buildTableEditor()">
+                </div>
+                <div class="pt-5">
+                    <button type="button" onclick="buildTableEditor()"
+                        class="px-4 py-2 bg-blue-600 text-white text-sm font-semibold rounded-lg hover:bg-blue-700 transition whitespace-nowrap">
+                        표 만들기 →
+                    </button>
+                </div>
             </div>
         </div>
-        <div class="flex gap-2">
-            <button type="button" onclick="doInsertTable()" class="flex-1 bg-blue-600 text-white text-sm font-semibold py-2 rounded-lg hover:bg-blue-700 transition">삽입</button>
-            <button type="button" onclick="closeTablePicker()" class="flex-1 bg-gray-100 text-gray-700 text-sm font-semibold py-2 rounded-lg hover:bg-gray-200 transition">취소</button>
+
+        <!-- Step 2: 셀 입력 -->
+        <div id="tableStep2" class="hidden flex-1 flex flex-col overflow-hidden">
+            <div class="px-5 pb-2 flex items-center gap-2 flex-wrap">
+                <span class="text-xs text-gray-400">Tab 키로 다음 셀 이동 · 헤더(첫 행)는 파란 배경</span>
+                <button type="button" onclick="showTableStep1()" class="ml-auto text-xs text-gray-400 hover:text-gray-600 underline">크기 변경</button>
+            </div>
+            <!-- 표 편집 영역 -->
+            <div class="px-5 pb-4 overflow-auto flex-1">
+                <div id="tableEditorGrid" class="border border-gray-200 rounded-xl overflow-hidden"></div>
+            </div>
+            <div class="flex gap-2 px-5 pb-5">
+                <button type="button" onclick="confirmInsertTable()"
+                    class="flex-1 bg-blue-600 text-white text-sm font-semibold py-2.5 rounded-xl hover:bg-blue-700 transition">
+                    표 삽입
+                </button>
+                <button type="button" onclick="closeTablePicker()"
+                    class="flex-1 bg-gray-100 text-gray-700 text-sm font-semibold py-2.5 rounded-xl hover:bg-gray-200 transition">
+                    취소
+                </button>
+            </div>
         </div>
     </div>
 </div>
@@ -1095,27 +1130,121 @@ function clearFaqItems() {
 }
 
 // ─── 표 삽입 팝오버 ────────────────────────────────────────────────────────────
+// ─── 표 편집기 ───────────────────────────────────────────────────────────────
+let _tableCols = 3, _tableRows = 3;
+
 function openTablePicker() {
     document.getElementById('tablePickerOverlay').classList.remove('hidden');
-    document.getElementById('tableCols').focus();
+    showTableStep1();
 }
 function closeTablePicker() {
     document.getElementById('tablePickerOverlay').classList.add('hidden');
 }
-function doInsertTable() {
-    const cols = Math.max(1, Math.min(10, parseInt(document.getElementById('tableCols').value) || 3));
-    const rows = Math.max(1, Math.min(50, parseInt(document.getElementById('tableRows').value) || 3));
+function showTableStep1() {
+    document.getElementById('tableStep1').classList.remove('hidden');
+    document.getElementById('tableStep2').classList.add('hidden');
+    setTimeout(() => document.getElementById('tableCols').focus(), 50);
+}
+function buildTableEditor() {
+    _tableCols = Math.max(1, Math.min(10,  parseInt(document.getElementById('tableCols').value) || 3));
+    _tableRows = Math.max(1, Math.min(30, parseInt(document.getElementById('tableRows').value) || 3));
+
+    const grid = document.getElementById('tableEditorGrid');
+    grid.innerHTML = '';
+
+    // 헤더 행
+    const thead = document.createElement('div');
+    thead.className = 'flex';
+    for (let c = 0; c < _tableCols; c++) {
+        const cell = document.createElement('input');
+        cell.type = 'text';
+        cell.placeholder = `헤더 ${c + 1}`;
+        cell.dataset.row = 0;
+        cell.dataset.col = c;
+        cell.className = 'flex-1 min-w-0 px-2 py-1.5 text-sm font-semibold text-white bg-[#1a3a5c] border border-[#2d5080] focus:outline-none focus:ring-2 focus:ring-blue-300 focus:relative focus:z-10';
+        cell.style.minWidth = '80px';
+        cell.addEventListener('keydown', tableCellKeydown);
+        thead.appendChild(cell);
+    }
+    grid.appendChild(thead);
+
+    // 내용 행
+    for (let r = 0; r < _tableRows; r++) {
+        const tr = document.createElement('div');
+        tr.className = 'flex';
+        for (let c = 0; c < _tableCols; c++) {
+            const cell = document.createElement('input');
+            cell.type = 'text';
+            cell.placeholder = `(${r + 1}, ${c + 1})`;
+            cell.dataset.row = r + 1;
+            cell.dataset.col = c;
+            cell.className = 'flex-1 min-w-0 px-2 py-1.5 text-sm text-gray-700 border border-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:relative focus:z-10 ' + (r % 2 === 1 ? 'bg-[#f7f7f5]' : 'bg-white');
+            cell.style.minWidth = '80px';
+            cell.addEventListener('keydown', tableCellKeydown);
+            tr.appendChild(cell);
+        }
+        grid.appendChild(tr);
+    }
+
+    document.getElementById('tableStep1').classList.add('hidden');
+    document.getElementById('tableStep2').classList.remove('hidden');
+    // 첫 번째 헤더 셀에 포커스
+    grid.querySelector('input')?.focus();
+}
+
+function tableCellKeydown(e) {
+    const row = parseInt(this.dataset.row);
+    const col = parseInt(this.dataset.col);
+    const totalRows = _tableRows + 1; // 헤더 포함
+
+    if (e.key === 'Tab') {
+        e.preventDefault();
+        const nextCol = e.shiftKey ? col - 1 : col + 1;
+        const nextRow = e.shiftKey
+            ? (nextCol < 0 ? row - 1 : row)
+            : (nextCol >= _tableCols ? row + 1 : row);
+        const nc = e.shiftKey
+            ? (nextCol < 0 ? _tableCols - 1 : nextCol)
+            : (nextCol >= _tableCols ? 0 : nextCol);
+        if (nextRow >= 0 && nextRow < totalRows) {
+            const cells = document.getElementById('tableEditorGrid').querySelectorAll('input');
+            const idx = nextRow * _tableCols + nc;
+            cells[idx]?.focus();
+        }
+    } else if (e.key === 'Enter') {
+        e.preventDefault();
+        if (row === 0 && col === _tableCols - 1) {
+            // 헤더 마지막 셀에서 Enter → 첫 내용 셀로
+            const cells = document.getElementById('tableEditorGrid').querySelectorAll('input');
+            cells[_tableCols]?.focus();
+        } else {
+            const nextRow = row + 1;
+            if (nextRow < totalRows) {
+                const cells = document.getElementById('tableEditorGrid').querySelectorAll('input');
+                cells[nextRow * _tableCols + col]?.focus();
+            } else {
+                confirmInsertTable();
+            }
+        }
+    }
+}
+
+function confirmInsertTable() {
+    const cells = document.getElementById('tableEditorGrid').querySelectorAll('input');
+    const headerCells = Array.from(cells).slice(0, _tableCols);
+    const header = headerCells.map(c => `<th>${escHtml(c.value || '')}</th>`).join('');
+
+    const bodyRows = [];
+    for (let r = 0; r < _tableRows; r++) {
+        const row = Array.from(cells).slice((r + 1) * _tableCols, (r + 2) * _tableCols);
+        bodyRows.push('<tr>' + row.map(c => `<td>${escHtml(c.value || '')}</td>`).join('') + '</tr>');
+    }
+    const html = `<table>\n  <thead><tr>${header}</tr></thead>\n  <tbody>\n    ${bodyRows.join('\n    ')}\n  </tbody>\n</table>`;
+
     closeTablePicker();
 
-    const header   = Array.from({length: cols}, (_, i) => `<th>항목 ${i + 1}</th>`).join('');
-    const bodyRows = Array.from({length: rows}, () =>
-        '<tr>' + Array.from({length: cols}, () => '<td></td>').join('') + '</tr>'
-    ).join('');
-    const html = `<table><thead><tr>${header}</tr></thead><tbody>${bodyRows}</tbody></table>`;
-
-    // Quill은 <table>을 지원하지 않으므로 항상 HTML 모드에서 삽입
+    // Quill은 <table> 미지원 → HTML 모드에서 삽입
     if (!htmlMode) {
-        // 현재 Quill 내용을 HTML로 변환한 뒤 HTML 모드로 전환
         const currentHtml = quill ? quill.root.innerHTML : '';
         toggleHtmlMode();
         const ta = document.getElementById('htmlRaw');
@@ -1125,7 +1254,6 @@ function doInsertTable() {
     const pos = ta.selectionStart ?? ta.value.length;
     ta.value  = ta.value.slice(0, pos) + '\n' + html + '\n' + ta.value.slice(pos);
     ta.focus();
-    ta.setSelectionRange(pos + html.length + 2, pos + html.length + 2);
 }
 
 // ─── 알림 배너 ────────────────────────────────────────────────────────────────
