@@ -15,7 +15,7 @@
     //   cover     : (선택) 썸네일 이미지 경로 — 미지정 시 카테고리별 기본 그라디언트 사용
     //   url       : 'news/{slug}.html'
     window.WA_NEWS_DATA = [
-    {
+        {
         slug: 'hagwon-gyeongri-unyeong',
         title: '학원 경리업무, 이렇게 하면 됩니다!',
         category: '경리뉴스',
