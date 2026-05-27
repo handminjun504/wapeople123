@@ -2205,6 +2205,18 @@ async function deletePost(slug) {
     }
 }
 
+// ─── 검색엔진 사이트맵 핑 ─────────────────────────────────────────────────────
+async function pingSitemapToSearchEngines() {
+    const sitemapUrl = encodeURIComponent('https://wapeople.kr/sitemap.xml');
+    const endpoints = [
+        `https://www.google.com/ping?sitemap=${sitemapUrl}`,
+        `https://searchadvisor.naver.com/xml/sitemap/ping?sitemap=${sitemapUrl}`,
+    ];
+    await Promise.allSettled(
+        endpoints.map(url => fetch(url, { mode: 'no-cors' }).catch(() => {}))
+    );
+}
+
 // ─── 사이트맵 업데이트 (게시·수정·삭제 연동) ──────────────────────────────────
 async function updateSitemap(action, slug, date) {
     const sitemapFile = await ghGetFile('sitemap.xml');
@@ -2340,6 +2352,9 @@ async function publishPost() {
 
         // 3. sitemap.xml 업데이트 (실패해도 게시는 완료로 처리)
         await updateSitemap(isEditing ? 'update' : 'add', slug, date).catch(() => {});
+
+        // 4. 검색엔진 사이트맵 핑 (실패해도 무시)
+        await pingSitemapToSearchEngines().catch(() => {});
 
         const successMsg = isEditing
             ? `✅ 수정 완료! "${slug}.html"이 GitHub에 저장됐습니다.`
