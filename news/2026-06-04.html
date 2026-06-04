@@ -1,0 +1,787 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-THPPR46Q');</script>
+    <!-- End Google Tag Manager -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17745262400"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'AW-17745262400');
+    </script>
+    <!-- Event snippet for 견적 요청 conversion (Enhanced Conversions 지원) -->
+    <script>
+    function wapeopleGetUserData(form) {
+        if (!form) return {};
+        var fd = new FormData(form);
+        var email = ((fd.get('email') || '') + '').trim().toLowerCase();
+        var phone = ((fd.get('phone') || '') + '').trim();
+        var data = {};
+        if (email && email.indexOf('@') > 0) data.email = email;
+        if (phone) {
+            var digits = phone.replace(/D/g, '');
+            if (digits.length >= 10) {
+                if (digits.indexOf('82') === 0) data.phone_number = '+' + digits;
+                else if (digits.charAt(0) === '0') data.phone_number = '+82' + digits.substring(1);
+                else data.phone_number = '+' + digits;
+            }
+        }
+        return data;
+    }
+
+    function gtag_report_conversion(url, userData) {
+        var callback = function () {
+            if (typeof(url) != 'undefined') {
+                window.location = url;
+            }
+        };
+        var payload = {
+            'send_to': 'AW-17745262400/CarCCLvL6v0bEMDuzI1C',
+            'value': 1.0,
+            'currency': 'KRW',
+            'transaction_id': 'wa_' + Date.now() + '_' + Math.random().toString(36).substring(2, 9),
+            'event_callback': callback
+        };
+        if (userData && (userData.email || userData.phone_number)) {
+            payload.user_data = userData;
+        }
+        gtag('event', 'conversion', payload);
+        return false;
+    }
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>카페 손익분기점 계산 방법 — 하루 몇 잔 팔아야 적자가 아닌가요? - 경리소식 | 경리업무를잘하는청년들</title>
+    <meta name="description" content="매출은 나오는데 통장이 비는 카페, 이유는 대부분 메뉴별 원가율을 모르거나 고정비 구조를 파악하지 못해서입니다.
+메뉴별 마진 분석 → 고정비·변동비 구조 파악 → 손익분기점 계산, 이 세 가지를 잡으면 어디서 새는지 보입니다.">
+    <meta name="keywords" content="경리소식, 경리업무를잘하는청년들">
+    <meta name="robots" content="index, follow">
+    <meta name="naver-site-verification" content="aefffa7a6d4cad21b90328c862b8ce5725188412">
+    <link rel="canonical" href="https://wapeople.kr/news/2026-06-04">
+    <meta property="og:title" content="카페 손익분기점 계산 방법 — 하루 몇 잔 팔아야 적자가 아닌가요? - 경리소식">
+    <meta property="og:description" content="매출은 나오는데 통장이 비는 카페, 이유는 대부분 메뉴별 원가율을 모르거나 고정비 구조를 파악하지 못해서입니다.
+메뉴별 마진 분석 → 고정비·변동비 구조 파악 → 손익분기점 계산, 이 세 가지를 잡으면 어디서 새는지 보입니다.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://wapeople.kr/news/2026-06-04">
+    <meta property="og:image" content="https://wapeople.kr/logo.png?v=20260310b">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:site_name" content="경리업무를잘하는청년들">
+    <meta property="og:locale" content="ko_KR">
+    <meta property="article:published_time" content="2026-06-04">
+    <meta property="article:section" content="경리뉴스">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="카페 손익분기점 계산 방법 — 하루 몇 잔 팔아야 적자가 아닌가요? - 경리소식">
+    <meta name="twitter:description" content="매출은 나오는데 통장이 비는 카페, 이유는 대부분 메뉴별 원가율을 모르거나 고정비 구조를 파악하지 못해서입니다.
+메뉴별 마진 분석 → 고정비·변동비 구조 파악 → 손익분기점 계산, 이 세 가지를 잡으면 어디서 새는지 보입니다.">
+    <meta name="twitter:image" content="https://wapeople.kr/logo.png?v=20260310b">
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "홈",       "item": "https://wapeople.kr/" },
+        { "@type": "ListItem", "position": 2, "name": "경리소식", "item": "https://wapeople.kr/news" },
+        { "@type": "ListItem", "position": 3, "name": "카페 손익분기점 계산 방법 — 하루 몇 잔 팔아야 적자가 아닌가요?", "item": "https://wapeople.kr/news/2026-06-04" }
+      ]
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "NewsArticle",
+      "headline": "카페 손익분기점 계산 방법 — 하루 몇 잔 팔아야 적자가 아닌가요?",
+      "description": "매출은 나오는데 통장이 비는 카페, 이유는 대부분 메뉴별 원가율을 모르거나 고정비 구조를 파악하지 못해서입니다. 메뉴별 마진 분석 → 고정비·변동비 구조 파악 → 손익분기점 계산, 이 세 가지를 잡으면 어디서 새는지 보입니다.",
+      "datePublished": "2026-06-04",
+      "dateModified": "2026-06-04",
+      "inLanguage": "ko-KR",
+      "articleSection": "경리뉴스",
+      "image": "https://wapeople.kr/logo.png?v=20260310b",
+      "author": { "@type": "Organization", "name": "경리업무를잘하는청년들", "url": "https://wapeople.kr" },
+      "publisher": {
+        "@type": "Organization",
+        "name": "경리업무를잘하는청년들",
+        "url": "https://wapeople.kr",
+        "logo": { "@type": "ImageObject", "url": "https://wapeople.kr/logo.png?v=20260310b" }
+      },
+      "mainEntityOfPage": { "@type": "WebPage", "@id": "https://wapeople.kr/news/2026-06-04" }
+    }
+    </script>
+
+    <link rel="icon" type="image/x-icon" href="/favicon/favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-icon-180x180.png">
+    <meta name="theme-color" content="#2563eb">
+    <link rel="stylesheet" href="../dist/output.css">
+    <link rel="stylesheet" href="../mobile-optimize.css?v=20260312b">
+    <script src="../traffic-attribution.js?v=20260312a" defer></script>
+    <script src="../a11y-enhance.js" defer></script>
+    <link rel="stylesheet" href="../fonts/Pretendard-1.3.9/web/static/pretendard-subset.css?v=20260312c">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/fontawesome.min.css" media="print" onload="this.media='all'">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/solid.min.css" media="print" onload="this.media='all'">
+    <script src="https://www.google.com/recaptcha/api.js?render=6Le0CEMsAAAAAFGF3Dnci1_SUkC4VWmzqdox2jJZ"></script>
+    <script>
+        document.documentElement.style.opacity = '0';
+        document.documentElement.style.transition = 'opacity 0.2s ease';
+        function revealPageAfterFontLoad() { document.documentElement.style.opacity = '1'; }
+        const fontLoadFallback = setTimeout(revealPageAfterFontLoad, 3000);
+        if (document.fonts && document.fonts.ready) {
+            document.fonts.ready.then(function() { clearTimeout(fontLoadFallback); revealPageAfterFontLoad(); }).catch(revealPageAfterFontLoad);
+        } else { window.addEventListener('load', function() { clearTimeout(fontLoadFallback); revealPageAfterFontLoad(); }); }
+    </script>
+    <noscript><style>html { opacity: 1 !important; }</style></noscript>
+    <style>
+        .modal { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.5); z-index: 9999; align-items: center; justify-content: center; }
+        .modal.active { display: flex; }
+        .article-body { font-size: 1.125rem; line-height: 1.8; color: #1f2937; word-break: keep-all; letter-spacing: -0.01em; }
+        .article-body > p:first-of-type { font-size: 1.25rem; font-weight: 600; color: #0f172a; line-height: 1.7; padding-left: 1rem; border-left: 4px solid #2563eb; margin-bottom: 2rem; }
+        .article-body h2 { font-size: 1.5rem; font-weight: 800; color: #0f172a; margin: 2.5rem 0 1rem; padding-bottom: 0.5rem; border-bottom: 2px solid #2563eb; letter-spacing: -0.02em; }
+        .article-body h3 { font-size: 1.25rem; font-weight: 700; color: #1f2937; margin: 2rem 0 0.75rem; letter-spacing: -0.01em; }
+        .article-body p { margin: 1.25rem 0; }
+        .article-body p:has(> br:only-child) { display: none; }
+        .article-body hr { border: none; height: 0; margin: 1.75rem 0; position: relative; }
+        .article-body hr::before { content: ""; display: block; width: 60px; height: 3px; background: #e5e7eb; border-radius: 9999px; margin: 0 auto; }
+        .article-body ul, .article-body ol { margin: 1rem 0 1rem 1.5rem; }
+        .article-body ul { list-style: disc; } .article-body ol { list-style: decimal; }
+        .article-body li { margin: 0.5rem 0; }
+        .article-body strong { color: #0f172a; font-weight: 700; }
+        .article-body a { color: #2563eb; text-decoration: underline; text-underline-offset: 3px; }
+        .article-body blockquote { border-left: 4px solid #93c5fd; background: #eff6ff; padding: 1rem 1.25rem; margin: 1.5rem 0; border-radius: 0 0.75rem 0.75rem 0; color: #1e3a8a; font-style: italic; }
+        .article-body code { background: #f3f4f6; padding: 0.15rem 0.4rem; border-radius: 0.25rem; font-size: 0.9em; color: #be185d; }
+        .article-body img { max-width: 100%; height: auto; border-radius: 0.75rem; margin: 1.5rem 0; }
+        .article-body table { width: 100%; border-collapse: collapse; font-size: 0.9375rem; margin: 1.25rem 0; }
+        .article-body thead tr { background: #1a3a5c; color: #fff; }
+        .article-body thead th { padding: 0.75rem 1rem; text-align: left; font-weight: 600; }
+        .article-body tbody td { padding: 0.7rem 1rem; border-bottom: 1px solid #e5e5e0; color: #444; }
+        .article-body tbody tr:nth-child(even) { background: #f7f7f5; }
+    </style>
+</head>
+<body class="antialiased">
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-THPPR46Q" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 right-0 z-50 nav-glass">
+        <div class="max-w-7xl mx-auto px-3 md:px-6 py-2 flex items-center justify-between gap-2">
+            <a href="../index.html" class="flex items-center gap-1 hover:opacity-80 transition-opacity touch-manipulation min-w-0">
+                <img src="../logo.png?v=20260310b" alt="경리업무를잘하는청년들" class="hidden md:block object-contain" style="height:2.125rem;" fetchpriority="high">
+                <img src="../logo.png?v=20260310b" alt="경리업무를잘하는청년들" class="block md:hidden mobile-nav-logo object-contain" fetchpriority="high">
+            </a>
+            <div class="hidden md:flex items-center gap-6">
+                <a href="../about.html" class="text-gray-700 hover:text-blue-700 font-semibold transition-colors">원격경리</a>
+                <a href="../news.html" class="text-blue-700 font-bold transition-colors">경리소식</a>
+                <a href="../faq.html" class="text-gray-700 hover:text-blue-700 font-semibold transition-colors">자주 묻는 질문</a>
+            </div>
+            <button onclick="openModal()" class="bg-blue-600 hover:bg-blue-700 text-white font-bold px-5 py-2 rounded-xl transition-colors text-sm whitespace-nowrap">상담 바로가기</button>
+        </div>
+    </nav>
+
+    <!-- 글 헤더 -->
+    <header class="bg-white pt-28 md:pt-32 pb-12 md:pb-16 border-b border-gray-100">
+        <div class="max-w-3xl mx-auto px-4 md:px-6">
+            <!-- 빵부스러기 -->
+            <nav aria-label="현재 위치" class="text-sm text-gray-500 mb-6">
+                <a href="../index.html" class="hover:text-blue-600 transition-colors">홈</a>
+                <span class="mx-2 text-gray-300">/</span>
+                <a href="../news.html" class="hover:text-blue-600 transition-colors">경리소식</a>
+                <span class="mx-2 text-gray-300">/</span>
+                <span class="text-gray-700">경리뉴스</span>
+            </nav>
+
+            <!-- 카테고리 배지 + 날짜 -->
+            <div class="flex flex-wrap items-center gap-2 mb-5">
+                <span class="text-xs font-bold px-3 py-1 rounded-full border bg-amber-100 text-amber-700 border-amber-200">경리뉴스</span>
+                <time datetime="2026-06-04" class="text-sm text-gray-400">2026. 06. 04.</time>
+            </div>
+
+            <h1 class="text-3xl md:text-4xl font-black text-gray-900 leading-tight mb-5">카페 손익분기점 계산 방법 — 하루 몇 잔 팔아야 적자가 아닌가요?</h1>
+            <p class="text-lg md:text-xl text-gray-600 leading-relaxed">매출은 나오는데 통장이 비는 카페, 이유는 대부분 메뉴별 원가율을 모르거나 고정비 구조를 파악하지 못해서입니다.
+메뉴별 마진 분석 → 고정비·변동비 구조 파악 → 손익분기점 계산, 이 세 가지를 잡으면 어디서 새는지 보입니다.</p>
+
+            <!-- 저자 -->
+            <div class="mt-8 pt-6 border-t border-gray-100 flex items-center gap-3">
+                <div class="w-10 h-10 rounded-full bg-blue-600 flex items-center justify-center flex-shrink-0">
+                    <i class="fas fa-pen-nib text-white text-sm"></i>
+                </div>
+                <div>
+                    <p class="text-sm font-bold text-gray-900">경리업무를잘하는청년들</p>
+                    <p class="text-xs text-gray-400">원격 경리 전문 서비스</p>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- 본문 -->
+    <main class="bg-slate-50 py-12 md:py-16">
+        <article class="max-w-3xl mx-auto px-4 md:px-6">
+            <div class="article-body bg-white rounded-2xl shadow-sm border border-gray-100 p-6 md:p-12">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>카페 손익분기점 계산 방법 — 하루 몇 잔 팔아야 적자가 아닌가요? | wapeople</title>
+<meta name="description" content="카페 손익분기점 계산 공식과 메뉴별 원가율·마진 분석까지. 하루 목표 판매량을 숫자로 잡는 방법을 정리했습니다.">
+<meta property="og:title" content="카페 손익분기점 계산 방법 — 하루 몇 잔 팔아야 적자가 아닌가요?">
+<meta property="og:description" content="카페 손익분기점 공식, 메뉴별 원가율·마진 비교, 고정비·변동비 구조까지. 카페 경영관리 핵심만 정리했습니다.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://wapeople.kr/경리소식/cafe-bep-calculation">
+<link rel="canonical" href="https://wapeople.kr/경리소식/cafe-bep-calculation">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "카페 메뉴 중 마진이 가장 높은 메뉴는 무엇인가요?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "일반적으로 아메리카노·에스프레소 계열이 원가율이 낮아 마진율이 높습니다. 반면 스무디·프라푸치노류는 재료비와 인건비가 더 들어 마진율이 낮을 수 있습니다. 단, 단가가 높은 메뉴가 매출 기여도는 더 클 수 있으므로 마진율과 마진액을 함께 봐야 합니다."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "카페 손익분기점은 어떻게 계산하나요?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "손익분기점(BEP) = 고정비 ÷ (1 - 변동비율)입니다. 예를 들어 월 고정비가 600만 원이고 변동비율이 40%라면 손익분기점 매출은 1,000만 원입니다. 이 매출을 넘어야 적자를 면합니다."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "카페 알바 인건비는 어떻게 비용처리 하나요?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "주 15시간 미만 단기 알바는 일용직으로 처리하고, 주 15시간 이상이면 4대보험 가입 의무가 생깁니다. 급여 지급 시 간이세액표에 따른 원천징수를 하고 다음 달 10일까지 신고·납부해야 합니다. 인건비는 전액 비용처리 가능하나 지급 증빙(계좌이체 내역)을 반드시 보관해야 합니다."
+      }
+    }
+  ]
+}
+</script>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&family=Noto+Serif+KR:wght@400;600;700&display=swap');
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --primary:      #1a3a5c;
+  --accent:       #2563a8;
+  --accent-light: #e8f0fb;
+  --text:         #1a1a1a;
+  --text-sec:     #4a4a4a;
+  --text-muted:   #888;
+  --border:       #e0e0da;
+  --bg:           #f8f8f6;
+  --surface:      #ffffff;
+  --hi-bg:        #fff8e6;
+  --hi-bd:        #f0c040;
+  --success:      #1a7a4a;
+  --success-light:#e8f5e9;
+  --danger:       #c0392b;
+  --danger-light: #fdf0f0;
+  --radius:       10px;
+  --serif:        'Noto Serif KR', serif;
+  --sans:         'Noto Sans KR', sans-serif;
+  --max-w:        720px;
+}
+body { font-family: var(--sans); background: var(--bg); color: var(--text); font-size: 16px; line-height: 1.85; padding: 48px 20px 80px; }
+article { max-width: var(--max-w); margin: 0 auto; }
+
+.meta-bar { display: flex; align-items: center; gap: 8px; margin-bottom: 24px; font-size: 12px; color: var(--text-muted); }
+.badge { background: var(--accent-light); color: var(--accent); font-size: 11px; font-weight: 700; padding: 3px 10px; border-radius: 99px; letter-spacing: .04em; }
+.dot { color: var(--border); }
+
+h1 { font-family: var(--serif); font-size: clamp(22px, 4vw, 30px); font-weight: 700; color: var(--primary); line-height: 1.45; margin-bottom: 22px; letter-spacing: -.01em; }
+h2 { font-family: var(--serif); font-size: clamp(16px, 2.8vw, 19px); font-weight: 700; color: var(--primary); margin: 44px 0 14px; padding-bottom: 10px; border-bottom: 1.5px solid var(--border); letter-spacing: -.01em; }
+
+.summary-box { background: var(--accent-light); border-left: 4px solid var(--accent); border-radius: 0 var(--radius) var(--radius) 0; padding: 16px 20px; margin-bottom: 32px; font-size: 14.5px; font-weight: 500; color: var(--primary); line-height: 1.75; }
+.intro { font-size: 15.5px; color: var(--text-sec); margin-bottom: 40px; line-height: 1.95; }
+p { margin-bottom: 16px; color: var(--text-sec); font-size: 15px; line-height: 1.9; }
+
+ul.list { list-style: none; margin: 12px 0 20px; display: flex; flex-direction: column; gap: 10px; padding: 0; }
+ul.list li { font-size: 14.5px; color: var(--text-sec); line-height: 1.75; padding-left: 18px; position: relative; }
+ul.list li::before { content: ''; display: block; width: 5px; height: 5px; border-radius: 50%; background: var(--accent); position: absolute; left: 0; top: 9px; }
+
+.highlight { background: var(--hi-bg); border: 1px solid var(--hi-bd); border-radius: var(--radius); padding: 16px 20px; margin: 20px 0 24px; font-size: 14.5px; color: #5a4000; line-height: 1.8; }
+.danger-box { background: var(--danger-light); border: 1px solid #f5b0b0; border-radius: var(--radius); padding: 16px 20px; margin: 20px 0 24px; font-size: 14px; color: #7a1a1a; line-height: 1.8; }
+.tip-box { background: var(--success-light); border: 1px solid #a0d0a0; border-radius: var(--radius); padding: 16px 20px; margin: 20px 0 24px; font-size: 14px; color: #1a4a2a; line-height: 1.8; }
+
+/* 메뉴 마진 카드 */
+.menu-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 16px 0 28px; }
+@media (max-width: 500px) { .menu-grid { grid-template-columns: 1fr; } }
+.menu-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 18px 20px; }
+.menu-icon { font-size: 20px; margin-bottom: 8px; }
+.menu-title { font-size: 13px; font-weight: 700; color: var(--primary); margin-bottom: 6px; }
+.menu-desc { font-size: 13px; color: var(--text-sec); line-height: 1.65; }
+.menu-tag { display: inline-block; font-size: 11px; padding: 2px 8px; border-radius: 99px; margin-top: 8px; font-weight: 500; }
+.tag-high { background: #e8f5e9; color: var(--success); }
+.tag-mid  { background: var(--hi-bg); color: #5a4000; }
+.tag-low  { background: var(--danger-light); color: var(--danger); }
+
+/* 마진 분석 테이블 */
+.table-wrap { overflow-x: auto; margin: 16px 0 28px; border-radius: var(--radius); border: 1px solid var(--border); }
+table { width: 100%; border-collapse: collapse; font-size: 13.5px; min-width: 460px; font-family: var(--sans); }
+thead tr { background: var(--primary); color: #fff; }
+thead th { padding: 12px 16px; font-weight: 600; text-align: left; font-size: 12.5px; letter-spacing: .02em; }
+tbody tr { border-bottom: 1px solid var(--border); }
+tbody tr:last-child { border-bottom: none; }
+tbody tr:nth-child(even) { background: #f5f5f3; }
+tbody td { padding: 11px 16px; color: var(--text-sec); vertical-align: middle; line-height: 1.6; }
+tbody td:first-child { font-weight: 600; color: var(--text); }
+.margin-high { color: var(--success); font-weight: 700; }
+.margin-mid  { color: #b7770d; font-weight: 700; }
+.margin-low  { color: var(--danger); font-weight: 700; }
+
+/* Before / After */
+.ba-wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 16px 0 28px; }
+@media (max-width: 500px) { .ba-wrap { grid-template-columns: 1fr; } }
+.ba-card { border-radius: var(--radius); padding: 18px 20px; }
+.ba-card.before { background: var(--danger-light); border: 1px solid #f5b0b0; }
+.ba-card.after  { background: var(--success-light); border: 1px solid #a0d0a0; }
+.ba-label { font-size: 11px; font-weight: 700; letter-spacing: .08em; margin-bottom: 10px; }
+.ba-label.before { color: var(--danger); }
+.ba-label.after  { color: var(--success); }
+.ba-list { list-style: none; padding: 0; display: flex; flex-direction: column; gap: 7px; }
+.ba-list li { font-size: 13px; line-height: 1.65; display: flex; gap: 8px; align-items: flex-start; }
+.ba-card.before .ba-list li { color: #7a1a1a; }
+.ba-card.after  .ba-list li { color: #1a5a2a; }
+.ba-card.before .ba-list li::before { content: '✗'; flex-shrink: 0; font-weight: 700; }
+.ba-card.after  .ba-list li::before { content: '✓'; flex-shrink: 0; font-weight: 700; }
+
+/* 고정비·변동비 구조 */
+.cost-category { display: flex; flex-direction: column; gap: 12px; margin: 16px 0 28px; }
+.cost-row { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; }
+.cost-row-head { display: flex; align-items: center; gap: 10px; padding: 13px 18px; background: var(--bg); border-bottom: 1px solid var(--border); }
+.cost-row-icon { font-size: 16px; }
+.cost-row-title { font-size: 13px; font-weight: 700; color: var(--primary); }
+.cost-row-subtitle { font-size: 12px; color: var(--text-muted); margin-left: auto; }
+.cost-row-body { padding: 12px 18px; display: grid; grid-template-columns: 1fr 1fr; gap: 6px; }
+@media (max-width: 480px) { .cost-row-body { grid-template-columns: 1fr; } }
+.cost-item { font-size: 13px; color: var(--text-sec); padding-left: 14px; position: relative; line-height: 1.6; }
+.cost-item::before { content: ''; display: block; width: 4px; height: 4px; border-radius: 50%; background: var(--accent); position: absolute; left: 0; top: 8px; }
+
+/* BEP 계산 박스 */
+.bep-box { background: var(--surface); border: 1.5px solid var(--accent); border-radius: var(--radius); padding: 22px 24px; margin: 20px 0 28px; }
+.bep-title { font-size: 13px; font-weight: 700; color: var(--accent); margin-bottom: 14px; letter-spacing: .04em; }
+.bep-formula { font-size: 15px; font-weight: 700; color: var(--primary); text-align: center; padding: 14px; background: var(--accent-light); border-radius: 8px; margin-bottom: 14px; line-height: 1.7; }
+.bep-example { font-size: 13px; color: var(--text-sec); line-height: 1.8; }
+.bep-example strong { color: var(--primary); }
+
+/* FAQ */
+.faq-wrap { display: flex; flex-direction: column; gap: 10px; margin-top: 8px; }
+.faq-item { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; }
+.faq-q { width: 100%; background: none; border: none; text-align: left; padding: 16px 20px; font-size: 14.5px; font-weight: 600; color: var(--primary); cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 12px; font-family: var(--sans); line-height: 1.5; }
+.faq-q:hover { background: var(--accent-light); }
+.faq-icon { font-size: 18px; color: var(--accent); flex-shrink: 0; transition: transform .22s; }
+.faq-icon.open { transform: rotate(45deg); }
+.faq-a { display: none; padding: 14px 20px 16px; font-size: 13.5px; color: var(--text-sec); line-height: 1.8; border-top: 1px solid var(--border); }
+.faq-a.open { display: block; }
+
+hr { border: none; border-top: 1px solid var(--border); margin: 36px 0; }
+</style>
+
+
+<article>
+
+  <div class="meta-bar">
+    <span class="badge">경리소식</span>
+    <span class="dot">·</span>
+    <span>카페 편</span>
+    <span class="dot">·</span>
+    <span>2026년 최신</span>
+  </div>
+
+  <h1>카페 손익분기점 계산 방법 —<br>하루 몇 잔 팔아야 적자가 아닌가요?</h1>
+
+  <div class="summary-box">
+    매출은 나오는데 통장이 비는 카페, 이유는 대부분 <strong>메뉴별 원가율을 모르거나 고정비 구조를 파악하지 못해서</strong>입니다.<br>
+    <strong>메뉴별 마진 분석 → 고정비·변동비 구조 파악 → 손익분기점 계산</strong>, 이 세 가지를 잡으면 어디서 새는지 보입니다.
+  </div>
+
+  <p class="intro">
+    하루에 커피 100잔을 팔아도 월말에 손에 쥐는 게 없다는 카페 사장님이 많습니다. 임차료, 인건비, 재료비를 빼고 나면 남는 게 없는 구조인데, 어떤 메뉴를 더 팔아야 하는지, 어디서 비용이 새는지 데이터로 보지 않으면 감으로만 운영하게 됩니다.
+  </p>
+
+  <h2>메뉴별 마진, 팔릴수록 남는 메뉴가 따로 있습니다</h2>
+  <p>카페 메뉴는 단가가 비싸다고 마진이 높은 게 아닙니다. 재료비, 제조 시간, 인건비까지 따져야 실제 남는 금액이 보입니다.</p>
+
+  <div class="menu-grid">
+    <div class="menu-card">
+      <div class="menu-icon">☕</div>
+      <div class="menu-title">아메리카노</div>
+      <div class="menu-desc">원두·물만 들어가므로 재료비가 낮고 제조 시간도 짧습니다. 단가 대비 원가율이 가장 낮은 메뉴 중 하나.</div>
+      <span class="menu-tag tag-high">원가율 낮음 · 마진 높음</span>
+    </div>
+    <div class="menu-card">
+      <div class="menu-icon">🥛</div>
+      <div class="menu-title">라떼·카푸치노</div>
+      <div class="menu-desc">우유 사용으로 재료비가 올라가지만 단가도 높아 절충됩니다. 우유 가격 변동에 마진이 직접 영향받음.</div>
+      <span class="menu-tag tag-mid">원가율 중간</span>
+    </div>
+    <div class="menu-card">
+      <div class="menu-icon">🧋</div>
+      <div class="menu-title">스무디·블렌디드</div>
+      <div class="menu-desc">과일·시럽·얼음 등 재료가 많고 블렌더 사용으로 제조 시간도 깁니다. 단가가 높아도 원가율이 함께 올라감.</div>
+      <span class="menu-tag tag-low">원가율 높음 · 마진 낮을 수 있음</span>
+    </div>
+    <div class="menu-card">
+      <div class="menu-icon">🍰</div>
+      <div class="menu-title">디저트·케이크</div>
+      <div class="menu-desc">직접 제조 시 인건비·재료비 모두 올라감. 외부 납품 제품은 원가율이 고정되어 예측이 쉬움. 음료와 세트 판매 시 객단가 상승 효과.</div>
+      <span class="menu-tag tag-mid">구조에 따라 다름</span>
+    </div>
+  </div>
+
+  <div class="highlight">
+    ※ 아래 수치는 이해를 돕기 위한 예시입니다. 실제 원가율은 원두 등급, 지역, 임차료, 인건비 구조에 따라 크게 달라질 수 있습니다.
+  </div>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>메뉴</th>
+          <th>판매가</th>
+          <th>재료비(원가)</th>
+          <th>원가율</th>
+          <th>건당 마진액</th>
+          <th>평가</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>아메리카노</td>
+          <td>4,000원</td>
+          <td>400~600원</td>
+          <td class="margin-high">10~15%</td>
+          <td>3,400~3,600원</td>
+          <td>마진율 최고</td>
+        </tr>
+        <tr>
+          <td>카페라떼</td>
+          <td>4,500원</td>
+          <td>800~1,100원</td>
+          <td class="margin-mid">18~24%</td>
+          <td>3,400~3,700원</td>
+          <td>마진액은 비슷</td>
+        </tr>
+        <tr>
+          <td>프라푸치노·스무디</td>
+          <td>6,000원</td>
+          <td>1,800~2,400원</td>
+          <td class="margin-low">30~40%</td>
+          <td>3,600~4,200원</td>
+          <td>마진율 낮지만 단가 높음</td>
+        </tr>
+        <tr>
+          <td>케이크(외부 납품)</td>
+          <td>7,000원</td>
+          <td>3,500~4,000원</td>
+          <td class="margin-low">50~57%</td>
+          <td>3,000~3,500원</td>
+          <td>원가율 높으나 객단가 기여</td>
+        </tr>
+        <tr>
+          <td>아이스티·에이드</td>
+          <td>5,000원</td>
+          <td>600~900원</td>
+          <td class="margin-high">12~18%</td>
+          <td>4,100~4,400원</td>
+          <td>숨겨진 고마진 메뉴</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p><strong>마진율이 높은 메뉴</strong>를 더 많이 파는 것이 기본 전략이지만, 단가가 높은 메뉴는 마진액 자체가 크기 때문에 마진율과 마진액을 함께 봐야 합니다. 아이스티·에이드가 아메리카노보다 건당 마진액이 높다는 점, 알고 계셨나요?</p>
+
+  <div class="ba-wrap">
+    <div class="ba-card before">
+      <div class="ba-label before">마진 분석 없을 때</div>
+      <ul class="ba-list">
+        <li>잘 팔리는 메뉴에 집중하는데 남는 게 없음</li>
+        <li>스무디 많이 팔았는데 오히려 손해</li>
+        <li>케이크 메뉴 추가했는데 수익 개선 없음</li>
+        <li>어떤 메뉴를 더 밀어야 할지 모름</li>
+      </ul>
+    </div>
+    <div class="ba-card after">
+      <div class="ba-label after">마진 분석 있을 때</div>
+      <ul class="ba-list">
+        <li>아이스티·에이드를 시즌 메뉴로 강화</li>
+        <li>스무디 재료비 재검토 후 단가 조정</li>
+        <li>케이크는 세트 구성으로 객단가 전략</li>
+        <li>고마진 메뉴 중심으로 메뉴판 재구성</li>
+      </ul>
+    </div>
+  </div>
+
+  <h2>카페 비용 구조 — 고정비와 변동비를 나눠야 합니다</h2>
+  <p>카페는 매출이 줄어도 나가는 돈이 있고, 매출이 늘면 함께 늘어나는 돈이 있습니다. 이 두 가지를 구분해야 손익 구조가 보입니다.</p>
+
+  <div class="cost-category">
+    <div class="cost-row">
+      <div class="cost-row-head">
+        <span class="cost-row-icon">🏢</span>
+        <span class="cost-row-title">고정비 — 매출과 관계없이 매달 나가는 돈</span>
+        <span class="cost-row-subtitle">줄이기 어려운 비용</span>
+      </div>
+      <div class="cost-row-body">
+        <div class="cost-item">임차료(월세)</div>
+        <div class="cost-item">정규 직원 인건비</div>
+        <div class="cost-item">장비 리스·할부금</div>
+        <div class="cost-item">관리비·전기·수도 기본요금</div>
+        <div class="cost-item">보험료·대출 이자</div>
+        <div class="cost-item">POS·음악 구독 서비스</div>
+      </div>
+    </div>
+    <div class="cost-row">
+      <div class="cost-row-head">
+        <span class="cost-row-icon">📦</span>
+        <span class="cost-row-title">변동비 — 매출에 따라 달라지는 돈</span>
+        <span class="cost-row-subtitle">매출 연동 비용</span>
+      </div>
+      <div class="cost-row-body">
+        <div class="cost-item">원두·우유·시럽 등 재료비</div>
+        <div class="cost-item">알바 인건비(시간제)</div>
+        <div class="cost-item">포장재·컵·빨대</div>
+        <div class="cost-item">카드 결제 수수료</div>
+        <div class="cost-item">배달앱 수수료(배달 운영 시)</div>
+        <div class="cost-item">청소·소모품</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="highlight">
+    <strong>카페 평균 비용 비중 참고:</strong> 재료비(원가) 25~35%, 인건비 25~35%, 임차료 10~20%, 기타 운영비 5~10% 수준이 일반적입니다. 인건비+임차료가 전체의 절반을 넘으면 마진 개선이 어렵습니다.
+  </div>
+
+  <h2>손익분기점 — 최소 얼마를 팔아야 적자가 아닌가요?</h2>
+  <p>손익분기점(BEP)을 알면 "이번 달 목표 매출"이 숫자로 나옵니다. 막연하게 "많이 팔아야지"가 아니라 구체적인 숫자가 생깁니다.</p>
+
+  <div class="bep-box">
+    <div class="bep-title">손익분기점(BEP) 계산 공식</div>
+    <div class="bep-formula">
+      손익분기점 매출 = 월 고정비 ÷ (1 - 변동비율)
+    </div>
+    <div class="bep-example">
+      <strong>예시:</strong> 월 고정비 600만 원(임차료 250 + 정직원 인건비 250 + 기타 100),<br>
+      변동비율 40%(재료비 30% + 알바비·수수료 10%)일 경우<br><br>
+      손익분기점 = 600만 원 ÷ (1 - 0.4) = <strong>1,000만 원</strong><br><br>
+      → 월 매출 1,000만 원을 넘어야 비로소 적자를 면합니다.<br>
+      → 하루 평균 33만 원, 아메리카노 4,000원 기준 약 83잔 이상이 목표가 됩니다.
+    </div>
+  </div>
+
+  <div class="tip-box">
+    <strong>실전 팁:</strong> 손익분기점 계산 후 하루 목표 잔 수로 환산해두면 일별 운영 체감이 달라집니다. "오늘 80잔 넘겼다" vs "오늘 50잔밖에 못 팔았다"가 의미 있는 숫자가 됩니다.
+  </div>
+
+  <h2>카페 재무 상태, 매달 이것만 챙기세요</h2>
+  <p>복잡한 회계 시스템이 없어도 괜찮습니다. 매달 아래 세 가지 숫자만 파악해도 재무 상태를 읽을 수 있습니다.</p>
+
+  <ul class="list">
+    <li><strong>월 매출 vs 손익분기점</strong> — 이달 얼마 팔았고, 목표 매출 대비 어떤지. BEP를 넘겼는지가 첫 번째 체크 포인트</li>
+    <li><strong>원가율 추이</strong> — 재료비 ÷ 매출. 매달 비교해서 원가율이 올라가고 있다면 재료비 낭비 또는 단가 문제 신호</li>
+    <li><strong>인건비 비율</strong> — 인건비 ÷ 매출. 30% 초과 시 구조 조정 또는 매출 확대 검토 필요</li>
+  </ul>
+
+  <div class="danger-box">
+    <strong>가장 많이 하는 실수:</strong> 개인 계좌와 카페 계좌를 분리하지 않는 경우입니다. 대표자가 카페 계좌에서 생활비를 인출하거나, 개인 카드로 재료를 구입하면 실제 원가율 계산이 불가능해지고 세금 신고 때 비용처리도 어려워집니다. 사업용 계좌·카드 분리가 카페 경영관리의 첫 번째 단계입니다.
+  </div>
+
+  <h2>카페 인건비 처리 — 알바생 세금은 어떻게 하나요?</h2>
+  <p>카페에서 알바를 고용할 때 세금·4대보험 처리를 잘못하면 나중에 가산세가 붙거나 근로복지공단에서 소급 청구가 올 수 있습니다.</p>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>구분</th>
+          <th>조건</th>
+          <th>4대보험</th>
+          <th>원천징수</th>
+          <th>신고 기한</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>일용직 알바</td>
+          <td>주 15시간 미만, 단기</td>
+          <td>고용보험만 (단기 특례)</td>
+          <td>일당 15만 원 초과분의 2.7%</td>
+          <td>다음 달 10일</td>
+        </tr>
+        <tr>
+          <td>단시간 근로자</td>
+          <td>주 15시간 이상</td>
+          <td>4대보험 전체 가입 의무</td>
+          <td>간이세액표 기준</td>
+          <td>다음 달 10일</td>
+        </tr>
+        <tr>
+          <td>정규 직원</td>
+          <td>주 40시간</td>
+          <td>4대보험 전체</td>
+          <td>간이세액표 기준</td>
+          <td>다음 달 10일</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="tip-box">
+    <strong>두루누리 사회보험료 지원:</strong> 월평균 보수 270만 원 미만 근로자를 고용한 10인 미만 사업장은 4대보험료의 최대 80%를 정부가 지원합니다. 카페 소규모 사업장이라면 반드시 확인하세요.
+  </div>
+
+  <hr>
+
+  <h2>자주 묻는 질문</h2>
+
+  <div class="faq-wrap">
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">
+        카페 메뉴 중 마진이 가장 높은 메뉴는 무엇인가요?
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-a">
+        일반적으로 아메리카노·에스프레소 계열이 원가율이 낮아 마진율이 높습니다. 반면 스무디·프라푸치노류는 재료비와 인건비가 더 들어 마진율이 낮을 수 있습니다. 단, 단가가 높은 메뉴가 매출 기여도는 더 클 수 있으므로 마진율과 마진액을 함께 봐야 합니다.
+      </div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">
+        카페 손익분기점은 어떻게 계산하나요?
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-a">
+        손익분기점(BEP) = 고정비 ÷ (1 - 변동비율)입니다. 예를 들어 월 고정비가 600만 원이고 변동비율이 40%라면 손익분기점 매출은 1,000만 원입니다. 이 매출을 넘어야 적자를 면합니다.
+      </div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">
+        카페 알바 인건비는 어떻게 비용처리 하나요?
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-a">
+        주 15시간 미만 단기 알바는 일용직으로 처리하고, 주 15시간 이상이면 4대보험 가입 의무가 생깁니다. 급여 지급 시 간이세액표에 따른 원천징수를 하고 다음 달 10일까지 신고·납부해야 합니다. 인건비는 전액 비용처리 가능하나 지급 증빙(계좌이체 내역)을 반드시 보관해야 합니다.
+      </div>
+    </div>
+  </div>
+
+</article>
+
+<script>
+function toggleFaq(btn) {
+  var icon = btn.querySelector('.faq-icon');
+  var answer = btn.nextElementSibling;
+  var isOpen = answer.classList.contains('open');
+  document.querySelectorAll('.faq-a.open').forEach(function(el){ el.classList.remove('open'); });
+  document.querySelectorAll('.faq-icon.open').forEach(function(el){ el.classList.remove('open'); });
+  if (!isOpen) { answer.classList.add('open'); icon.classList.add('open'); }
+}
+</script>
+            </div>
+
+            <!-- CTA 카드 -->
+            <div class="mt-14 bg-blue-50 border border-blue-100 rounded-2xl p-8 text-center">
+                <p class="text-lg md:text-xl font-bold text-gray-900 mb-2">경리 고민, 지금 바로 해결하세요</p>
+                <p class="text-sm text-gray-600 mb-6">무료 상담으로 우리 회사에 맞는 솔루션을 확인해 보세요.</p>
+                <button type="button" onclick="openModal()" class="inline-flex items-center justify-center gap-2 bg-blue-600 hover:bg-blue-700 text-white font-bold px-8 py-3.5 rounded-xl transition-colors shadow-md text-base cursor-pointer">
+                    <i class="fas fa-paper-plane text-sm"></i> 무료 상담 신청하기
+                </button>
+            </div>
+
+            <!-- 목록으로 -->
+            <div class="mt-8 text-center">
+                <a href="../news.html" class="inline-flex items-center gap-2 text-sm text-gray-500 hover:text-blue-600 transition-colors font-semibold">
+                    <i class="fas fa-arrow-left text-xs"></i> 경리소식 목록으로
+                </a>
+            </div>
+        </article>
+    </main>
+
+    <!-- 맨 위로 -->
+    <button id="scrollToTop" aria-label="맨 위로 스크롤" style="position:fixed;bottom:2rem;right:2rem;z-index:9999;transition:all 0.3s ease;" class="bg-blue-600 hover:bg-blue-700 text-white w-12 h-12 rounded-full shadow-lg opacity-0 invisible flex items-center justify-center">
+        <i class="fas fa-chevron-up"></i>
+    </button>
+
+    <!-- 푸터 -->
+    <footer class="bg-white py-8 border-t border-gray-200">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="flex flex-col md:flex-row items-start justify-between gap-6">
+                <a href="../index.html"><img src="../logo.png?v=20260310b" alt="경리업무를잘하는청년들" class="h-14 md:h-16 object-contain"></a>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-3 text-gray-600 text-sm">
+                    <div class="flex items-center gap-2"><i class="fas fa-phone text-blue-700"></i><span>전화번호 : 1566-2687</span></div>
+                    <div class="flex items-center gap-2"><i class="fas fa-envelope text-blue-700"></i><span>wapeople000@gmail.com</span></div>
+                    <div class="flex items-center gap-2"><i class="fas fa-user text-blue-700"></i><span>대표이사 : 금종석</span></div>
+                    <div class="flex items-center gap-2"><i class="fas fa-clock text-blue-700"></i><span>평일 09:00 - 18:00</span></div>
+                    <div class="flex items-start gap-2 md:col-span-2"><i class="fas fa-map-marker-alt text-blue-700 mt-0.5"></i><span>주소 : 경기 수원시 팔달구 권광로175번길 83 201호</span></div>
+                </div>
+            </div>
+            <div class="border-t border-gray-200 mt-6 pt-6 text-center text-gray-400 text-sm">
+                <p>&copy; <span class="copyright-year">2026</span> 경리업무를잘하는청년들. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- 상담 모달 -->
+    <div id="consultModal" class="modal">
+        <div style="background:white;border-radius:1.5rem;padding:2rem;max-width:36rem;width:100%;margin:1rem;position:relative;max-height:90vh;overflow-y:auto;">
+            <button onclick="closeModal()" style="position:absolute;top:1.25rem;right:1.25rem;font-size:2rem;font-weight:300;color:#9ca3af;cursor:pointer;background:none;border:none;" aria-label="닫기">&times;</button>
+            <div style="text-align:center;margin-bottom:2rem;">
+                <div style="width:4rem;height:4rem;border-radius:1rem;background:#2563eb;display:flex;align-items:center;justify-content:center;margin:0 auto 1rem;"><i class="fas fa-paper-plane" style="color:white;font-size:1.5rem;"></i></div>
+                <h3 style="font-size:1.75rem;font-weight:700;color:#111827;margin-bottom:0.5rem;">무료 상담 신청</h3>
+                <p style="color:#6b7280;">원격경리 서비스에 대해 안내해드립니다.</p>
+            </div>
+            <form id="consultForm" style="display:flex;flex-direction:column;gap:1.25rem;" onsubmit="return handleFormSubmit(event, 'consultForm')">
+                <input type="hidden" name="industry" value="경리소식">
+                <div><label style="display:block;font-weight:600;color:#374151;margin-bottom:0.5rem;">회사명 <span style="color:#f43f5e;">*</span></label><input type="text" name="company" required style="width:100%;border:2px solid #e5e7eb;border-radius:0.75rem;padding:0.75rem 1rem;color:#111827;box-sizing:border-box;" placeholder="회사명을 입력해주세요"></div>
+                <div><label style="display:block;font-weight:600;color:#374151;margin-bottom:0.5rem;">대표님 성함 <span style="color:#f43f5e;">*</span></label><input type="text" name="name" required style="width:100%;border:2px solid #e5e7eb;border-radius:0.75rem;padding:0.75rem 1rem;color:#111827;box-sizing:border-box;" placeholder="성함을 입력해주세요"></div>
+                <div><label style="display:block;font-weight:600;color:#374151;margin-bottom:0.5rem;">연락처 <span style="color:#f43f5e;">*</span></label><input type="tel" name="phone" required style="width:100%;border:2px solid #e5e7eb;border-radius:0.75rem;padding:0.75rem 1rem;color:#111827;box-sizing:border-box;" placeholder="연락받으실 번호를 입력해주세요"></div>
+                <div><label style="display:block;font-weight:600;color:#374151;margin-bottom:0.5rem;">이메일 <span style="font-weight:400;color:#9ca3af;font-size:0.875rem;">(선택)</span></label><input type="email" name="email" style="width:100%;border:2px solid #e5e7eb;border-radius:0.75rem;padding:0.75rem 1rem;color:#111827;box-sizing:border-box;" placeholder="example@email.com"></div>
+                <div><label style="display:block;font-weight:600;color:#374151;margin-bottom:0.5rem;">유입경로 <span style="font-weight:400;color:#9ca3af;font-size:0.875rem;">(선택)</span></label><select name="referral_source" style="width:100%;border:2px solid #e5e7eb;border-radius:0.75rem;padding:0.75rem 1rem;color:#111827;background:white;box-sizing:border-box;"><option value="">선택해주세요</option><option value="검색">검색</option><option value="유튜브">유튜브</option><option value="스레드">스레드</option><option value="기타">기타</option></select></div>
+                <div><label style="display:block;font-weight:600;color:#374151;margin-bottom:0.5rem;">현재 가장 큰 고민 <span style="color:#f43f5e;">*</span></label><textarea name="message" required rows="4" style="width:100%;border:2px solid #e5e7eb;border-radius:0.75rem;padding:0.75rem 1rem;color:#111827;resize:none;box-sizing:border-box;" placeholder="예) 경리 직원 채용이 어려워요&#10;예) 장부 정리가 복잡해요"></textarea></div>
+                <button type="submit" style="width:100%;background:#2563eb;color:white;font-weight:700;font-size:1.125rem;padding:1rem;border-radius:0.75rem;border:none;cursor:pointer;">무료 상담 신청하기</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        function openModal() { document.getElementById('consultModal').classList.add('active'); document.body.style.overflow = 'hidden'; }
+        function closeModal() { document.getElementById('consultModal').classList.remove('active'); document.body.style.overflow = 'auto'; }
+        document.getElementById('consultModal').addEventListener('click', function(e) { if (e.target === this) closeModal(); });
+        document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeModal(); });
+        function copyShareUrl() { navigator.clipboard.writeText(window.location.href).then(function(){ alert('링크가 복사되었습니다!'); }).catch(function(){ alert('링크 복사에 실패했습니다.'); }); }
+        (function() {
+            var btn = document.getElementById('scrollToTop'); if (!btn) return;
+            window.addEventListener('scroll', function() { if (window.pageYOffset > 300) { btn.style.opacity='1'; btn.style.visibility='visible'; } else { btn.style.opacity='0'; btn.style.visibility='hidden'; } });
+            btn.addEventListener('click', function() { window.scrollTo({top:0,behavior:'smooth'}); });
+        })();
+        document.querySelectorAll('.copyright-year').forEach(function(el){ el.textContent = new Date().getFullYear(); });
+        function combineEmail(form) { const el = form.querySelector('input[name="email"]'); if (el) el.value = el.value.trim(); }
+        function handleFormSubmit(event, formId) {
+            event.preventDefault();
+            const form = document.getElementById(formId);
+            const btn = form.querySelector('button[type="submit"]');
+            const orig = btn.innerHTML;
+            combineEmail(form);
+            btn.disabled = true; btn.innerHTML = '봇 확인 중...';
+            const URL = 'https://script.google.com/macros/s/AKfycbwLkpVI-zFipUtirkixwbaiTg-NdJP99UajSA_eoBs7MB5QPh20zkgpesZ9uDJJkHAQ/exec';
+            grecaptcha.ready(function() {
+                grecaptcha.execute('6Le0CEMsAAAAAFGF3Dnci1_SUkC4VWmzqdox2jJZ', {action:'submit'}).then(function(token) {
+                    let r = form.querySelector('input[name="recaptcha_token"]');
+                    if (!r) { r = document.createElement('input'); r.type='hidden'; r.name='recaptcha_token'; form.appendChild(r); }
+                    r.value = token; btn.innerHTML = '전송 중...';
+                    fetch(URL, {method:'POST', body:new FormData(form), mode:'no-cors'})
+                        .then(function() { window.dataLayer=window.dataLayer||[]; window.dataLayer.push({event:'form_submit'}); if (typeof gtag_report_conversion === 'function') { var _ud = (typeof wapeopleGetUserData === 'function') ? wapeopleGetUserData(form) : {}; gtag_report_conversion(undefined, _ud); } alert('\u2705 상담 신청이 완료되었습니다!\n\n영업시간 내 문의 시, 30분 이내로 연락드리겠습니다.'); form.reset(); closeModal(); btn.disabled=false; btn.innerHTML=orig; })
+                        .catch(function() { window.dataLayer=window.dataLayer||[]; window.dataLayer.push({event:'form_submit'}); if (typeof gtag_report_conversion === 'function') { var _ud = (typeof wapeopleGetUserData === 'function') ? wapeopleGetUserData(form) : {}; gtag_report_conversion(undefined, _ud); } alert('\u2705 상담 신청이 완료되었습니다!\n\n영업시간 내 문의 시, 30분 이내로 연락드리겠습니다.'); form.reset(); closeModal(); btn.disabled=false; btn.innerHTML=orig; });
+                }).catch(function() { alert('\u274c 봇 확인 실패. 페이지를 새로고침해주세요.'); btn.disabled=false; btn.innerHTML=orig; });
+            });
+            return false;
+        }
+    </script>
+</body>
+</html>
