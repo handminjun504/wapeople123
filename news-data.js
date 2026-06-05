@@ -16,6 +16,16 @@
     //   url       : 'news/{slug}.html'
     window.WA_NEWS_DATA = [
     {
+        slug: 'gyeongri-daehang-biyong',
+        title: '경리대행 비용 얼마예요? — 직원 채용과 숫자로 비교했습니다',
+        category: '경리뉴스',
+        date: '2026-06-05',
+        summary: '\"경리대행 비용이 얼마나 해요?\"라는 질문을 가장 많이 받습니다. 경리대행 비용만 놓고 보면 비싸 보일 수 있지만, 경리 직원을 직접 채용했을 때 드는 실제 비용과 비교하면 이야기가 완전히 달라집니다.',
+        cover: '',
+        url: 'news/gyeongri-daehang-biyong.html'
+    },
+
+    {
         slug: '2026-06-04',
         title: '카페 손익분기점 계산 방법 — 하루 몇 잔 팔아야 적자가 아닌가요?',
         category: '경리뉴스',
