@@ -16,6 +16,16 @@
     //   url       : 'news/{slug}.html'
     window.WA_NEWS_DATA = [
     {
+        slug: 'migyongil-nailshop-gyeongri-daehang',
+        title: '미용실·네일샵 경리대행',
+        category: '경리뉴스',
+        date: '2026-06-08',
+        summary: '미용실·네일샵은 직원 급여 구조가 복잡하고 현금·카드 매출이 섞여 있어 경리를 혼자 처리하면 매달 급여 날이 가장 스트레스입니다. 인센티브 계산, 세금계산서 관리, 손익 파악까지 — 이걸 전부 혼자 하는 건 원장님 몫이 아닙니다.',
+        cover: '',
+        url: 'news/migyongil-nailshop-gyeongri-daehang.html'
+    },
+
+    {
         slug: 'gyeongri-daehang-biyong',
         title: '경리대행 비용 얼마예요? — 직원 채용과 숫자로 비교했습니다',
         category: '경리뉴스',
