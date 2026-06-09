@@ -16,6 +16,16 @@
     //   url       : 'news/{slug}.html'
     window.WA_NEWS_DATA = [
     {
+        slug: 'jaego-gwanri-gyeongri',
+        title: '재고관리가 안 되면 원가도 손익도 모릅니다',
+        category: '경리뉴스',
+        date: '2026-06-09',
+        summary: '재고가 얼마나 남았는지 모르면 팔린 물건의 원가를 계산할 수 없습니다. 원가가 틀리면 손익이 왜곡되고, 손익이 왜곡되면 세금 신고까지 오류가 이어집니다. 재고관리는 단순한 창고 정리가 아닙니다.',
+        cover: '',
+        url: 'news/jaego-gwanri-gyeongri.html'
+    },
+
+    {
         slug: 'migyongil-nailshop-gyeongri-daehang',
         title: '미용실·네일샵 경리대행',
         category: '경리뉴스',
