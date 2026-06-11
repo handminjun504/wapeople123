@@ -1,0 +1,702 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-THPPR46Q');</script>
+    <!-- End Google Tag Manager -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17745262400"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'AW-17745262400');
+    </script>
+    <!-- Event snippet for 견적 요청 conversion (Enhanced Conversions 지원) -->
+    <script>
+    function wapeopleGetUserData(form) {
+        if (!form) return {};
+        var fd = new FormData(form);
+        var email = ((fd.get('email') || '') + '').trim().toLowerCase();
+        var phone = ((fd.get('phone') || '') + '').trim();
+        var data = {};
+        if (email && email.indexOf('@') > 0) data.email = email;
+        if (phone) {
+            var digits = phone.replace(/D/g, '');
+            if (digits.length >= 10) {
+                if (digits.indexOf('82') === 0) data.phone_number = '+' + digits;
+                else if (digits.charAt(0) === '0') data.phone_number = '+82' + digits.substring(1);
+                else data.phone_number = '+' + digits;
+            }
+        }
+        return data;
+    }
+
+    function gtag_report_conversion(url, userData) {
+        var callback = function () {
+            if (typeof(url) != 'undefined') {
+                window.location = url;
+            }
+        };
+        var payload = {
+            'send_to': 'AW-17745262400/CarCCLvL6v0bEMDuzI1C',
+            'value': 1.0,
+            'currency': 'KRW',
+            'transaction_id': 'wa_' + Date.now() + '_' + Math.random().toString(36).substring(2, 9),
+            'event_callback': callback
+        };
+        if (userData && (userData.email || userData.phone_number)) {
+            payload.user_data = userData;
+        }
+        gtag('event', 'conversion', payload);
+        return false;
+    }
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>스타트업 대표님, 경영관리 시스템 없이 버티면 나중에 고생합니다. - 경리소식 | 경리업무를잘하는청년들</title>
+    <meta name="description" content="사업 키우느라 바쁜 스타트업 대표님들이 놓치는 경영관리 구조 설계. 세금계산서, 손익분석, 마진분석을 지금 안 잡으면 나중에 훨씬 힘들어집니다.">
+    <meta name="keywords" content="경리소식, 경리업무를잘하는청년들">
+    <meta name="robots" content="index, follow">
+    <meta name="naver-site-verification" content="aefffa7a6d4cad21b90328c862b8ce5725188412">
+    <link rel="canonical" href="https://wapeople.kr/news/2026-05-28">
+    <meta property="og:title" content="스타트업 대표님, 경영관리 시스템 없이 버티면 나중에 고생합니다. - 경리소식">
+    <meta property="og:description" content="사업 키우느라 바쁜 스타트업 대표님들이 놓치는 경영관리 구조 설계. 세금계산서, 손익분석, 마진분석을 지금 안 잡으면 나중에 훨씬 힘들어집니다.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://wapeople.kr/news/2026-05-28">
+    <meta property="og:image" content="https://wapeople.kr/logo.png?v=20260310b">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:site_name" content="경리업무를잘하는청년들">
+    <meta property="og:locale" content="ko_KR">
+    <meta property="article:published_time" content="2026-05-28">
+    <meta property="article:section" content="경리뉴스">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="스타트업 대표님, 경영관리 시스템 없이 버티면 나중에 고생합니다. - 경리소식">
+    <meta name="twitter:description" content="사업 키우느라 바쁜 스타트업 대표님들이 놓치는 경영관리 구조 설계. 세금계산서, 손익분석, 마진분석을 지금 안 잡으면 나중에 훨씬 힘들어집니다.">
+    <meta name="twitter:image" content="https://wapeople.kr/logo.png?v=20260310b">
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "홈",       "item": "https://wapeople.kr/" },
+        { "@type": "ListItem", "position": 2, "name": "경리소식", "item": "https://wapeople.kr/news" },
+        { "@type": "ListItem", "position": 3, "name": "스타트업 대표님, 경영관리 시스템 없이 버티면 나중에 고생합니다.", "item": "https://wapeople.kr/news/2026-05-28" }
+      ]
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "NewsArticle",
+      "headline": "스타트업 대표님, 경영관리 시스템 없이 버티면 나중에 고생합니다.",
+      "description": "사업 키우느라 바쁜 스타트업 대표님들이 놓치는 경영관리 구조 설계. 세금계산서, 손익분석, 마진분석을 지금 안 잡으면 나중에 훨씬 힘들어집니다.",
+      "datePublished": "2026-05-28",
+      "dateModified": "2026-05-28",
+      "inLanguage": "ko-KR",
+      "articleSection": "경리뉴스",
+      "image": "https://wapeople.kr/logo.png?v=20260310b",
+      "author": { "@type": "Organization", "name": "경리업무를잘하는청년들", "url": "https://wapeople.kr" },
+      "publisher": {
+        "@type": "Organization",
+        "name": "경리업무를잘하는청년들",
+        "url": "https://wapeople.kr",
+        "logo": { "@type": "ImageObject", "url": "https://wapeople.kr/logo.png?v=20260310b" }
+      },
+      "mainEntityOfPage": { "@type": "WebPage", "@id": "https://wapeople.kr/news/2026-05-28" }
+    }
+    </script>
+
+    <link rel="icon" type="image/x-icon" href="/favicon/favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-icon-180x180.png">
+    <meta name="theme-color" content="#2563eb">
+    <link rel="stylesheet" href="../dist/output.css">
+    <link rel="stylesheet" href="../mobile-optimize.css?v=20260312b">
+    <script src="../traffic-attribution.js?v=20260312a" defer></script>
+    <script src="../a11y-enhance.js" defer></script>
+    <link rel="stylesheet" href="../fonts/Pretendard-1.3.9/web/static/pretendard-subset.css?v=20260312c">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/fontawesome.min.css" media="print" onload="this.media='all'">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/solid.min.css" media="print" onload="this.media='all'">
+    <script src="https://www.google.com/recaptcha/api.js?render=6Le0CEMsAAAAAFGF3Dnci1_SUkC4VWmzqdox2jJZ"></script>
+    <script>
+        document.documentElement.style.opacity = '0';
+        document.documentElement.style.transition = 'opacity 0.2s ease';
+        function revealPageAfterFontLoad() { document.documentElement.style.opacity = '1'; }
+        const fontLoadFallback = setTimeout(revealPageAfterFontLoad, 3000);
+        if (document.fonts && document.fonts.ready) {
+            document.fonts.ready.then(function() { clearTimeout(fontLoadFallback); revealPageAfterFontLoad(); }).catch(revealPageAfterFontLoad);
+        } else { window.addEventListener('load', function() { clearTimeout(fontLoadFallback); revealPageAfterFontLoad(); }); }
+    </script>
+    <noscript><style>html { opacity: 1 !important; }</style></noscript>
+    <style>
+        .modal { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.5); z-index: 9999; align-items: center; justify-content: center; }
+        .modal.active { display: flex; }
+        .article-body { font-size: 1.125rem; line-height: 1.8; color: #1f2937; word-break: keep-all; letter-spacing: -0.01em; }
+        .article-body > p:first-of-type { font-size: 1.25rem; font-weight: 600; color: #0f172a; line-height: 1.7; padding-left: 1rem; border-left: 4px solid #2563eb; margin-bottom: 2rem; }
+        .article-body h2 { font-size: 1.5rem; font-weight: 800; color: #0f172a; margin: 2.5rem 0 1rem; padding-bottom: 0.5rem; border-bottom: 2px solid #2563eb; letter-spacing: -0.02em; }
+        .article-body h3 { font-size: 1.25rem; font-weight: 700; color: #1f2937; margin: 2rem 0 0.75rem; letter-spacing: -0.01em; }
+        .article-body p { margin: 1.25rem 0; }
+        .article-body p:has(> br:only-child) { display: none; }
+        .article-body hr { border: none; height: 0; margin: 1.75rem 0; position: relative; }
+        .article-body hr::before { content: ""; display: block; width: 60px; height: 3px; background: #e5e7eb; border-radius: 9999px; margin: 0 auto; }
+        .article-body ul, .article-body ol { margin: 1rem 0 1rem 1.5rem; }
+        .article-body ul { list-style: disc; } .article-body ol { list-style: decimal; }
+        .article-body li { margin: 0.5rem 0; }
+        .article-body strong { color: #0f172a; font-weight: 700; }
+        .article-body a { color: #2563eb; text-decoration: underline; text-underline-offset: 3px; }
+        .article-body blockquote { border-left: 4px solid #93c5fd; background: #eff6ff; padding: 1rem 1.25rem; margin: 1.5rem 0; border-radius: 0 0.75rem 0.75rem 0; color: #1e3a8a; font-style: italic; }
+        .article-body code { background: #f3f4f6; padding: 0.15rem 0.4rem; border-radius: 0.25rem; font-size: 0.9em; color: #be185d; }
+        .article-body img { max-width: 100%; height: auto; border-radius: 0.75rem; margin: 1.5rem 0; }
+        .article-body table { width: 100%; border-collapse: collapse; font-size: 0.9375rem; margin: 1.25rem 0; }
+        .article-body thead tr { background: #1a3a5c; color: #fff; }
+        .article-body thead th { padding: 0.75rem 1rem; text-align: left; font-weight: 600; }
+        .article-body tbody td { padding: 0.7rem 1rem; border-bottom: 1px solid #e5e5e0; color: #444; }
+        .article-body tbody tr:nth-child(even) { background: #f7f7f5; }
+    </style>
+</head>
+<body class="antialiased">
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-THPPR46Q" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 right-0 z-50 nav-glass">
+        <div class="max-w-7xl mx-auto px-3 md:px-6 py-2 flex items-center justify-between gap-2">
+            <a href="../index.html" class="flex items-center gap-1 hover:opacity-80 transition-opacity touch-manipulation min-w-0">
+                <img src="../logo.png?v=20260310b" alt="경리업무를잘하는청년들" class="hidden md:block object-contain" style="height:2.125rem;" fetchpriority="high">
+                <img src="../logo.png?v=20260310b" alt="경리업무를잘하는청년들" class="block md:hidden mobile-nav-logo object-contain" fetchpriority="high">
+            </a>
+            <div class="hidden md:flex items-center gap-6">
+                <a href="../about.html" class="text-gray-700 hover:text-blue-700 font-semibold transition-colors">원격경리</a>
+                <a href="../news.html" class="text-blue-700 font-bold transition-colors">경리소식</a>
+                <a href="../faq.html" class="text-gray-700 hover:text-blue-700 font-semibold transition-colors">자주 묻는 질문</a>
+            </div>
+            <button onclick="openModal()" class="bg-blue-600 hover:bg-blue-700 text-white font-bold px-5 py-2 rounded-xl transition-colors text-sm whitespace-nowrap">상담 바로가기</button>
+        </div>
+    </nav>
+
+    <!-- 글 헤더 -->
+    <header class="bg-white pt-28 md:pt-32 pb-12 md:pb-16 border-b border-gray-100">
+        <div class="max-w-3xl mx-auto px-4 md:px-6">
+            <!-- 빵부스러기 -->
+            <nav aria-label="현재 위치" class="text-sm text-gray-500 mb-6">
+                <a href="../index.html" class="hover:text-blue-600 transition-colors">홈</a>
+                <span class="mx-2 text-gray-300">/</span>
+                <a href="../news.html" class="hover:text-blue-600 transition-colors">경리소식</a>
+                <span class="mx-2 text-gray-300">/</span>
+                <span class="text-gray-700">경리뉴스</span>
+            </nav>
+
+            <!-- 카테고리 배지 + 날짜 -->
+            <div class="flex flex-wrap items-center gap-2 mb-5">
+                <span class="text-xs font-bold px-3 py-1 rounded-full border bg-amber-100 text-amber-700 border-amber-200">경리뉴스</span>
+                <time datetime="2026-05-28" class="text-sm text-gray-400">2026. 05. 28.</time>
+            </div>
+
+            <h1 class="text-3xl md:text-4xl font-black text-gray-900 leading-tight mb-5">스타트업 대표님, 경영관리 시스템 없이 버티면 나중에 고생합니다.</h1>
+            <p class="text-lg md:text-xl text-gray-600 leading-relaxed">사업 키우느라 바쁜 스타트업 대표님들이 놓치는 경영관리 구조 설계. 세금계산서, 손익분석, 마진분석을 지금 안 잡으면 나중에 훨씬 힘들어집니다.</p>
+
+            <!-- 저자 -->
+            <div class="mt-8 pt-6 border-t border-gray-100 flex items-center gap-3">
+                <div class="w-10 h-10 rounded-full bg-blue-600 flex items-center justify-center flex-shrink-0">
+                    <i class="fas fa-pen-nib text-white text-sm"></i>
+                </div>
+                <div>
+                    <p class="text-sm font-bold text-gray-900">경리업무를잘하는청년들</p>
+                    <p class="text-xs text-gray-400">원격 경리 전문 서비스</p>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- 본문 -->
+    <main class="bg-slate-50 py-12 md:py-16">
+        <article class="max-w-3xl mx-auto px-4 md:px-6">
+            <div class="article-body bg-white rounded-2xl shadow-sm border border-gray-100 p-6 md:p-12">
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>스타트업 대표님, 경영관리 시스템 없이 버티면 나중에 고생합니다. | wapeople</title>
+<meta name="description" content="사업 키우느라 바쁜 스타트업 대표님들이 놓치는 경영관리 구조 설계. 세금계산서, 손익분석, 마진분석을 지금 안 잡으면 나중에 훨씬 힘들어집니다.">
+<meta property="og:title" content="스타트업 대표님, 경영관리 시스템 없이 버티면 나중에 고생합니다">
+<meta property="og:description" content="사업 스펙트럼 넓히느라 바쁘신 거 압니다. 근데 경영관리 구조 지금 안 잡으면 매출 오를수록 더 복잡해집니다.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://wapeople.kr/경리소식/startup-gyeongri-system">
+<link rel="canonical" href="https://wapeople.kr/경리소식/startup-gyeongri-system">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "스타트업은 언제부터 경영관리 시스템을 갖춰야 하나요?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "매출이 발생하는 순간부터입니다. 초기에 세금계산서 발행, 손익 구조, 마진 분석 체계를 잡지 않으면 매출이 오를수록 데이터가 뒤엉켜 나중에 정리하는 데 훨씬 많은 비용과 시간이 듭니다."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "손익분석과 마진분석은 왜 초기부터 필요한가요?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "매출이 늘어도 실제로 남는 돈이 얼마인지 모르면 사업 방향을 잘못 잡을 수 있습니다. 어떤 제품·서비스가 이익이 나고 어떤 것이 손해인지 마진 분석이 되어야 올바른 의사결정이 가능합니다."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "경영관리 구조 설계를 외부에 맡길 수 있나요?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "네, 단순 경리대행을 넘어 스타트업 경영관리 구조 설계와 맞춤 시스템 개발까지 지원합니다. 세금계산서 발행 체계부터 손익·마진 분석 리포트까지 대표님이 숫자를 보고 결정할 수 있는 구조를 만들어드립니다."
+      }
+    }
+  ]
+}
+</script>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&family=Noto+Serif+KR:wght@400;600;700&display=swap');
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --primary:      #1a3a5c;
+  --accent:       #2563a8;
+  --accent-light: #e8f0fb;
+  --text:         #1a1a1a;
+  --text-sec:     #4a4a4a;
+  --text-muted:   #888;
+  --border:       #e0e0da;
+  --bg:           #f8f8f6;
+  --surface:      #ffffff;
+  --hi-bg:        #fff8e6;
+  --hi-bd:        #f0c040;
+  --success:      #1a7a4a;
+  --danger:       #c0392b;
+  --radius:       10px;
+  --serif:        'Noto Serif KR', serif;
+  --sans:         'Noto Sans KR', sans-serif;
+  --max-w:        720px;
+}
+body { font-family: var(--sans); background: var(--bg); color: var(--text); font-size: 16px; line-height: 1.85; padding: 48px 20px 80px; }
+article { max-width: var(--max-w); margin: 0 auto; }
+
+.meta-bar { display: flex; align-items: center; gap: 8px; margin-bottom: 24px; font-size: 12px; color: var(--text-muted); }
+.badge { background: var(--accent-light); color: var(--accent); font-size: 11px; font-weight: 700; padding: 3px 10px; border-radius: 99px; letter-spacing: .04em; }
+.dot { color: var(--border); }
+
+h1 { font-family: var(--serif); font-size: clamp(22px, 4vw, 30px); font-weight: 700; color: var(--primary); line-height: 1.45; margin-bottom: 22px; letter-spacing: -.01em; }
+h2 { font-family: var(--serif); font-size: clamp(16px, 2.8vw, 19px); font-weight: 700; color: var(--primary); margin: 44px 0 14px; padding-bottom: 10px; border-bottom: 1.5px solid var(--border); letter-spacing: -.01em; }
+
+.summary-box { background: var(--accent-light); border-left: 4px solid var(--accent); border-radius: 0 var(--radius) var(--radius) 0; padding: 16px 20px; margin-bottom: 32px; font-size: 14.5px; font-weight: 500; color: var(--primary); line-height: 1.75; }
+.intro { font-size: 15.5px; color: var(--text-sec); margin-bottom: 40px; line-height: 1.95; }
+p { margin-bottom: 16px; color: var(--text-sec); font-size: 15px; line-height: 1.9; }
+
+ul.list { list-style: none; margin: 12px 0 20px; display: flex; flex-direction: column; gap: 7px; padding: 0; }
+ul.list li { display: flex; align-items: flex-start; gap: 10px; font-size: 14.5px; color: var(--text-sec); line-height: 1.75; }
+ul.list li::before { content: ''; display: block; width: 5px; height: 5px; border-radius: 50%; background: var(--accent); margin-top: 9px; flex-shrink: 0; }
+
+.highlight { background: var(--hi-bg); border: 1px solid var(--hi-bd); border-radius: var(--radius); padding: 16px 20px; margin: 20px 0 24px; font-size: 14.5px; color: #5a4000; line-height: 1.8; }
+.danger-box { background: #fdf0f0; border: 1px solid #f5b0b0; border-radius: var(--radius); padding: 16px 20px; margin: 20px 0 24px; font-size: 14.5px; color: #7a1a1a; line-height: 1.8; }
+
+/* 공감 시나리오 카드 */
+.scenario-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 16px 0 28px; }
+@media (max-width: 500px) { .scenario-grid { grid-template-columns: 1fr; } }
+.scenario-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 18px 20px; }
+.scenario-icon { font-size: 22px; margin-bottom: 8px; }
+.scenario-title { font-size: 13px; font-weight: 700; color: var(--primary); margin-bottom: 8px; }
+.scenario-desc { font-size: 13px; color: var(--text-sec); line-height: 1.65; }
+
+/* Before / After */
+.ba-wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 16px 0 28px; }
+@media (max-width: 500px) { .ba-wrap { grid-template-columns: 1fr; } }
+.ba-card { border-radius: var(--radius); padding: 18px 20px; }
+.ba-card.before { background: #fdf0f0; border: 1px solid #f5b0b0; }
+.ba-card.after  { background: #f0f7f0; border: 1px solid #a0d0a0; }
+.ba-label { font-size: 11px; font-weight: 700; letter-spacing: .08em; margin-bottom: 10px; }
+.ba-label.before { color: var(--danger); }
+.ba-label.after  { color: var(--success); }
+.ba-list { list-style: none; padding: 0; display: flex; flex-direction: column; gap: 7px; }
+.ba-list li { font-size: 13px; line-height: 1.65; display: flex; gap: 8px; align-items: flex-start; }
+.ba-card.before .ba-list li { color: #7a1a1a; }
+.ba-card.after  .ba-list li { color: #1a5a2a; }
+.ba-card.before .ba-list li::before { content: '✗'; flex-shrink: 0; font-weight: 700; }
+.ba-card.after  .ba-list li::before { content: '✓'; flex-shrink: 0; font-weight: 700; }
+
+/* 핵심 3가지 섹션 */
+.core-wrap { display: flex; flex-direction: column; gap: 12px; margin: 16px 0 28px; }
+.core-item { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 20px 22px; }
+.core-item.accent { border-color: var(--accent); border-left-width: 4px; }
+.core-num { font-size: 11px; font-weight: 700; color: var(--accent); letter-spacing: .06em; margin-bottom: 6px; }
+.core-title { font-size: 15px; font-weight: 700; color: var(--primary); margin-bottom: 10px; }
+.core-desc { font-size: 14px; color: var(--text-sec); line-height: 1.8; }
+.core-example { background: var(--bg); border-radius: 6px; padding: 12px 14px; margin-top: 12px; font-size: 13px; color: var(--text-sec); line-height: 1.7; border-left: 3px solid var(--accent); }
+.core-example strong { color: var(--primary); }
+
+/* 테이블 */
+.table-wrap { overflow-x: auto; margin: 16px 0 28px; border-radius: var(--radius); border: 1px solid var(--border); }
+table { width: 100%; border-collapse: collapse; font-size: 13.5px; min-width: 400px; font-family: var(--sans); }
+thead tr { background: var(--primary); color: #fff; }
+thead th { padding: 12px 16px; font-weight: 600; text-align: left; font-size: 12.5px; letter-spacing: .02em; }
+tbody tr { border-bottom: 1px solid var(--border); }
+tbody tr:last-child { border-bottom: none; }
+tbody tr:nth-child(even) { background: #f5f5f3; }
+tbody td { padding: 11px 16px; color: var(--text-sec); vertical-align: top; line-height: 1.6; }
+tbody td:first-child { font-weight: 600; color: var(--text); }
+.tag-bad { color: var(--danger); font-size: 12px; font-weight: 500; }
+.tag-good { color: var(--success); font-size: 12px; font-weight: 500; }
+
+/* 솔루션 박스 */
+.solution-box { background: var(--primary); border-radius: var(--radius); padding: 24px 26px; margin: 20px 0 28px; }
+.solution-title { font-family: var(--serif); font-size: 18px; font-weight: 700; color: #fff; margin-bottom: 6px; line-height: 1.4; }
+.solution-sub { font-size: 13px; color: rgba(255,255,255,0.6); margin-bottom: 16px; }
+.solution-list { list-style: none; display: flex; flex-direction: column; gap: 8px; padding: 0; margin-bottom: 16px; }
+.solution-list li { display: flex; align-items: flex-start; gap: 10px; font-size: 14px; color: rgba(255,255,255,0.88); line-height: 1.6; }
+.solution-list li::before { content: '✓'; color: #7dd3b0; font-weight: 700; flex-shrink: 0; }
+.solution-note { font-size: 13px; color: rgba(255,255,255,0.6); border-top: 1px solid rgba(255,255,255,0.15); padding-top: 14px; line-height: 1.7; }
+
+/* FAQ */
+.faq-wrap { display: flex; flex-direction: column; gap: 10px; margin-top: 8px; }
+.faq-item { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; }
+.faq-q { width: 100%; background: none; border: none; text-align: left; padding: 16px 20px; font-size: 14.5px; font-weight: 600; color: var(--primary); cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 12px; font-family: var(--sans); line-height: 1.5; }
+.faq-q:hover { background: var(--accent-light); }
+.faq-icon { font-size: 18px; color: var(--accent); flex-shrink: 0; transition: transform .22s; }
+.faq-icon.open { transform: rotate(45deg); }
+.faq-a { display: none; padding: 14px 20px 16px; font-size: 13.5px; color: var(--text-sec); line-height: 1.8; border-top: 1px solid var(--border); }
+.faq-a.open { display: block; }
+
+hr { border: none; border-top: 1px solid var(--border); margin: 36px 0; }
+</style>
+</head>
+<body>
+<article>
+
+  <div class="meta-bar">
+    <span class="badge">경리소식</span>
+    <span class="dot">·</span>
+    <span>스타트업 편</span>
+    <span class="dot">·</span>
+    <span>2025년 최신</span>
+  </div>
+
+  <h1>스타트업 대표님,<br>경영관리 시스템 없이 버티면<br>나중에 고생합니다</h1>
+
+  <div class="summary-box">
+    사업 스펙트럼 넓히느라 바쁘신 거 압니다. 근데 <strong>경영관리 구조를 지금 안 잡으면, 매출이 오를수록 더 복잡해집니다.</strong><br>
+    세금계산서 발행 체계, 손익분석, 마진분석 — 이 세 가지를 초기에 설계해두면 나중에 10배 편해집니다.
+  </div>
+
+  <p class="intro">
+    스타트업 대표님들과 이야기하다 보면 공통적으로 하는 말이 있습니다. "지금은 일단 사업부터 키워야 해서요, 경영관리는 나중에 정리하려고요." 맞는 말입니다. 근데 그 '나중'이 왔을 때, 뒤엉킨 데이터를 정리하는 데 몇 달이 날아가는 경우를 저희는 너무 많이 봤습니다.
+  </p>
+
+  <h2>지금 이런 상황이라면 이미 위험 신호입니다</h2>
+
+  <div class="scenario-grid">
+    <div class="scenario-card">
+      <div class="scenario-icon">😅</div>
+      <div class="scenario-title">"매출은 나는데 통장에 돈이 없어요"</div>
+      <div class="scenario-desc">손익 구조가 없으면 매출과 실제 이익을 구분 못합니다. 매출이 늘어도 마진이 낮으면 돈이 안 남습니다.</div>
+    </div>
+    <div class="scenario-card">
+      <div class="scenario-icon">😰</div>
+      <div class="scenario-title">"세금계산서 누가 언제 발행했는지 모르겠어요"</div>
+      <div class="scenario-desc">발행 체계가 없으면 거래처별 정산이 꼬이고, 부가세 신고 때 자료가 엉망이 됩니다.</div>
+    </div>
+    <div class="scenario-card">
+      <div class="scenario-icon">😤</div>
+      <div class="scenario-title">"어떤 사업이 돈이 되는지 모르겠어요"</div>
+      <div class="scenario-desc">마진 분석이 없으면 잘 팔리는 것과 돈이 되는 것을 구분 못합니다. 바쁜데 남는 게 없는 이유입니다.</div>
+    </div>
+    <div class="scenario-card">
+      <div class="scenario-icon">😱</div>
+      <div class="scenario-title">"투자자가 재무 자료 달라는데 없어요"</div>
+      <div class="scenario-desc">투자 실사 때 회계 데이터가 없으면 신뢰도가 떨어지고 투자 딜이 지연되거나 무산됩니다.</div>
+    </div>
+  </div>
+
+  <div class="danger-box">
+    이 네 가지 중 하나라도 해당된다면, 지금 경영관리 구조가 없는 상태입니다. 매출이 오를수록 이 문제는 더 커집니다.
+  </div>
+
+  <h2>지금 안 잡으면 나중에 어떻게 되나요?</h2>
+
+  <div class="ba-wrap">
+    <div class="ba-card before">
+      <div class="ba-label before">지금 안 잡으면</div>
+      <ul class="ba-list">
+        <li>거래별 세금계산서 발행 누락으로 부가세 가산세</li>
+        <li>어느 사업이 이익인지 몰라 잘못된 방향에 자원 투입</li>
+        <li>원가·인건비·고정비 분리 안 돼서 마진 계산 불가</li>
+        <li>투자 실사 때 2~3년치 장부 소급 정리에 수백만 원</li>
+        <li>매출 늘어도 현금흐름 파악 안 돼서 자금난</li>
+      </ul>
+    </div>
+    <div class="ba-card after">
+      <div class="ba-label after">지금 잡으면</div>
+      <ul class="ba-list">
+        <li>거래처별 세금계산서 자동 발행·관리</li>
+        <li>월별 손익 리포트로 이익 나는 사업에 집중</li>
+        <li>제품·서비스별 마진 분석으로 가격 전략 최적화</li>
+        <li>투자 실사 즉시 대응 가능한 재무 데이터</li>
+        <li>현금흐름 예측으로 자금 계획 수립 가능</li>
+      </ul>
+    </div>
+  </div>
+
+  <h2>스타트업이 초기에 잡아야 할 경영관리 핵심 3가지</h2>
+
+  <div class="core-wrap">
+    <div class="core-item accent">
+      <div class="core-num">01</div>
+      <div class="core-title">세금계산서 발행 체계</div>
+      <div class="core-desc">
+        거래가 발생할 때마다 세금계산서를 제때 발행하지 않으면 부가세 신고 때 자료가 뒤엉킵니다. 거래처별로 발행 기준과 담당자를 명확히 하고, 발행 내역을 한곳에서 관리하는 체계가 필요합니다.
+      </div>
+      <div class="core-example">
+        <strong>흔한 실수:</strong> "나중에 몰아서 발행하면 되지" → 발행 누락, 날짜 오류, 거래처 분쟁으로 이어짐
+      </div>
+    </div>
+
+    <div class="core-item accent">
+      <div class="core-num">02</div>
+      <div class="core-title">손익분석 구조 설계</div>
+      <div class="core-desc">
+        매출에서 원가, 인건비, 고정비를 빼야 실제 이익이 나옵니다. 이 구조를 처음부터 잡아두면 매월 손익계산서를 보며 사업 방향을 결정할 수 있습니다. 초기에 항목 분류를 잘못 잡으면 나중에 전체를 다시 설계해야 합니다.
+      </div>
+      <div class="core-example">
+        <strong>실제 사례:</strong> 월 매출 5,000만 원인데 손익 구조 없어서 남는 돈이 얼마인지 몰랐던 스타트업 → 손익 설계 후 실제 영업이익이 마이너스였음을 확인, 사업 구조 전환
+      </div>
+    </div>
+
+    <div class="core-item accent">
+      <div class="core-num">03</div>
+      <div class="core-title">마진분석 — 어디서 돈이 나고 어디서 새는지</div>
+      <div class="core-desc">
+        제품·서비스·거래처별로 마진을 분석해야 어디에 집중할지 결정할 수 있습니다. 바쁜데 남는 게 없다면 마진이 낮은 일에 자원을 쏟고 있는 경우가 많습니다. 마진 분석이 되면 고마진 사업에 집중하고 저마진 사업을 정리하는 의사결정이 가능해집니다.
+      </div>
+      <div class="core-example">
+        <strong>핵심 질문:</strong> "우리 사업에서 가장 마진이 높은 것은 무엇인가?" — 이 질문에 바로 답할 수 없다면 마진 분석이 없는 것
+      </div>
+    </div>
+  </div>
+
+  <h2>경영관리 구조가 있는 스타트업 vs 없는 스타트업</h2>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>상황</th>
+          <th>구조 없을 때</th>
+          <th>구조 있을 때</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>부가세 신고</td>
+          <td><span class="tag-bad">자료 찾느라 며칠 소요</span></td>
+          <td><span class="tag-good">데이터 즉시 추출</span></td>
+        </tr>
+        <tr>
+          <td>투자 실사</td>
+          <td><span class="tag-bad">소급 정리에 수백만 원</span></td>
+          <td><span class="tag-good">즉시 대응 가능</span></td>
+        </tr>
+        <tr>
+          <td>가격 인상 결정</td>
+          <td><span class="tag-bad">감으로 결정</span></td>
+          <td><span class="tag-good">마진 데이터 기반 결정</span></td>
+        </tr>
+        <tr>
+          <td>사업 확장 판단</td>
+          <td><span class="tag-bad">매출만 보고 판단</span></td>
+          <td><span class="tag-good">손익·현금흐름 기반 판단</span></td>
+        </tr>
+        <tr>
+          <td>월말 정산</td>
+          <td><span class="tag-bad">대표가 직접 몇 시간</span></td>
+          <td><span class="tag-good">자동 리포트로 10분</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="highlight">
+    경영관리 구조는 사업이 잘 될 때 잡는 게 아닙니다. <strong>지금 잡아야 사업이 잘 됩니다.</strong>
+  </div>
+
+  <h2>스타트업 경영관리 솔루션</h2>
+  <p>단순 경리대행이 아닙니다. 스타트업 경영관리 구조 설계와 맞춤 시스템 개발까지 함께합니다.</p>
+
+  <div class="solution-box">
+    <div class="solution-title">스타트업 경영관리 구조 설계 패키지</div>
+    <div class="solution-sub">사업 단계와 규모에 맞게 맞춤 설계합니다</div>
+    <ul class="solution-list">
+      <li>세금계산서 발행 체계 설계 + 거래처별 관리 시스템</li>
+      <li>월별 손익계산서 자동 생성 구조 설계</li>
+      <li>제품·서비스·거래처별 마진 분석 리포트</li>
+      <li>현금흐름 예측 모델 설계</li>
+      <li>투자 실사 대응용 재무 데이터 체계 구축</li>
+      <li>경영관리 맞춤 프로그램 개발 (필요 시)</li>
+    </ul>
+    <div class="solution-note">
+      지금 어떤 상태인지 몰라도 괜찮습니다. 첫 상담에서 현재 구조를 진단하고 우선순위부터 함께 잡아드립니다.
+    </div>
+  </div>
+
+  <hr>
+
+  <h2>자주 묻는 질문</h2>
+
+  <div class="faq-wrap">
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">
+        스타트업은 언제부터 경영관리 시스템을 갖춰야 하나요?
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-a">
+        매출이 발생하는 순간부터입니다. 초기에 세금계산서 발행, 손익 구조, 마진 분석 체계를 잡지 않으면 매출이 오를수록 데이터가 뒤엉켜 나중에 정리하는 데 훨씬 많은 비용과 시간이 듭니다.
+      </div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">
+        손익분석과 마진분석은 왜 초기부터 필요한가요?
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-a">
+        매출이 늘어도 실제로 남는 돈이 얼마인지 모르면 사업 방향을 잘못 잡을 수 있습니다. 어떤 제품·서비스가 이익이 나고 어떤 것이 손해인지 마진 분석이 되어야 올바른 의사결정이 가능합니다.
+      </div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">
+        경영관리 구조 설계를 외부에 맡길 수 있나요?
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-a">
+        네, 단순 경리대행을 넘어 스타트업 경영관리 구조 설계와 맞춤 시스템 개발까지 지원합니다. 세금계산서 발행 체계부터 손익·마진 분석 리포트까지 대표님이 숫자를 보고 결정할 수 있는 구조를 만들어드립니다.
+      </div>
+    </div>
+  </div>
+
+</article>
+<script>
+function toggleFaq(btn) {
+  var icon = btn.querySelector('.faq-icon');
+  var answer = btn.nextElementSibling;
+  var isOpen = answer.classList.contains('open');
+  document.querySelectorAll('.faq-a.open').forEach(function(el){ el.classList.remove('open'); });
+  document.querySelectorAll('.faq-icon.open').forEach(function(el){ el.classList.remove('open'); });
+  if (!isOpen) { answer.classList.add('open'); icon.classList.add('open'); }
+}
+</script>
+</body>
+</html>
+            </div>
+
+            <!-- CTA 카드 -->
+            <div class="mt-14 bg-blue-50 border border-blue-100 rounded-2xl p-8 text-center">
+                <p class="text-lg md:text-xl font-bold text-gray-900 mb-2">경리 고민, 지금 바로 해결하세요</p>
+                <p class="text-sm text-gray-600 mb-6">무료 상담으로 우리 회사에 맞는 솔루션을 확인해 보세요.</p>
+                <button type="button" onclick="openModal()" class="inline-flex items-center justify-center gap-2 bg-blue-600 hover:bg-blue-700 text-white font-bold px-8 py-3.5 rounded-xl transition-colors shadow-md text-base cursor-pointer">
+                    <i class="fas fa-paper-plane text-sm"></i> 무료 상담 신청하기
+                </button>
+            </div>
+
+            <!-- 목록으로 -->
+            <div class="mt-8 text-center">
+                <a href="../news.html" class="inline-flex items-center gap-2 text-sm text-gray-500 hover:text-blue-600 transition-colors font-semibold">
+                    <i class="fas fa-arrow-left text-xs"></i> 경리소식 목록으로
+                </a>
+            </div>
+        </article>
+    </main>
+
+    <!-- 맨 위로 -->
+    <button id="scrollToTop" aria-label="맨 위로 스크롤" style="position:fixed;bottom:2rem;right:2rem;z-index:9999;transition:all 0.3s ease;" class="bg-blue-600 hover:bg-blue-700 text-white w-12 h-12 rounded-full shadow-lg opacity-0 invisible flex items-center justify-center">
+        <i class="fas fa-chevron-up"></i>
+    </button>
+
+    <!-- 푸터 -->
+    <footer class="bg-white py-8 border-t border-gray-200">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="flex flex-col md:flex-row items-start justify-between gap-6">
+                <a href="../index.html"><img src="../logo.png?v=20260310b" alt="경리업무를잘하는청년들" class="h-14 md:h-16 object-contain"></a>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-3 text-gray-600 text-sm">
+                    <div class="flex items-center gap-2"><i class="fas fa-phone text-blue-700"></i><span>전화번호 : 1566-2687</span></div>
+                    <div class="flex items-center gap-2"><i class="fas fa-envelope text-blue-700"></i><span>wapeople000@gmail.com</span></div>
+                    <div class="flex items-center gap-2"><i class="fas fa-user text-blue-700"></i><span>대표이사 : 금종석</span></div>
+                    <div class="flex items-center gap-2"><i class="fas fa-clock text-blue-700"></i><span>평일 09:00 - 18:00</span></div>
+                    <div class="flex items-start gap-2 md:col-span-2"><i class="fas fa-map-marker-alt text-blue-700 mt-0.5"></i><span>주소 : 경기 수원시 팔달구 권광로175번길 83 201호</span></div>
+                </div>
+            </div>
+            <div class="border-t border-gray-200 mt-6 pt-6 text-center text-gray-400 text-sm">
+                <p>&copy; <span class="copyright-year">2026</span> 경리업무를잘하는청년들. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- 상담 모달 -->
+    <div id="consultModal" class="modal">
+        <div style="background:white;border-radius:1.5rem;padding:2rem;max-width:36rem;width:100%;margin:1rem;position:relative;max-height:90vh;overflow-y:auto;">
+            <button onclick="closeModal()" style="position:absolute;top:1.25rem;right:1.25rem;font-size:2rem;font-weight:300;color:#9ca3af;cursor:pointer;background:none;border:none;" aria-label="닫기">&times;</button>
+            <div style="text-align:center;margin-bottom:2rem;">
+                <div style="width:4rem;height:4rem;border-radius:1rem;background:#2563eb;display:flex;align-items:center;justify-content:center;margin:0 auto 1rem;"><i class="fas fa-paper-plane" style="color:white;font-size:1.5rem;"></i></div>
+                <h3 style="font-size:1.75rem;font-weight:700;color:#111827;margin-bottom:0.5rem;">무료 상담 신청</h3>
+                <p style="color:#6b7280;">원격경리 서비스에 대해 안내해드립니다.</p>
+            </div>
+            <form id="consultForm" style="display:flex;flex-direction:column;gap:1.25rem;" onsubmit="return handleFormSubmit(event, 'consultForm')">
+                <input type="hidden" name="industry" value="경리소식">
+                <div><label style="display:block;font-weight:600;color:#374151;margin-bottom:0.5rem;">회사명 <span style="color:#f43f5e;">*</span></label><input type="text" name="company" required style="width:100%;border:2px solid #e5e7eb;border-radius:0.75rem;padding:0.75rem 1rem;color:#111827;box-sizing:border-box;" placeholder="회사명을 입력해주세요"></div>
+                <div><label style="display:block;font-weight:600;color:#374151;margin-bottom:0.5rem;">대표님 성함 <span style="color:#f43f5e;">*</span></label><input type="text" name="name" required style="width:100%;border:2px solid #e5e7eb;border-radius:0.75rem;padding:0.75rem 1rem;color:#111827;box-sizing:border-box;" placeholder="성함을 입력해주세요"></div>
+                <div><label style="display:block;font-weight:600;color:#374151;margin-bottom:0.5rem;">연락처 <span style="color:#f43f5e;">*</span></label><input type="tel" name="phone" required style="width:100%;border:2px solid #e5e7eb;border-radius:0.75rem;padding:0.75rem 1rem;color:#111827;box-sizing:border-box;" placeholder="연락받으실 번호를 입력해주세요"></div>
+                <div><label style="display:block;font-weight:600;color:#374151;margin-bottom:0.5rem;">이메일 <span style="font-weight:400;color:#9ca3af;font-size:0.875rem;">(선택)</span></label><input type="email" name="email" style="width:100%;border:2px solid #e5e7eb;border-radius:0.75rem;padding:0.75rem 1rem;color:#111827;box-sizing:border-box;" placeholder="example@email.com"></div>
+                <div><label style="display:block;font-weight:600;color:#374151;margin-bottom:0.5rem;">유입경로 <span style="font-weight:400;color:#9ca3af;font-size:0.875rem;">(선택)</span></label><select name="referral_source" style="width:100%;border:2px solid #e5e7eb;border-radius:0.75rem;padding:0.75rem 1rem;color:#111827;background:white;box-sizing:border-box;"><option value="">선택해주세요</option><option value="검색">검색</option><option value="유튜브">유튜브</option><option value="스레드">스레드</option><option value="기타">기타</option></select></div>
+                <div><label style="display:block;font-weight:600;color:#374151;margin-bottom:0.5rem;">현재 가장 큰 고민 <span style="color:#f43f5e;">*</span></label><textarea name="message" required rows="4" style="width:100%;border:2px solid #e5e7eb;border-radius:0.75rem;padding:0.75rem 1rem;color:#111827;resize:none;box-sizing:border-box;" placeholder="예) 경리 직원 채용이 어려워요&#10;예) 장부 정리가 복잡해요"></textarea></div>
+                <button type="submit" style="width:100%;background:#2563eb;color:white;font-weight:700;font-size:1.125rem;padding:1rem;border-radius:0.75rem;border:none;cursor:pointer;">무료 상담 신청하기</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        function openModal() { document.getElementById('consultModal').classList.add('active'); document.body.style.overflow = 'hidden'; }
+        function closeModal() { document.getElementById('consultModal').classList.remove('active'); document.body.style.overflow = 'auto'; }
+        document.getElementById('consultModal').addEventListener('click', function(e) { if (e.target === this) closeModal(); });
+        document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeModal(); });
+        function copyShareUrl() { navigator.clipboard.writeText(window.location.href).then(function(){ alert('링크가 복사되었습니다!'); }).catch(function(){ alert('링크 복사에 실패했습니다.'); }); }
+        (function() {
+            var btn = document.getElementById('scrollToTop'); if (!btn) return;
+            window.addEventListener('scroll', function() { if (window.pageYOffset > 300) { btn.style.opacity='1'; btn.style.visibility='visible'; } else { btn.style.opacity='0'; btn.style.visibility='hidden'; } });
+            btn.addEventListener('click', function() { window.scrollTo({top:0,behavior:'smooth'}); });
+        })();
+        document.querySelectorAll('.copyright-year').forEach(function(el){ el.textContent = new Date().getFullYear(); });
+        function combineEmail(form) { const el = form.querySelector('input[name="email"]'); if (el) el.value = el.value.trim(); }
+        function handleFormSubmit(event, formId) {
+            event.preventDefault();
+            const form = document.getElementById(formId);
+            const btn = form.querySelector('button[type="submit"]');
+            const orig = btn.innerHTML;
+            combineEmail(form);
+            btn.disabled = true; btn.innerHTML = '봇 확인 중...';
+            const URL = 'https://script.google.com/macros/s/AKfycbwLkpVI-zFipUtirkixwbaiTg-NdJP99UajSA_eoBs7MB5QPh20zkgpesZ9uDJJkHAQ/exec';
+            grecaptcha.ready(function() {
+                grecaptcha.execute('6Le0CEMsAAAAAFGF3Dnci1_SUkC4VWmzqdox2jJZ', {action:'submit'}).then(function(token) {
+                    let r = form.querySelector('input[name="recaptcha_token"]');
+                    if (!r) { r = document.createElement('input'); r.type='hidden'; r.name='recaptcha_token'; form.appendChild(r); }
+                    r.value = token; btn.innerHTML = '전송 중...';
+                    fetch(URL, {method:'POST', body:new FormData(form), mode:'no-cors'})
+                        .then(function() { window.dataLayer=window.dataLayer||[]; window.dataLayer.push({event:'form_submit'}); if (typeof gtag_report_conversion === 'function') { var _ud = (typeof wapeopleGetUserData === 'function') ? wapeopleGetUserData(form) : {}; gtag_report_conversion(undefined, _ud); } alert('\u2705 상담 신청이 완료되었습니다!\n\n영업시간 내 문의 시, 30분 이내로 연락드리겠습니다.'); form.reset(); closeModal(); btn.disabled=false; btn.innerHTML=orig; })
+                        .catch(function() { window.dataLayer=window.dataLayer||[]; window.dataLayer.push({event:'form_submit'}); if (typeof gtag_report_conversion === 'function') { var _ud = (typeof wapeopleGetUserData === 'function') ? wapeopleGetUserData(form) : {}; gtag_report_conversion(undefined, _ud); } alert('\u2705 상담 신청이 완료되었습니다!\n\n영업시간 내 문의 시, 30분 이내로 연락드리겠습니다.'); form.reset(); closeModal(); btn.disabled=false; btn.innerHTML=orig; });
+                }).catch(function() { alert('\u274c 봇 확인 실패. 페이지를 새로고침해주세요.'); btn.disabled=false; btn.innerHTML=orig; });
+            });
+            return false;
+        }
+    </script>
+</body>
+</html>
