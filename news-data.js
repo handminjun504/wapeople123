@@ -16,6 +16,16 @@
     //   url       : 'news/{slug}.html'
     window.WA_NEWS_DATA = [
     {
+        slug: 'gyeongri-hoengnyeong-yeobang',
+        title: '경리 횡령, 우리 회사는 괜찮을까요?',
+        category: '경리뉴스',
+        date: '2026-06-16',
+        summary: '횡령은 뉴스에 나오는 대기업만의 이야기가 아닙니다. 실제로는 중소기업·소기업에서 훨씬 더 많이 발생합니다. 모르고 있기 때문입니다. 그리고 모르는 동안 돈은 계속 빠져나갑니다.',
+        cover: '',
+        url: 'news/gyeongri-hoengnyeong-yeobang.html'
+    },
+
+    {
         slug: 'jaego-gwanri-gyeongri',
         title: '재고관리가 안 되면 원가도 손익도 모릅니다',
         category: '경리뉴스',
