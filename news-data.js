@@ -16,6 +16,16 @@
     //   url       : 'news/{slug}.html'
     window.WA_NEWS_DATA = [
     {
+        slug: 'gyeongri-jikwon-toesa-gongbaek',
+        title: '경리 직원 퇴사 후 공백, 어떻게 해야 하나요?',
+        category: '경리뉴스',
+        date: '2026-06-19',
+        summary: '경리 직원이 나가면 세금계산서, 장부정리, 미수미지급, 손익 파악이 한꺼번에 멈춥니다. 당장 무엇부터 챙겨야 하는지, 공백을 현실적으로 메우는 방법을 순서대로 정리했습니다.',
+        cover: '',
+        url: 'news/gyeongri-jikwon-toesa-gongbaek.html'
+    },
+
+    {
         slug: 'gyeongri-hoengnyeong-yeobang',
         title: '경리 횡령, 우리 회사는 괜찮을까요?',
         category: '경리뉴스',
