@@ -16,6 +16,16 @@
     //   url       : 'news/{slug}.html'
     window.WA_NEWS_DATA = [
     {
+        slug: 'labor-cost-management',
+        title: '매출은 그대론데 인건비만 오르고 있다면',
+        category: '경리뉴스',
+        date: '2026-06-23',
+        summary: '매출이 늘지 않는데 인건비만 오르면 남는 돈은 매달 줄어듭니다. 인건비 비율 파악 → 원인 진단 → 구조 개선, 이 순서로 접근해야 감이 아니라 숫자로 대응할 수 있습니다.',
+        cover: '',
+        url: 'news/labor-cost-management.html'
+    },
+
+    {
         slug: 'gyeongri-jikwon-toesa-gongbaek',
         title: '경리 직원 퇴사 후 공백, 어떻게 해야 하나요?',
         category: '경리뉴스',
