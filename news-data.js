@@ -16,6 +16,16 @@
     //   url       : 'news/{slug}.html'
     window.WA_NEWS_DATA = [
     {
+        slug: 'gyeongri-jikwon-chaeyong-vs-daehang',
+        title: '경리 직원 채용 vs 경리대행 — 비용·리스크·효율 완전 비교',
+        category: '경리뉴스',
+        date: '2026-06-24',
+        summary: '경리 직원을 채용할지, 경리대행을 맡길지 고민 중이라면 먼저 실제 비용을 숫자로 비교해보세요. 직원 수, 거래 복잡도, 업종에 따라 답이 달라집니다. 이 글에서 규모별로 정리했습니다.',
+        cover: '',
+        url: 'news/gyeongri-jikwon-chaeyong-vs-daehang.html'
+    },
+
+    {
         slug: 'labor-cost-management',
         title: '매출은 그대론데 인건비만 오르고 있다면',
         category: '경리뉴스',
