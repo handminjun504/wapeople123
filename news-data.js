@@ -115,7 +115,7 @@
         url: 'news/2026-05-28.html'
     },
 
-        {
+            {
         slug: 'hagwon-gyeongri-unyeong',
         title: '학원 경리업무, 이렇게 하면 됩니다!',
         category: '경리뉴스',
