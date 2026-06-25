@@ -16,6 +16,46 @@
     //   url       : 'news/{slug}.html'
     window.WA_NEWS_DATA = [
     {
+        slug: 'gyeongri-jikwon-chaeyong-vs-daehang',
+        title: '경리 직원 채용 vs 경리대행 — 비용·리스크·효율 완전 비교',
+        category: '경리뉴스',
+        date: '2026-06-24',
+        summary: '경리 직원을 채용할지, 경리대행을 맡길지 고민 중이라면 먼저 실제 비용을 숫자로 비교해보세요. 직원 수, 거래 복잡도, 업종에 따라 답이 달라집니다. 이 글에서 규모별로 정리했습니다.',
+        cover: '',
+        url: 'news/gyeongri-jikwon-chaeyong-vs-daehang.html'
+    },
+
+    {
+        slug: 'labor-cost-management',
+        title: '매출은 그대론데 인건비만 오르고 있다면',
+        category: '경리뉴스',
+        date: '2026-06-23',
+        summary: '매출이 늘지 않는데 인건비만 오르면 남는 돈은 매달 줄어듭니다. 인건비 비율 파악 → 원인 진단 → 구조 개선, 이 순서로 접근해야 감이 아니라 숫자로 대응할 수 있습니다.',
+        cover: '',
+        url: 'news/labor-cost-management.html'
+    },
+
+    {
+        slug: 'gyeongri-jikwon-toesa-gongbaek',
+        title: '경리 직원 퇴사 후 공백, 어떻게 해야 하나요?',
+        category: '경리뉴스',
+        date: '2026-06-19',
+        summary: '경리 직원이 나가면 세금계산서, 장부정리, 미수미지급, 손익 파악이 한꺼번에 멈춥니다. 당장 무엇부터 챙겨야 하는지, 공백을 현실적으로 메우는 방법을 순서대로 정리했습니다.',
+        cover: '',
+        url: 'news/gyeongri-jikwon-toesa-gongbaek.html'
+    },
+
+    {
+        slug: 'gyeongri-hoengnyeong-yeobang',
+        title: '경리 횡령, 우리 회사는 괜찮을까요?',
+        category: '경리뉴스',
+        date: '2026-06-16',
+        summary: '횡령은 뉴스에 나오는 대기업만의 이야기가 아닙니다. 실제로는 중소기업·소기업에서 훨씬 더 많이 발생합니다. 모르고 있기 때문입니다. 그리고 모르는 동안 돈은 계속 빠져나갑니다.',
+        cover: '',
+        url: 'news/gyeongri-hoengnyeong-yeobang.html'
+    },
+
+    {
         slug: 'jaego-gwanri-gyeongri',
         title: '재고관리가 안 되면 원가도 손익도 모릅니다',
         category: '경리뉴스',
@@ -85,7 +125,7 @@
         url: 'news/2026-05-28.html'
     },
 
-        {
+            {
         slug: 'hagwon-gyeongri-unyeong',
         title: '학원 경리업무, 이렇게 하면 됩니다!',
         category: '경리뉴스',
