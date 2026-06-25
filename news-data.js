@@ -16,6 +16,16 @@
     //   url       : 'news/{slug}.html'
     window.WA_NEWS_DATA = [
     {
+        slug: 'kyungrinara-guide',
+        title: '경리나라란 무엇인가요 — 소상공인 경리 프로그램 기능과 활용법',
+        category: '경리뉴스',
+        date: '2026-06-25',
+        summary: '경리나라는 회계 지식 없이도 쓸 수 있도록 만든 소상공인·중소기업 전용 경리 프로그램입니다. 계좌 자동 연동 → 증빙 자동 수집 → 손익 보고서 자동 생성, 반복 경리 업무를 자동화해줍니다.',
+        cover: '',
+        url: 'news/kyungrinara-guide.html'
+    },
+
+    {
         slug: 'gyeongri-jikwon-chaeyong-vs-daehang',
         title: '경리 직원 채용 vs 경리대행 — 비용·리스크·효율 완전 비교',
         category: '경리뉴스',
