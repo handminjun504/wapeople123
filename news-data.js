@@ -16,6 +16,36 @@
     //   url       : 'news/{slug}.html'
     window.WA_NEWS_DATA = [
     {
+        slug: 'saeop-chogi-gyeongri-silsu-top5',
+        title: '사업 초기 경리 실수 TOP 5',
+        category: '실무팁',
+        date: '2026-06-29',
+        summary: '창업 초기에는 영업과 운영이 우선이다 보니 경리는 뒤로 밀립니다. 하지만 초기에 쌓인 경리 실수는 나중에 훨씬 더 큰 부담이 됩니다. 지금 하나씩 확인하고 잡아두세요.',
+        cover: '',
+        url: 'news/saeop-chogi-gyeongri-silsu-top5.html'
+    },
+
+    {
+        slug: '2026-06-26',
+        title: '식당 사장님, 메뉴별 원가율 알고 계신가요?',
+        category: '경리뉴스',
+        date: '2026-06-26',
+        summary: '잘 팔리는 메뉴가 남는 메뉴가 아닙니다. 배달까지 포함하면 더욱 그렇습니다. 메뉴별 원가율 계산 → 배달 실질 마진 파악 → 홀·배달 구조 설계, 이 세 가지를 잡으면 바쁘게 팔면서 손해 보는 구조를 벗어날 수 있습니다.',
+        cover: '',
+        url: 'news/2026-06-26.html'
+    },
+
+        {
+        slug: 'kyungrinara-guide',
+        title: '경리나라란 무엇인가요 — 소상공인 경리 프로그램 기능과 활용법',
+        category: '실무팁',
+        date: '2026-06-25',
+        summary: '경리나라는 회계 지식 없이도 쓸 수 있도록 만든 소상공인·중소기업 전용 경리 프로그램입니다. 계좌 자동 연동 → 증빙 자동 수집 → 손익 보고서 자동 생성, 반복 경리 업무를 자동화해줍니다.',
+        cover: '',
+        url: 'news/kyungrinara-guide.html'
+    },
+
+    {
         slug: 'gyeongri-jikwon-chaeyong-vs-daehang',
         title: '경리 직원 채용 vs 경리대행 — 비용·리스크·효율 완전 비교',
         category: '경리뉴스',
