@@ -16,6 +16,16 @@
     //   url       : 'news/{slug}.html'
     window.WA_NEWS_DATA = [
     {
+        slug: 'saeop-chogi-gyeongri-silsu-top5',
+        title: '사업 초기 경리 실수 TOP 5',
+        category: '실무팁',
+        date: '2026-06-29',
+        summary: '창업 초기에는 영업과 운영이 우선이다 보니 경리는 뒤로 밀립니다. 하지만 초기에 쌓인 경리 실수는 나중에 훨씬 더 큰 부담이 됩니다. 지금 하나씩 확인하고 잡아두세요.',
+        cover: '',
+        url: 'news/saeop-chogi-gyeongri-silsu-top5.html'
+    },
+
+    {
         slug: '2026-06-26',
         title: '식당 사장님, 메뉴별 원가율 알고 계신가요?',
         category: '경리뉴스',
