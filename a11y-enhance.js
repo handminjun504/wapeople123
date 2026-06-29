@@ -48,13 +48,18 @@
 
         var style = document.createElement('style');
         style.textContent =
-            '#waMobileCall{position:fixed;left:1rem;bottom:1.5rem;z-index:9998;' +
-            'display:flex;align-items:center;gap:8px;background:#16a34a;color:#fff;' +
-            'font-weight:700;font-size:15px;line-height:1;padding:13px 20px;' +
-            'border-radius:9999px;box-shadow:0 6px 20px rgba(0,0,0,0.25);' +
-            'text-decoration:none;-webkit-tap-highlight-color:transparent;}' +
-            '#waMobileCall:active{transform:scale(0.96);}' +
+            '#waMobileCall{position:fixed;left:0;right:0;bottom:0;z-index:9998;' +
+            'display:flex;align-items:center;justify-content:center;gap:9px;' +
+            'background:#16a34a;color:#fff;font-weight:700;font-size:16px;line-height:1;' +
+            'padding:15px 16px;padding-bottom:calc(15px + env(safe-area-inset-bottom,0px));' +
+            'box-shadow:0 -2px 14px rgba(0,0,0,0.16);text-decoration:none;' +
+            '-webkit-tap-highlight-color:transparent;}' +
+            '#waMobileCall:active{background:#15803d;}' +
             '#waMobileCall i{font-size:16px;}' +
+            '#waMobileCall .wa-call-sub{font-weight:500;font-size:13px;opacity:0.85;}' +
+            // 하단 바에 콘텐츠가 가리지 않도록 여백 확보 + 맨 위로 버튼을 바 위로 올림
+            '@media (max-width:767px){body{padding-bottom:60px;}' +
+            '#scrollToTop{bottom:5rem !important;}}' +
             '@media (min-width:768px){#waMobileCall{display:none;}}';
         document.head.appendChild(style);
 
@@ -62,7 +67,9 @@
         btn.id = 'waMobileCall';
         btn.href = 'tel:' + PHONE;
         btn.setAttribute('aria-label', '전화 상담하기 ' + PHONE);
-        btn.innerHTML = '<i class="fas fa-phone-alt" aria-hidden="true"></i><span>빠른 전화 상담</span>';
+        btn.innerHTML = '<i class="fas fa-phone-alt" aria-hidden="true"></i>' +
+            '<span>전화 상담</span>' +
+            '<span class="wa-call-sub">' + PHONE + '</span>';
         btn.addEventListener('click', function () {
             window.dataLayer = window.dataLayer || [];
             window.dataLayer.push({ event: 'phone_call_click', phone: PHONE });
