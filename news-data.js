@@ -16,6 +16,16 @@
     //   url       : 'news/{slug}.html'
     window.WA_NEWS_DATA = [
     {
+        slug: 'gyeongri-outsourcing-ranhgan',
+        title: '경리 아웃소싱이란?',
+        category: '경리뉴스',
+        date: '2026-06-30',
+        summary: '경리 아웃소싱은 회사 내부에서 직접 처리하던 경리 업무를 외부 전문 인력에게 맡기는 것을 말합니다. 세무사에게 자료만 넘기는 기장대행과는 다릅니다. 세금계산서, 장부, 미수미지급, 손익까지 매달 일상 업무 전체를 처리합니다.',
+        cover: '',
+        url: 'news/gyeongri-outsourcing-ranhgan.html'
+    },
+
+    {
         slug: 'saeop-chogi-gyeongri-silsu-top5',
         title: '사업 초기 경리 실수 TOP 5',
         category: '실무팁',
