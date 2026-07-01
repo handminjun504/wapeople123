@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-THPPR46Q');</script>
+    <!-- End Google Tag Manager -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17745262400"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'AW-17745262400');
+    </script>
+    <!-- Event snippet for 견적 요청 conversion (Enhanced Conversions 지원) -->
+    <script>
+    function wapeopleGetUserData(form) {
+        if (!form) return {};
+        var fd = new FormData(form);
+        var email = ((fd.get('email') || '') + '').trim().toLowerCase();
+        var phone = ((fd.get('phone') || '') + '').trim();
+        var data = {};
+        if (email && email.indexOf('@') > 0) data.email = email;
+        if (phone) {
+            var digits = phone.replace(/D/g, '');
+            if (digits.length >= 10) {
+                if (digits.indexOf('82') === 0) data.phone_number = '+' + digits;
+                else if (digits.charAt(0) === '0') data.phone_number = '+82' + digits.substring(1);
+                else data.phone_number = '+' + digits;
+            }
+        }
+        return data;
+    }
+
+    function gtag_report_conversion(url, userData) {
+        var callback = function () {
+            if (typeof(url) != 'undefined') {
+                window.location = url;
+            }
+        };
+        var payload = {
+            'send_to': 'AW-17745262400/CarCCLvL6v0bEMDuzI1C',
+            'value': 1.0,
+            'currency': 'KRW',
+            'transaction_id': 'wa_' + Date.now() + '_' + Math.random().toString(36).substring(2, 9),
+            'event_callback': callback
+        };
+        if (userData && (userData.email || userData.phone_number)) {
+            payload.user_data = userData;
+        }
+        gtag('event', 'conversion', payload);
+        return false;
+    }
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>원격경리란? — 비대면으로 경리 업무를 맡기는 방법 완전정리 - 경리소식 | 경리업무를잘하는청년들</title>
+    <meta name="description" content="원격경리는 경리 직원을 직접 채용하지 않고, 외부 전문 담당자가 비대면으로 회사 경리 업무를 처리하는 서비스입니다.
+사무실에 출근하는 직원 없이 세금계산서·장부·미수미지급·손익 보고까지 온라인으로 처리됩니다.">
+    <meta name="keywords" content="경리소식, 경리업무를잘하는청년들">
+    <meta name="robots" content="index, follow">
+    <meta name="naver-site-verification" content="aefffa7a6d4cad21b90328c862b8ce5725188412">
+    <link rel="canonical" href="https://wapeople.kr/news/wongyeok-gyeongri-ranhgan">
+    <meta property="og:title" content="원격경리란? — 비대면으로 경리 업무를 맡기는 방법 완전정리 - 경리소식">
+    <meta property="og:description" content="원격경리는 경리 직원을 직접 채용하지 않고, 외부 전문 담당자가 비대면으로 회사 경리 업무를 처리하는 서비스입니다.
+사무실에 출근하는 직원 없이 세금계산서·장부·미수미지급·손익 보고까지 온라인으로 처리됩니다.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://wapeople.kr/news/wongyeok-gyeongri-ranhgan">
+    <meta property="og:image" content="https://wapeople.kr/logo.png?v=20260310b">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:site_name" content="경리업무를잘하는청년들">
+    <meta property="og:locale" content="ko_KR">
+    <meta property="article:published_time" content="2026-07-01">
+    <meta property="article:section" content="경리뉴스">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="원격경리란? — 비대면으로 경리 업무를 맡기는 방법 완전정리 - 경리소식">
+    <meta name="twitter:description" content="원격경리는 경리 직원을 직접 채용하지 않고, 외부 전문 담당자가 비대면으로 회사 경리 업무를 처리하는 서비스입니다.
+사무실에 출근하는 직원 없이 세금계산서·장부·미수미지급·손익 보고까지 온라인으로 처리됩니다.">
+    <meta name="twitter:image" content="https://wapeople.kr/logo.png?v=20260310b">
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "홈",       "item": "https://wapeople.kr/" },
+        { "@type": "ListItem", "position": 2, "name": "경리소식", "item": "https://wapeople.kr/news" },
+        { "@type": "ListItem", "position": 3, "name": "원격경리란? — 비대면으로 경리 업무를 맡기는 방법 완전정리", "item": "https://wapeople.kr/news/wongyeok-gyeongri-ranhgan" }
+      ]
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "NewsArticle",
+      "headline": "원격경리란? — 비대면으로 경리 업무를 맡기는 방법 완전정리",
+      "description": "원격경리는 경리 직원을 직접 채용하지 않고, 외부 전문 담당자가 비대면으로 회사 경리 업무를 처리하는 서비스입니다. 사무실에 출근하는 직원 없이 세금계산서·장부·미수미지급·손익 보고까지 온라인으로 처리됩니다.",
+      "datePublished": "2026-07-01",
+      "dateModified": "2026-07-01",
+      "inLanguage": "ko-KR",
+      "articleSection": "경리뉴스",
+      "image": "https://wapeople.kr/logo.png?v=20260310b",
+      "author": { "@type": "Organization", "name": "경리업무를잘하는청년들", "url": "https://wapeople.kr" },
+      "publisher": {
+        "@type": "Organization",
+        "name": "경리업무를잘하는청년들",
+        "url": "https://wapeople.kr",
+        "logo": { "@type": "ImageObject", "url": "https://wapeople.kr/logo.png?v=20260310b" }
+      },
+      "mainEntityOfPage": { "@type": "WebPage", "@id": "https://wapeople.kr/news/wongyeok-gyeongri-ranhgan" }
+    }
+    </script>
+
+    <link rel="icon" type="image/x-icon" href="/favicon/favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-icon-180x180.png">
+    <meta name="theme-color" content="#2563eb">
+    <link rel="stylesheet" href="../dist/output.css">
+    <link rel="stylesheet" href="../mobile-optimize.css?v=20260312b">
+    <script src="../traffic-attribution.js?v=20260312a" defer></script>
+    <script src="../a11y-enhance.js" defer></script>
+    <link rel="stylesheet" href="../fonts/Pretendard-1.3.9/web/static/pretendard-subset.css?v=20260312c">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/fontawesome.min.css" media="print" onload="this.media='all'">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/solid.min.css" media="print" onload="this.media='all'">
+    <script src="https://www.google.com/recaptcha/api.js?render=6Le0CEMsAAAAAFGF3Dnci1_SUkC4VWmzqdox2jJZ"></script>
+    <script>
+        document.documentElement.style.opacity = '0';
+        document.documentElement.style.transition = 'opacity 0.2s ease';
+        function revealPageAfterFontLoad() { document.documentElement.style.opacity = '1'; }
+        const fontLoadFallback = setTimeout(revealPageAfterFontLoad, 3000);
+        if (document.fonts && document.fonts.ready) {
+            document.fonts.ready.then(function() { clearTimeout(fontLoadFallback); revealPageAfterFontLoad(); }).catch(revealPageAfterFontLoad);
+        } else { window.addEventListener('load', function() { clearTimeout(fontLoadFallback); revealPageAfterFontLoad(); }); }
+    </script>
+    <noscript><style>html { opacity: 1 !important; }</style></noscript>
+    <style>
+        .modal { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.5); z-index: 9999; align-items: center; justify-content: center; }
+        .modal.active { display: flex; }
+        .article-body { font-size: 1.125rem; line-height: 1.8; color: #1f2937; word-break: keep-all; letter-spacing: -0.01em; }
+        .article-body > p:first-of-type { font-size: 1.25rem; font-weight: 600; color: #0f172a; line-height: 1.7; padding-left: 1rem; border-left: 4px solid #2563eb; margin-bottom: 2rem; }
+        .article-body h2 { font-size: 1.5rem; font-weight: 800; color: #0f172a; margin: 2.5rem 0 1rem; padding-bottom: 0.5rem; border-bottom: 2px solid #2563eb; letter-spacing: -0.02em; }
+        .article-body h3 { font-size: 1.25rem; font-weight: 700; color: #1f2937; margin: 2rem 0 0.75rem; letter-spacing: -0.01em; }
+        .article-body p { margin: 1.25rem 0; }
+        .article-body p:has(> br:only-child) { display: none; }
+        .article-body hr { border: none; height: 0; margin: 1.75rem 0; position: relative; }
+        .article-body hr::before { content: ""; display: block; width: 60px; height: 3px; background: #e5e7eb; border-radius: 9999px; margin: 0 auto; }
+        .article-body ul, .article-body ol { margin: 1rem 0 1rem 1.5rem; }
+        .article-body ul { list-style: disc; } .article-body ol { list-style: decimal; }
+        .article-body li { margin: 0.5rem 0; }
+        .article-body strong { color: #0f172a; font-weight: 700; }
+        .article-body a { color: #2563eb; text-decoration: underline; text-underline-offset: 3px; }
+        .article-body blockquote { border-left: 4px solid #93c5fd; background: #eff6ff; padding: 1rem 1.25rem; margin: 1.5rem 0; border-radius: 0 0.75rem 0.75rem 0; color: #1e3a8a; font-style: italic; }
+        .article-body code { background: #f3f4f6; padding: 0.15rem 0.4rem; border-radius: 0.25rem; font-size: 0.9em; color: #be185d; }
+        .article-body img { max-width: 100%; height: auto; border-radius: 0.75rem; margin: 1.5rem 0; }
+        .article-body table { width: 100%; border-collapse: collapse; font-size: 0.9375rem; margin: 1.25rem 0; }
+        .article-body thead tr { background: #1a3a5c; color: #fff; }
+        .article-body thead th { padding: 0.75rem 1rem; text-align: left; font-weight: 600; }
+        .article-body tbody td { padding: 0.7rem 1rem; border-bottom: 1px solid #e5e5e0; color: #444; }
+        .article-body tbody tr:nth-child(even) { background: #f7f7f5; }
+    </style>
+</head>
+<body class="antialiased">
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-THPPR46Q" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 right-0 z-50 nav-glass">
+        <div class="max-w-7xl mx-auto px-3 md:px-6 py-2 flex items-center justify-between gap-2">
+            <a href="../index.html" class="flex items-center gap-1 hover:opacity-80 transition-opacity touch-manipulation min-w-0">
+                <img src="../logo.png?v=20260310b" alt="경리업무를잘하는청년들" class="hidden md:block object-contain" style="height:2.125rem;" fetchpriority="high">
+                <img src="../logo.png?v=20260310b" alt="경리업무를잘하는청년들" class="block md:hidden mobile-nav-logo object-contain" fetchpriority="high">
+            </a>
+            <div class="hidden md:flex items-center gap-6">
+                <a href="../about.html" class="text-gray-700 hover:text-blue-700 font-semibold transition-colors">원격경리</a>
+                <a href="../news.html" class="text-blue-700 font-bold transition-colors">경리소식</a>
+                <a href="../faq.html" class="text-gray-700 hover:text-blue-700 font-semibold transition-colors">자주 묻는 질문</a>
+            </div>
+            <button onclick="openModal()" class="bg-blue-600 hover:bg-blue-700 text-white font-bold px-5 py-2 rounded-xl transition-colors text-sm whitespace-nowrap">상담 바로가기</button>
+        </div>
+    </nav>
+
+    <!-- 글 헤더 -->
+    <header class="bg-white pt-28 md:pt-32 pb-12 md:pb-16 border-b border-gray-100">
+        <div class="max-w-3xl mx-auto px-4 md:px-6">
+            <!-- 빵부스러기 -->
+            <nav aria-label="현재 위치" class="text-sm text-gray-500 mb-6">
+                <a href="../index.html" class="hover:text-blue-600 transition-colors">홈</a>
+                <span class="mx-2 text-gray-300">/</span>
+                <a href="../news.html" class="hover:text-blue-600 transition-colors">경리소식</a>
+                <span class="mx-2 text-gray-300">/</span>
+                <span class="text-gray-700">경리뉴스</span>
+            </nav>
+
+            <!-- 카테고리 배지 + 날짜 -->
+            <div class="flex flex-wrap items-center gap-2 mb-5">
+                <span class="text-xs font-bold px-3 py-1 rounded-full border bg-amber-100 text-amber-700 border-amber-200">경리뉴스</span>
+                <time datetime="2026-07-01" class="text-sm text-gray-400">2026. 07. 01.</time>
+            </div>
+
+            <h1 class="text-3xl md:text-4xl font-black text-gray-900 leading-tight mb-5">원격경리란? — 비대면으로 경리 업무를 맡기는 방법 완전정리</h1>
+            <p class="text-lg md:text-xl text-gray-600 leading-relaxed">원격경리는 경리 직원을 직접 채용하지 않고, 외부 전문 담당자가 비대면으로 회사 경리 업무를 처리하는 서비스입니다.
+사무실에 출근하는 직원 없이 세금계산서·장부·미수미지급·손익 보고까지 온라인으로 처리됩니다.</p>
+
+            <!-- 저자 -->
+            <div class="mt-8 pt-6 border-t border-gray-100 flex items-center gap-3">
+                <div class="w-10 h-10 rounded-full bg-blue-600 flex items-center justify-center flex-shrink-0">
+                    <i class="fas fa-pen-nib text-white text-sm"></i>
+                </div>
+                <div>
+                    <p class="text-sm font-bold text-gray-900">경리업무를잘하는청년들</p>
+                    <p class="text-xs text-gray-400">원격 경리 전문 서비스</p>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- 본문 -->
+    <main class="bg-slate-50 py-12 md:py-16">
+        <article class="max-w-3xl mx-auto px-4 md:px-6">
+            <div class="article-body bg-white rounded-2xl shadow-sm border border-gray-100 p-6 md:p-12">
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>원격경리란? — 비대면으로 경리 업무를 맡기는 방법 완전정리 | 경리업무를잘하는청년들</title>
+<meta name="description" content="원격경리가 무엇인지, 어떻게 일하는지, 기존 경리대행과 무엇이 다른지 처음부터 정리했습니다. 비대면으로 세금계산서·장부·손익 보고까지 처리하는 방법을 확인하세요.">
+<meta property="og:title" content="원격경리란? — 비대면으로 경리 업무를 맡기는 방법 완전정리">
+<meta property="og:description" content="원격경리가 무엇인지, 어떻게 일하는지, 기존 경리대행과 무엇이 다른지 처음부터 정리했습니다.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://wapeople.kr/news/wongyeok-gyeongri-ranhgan">
+<link rel="canonical" href="https://wapeople.kr/news/wongyeok-gyeongri-ranhgan">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "원격경리란? — 비대면으로 경리 업무를 맡기는 방법 완전정리",
+  "description": "원격경리가 무엇인지, 어떻게 일하는지, 기존 경리대행과 무엇이 다른지 처음부터 정리했습니다.",
+  "author": { "@type": "Organization", "name": "경리업무를잘하는청년들" },
+  "publisher": { "@type": "Organization", "name": "경리업무를잘하는청년들", "url": "https://wapeople.kr" },
+  "datePublished": "2026-07-01"
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "원격경리란 무엇인가요?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "원격경리는 경리 직원을 직접 채용하지 않고, 외부 전문 담당자가 비대면으로 회사 경리 업무를 처리하는 서비스입니다. 세금계산서 관리, 장부 정리, 미수미지급 관리, 월별 손익 보고까지 사무실에 출근하는 직원 없이 온라인으로 처리됩니다."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "원격경리와 경리대행은 어떻게 다른가요?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "사실상 같은 서비스입니다. 경리대행은 업무를 외부에 위탁한다는 점을 강조한 표현이고, 원격경리는 비대면·온라인으로 일한다는 방식을 강조한 표현입니다. 처리하는 업무 범위는 동일합니다."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "원격경리는 어떻게 자료를 주고받나요?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "세금계산서는 홈택스에서 공유하거나 이메일·카톡으로 전달합니다. 통장 내역은 엑셀 또는 PDF로 제공하거나 계좌 연동을 활용합니다. 지출 영수증은 사진 촬영 후 전달하는 방식이 일반적입니다. 별도 방문이나 출근 없이 모든 자료가 온라인으로 처리됩니다."
+      }
+    }
+  ]
+}
+</script>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&family=Noto+Serif+KR:wght@400;600;700&display=swap');
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --primary:      #1a3a5c;
+  --accent:       #2563a8;
+  --accent-light: #e8f0fb;
+  --text:         #1a1a1a;
+  --text-sec:     #4a4a4a;
+  --text-muted:   #888;
+  --border:       #e0e0da;
+  --bg:           #f8f8f6;
+  --surface:      #ffffff;
+  --hi-bg:        #fff8e6;
+  --hi-bd:        #f0c040;
+  --success:      #1a7a4a;
+  --success-light:#e8f5e9;
+  --danger:       #c0392b;
+  --danger-light: #fdf0f0;
+  --radius:       10px;
+  --serif:        'Noto Serif KR', serif;
+  --sans:         'Noto Sans KR', sans-serif;
+  --max-w:        720px;
+}
+body { font-family: var(--sans); background: var(--bg); color: var(--text); font-size: 16px; line-height: 1.85; padding: 48px 20px 80px; }
+article { max-width: var(--max-w); margin: 0 auto; }
+
+.meta-bar { display: flex; align-items: center; gap: 8px; margin-bottom: 24px; font-size: 12px; color: var(--text-muted); }
+.badge { background: var(--accent-light); color: var(--accent); font-size: 11px; font-weight: 700; padding: 3px 10px; border-radius: 99px; letter-spacing: .04em; }
+.dot { color: var(--border); }
+
+h1 { font-family: var(--serif); font-size: clamp(22px, 4vw, 30px); font-weight: 700; color: var(--primary); line-height: 1.45; margin-bottom: 22px; letter-spacing: -.01em; }
+h2 { font-family: var(--serif); font-size: clamp(16px, 2.8vw, 19px); font-weight: 700; color: var(--primary); margin: 44px 0 14px; padding-bottom: 10px; border-bottom: 1.5px solid var(--border); letter-spacing: -.01em; }
+
+.summary-box { background: var(--accent-light); border-left: 4px solid var(--accent); border-radius: 0 var(--radius) var(--radius) 0; padding: 16px 20px; margin-bottom: 32px; font-size: 14.5px; font-weight: 500; color: var(--primary); line-height: 1.75; }
+.intro { font-size: 15.5px; color: var(--text-sec); margin-bottom: 40px; line-height: 1.95; }
+p { margin-bottom: 16px; color: var(--text-sec); font-size: 15px; line-height: 1.9; }
+
+ul.list { list-style: none; margin: 12px 0 20px; display: flex; flex-direction: column; gap: 10px; padding: 0; }
+ul.list li { font-size: 14.5px; color: var(--text-sec); line-height: 1.75; padding-left: 18px; position: relative; }
+ul.list li::before { content: ''; display: block; width: 5px; height: 5px; border-radius: 50%; background: var(--accent); position: absolute; left: 0; top: 9px; }
+
+.highlight { background: var(--hi-bg); border: 1px solid var(--hi-bd); border-radius: var(--radius); padding: 16px 20px; margin: 20px 0 24px; font-size: 14.5px; color: #5a4000; line-height: 1.8; }
+.success-box { background: var(--success-light); border: 1px solid #a0d0a0; border-radius: var(--radius); padding: 16px 20px; margin: 20px 0 24px; font-size: 14px; color: #1a4a2a; line-height: 1.8; }
+
+/* 스텝 리스트 */
+.step-list { list-style: none; padding: 0; margin: 16px 0 28px; display: flex; flex-direction: column; gap: 12px; }
+.step-item { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 16px 20px; display: flex; gap: 16px; align-items: flex-start; }
+.step-num { background: var(--accent); color: #fff; font-size: 12px; font-weight: 700; width: 24px; height: 24px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 2px; }
+.step-content strong { display: block; font-size: 14px; color: var(--text); margin-bottom: 3px; }
+.step-content span { font-size: 13px; color: var(--text-sec); line-height: 1.6; }
+
+/* 업무 카드 */
+.prob-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 16px 0 28px; }
+@media (max-width: 500px) { .prob-grid { grid-template-columns: 1fr; } }
+.prob-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 18px 20px; }
+.prob-icon { font-size: 20px; margin-bottom: 8px; }
+.prob-title { font-size: 13px; font-weight: 700; color: var(--primary); margin-bottom: 6px; }
+.prob-desc { font-size: 13px; color: var(--text-sec); line-height: 1.65; }
+
+/* 테이블 */
+.table-wrap { overflow-x: auto; margin: 16px 0 28px; border-radius: var(--radius); border: 1px solid var(--border); }
+table { width: 100%; border-collapse: collapse; font-size: 13px; font-family: var(--sans); }
+thead tr { background: var(--primary); color: #fff; }
+thead th { padding: 11px 16px; font-weight: 600; text-align: left; font-size: 12px; white-space: nowrap; }
+tbody tr { border-bottom: 1px solid var(--border); }
+tbody tr:last-child { border-bottom: none; }
+tbody tr:nth-child(even) { background: #f5f5f3; }
+tbody td { padding: 11px 16px; color: var(--text-sec); vertical-align: middle; line-height: 1.55; font-size: 13px; font-weight: 400; }
+tbody td:first-child { font-weight: 600; color: var(--text); white-space: nowrap; }
+.tag-good { color: var(--success); font-weight: 600; }
+.tag-bad  { color: var(--danger); font-weight: 600; }
+
+/* 규모별 추천 */
+.recommend-grid { display: flex; flex-direction: column; gap: 10px; margin: 16px 0 28px; }
+.recommend-item { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 16px 20px; display: flex; gap: 16px; align-items: flex-start; }
+.recommend-badge { font-size: 11px; font-weight: 700; padding: 3px 10px; border-radius: 99px; white-space: nowrap; flex-shrink: 0; margin-top: 2px; }
+.badge-yes   { background: var(--success-light); color: var(--success); }
+.badge-maybe { background: var(--hi-bg); color: #7a5500; }
+.recommend-content strong { display: block; font-size: 13.5px; color: var(--text); margin-bottom: 3px; }
+.recommend-content span { font-size: 13px; color: var(--text-sec); line-height: 1.6; }
+
+/* FAQ */
+.faq-wrap { display: flex; flex-direction: column; gap: 10px; margin-top: 8px; }
+.faq-item { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; }
+.faq-q { width: 100%; background: none; border: none; text-align: left; padding: 16px 20px; font-size: 14.5px; font-weight: 600; color: var(--primary); cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 12px; font-family: var(--sans); line-height: 1.5; }
+.faq-q:hover { background: var(--accent-light); }
+.faq-icon { font-size: 18px; color: var(--accent); flex-shrink: 0; transition: transform .22s; }
+.faq-icon.open { transform: rotate(45deg); }
+.faq-a { display: none; padding: 14px 20px 16px; font-size: 13.5px; color: var(--text-sec); line-height: 1.8; border-top: 1px solid var(--border); }
+.faq-a.open { display: block; }
+
+hr { border: none; border-top: 1px solid var(--border); margin: 36px 0; }
+</style>
+</head>
+<body>
+<article>
+
+  <div class="meta-bar">
+    <span class="badge">실무팁</span>
+    <span class="dot">·</span>
+    <span>원격경리 소개</span>
+    <span class="dot">·</span>
+    <span>2026년 최신</span>
+  </div>
+
+  <h1>원격경리란? —<br>비대면으로 경리 업무를 맡기는 방법 완전정리</h1>
+
+  <div class="summary-box">
+    원격경리는 <strong>경리 직원을 직접 채용하지 않고, 외부 전문 담당자가 비대면으로 회사 경리 업무를 처리하는 서비스</strong>입니다.<br>
+    사무실에 출근하는 직원 없이 세금계산서·장부·미수미지급·손익 보고까지 온라인으로 처리됩니다.
+  </div>
+
+  <p class="intro">
+    "원격경리가 정확히 뭔가요?"라는 질문을 많이 받습니다. 경리대행, 경리 아웃소싱, 원격경리. 비슷한 단어가 많아서 헷갈리는 게 당연합니다. 이 글에서는 원격경리가 무엇인지, 실제로 어떻게 일이 진행되는지, 어떤 업무가 처리되는지 처음 듣는 분도 이해할 수 있도록 정리했습니다.
+  </p>
+
+  <h2>원격경리, 한 줄로 정리하면</h2>
+  <p>원격경리는 <strong>경리 업무를 비대면·온라인으로 외부 전문가에게 맡기는 것</strong>입니다. 경리 직원이 사무실에 출근해서 처리하던 일들을 담당자가 원격으로 처리합니다. 사장님은 자료만 전달하면 됩니다.</p>
+
+  <div class="highlight">
+    <strong>경리대행·경리 아웃소싱과의 차이:</strong><br>
+    사실상 같은 서비스입니다. 경리대행은 "업무를 외부에 위탁한다"는 점을, 경리 아웃소싱은 "외부 전문 인력을 활용한다"는 점을, 원격경리는 "비대면·온라인으로 일한다"는 방식을 강조하는 표현 차이일 뿐 처리하는 업무 범위는 동일합니다.
+  </div>
+
+  <h2>원격경리는 어떻게 일이 진행되나요?</h2>
+  <p>가장 많이 궁금해하는 부분입니다. 직접 만나지 않는데 어떻게 경리가 처리되는지 단계별로 보겠습니다.</p>
+
+  <ul class="step-list">
+    <li class="step-item">
+      <div class="step-num">1</div>
+      <div class="step-content">
+        <strong>자료 전달</strong>
+        <span>세금계산서는 홈택스 공유 또는 이메일·카톡으로 전달. 통장 내역은 엑셀·PDF 또는 계좌 연동으로 공유. 지출 영수증은 사진 촬영 후 전달.</span>
+      </div>
+    </li>
+    <li class="step-item">
+      <div class="step-num">2</div>
+      <div class="step-content">
+        <strong>담당자 처리</strong>
+        <span>전달받은 자료를 기반으로 세금계산서 관리, 장부 정리, 미수미지급 정리, 지출결의 관리까지 처리합니다.</span>
+      </div>
+    </li>
+    <li class="step-item">
+      <div class="step-num">3</div>
+      <div class="step-content">
+        <strong>월별 보고</strong>
+        <span>매달 월별 손익 보고서와 미수미지급 현황을 정리해 전달합니다. 이번 달 얼마 남았는지 숫자로 확인됩니다.</span>
+      </div>
+    </li>
+    <li class="step-item">
+      <div class="step-num">4</div>
+      <div class="step-content">
+        <strong>세무사에게 자료 전달</strong>
+        <span>정리된 장부와 세금계산서 자료를 세무사에게 전달할 준비까지 처리합니다. 사장님이 별도로 자료를 정리할 필요가 없습니다.</span>
+      </div>
+    </li>
+  </ul>
+
+  <h2>원격경리로 처리되는 업무 범위</h2>
+
+  <div class="prob-grid">
+    <div class="prob-card">
+      <div class="prob-icon">🧾</div>
+      <div class="prob-title">세금계산서 발행·관리</div>
+      <div class="prob-desc">매입·매출 세금계산서를 거래처별로 정리하고 발행·수취 누락 여부를 확인합니다.</div>
+    </div>
+    <div class="prob-card">
+      <div class="prob-icon">📒</div>
+      <div class="prob-title">장부 정리</div>
+      <div class="prob-desc">통장 입출금 내역, 지출 증빙을 기반으로 월별 장부를 작성하고 정리합니다.</div>
+    </div>
+    <div class="prob-card">
+      <div class="prob-icon">📋</div>
+      <div class="prob-title">미수금·미지급금 관리</div>
+      <div class="prob-desc">받아야 할 돈과 내야 할 돈을 거래처별로 월별 정리해 현금흐름을 파악합니다.</div>
+    </div>
+    <div class="prob-card">
+      <div class="prob-icon">🗂️</div>
+      <div class="prob-title">지출결의 관리</div>
+      <div class="prob-desc">회사 지출 내역을 항목별로 정리하고 증빙 관리까지 처리합니다.</div>
+    </div>
+    <div class="prob-card">
+      <div class="prob-icon">📊</div>
+      <div class="prob-title">월별 손익 보고</div>
+      <div class="prob-desc">매출·비용·이익을 정리한 리포트를 매달 제공합니다. 숫자로 경영 현황이 보입니다.</div>
+    </div>
+    <div class="prob-card">
+      <div class="prob-icon">📈</div>
+      <div class="prob-title">손익분기점·마진 분석</div>
+      <div class="prob-desc">고정비·변동비 구조를 파악해 최소 매출 목표와 제품·서비스별 마진율을 산출합니다. 추가 서비스로 제공됩니다.</div>
+    </div>
+  </div>
+
+  <h2>원격경리 vs 경리 직원 채용 — 핵심 차이</h2>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>구분</th>
+          <th>경리 직원 채용</th>
+          <th>원격경리</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>근무 방식</td>
+          <td>사무실 상주</td>
+          <td>비대면·온라인 처리</td>
+        </tr>
+        <tr>
+          <td>월 비용</td>
+          <td class="tag-bad">270만~320만 원 이상</td>
+          <td class="tag-good">50만~300만 원대</td>
+        </tr>
+        <tr>
+          <td>퇴사 리스크</td>
+          <td class="tag-bad">있음</td>
+          <td class="tag-good">없음</td>
+        </tr>
+        <tr>
+          <td>업무 공백</td>
+          <td class="tag-bad">퇴사 시 즉시 발생</td>
+          <td class="tag-good">없음</td>
+        </tr>
+        <tr>
+          <td>세무사 자료 준비</td>
+          <td>직원 역량에 따라 다름</td>
+          <td class="tag-good">함께 처리</td>
+        </tr>
+        <tr>
+          <td>손익·마진 분석</td>
+          <td>직원 역량에 따라 다름</td>
+          <td>추가 서비스</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h2>이런 회사에 잘 맞습니다</h2>
+
+  <div class="recommend-grid">
+    <div class="recommend-item">
+      <span class="recommend-badge badge-yes">적합</span>
+      <div class="recommend-content">
+        <strong>직원 1~10명 소상공인·중소기업</strong>
+        <span>카페, 도소매, 미용실, 학원, 스타트업 등 업종 무관. 경리 직원 채용이 부담스러운 규모에서 가장 효과적입니다.</span>
+      </div>
+    </div>
+    <div class="recommend-item">
+      <span class="recommend-badge badge-yes">적합</span>
+      <div class="recommend-content">
+        <strong>비대면 업무에 익숙한 사업자</strong>
+        <span>카톡·이메일로 자료를 주고받는 데 익숙하다면 원격경리 방식이 전혀 불편하지 않습니다.</span>
+      </div>
+    </div>
+    <div class="recommend-item">
+      <span class="recommend-badge badge-yes">적합</span>
+      <div class="recommend-content">
+        <strong>여러 지점을 운영하는 사업자</strong>
+        <span>지점마다 경리를 둘 수 없는 경우, 원격으로 통합 관리가 가능합니다.</span>
+      </div>
+    </div>
+    <div class="recommend-item">
+      <span class="recommend-badge badge-yes">적합</span>
+      <div class="recommend-content">
+        <strong>경리 직원이 퇴사해 공백이 생긴 경우</strong>
+        <span>인수인계가 없어도 통장 내역·세금계산서 내역만 있으면 즉시 이어받아 처리합니다.</span>
+      </div>
+    </div>
+    <div class="recommend-item">
+      <span class="recommend-badge badge-maybe">상황에 따라 다름</span>
+      <div class="recommend-content">
+        <strong>당일 현금 처리가 매우 잦은 경우</strong>
+        <span>실시간 현금 출납이 하루에도 수십 건씩 발생한다면 내부 직원이 더 맞을 수 있습니다. 규모와 업종에 따라 상담 후 판단하세요.</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="success-box">
+    <strong>원격경리가 처음이라면, 1달 무료로 먼저 경험해보세요.</strong><br>
+    계약 없이 1개월 무료 체험을 제공합니다. 세금계산서·장부·미수미지급·손익 보고까지 실제로 어떻게 처리되는지 직접 경험해보시고 결정하셔도 됩니다.
+  </div>
+
+  <hr>
+
+  <h2>자주 묻는 질문</h2>
+
+  <div class="faq-wrap">
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">
+        원격경리란 무엇인가요?
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-a">
+        원격경리는 경리 직원을 직접 채용하지 않고, 외부 전문 담당자가 비대면으로 회사 경리 업무를 처리하는 서비스입니다. 세금계산서 관리, 장부 정리, 미수미지급 관리, 월별 손익 보고까지 사무실에 출근하는 직원 없이 온라인으로 처리됩니다.
+      </div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">
+        원격경리와 경리대행은 어떻게 다른가요?
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-a">
+        사실상 같은 서비스입니다. 경리대행은 업무를 외부에 위탁한다는 점을 강조한 표현이고, 원격경리는 비대면·온라인으로 일한다는 방식을 강조한 표현입니다. 처리하는 업무 범위는 동일합니다.
+      </div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">
+        원격경리는 어떻게 자료를 주고받나요?
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-a">
+        세금계산서는 홈택스에서 공유하거나 이메일·카톡으로 전달합니다. 통장 내역은 엑셀 또는 PDF로 제공하거나 계좌 연동을 활용합니다. 지출 영수증은 사진 촬영 후 전달하는 방식이 일반적입니다. 별도 방문이나 출근 없이 모든 자료가 온라인으로 처리됩니다.
+      </div>
+    </div>
+  </div>
+
+</article>
+<script>
+function toggleFaq(btn) {
+  var icon = btn.querySelector('.faq-icon');
+  var answer = btn.nextElementSibling;
+  var isOpen = answer.classList.contains('open');
+  document.querySelectorAll('.faq-a.open').forEach(function(el){ el.classList.remove('open'); });
+  document.querySelectorAll('.faq-icon.open').forEach(function(el){ el.classList.remove('open'); });
+  if (!isOpen) { answer.classList.add('open'); icon.classList.add('open'); }
+}
+</script>
+</body>
+</html>
+            </div>
+
+            <!-- CTA 카드 -->
+            <div class="mt-14 bg-blue-50 border border-blue-100 rounded-2xl p-8 text-center">
+                <p class="text-lg md:text-xl font-bold text-gray-900 mb-2">경리 고민, 지금 바로 해결하세요</p>
+                <p class="text-sm text-gray-600 mb-6">무료 상담으로 우리 회사에 맞는 솔루션을 확인해 보세요.</p>
+                <button type="button" onclick="openModal()" class="inline-flex items-center justify-center gap-2 bg-blue-600 hover:bg-blue-700 text-white font-bold px-8 py-3.5 rounded-xl transition-colors shadow-md text-base cursor-pointer">
+                    <i class="fas fa-paper-plane text-sm"></i> 무료 상담 신청하기
+                </button>
+            </div>
+
+            <!-- 목록으로 -->
+            <div class="mt-8 text-center">
+                <a href="../news.html" class="inline-flex items-center gap-2 text-sm text-gray-500 hover:text-blue-600 transition-colors font-semibold">
+                    <i class="fas fa-arrow-left text-xs"></i> 경리소식 목록으로
+                </a>
+            </div>
+        </article>
+    </main>
+
+    <!-- 맨 위로 -->
+    <button id="scrollToTop" aria-label="맨 위로 스크롤" style="position:fixed;bottom:2rem;right:2rem;z-index:9999;transition:all 0.3s ease;" class="bg-blue-600 hover:bg-blue-700 text-white w-12 h-12 rounded-full shadow-lg opacity-0 invisible flex items-center justify-center">
+        <i class="fas fa-chevron-up"></i>
+    </button>
+
+    <!-- 푸터 -->
+    <footer class="bg-white py-8 border-t border-gray-200">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="flex flex-col md:flex-row items-start justify-between gap-6">
+                <a href="../index.html"><img src="../logo.png?v=20260310b" alt="경리업무를잘하는청년들" class="h-14 md:h-16 object-contain"></a>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-3 text-gray-600 text-sm">
+                    <div class="flex items-center gap-2"><i class="fas fa-phone text-blue-700"></i><span>전화번호 : 1566-2687</span></div>
+                    <div class="flex items-center gap-2"><i class="fas fa-envelope text-blue-700"></i><span>wapeople000@gmail.com</span></div>
+                    <div class="flex items-center gap-2"><i class="fas fa-user text-blue-700"></i><span>대표이사 : 금종석</span></div>
+                    <div class="flex items-center gap-2"><i class="fas fa-clock text-blue-700"></i><span>평일 09:00 - 18:00</span></div>
+                    <div class="flex items-start gap-2 md:col-span-2"><i class="fas fa-map-marker-alt text-blue-700 mt-0.5"></i><span>주소 : 경기 수원시 팔달구 권광로175번길 83 201호</span></div>
+                </div>
+            </div>
+            <div class="border-t border-gray-200 mt-6 pt-6 text-center text-gray-400 text-sm">
+                <p>&copy; <span class="copyright-year">2026</span> 경리업무를잘하는청년들. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- 상담 모달 -->
+    <div id="consultModal" class="modal">
+        <div style="background:white;border-radius:1.5rem;padding:2rem;max-width:36rem;width:100%;margin:1rem;position:relative;max-height:90vh;overflow-y:auto;">
+            <button onclick="closeModal()" style="position:absolute;top:1.25rem;right:1.25rem;font-size:2rem;font-weight:300;color:#9ca3af;cursor:pointer;background:none;border:none;" aria-label="닫기">&times;</button>
+            <div style="text-align:center;margin-bottom:2rem;">
+                <div style="width:4rem;height:4rem;border-radius:1rem;background:#2563eb;display:flex;align-items:center;justify-content:center;margin:0 auto 1rem;"><i class="fas fa-paper-plane" style="color:white;font-size:1.5rem;"></i></div>
+                <h3 style="font-size:1.75rem;font-weight:700;color:#111827;margin-bottom:0.5rem;">무료 상담 신청</h3>
+                <p style="color:#6b7280;">원격경리 서비스에 대해 안내해드립니다.</p>
+            </div>
+            <form id="consultForm" style="display:flex;flex-direction:column;gap:1.25rem;" onsubmit="return handleFormSubmit(event, 'consultForm')">
+                <input type="hidden" name="inquiry_page" value="경리소식">
+                <div><label style="display:block;font-weight:600;color:#374151;margin-bottom:0.5rem;">업종 <span style="font-weight:400;color:#9ca3af;font-size:0.875rem;">(선택)</span></label><div class="grid grid-cols-2 md:grid-cols-3 gap-2"><label class="cursor-pointer"><input type="radio" name="industry" value="서비스업" class="peer hidden"><div class="border-2 border-gray-200 rounded-xl px-3 py-2.5 text-center text-sm font-medium text-gray-700 peer-checked:border-blue-600 peer-checked:bg-blue-50 peer-checked:text-blue-700 hover:border-blue-300 transition-all min-h-[48px] flex items-center justify-center">서비스업</div></label><label class="cursor-pointer"><input type="radio" name="industry" value="제조업" class="peer hidden"><div class="border-2 border-gray-200 rounded-xl px-3 py-2.5 text-center text-sm font-medium text-gray-700 peer-checked:border-blue-600 peer-checked:bg-blue-50 peer-checked:text-blue-700 hover:border-blue-300 transition-all min-h-[48px] flex items-center justify-center">제조업</div></label><label class="cursor-pointer"><input type="radio" name="industry" value="건설업" class="peer hidden"><div class="border-2 border-gray-200 rounded-xl px-3 py-2.5 text-center text-sm font-medium text-gray-700 peer-checked:border-blue-600 peer-checked:bg-blue-50 peer-checked:text-blue-700 hover:border-blue-300 transition-all min-h-[48px] flex items-center justify-center">건설업</div></label><label class="cursor-pointer"><input type="radio" name="industry" value="도소매업" class="peer hidden"><div class="border-2 border-gray-200 rounded-xl px-3 py-2.5 text-center text-sm font-medium text-gray-700 peer-checked:border-blue-600 peer-checked:bg-blue-50 peer-checked:text-blue-700 hover:border-blue-300 transition-all min-h-[48px] flex items-center justify-center">도소매업</div></label><label class="cursor-pointer"><input type="radio" name="industry" value="음식점업" class="peer hidden"><div class="border-2 border-gray-200 rounded-xl px-3 py-2.5 text-center text-sm font-medium text-gray-700 peer-checked:border-blue-600 peer-checked:bg-blue-50 peer-checked:text-blue-700 hover:border-blue-300 transition-all min-h-[48px] flex items-center justify-center">음식점업</div></label><label class="cursor-pointer"><input type="radio" name="industry" value="쇼핑몰업" class="peer hidden"><div class="border-2 border-gray-200 rounded-xl px-3 py-2.5 text-center text-sm font-medium text-gray-700 peer-checked:border-blue-600 peer-checked:bg-blue-50 peer-checked:text-blue-700 hover:border-blue-300 transition-all min-h-[48px] flex items-center justify-center">쇼핑몰업</div></label><label class="cursor-pointer"><input type="radio" name="industry" value="기타 업종" class="peer hidden"><div class="border-2 border-gray-200 rounded-xl px-3 py-2.5 text-center text-sm font-medium text-gray-700 peer-checked:border-blue-600 peer-checked:bg-blue-50 peer-checked:text-blue-700 hover:border-blue-300 transition-all min-h-[48px] flex items-center justify-center">기타 업종</div></label></div></div>
+                <div><label style="display:block;font-weight:600;color:#374151;margin-bottom:0.5rem;">회사명 <span style="color:#f43f5e;">*</span></label><input type="text" name="company" required style="width:100%;border:2px solid #e5e7eb;border-radius:0.75rem;padding:0.75rem 1rem;color:#111827;box-sizing:border-box;" placeholder="회사명을 입력해주세요"></div>
+                <div><label style="display:block;font-weight:600;color:#374151;margin-bottom:0.5rem;">대표님 성함 <span style="color:#f43f5e;">*</span></label><input type="text" name="name" required style="width:100%;border:2px solid #e5e7eb;border-radius:0.75rem;padding:0.75rem 1rem;color:#111827;box-sizing:border-box;" placeholder="성함을 입력해주세요"></div>
+                <div><label style="display:block;font-weight:600;color:#374151;margin-bottom:0.5rem;">연락처 <span style="color:#f43f5e;">*</span></label><input type="tel" name="phone" required style="width:100%;border:2px solid #e5e7eb;border-radius:0.75rem;padding:0.75rem 1rem;color:#111827;box-sizing:border-box;" placeholder="연락받으실 번호를 입력해주세요"></div>
+                <div><label style="display:block;font-weight:600;color:#374151;margin-bottom:0.5rem;">이메일 <span style="font-weight:400;color:#9ca3af;font-size:0.875rem;">(선택)</span></label><input type="email" name="email" style="width:100%;border:2px solid #e5e7eb;border-radius:0.75rem;padding:0.75rem 1rem;color:#111827;box-sizing:border-box;" placeholder="example@email.com"></div>
+                <div><label style="display:block;font-weight:600;color:#374151;margin-bottom:0.5rem;">유입경로 <span style="font-weight:400;color:#9ca3af;font-size:0.875rem;">(선택)</span></label><select name="referral_source" style="width:100%;border:2px solid #e5e7eb;border-radius:0.75rem;padding:0.75rem 1rem;color:#111827;background:white;box-sizing:border-box;"><option value="">선택해주세요</option><option value="검색">검색</option><option value="유튜브">유튜브</option><option value="스레드">스레드</option><option value="기타">기타</option></select></div>
+                <div><label style="display:block;font-weight:600;color:#374151;margin-bottom:0.5rem;">현재 가장 큰 고민 <span style="color:#f43f5e;">*</span></label><textarea name="message" required rows="4" style="width:100%;border:2px solid #e5e7eb;border-radius:0.75rem;padding:0.75rem 1rem;color:#111827;resize:none;box-sizing:border-box;" placeholder="예) 경리 직원 채용이 어려워요&#10;예) 장부 정리가 복잡해요"></textarea></div>
+                <button type="submit" style="width:100%;background:#2563eb;color:white;font-weight:700;font-size:1.125rem;padding:1rem;border-radius:0.75rem;border:none;cursor:pointer;">무료 상담 신청하기</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        function openModal() { document.getElementById('consultModal').classList.add('active'); document.body.style.overflow = 'hidden'; }
+        function closeModal() { document.getElementById('consultModal').classList.remove('active'); document.body.style.overflow = 'auto'; }
+        document.getElementById('consultModal').addEventListener('click', function(e) { if (e.target === this) closeModal(); });
+        document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeModal(); });
+        function copyShareUrl() { navigator.clipboard.writeText(window.location.href).then(function(){ alert('링크가 복사되었습니다!'); }).catch(function(){ alert('링크 복사에 실패했습니다.'); }); }
+        (function() {
+            var btn = document.getElementById('scrollToTop'); if (!btn) return;
+            window.addEventListener('scroll', function() { if (window.pageYOffset > 300) { btn.style.opacity='1'; btn.style.visibility='visible'; } else { btn.style.opacity='0'; btn.style.visibility='hidden'; } });
+            btn.addEventListener('click', function() { window.scrollTo({top:0,behavior:'smooth'}); });
+        })();
+        document.querySelectorAll('.copyright-year').forEach(function(el){ el.textContent = new Date().getFullYear(); });
+        function combineEmail(form) { const el = form.querySelector('input[name="email"]'); if (el) el.value = el.value.trim(); }
+        function handleFormSubmit(event, formId) {
+            event.preventDefault();
+            const form = document.getElementById(formId);
+            const btn = form.querySelector('button[type="submit"]');
+            const orig = btn.innerHTML;
+            combineEmail(form);
+            btn.disabled = true; btn.innerHTML = '봇 확인 중...';
+            const URL = 'https://script.google.com/macros/s/AKfycbwLkpVI-zFipUtirkixwbaiTg-NdJP99UajSA_eoBs7MB5QPh20zkgpesZ9uDJJkHAQ/exec';
+            grecaptcha.ready(function() {
+                grecaptcha.execute('6Le0CEMsAAAAAFGF3Dnci1_SUkC4VWmzqdox2jJZ', {action:'submit'}).then(function(token) {
+                    let r = form.querySelector('input[name="recaptcha_token"]');
+                    if (!r) { r = document.createElement('input'); r.type='hidden'; r.name='recaptcha_token'; form.appendChild(r); }
+                    r.value = token; btn.innerHTML = '전송 중...';
+                    fetch(URL, {method:'POST', body:new FormData(form), mode:'no-cors'})
+                        .then(function() { window.dataLayer=window.dataLayer||[]; window.dataLayer.push({event:'form_submit'}); if (typeof gtag_report_conversion === 'function') { var _ud = (typeof wapeopleGetUserData === 'function') ? wapeopleGetUserData(form) : {}; gtag_report_conversion(undefined, _ud); } alert('\u2705 상담 신청이 완료되었습니다!\n\n영업시간 내 문의 시, 30분 이내로 연락드리겠습니다.'); form.reset(); closeModal(); btn.disabled=false; btn.innerHTML=orig; })
+                        .catch(function() { window.dataLayer=window.dataLayer||[]; window.dataLayer.push({event:'form_submit'}); if (typeof gtag_report_conversion === 'function') { var _ud = (typeof wapeopleGetUserData === 'function') ? wapeopleGetUserData(form) : {}; gtag_report_conversion(undefined, _ud); } alert('\u2705 상담 신청이 완료되었습니다!\n\n영업시간 내 문의 시, 30분 이내로 연락드리겠습니다.'); form.reset(); closeModal(); btn.disabled=false; btn.innerHTML=orig; });
+                }).catch(function() { alert('\u274c 봇 확인 실패. 페이지를 새로고침해주세요.'); btn.disabled=false; btn.innerHTML=orig; });
+            });
+            return false;
+        }
+    </script>
+</body>
+</html>
