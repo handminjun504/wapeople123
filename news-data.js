@@ -16,6 +16,16 @@
     //   url       : 'news/{slug}.html'
     window.WA_NEWS_DATA = [
     {
+        slug: 'wongyeok-gyeongri-ranhgan',
+        title: '원격경리란? — 비대면으로 경리 업무를 맡기는 방법 완전정리',
+        category: '경리뉴스',
+        date: '2026-07-01',
+        summary: '원격경리는 경리 직원을 직접 채용하지 않고, 외부 전문 담당자가 비대면으로 회사 경리 업무를 처리하는 서비스입니다. 사무실에 출근하는 직원 없이 세금계산서·장부·미수미지급·손익 보고까지 온라인으로 처리됩니다.',
+        cover: '',
+        url: 'news/wongyeok-gyeongri-ranhgan.html'
+    },
+
+    {
         slug: 'gyeongri-outsourcing-ranhgan',
         title: '경리 아웃소싱이란?',
         category: '경리뉴스',
