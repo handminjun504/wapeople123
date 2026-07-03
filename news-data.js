@@ -16,6 +16,16 @@
     //   url       : 'news/{slug}.html'
     window.WA_NEWS_DATA = [
     {
+        slug: 'jungjingoung-sojingoung-jeongsaekjageum',
+        title: '중소기업 정책자금이란? — 중진공·소진공 한 번에 정리',
+        category: '정책자금',
+        date: '2026-07-03',
+        summary: '정책자금은 정부가 중소기업·소상공인에게 시중 금리보다 낮은 조건으로 제공하는 융자 제도입니다. 담보가 부족하거나 시중 금융 이용이 어려운 기업에게 자금을 공급하는 것이 핵심 목적입니다.',
+        cover: '',
+        url: 'news/jungjingoung-sojingoung-jeongsaekjageum.html'
+    },
+
+    {
         slug: 'wongyeok-gyeongri-ranhgan',
         title: '원격경리란? — 비대면으로 경리 업무를 맡기는 방법 완전정리',
         category: '경리뉴스',
