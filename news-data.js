@@ -16,6 +16,16 @@
     //   url       : 'news/{slug}.html'
     window.WA_NEWS_DATA = [
     {
+        slug: 'helsgiang-pilates-gyeongri-daehang',
+        title: '헬스장·필라테스 경리대행 — 회원권·PT 매출 구조가 복잡한 이유',
+        category: '경리뉴스',
+        date: '2026-07-07',
+        summary: '헬스장·필라테스는 회원권·PT·단체수업 매출이 섞이고 환불·이월·할인이 잦아 이번 달 실제 매출이 얼마인지 파악하기가 유독 어렵습니다. 트레이너별 매출 집계, 미수금 관리, 손익 파악까지 — 이걸 전부 혼자 하는 건 원장님 몫이 아닙니다.',
+        cover: '',
+        url: 'news/helsgiang-pilates-gyeongri-daehang.html'
+    },
+
+    {
         slug: 'jungjingoung-sojingoung-jeongsaekjageum',
         title: '중소기업 정책자금이란? — 중진공·소진공 한 번에 정리',
         category: '정책자금',
