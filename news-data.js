@@ -16,6 +16,36 @@
     //   url       : 'news/{slug}.html'
     window.WA_NEWS_DATA = [
     {
+        slug: 'helsgiang-pilates-gyeongri-daehang',
+        title: '헬스장·필라테스 경리대행 — 회원권·PT 매출 구조가 복잡한 이유',
+        category: '경리뉴스',
+        date: '2026-07-07',
+        summary: '헬스장·필라테스는 회원권·PT·단체수업 매출이 섞이고 환불·이월·할인이 잦아 이번 달 실제 매출이 얼마인지 파악하기가 유독 어렵습니다. 트레이너별 매출 집계, 미수금 관리, 손익 파악까지 — 이걸 전부 혼자 하는 건 원장님 몫이 아닙니다.',
+        cover: '',
+        url: 'news/helsgiang-pilates-gyeongri-daehang.html'
+    },
+
+    {
+        slug: 'jungjingoung-sojingoung-jeongsaekjageum',
+        title: '중소기업 정책자금이란? — 중진공·소진공 한 번에 정리',
+        category: '정책자금',
+        date: '2026-07-03',
+        summary: '정책자금은 정부가 중소기업·소상공인에게 시중 금리보다 낮은 조건으로 제공하는 융자 제도입니다. 담보가 부족하거나 시중 금융 이용이 어려운 기업에게 자금을 공급하는 것이 핵심 목적입니다.',
+        cover: '',
+        url: 'news/jungjingoung-sojingoung-jeongsaekjageum.html'
+    },
+
+    {
+        slug: 'wongyeok-gyeongri-ranhgan',
+        title: '원격경리란? — 비대면으로 경리 업무를 맡기는 방법 완전정리',
+        category: '경리뉴스',
+        date: '2026-07-01',
+        summary: '원격경리는 경리 직원을 직접 채용하지 않고, 외부 전문 담당자가 비대면으로 회사 경리 업무를 처리하는 서비스입니다. 사무실에 출근하는 직원 없이 세금계산서·장부·미수미지급·손익 보고까지 온라인으로 처리됩니다.',
+        cover: '',
+        url: 'news/wongyeok-gyeongri-ranhgan.html'
+    },
+
+    {
         slug: 'gyeongri-outsourcing-ranhgan',
         title: '경리 아웃소싱이란?',
         category: '경리뉴스',
