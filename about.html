@@ -118,6 +118,7 @@
     <link rel="stylesheet" href="dist/output.css">
     <link rel="stylesheet" href="mobile-optimize.css?v=20260312b">
     <script src="traffic-attribution.js?v=20260312a" defer></script>
+    <script src="/lead-ingest.js" defer></script>
     <script src="a11y-enhance.js" defer></script>
     <link rel="stylesheet" href="fonts/Pretendard-1.3.9/web/static/pretendard-subset.css?v=20260312c">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/fontawesome.min.css" media="print" onload="this.media='all'">
@@ -741,6 +742,7 @@
                         // GA4·리마케팅: GTM dataLayer push
                         window.dataLayer = window.dataLayer || [];
                         window.dataLayer.push({'event': 'form_submit'});
+                        if (typeof wapeopleSendLeadToErp === 'function') { wapeopleSendLeadToErp(form); }
 
                         // Google Ads 전환: gtag 직접 발사 (GTM 의존성 제거, transaction_id로 디덥, Enhanced Conversions 포함)
                         if (typeof gtag_report_conversion === 'function') {
@@ -759,6 +761,7 @@
                         // GA4·리마케팅: GTM dataLayer push (no-cors 모드는 .catch에도 도달하지만 실제로는 전송 성공인 경우가 많음)
                         window.dataLayer = window.dataLayer || [];
                         window.dataLayer.push({'event': 'form_submit'});
+                        if (typeof wapeopleSendLeadToErp === 'function') { wapeopleSendLeadToErp(form); }
 
                         // Google Ads 전환: gtag 직접 발사 (Enhanced Conversions 포함)
                         if (typeof gtag_report_conversion === 'function') {
