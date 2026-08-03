@@ -187,4 +187,21 @@
     document.addEventListener('submit', function (event) {
         attachAttributionToForm(event.target);
     }, true);
+
+    // 전화 버튼(tel: 링크) 클릭 추적: GTM 트리거용 phone_click 이벤트만 남김.
+    // 실제 통화 여부/발신자 정보는 알 수 없으므로 ERP 리드로는 보내지 않음.
+    document.addEventListener('click', function (event) {
+        var link = event.target.closest ? event.target.closest('a[href^="tel:"]') : null;
+        if (!link) return;
+
+        var attribution = safeParse(localStorage.getItem(STORAGE_KEY));
+        window.dataLayer = window.dataLayer || [];
+        window.dataLayer.push({
+            event: 'phone_click',
+            phone_number: link.getAttribute('href').replace(/^tel:/, ''),
+            click_page: window.location.pathname,
+            click_source: attribution.latest_source || '',
+            click_medium: attribution.latest_medium || ''
+        });
+    }, true);
 })();
