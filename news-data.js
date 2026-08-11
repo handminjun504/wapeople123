@@ -16,6 +16,16 @@
     //   url       : 'news/{slug}.html'
     window.WA_NEWS_DATA = [
     {
+        slug: 'interior-gyeongri-daehang',
+        title: '인테리어 업체 경리대행 — 공사대금·외주비·자재비 관리가 복잡한 이유',
+        category: '경리뉴스',
+        date: '2026-08-11',
+        summary: '인테리어 업체는 공사마다 외주업체·자재비·인건비 구성이 달라 원가 계산이 공사별로 전부 다릅니다. 공사대금 미수금, 외주비 미지급금, 자재 세금계산서 관리까지 — 이걸 동시에 여러 현장 돌리면서 혼자 처리하기란 불가능에 가깝습니다.',
+        cover: '',
+        url: 'news/interior-gyeongri-daehang.html'
+    },
+
+    {
         slug: 'helsgiang-pilates-gyeongri-daehang',
         title: '헬스장·필라테스 경리대행 — 회원권·PT 매출 구조가 복잡한 이유',
         category: '경리뉴스',
