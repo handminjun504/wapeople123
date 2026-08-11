@@ -9,6 +9,9 @@ node_modules/
 ._*
 Thumbs.db
 
+# Legacy review folder (path contained '#', breaks Vercel static URLs)
+gnrl/BH_*/
+
 # Editor directories
 .vscode/
 .idea/

@@ -2,7 +2,10 @@ const fs = require('fs');
 const path = require('path');
 
 const ROOT_DIR = process.cwd();
-const SOURCE_DIR = path.join(ROOT_DIR, 'gnrl');
+// Prefer the URL-safe folder. Paths containing '#' break on Vercel static hosting.
+const SOURCE_DIR = fs.existsSync(path.join(ROOT_DIR, 'gnrl', 'reviews'))
+  ? path.join(ROOT_DIR, 'gnrl', 'reviews')
+  : path.join(ROOT_DIR, 'gnrl');
 const OUTPUT_FILE = path.join(ROOT_DIR, 'review-data.js');
 const IMAGE_EXTENSIONS = new Set(['.png', '.jpg', '.jpeg', '.webp']);
 // 익명성을 유지하면서도 placeholder("OO") 보다 자연스럽게 보이도록 한 글자만 ●로 가린다.
@@ -67,12 +70,18 @@ function walkImages(dirPath, collector) {
       continue;
     }
 
+    // macOS AppleDouble / hidden junk
+    if (entry.name.startsWith('.') || entry.name.startsWith('._')) {
+      continue;
+    }
+
     const extension = path.extname(entry.name).toLowerCase();
     if (!IMAGE_EXTENSIONS.has(extension)) {
       continue;
     }
 
-    const relativePath = toPosixPath(path.relative(ROOT_DIR, fullPath));
+    // '#' breaks URL paths on Vercel (treated as fragment). Keep deploy paths URL-safe.
+    const relativePath = toPosixPath(path.relative(ROOT_DIR, fullPath)).replace(/#/g, '');
     collector.push({
       image: relativePath,
     });
