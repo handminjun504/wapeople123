@@ -190,28 +190,69 @@
 
     // 전화 버튼(tel: 링크) 클릭 추적: GTM 트리거용 phone_click 이벤트만 남김.
     // 실제 통화 여부/발신자 정보는 알 수 없으므로 ERP 리드로는 보내지 않음.
-    // 데스크톱 tel: 클릭은 통화로 이어지지 않는 경우가 많아 모바일만 집계한다.
+    // 봇·데스크톱 클릭으로 전환이 부풀지 않도록 아래 조건을 모두 통과해야 한다.
+    var PHONE_CLICK_SESSION_KEY = 'wapeople_phone_click_v1';
+    var hadRealGesture = false;
+
+    function markRealGesture() {
+        hadRealGesture = true;
+    }
+
+    // 단순 자동 click() 과 구분하기 위해 실제 터치/포인터 제스처가 있었는지 기록
+    document.addEventListener('touchstart', markRealGesture, { capture: true, passive: true, once: true });
+    document.addEventListener('pointerdown', markRealGesture, { capture: true, passive: true, once: true });
+
+    function isBotLikeClient() {
+        if (navigator.webdriver) return true;
+        if (window.callPhantom || window._phantom || window.__nightmare) return true;
+        if (document.documentElement && document.documentElement.getAttribute('webdriver')) return true;
+
+        var ua = navigator.userAgent || '';
+        if (!ua || ua.length < 12) return true;
+        if (/HeadlessChrome|PhantomJS|Selenium|Puppeteer|Playwright|Cypress|Slackbot|Discordbot|TelegramBot|Googlebot|AdsBot|bingbot|Baiduspider|YandexBot|DuckDuckBot|facebookexternalhit|Twitterbot|LinkedInBot|Applebot|PetalBot|Bytespider|GPTBot|ClaudeBot|curl|wget|python-requests|Go-http-client|scrapy|httpclient|Java\//i.test(ua)) {
+            return true;
+        }
+
+        return false;
+    }
+
     function isMobileClient() {
         var ua = navigator.userAgent || '';
         if (/Android|iPhone|iPod|Windows Phone|Mobile/i.test(ua)) return true;
-        // iPadOS 13+ 는 Mac처럼 보이므로 터치 지원으로 보조 판별
         if (/iPad/i.test(ua)) return true;
         if (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1) return true;
         return false;
     }
 
-    var lastPhoneClickAt = 0;
+    function alreadyCountedThisSession() {
+        try {
+            return sessionStorage.getItem(PHONE_CLICK_SESSION_KEY) === '1';
+        } catch (error) {
+            return false;
+        }
+    }
+
+    function markCountedThisSession() {
+        try {
+            sessionStorage.setItem(PHONE_CLICK_SESSION_KEY, '1');
+        } catch (error) {
+            // ignore
+        }
+    }
 
     document.addEventListener('click', function (event) {
         if (!isMobileClient()) return;
+        if (isBotLikeClient()) return;
+        if (!hadRealGesture) return;
+        if (alreadyCountedThisSession()) return;
+
+        // isTrusted=false 는 스크립트가 만든 클릭일 가능성이 큼
+        if (event && event.isTrusted === false) return;
 
         var link = event.target.closest ? event.target.closest('a[href^="tel:"]') : null;
         if (!link) return;
 
-        // 같은 탭에서 연속 클릭으로 전환이 부풀지 않도록 3초 내 중복 무시
-        var now = Date.now();
-        if (now - lastPhoneClickAt < 3000) return;
-        lastPhoneClickAt = now;
+        markCountedThisSession();
 
         var attribution = safeParse(localStorage.getItem(STORAGE_KEY));
         window.dataLayer = window.dataLayer || [];
