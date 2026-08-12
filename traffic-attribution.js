@@ -190,9 +190,28 @@
 
     // 전화 버튼(tel: 링크) 클릭 추적: GTM 트리거용 phone_click 이벤트만 남김.
     // 실제 통화 여부/발신자 정보는 알 수 없으므로 ERP 리드로는 보내지 않음.
+    // 데스크톱 tel: 클릭은 통화로 이어지지 않는 경우가 많아 모바일만 집계한다.
+    function isMobileClient() {
+        var ua = navigator.userAgent || '';
+        if (/Android|iPhone|iPod|Windows Phone|Mobile/i.test(ua)) return true;
+        // iPadOS 13+ 는 Mac처럼 보이므로 터치 지원으로 보조 판별
+        if (/iPad/i.test(ua)) return true;
+        if (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1) return true;
+        return false;
+    }
+
+    var lastPhoneClickAt = 0;
+
     document.addEventListener('click', function (event) {
+        if (!isMobileClient()) return;
+
         var link = event.target.closest ? event.target.closest('a[href^="tel:"]') : null;
         if (!link) return;
+
+        // 같은 탭에서 연속 클릭으로 전환이 부풀지 않도록 3초 내 중복 무시
+        var now = Date.now();
+        if (now - lastPhoneClickAt < 3000) return;
+        lastPhoneClickAt = now;
 
         var attribution = safeParse(localStorage.getItem(STORAGE_KEY));
         window.dataLayer = window.dataLayer || [];
@@ -201,7 +220,8 @@
             phone_number: link.getAttribute('href').replace(/^tel:/, ''),
             click_page: window.location.pathname,
             click_source: attribution.latest_source || '',
-            click_medium: attribution.latest_medium || ''
+            click_medium: attribution.latest_medium || '',
+            click_device: 'mobile'
         });
     }, true);
 })();
