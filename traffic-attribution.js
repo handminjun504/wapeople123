@@ -188,10 +188,12 @@
         attachAttributionToForm(event.target);
     }, true);
 
-    // 전화 버튼(tel: 링크) 클릭 추적: GTM 트리거용 phone_click 이벤트만 남김.
-    // 실제 통화 여부/발신자 정보는 알 수 없으므로 ERP 리드로는 보내지 않음.
-    // 봇·데스크톱 클릭으로 전환이 부풀지 않도록 아래 조건을 모두 통과해야 한다.
-    var PHONE_CLICK_SESSION_KEY = 'wapeople_phone_click_v1';
+    // 전화 버튼(tel: 링크) 의도 추적.
+    // 이벤트명: wa_phone_intent (구 phone_click)
+    // - 실제 통화 연결 여부는 알 수 없음 → ERP/Ads 기본 전환으로 쓰지 말 것
+    // - 구 GTM이 phone_click → Google Ads 전환으로 연결돼 허수가 쌓여 이벤트명을 분리함
+    // - GA4 관찰용으로만 연결 권장
+    var PHONE_CLICK_SESSION_KEY = 'wapeople_phone_intent_v1';
     var hadRealGesture = false;
 
     function markRealGesture() {
@@ -257,7 +259,7 @@
         var attribution = safeParse(localStorage.getItem(STORAGE_KEY));
         window.dataLayer = window.dataLayer || [];
         window.dataLayer.push({
-            event: 'phone_click',
+            event: 'wa_phone_intent',
             phone_number: link.getAttribute('href').replace(/^tel:/, ''),
             click_page: window.location.pathname,
             click_source: attribution.latest_source || '',
