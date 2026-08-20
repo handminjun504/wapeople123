@@ -16,6 +16,16 @@
     //   url       : 'news/{slug}.html'
     window.WA_NEWS_DATA = [
     {
+        slug: 'beopin-card-gyeongbi-jeongsan-outsourcing',
+        title: '법인카드 경비 정산 아웃소싱 — 경비 규정, 외부에서 봐야 일관되게 지켜집니다',
+        category: '경리뉴스',
+        date: '2026-08-20',
+        summary: '법인카드 사용내역 검토·정산은 재무팀 시간을 가장 많이 잡아먹는 반복 업무입니다. 게다가 내부 담당자가 동료 직원 경비를 반려하는 건 규정의 문제가 아니라 관계의 문제가 되기도 합니다.',
+        cover: '',
+        url: 'news/beopin-card-gyeongbi-jeongsan-outsourcing.html'
+    },
+
+    {
         slug: 'interior-gyeongri-daehang',
         title: '인테리어 업체 경리대행 — 공사대금·외주비·자재비 관리가 복잡한 이유',
         category: '경리뉴스',
