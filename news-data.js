@@ -16,6 +16,16 @@
     //   url       : 'news/{slug}.html'
     window.WA_NEWS_DATA = [
     {
+        slug: 'ecommerce-gyeongri-daehang',
+        title: '온라인 쇼핑몰 경리대행 — 정산·환불·재고가 뒤섞이면 숫자를 못 믿게 됩니다',
+        category: '경리뉴스',
+        date: '2026-09-04',
+        summary: '스마트스토어·쿠팡 등 여러 플랫폼 정산이 겹치는 온라인 쇼핑몰 경리, 왜 유독 관리가 어려운지와 경리대행으로 정리하는 방법을 정리했습니다.',
+        cover: '',
+        url: 'news/ecommerce-gyeongri-daehang.html'
+    },
+
+    {
         slug: 'beopin-card-gyeongbi-jeongsan-outsourcing',
         title: '법인카드 경비 정산 아웃소싱 — 경비 규정, 외부에서 봐야 일관되게 지켜집니다',
         category: '경리뉴스',
