@@ -16,6 +16,16 @@
     //   url       : 'news/{slug}.html'
     window.WA_NEWS_DATA = [
     {
+        slug: 'gyeyeolsa-gyeongbi-jeongsan-daehang',
+        title: '계열사 여러 곳의 법인카드 경비 정산, 담당자 한 명에게 의존하고 있다면',
+        category: '경리뉴스',
+        date: '2026-09-14',
+        summary: '계열사 두 곳의 법인카드 경비 정산(월 수천 건)을 담당자 한 명이 전담하면, 그 담당자가 갑자기 퇴사할 때 업무가 통째로 멈출 위험이 있습니다. 카드사 데이터 대사부터 인수인계 매뉴얼까지 갖추는 경비 정산 아웃소싱 방법을 정리했습니다.',
+        cover: '',
+        url: 'news/gyeyeolsa-gyeongbi-jeongsan-daehang.html'
+    },
+
+    {
         slug: '2026-09-11',
         title: '법인·개인사업자·신규 매장까지, 사업장이 여러 개라면 경리부터 통합하세요',
         category: '경리뉴스',
