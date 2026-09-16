@@ -16,6 +16,16 @@
     //   url       : 'news/{slug}.html'
     window.WA_NEWS_DATA = [
     {
+        slug: 'platform-byeol-maechul-jipgye-daehang',
+        title: '판매 플랫폼이 많을수록, 매출집계가 늦어지고 의사결정도 늦어집니다',
+        category: '경리뉴스',
+        date: '2026-09-16',
+        summary: '쿠팡·스마트스토어·배달앱·자사몰 등 판매 플랫폼이 늘어날수록 정산 주기와 수수료 체계가 제각각이라 매출집계가 늦어지고, 재고·마케팅 같은 의사결정도 함께 늦어집니다. 경리아웃소싱으로 정리하는 방법을 소개합니다.',
+        cover: '',
+        url: 'news/platform-byeol-maechul-jipgye-daehang.html'
+    },
+
+    {
         slug: 'gyeyeolsa-gyeongbi-jeongsan-daehang',
         title: '계열사 여러 곳의 법인카드 경비 정산, 담당자 한 명에게 의존하고 있다면',
         category: '경리뉴스',
