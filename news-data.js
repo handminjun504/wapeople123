@@ -16,6 +16,56 @@
     //   url       : 'news/{slug}.html'
     window.WA_NEWS_DATA = [
     {
+        slug: 'platform-byeol-maechul-jipgye-daehang',
+        title: '판매 플랫폼이 많을수록, 매출집계가 늦어지고 의사결정도 늦어집니다',
+        category: '경리뉴스',
+        date: '2026-09-16',
+        summary: '쿠팡·스마트스토어·배달앱·자사몰 등 판매 플랫폼이 늘어날수록 정산 주기와 수수료 체계가 제각각이라 매출집계가 늦어지고, 재고·마케팅 같은 의사결정도 함께 늦어집니다. 경리아웃소싱으로 정리하는 방법을 소개합니다.',
+        cover: '',
+        url: 'news/platform-byeol-maechul-jipgye-daehang.html'
+    },
+
+    {
+        slug: 'gyeyeolsa-gyeongbi-jeongsan-daehang',
+        title: '계열사 여러 곳의 법인카드 경비 정산, 담당자 한 명에게 의존하고 있다면',
+        category: '경리뉴스',
+        date: '2026-09-14',
+        summary: '계열사 두 곳의 법인카드 경비 정산(월 수천 건)을 담당자 한 명이 전담하면, 그 담당자가 갑자기 퇴사할 때 업무가 통째로 멈출 위험이 있습니다. 카드사 데이터 대사부터 인수인계 매뉴얼까지 갖추는 경비 정산 아웃소싱 방법을 정리했습니다.',
+        cover: '',
+        url: 'news/gyeyeolsa-gyeongbi-jeongsan-daehang.html'
+    },
+
+    {
+        slug: '2026-09-11',
+        title: '법인·개인사업자·신규 매장까지, 사업장이 여러 개라면 경리부터 통합하세요',
+        category: '경리뉴스',
+        date: '2026-09-11',
+        summary: '여러 사업장을 함께 운영하면 매출이 들어오는 방식도, 지출 관리 방식도 사업장마다 따로 움직여 전체 손익을 파악하기 어렵습니다. 매출 취합부터 미수금 관리, 지출결의까지 사업장 통합 경리로 정리하는 방법을 정리했습니다.',
+        cover: '',
+        url: 'news/2026-09-11.html'
+    },
+
+    {
+        slug: 'ecommerce-gyeongri-daehang',
+        title: '온라인 쇼핑몰 경리대행 — 정산·환불·재고가 뒤섞이면 숫자를 못 믿게 됩니다',
+        category: '경리뉴스',
+        date: '2026-09-04',
+        summary: '스마트스토어·쿠팡 등 여러 플랫폼 정산이 겹치는 온라인 쇼핑몰 경리, 왜 유독 관리가 어려운지와 경리대행으로 정리하는 방법을 정리했습니다.',
+        cover: '',
+        url: 'news/ecommerce-gyeongri-daehang.html'
+    },
+
+    {
+        slug: 'beopin-card-gyeongbi-jeongsan-outsourcing',
+        title: '법인카드 경비 정산 아웃소싱 — 경비 규정, 외부에서 봐야 일관되게 지켜집니다',
+        category: '경리뉴스',
+        date: '2026-08-20',
+        summary: '법인카드 사용내역 검토·정산은 재무팀 시간을 가장 많이 잡아먹는 반복 업무입니다. 게다가 내부 담당자가 동료 직원 경비를 반려하는 건 규정의 문제가 아니라 관계의 문제가 되기도 합니다.',
+        cover: '',
+        url: 'news/beopin-card-gyeongbi-jeongsan-outsourcing.html'
+    },
+
+    {
         slug: 'interior-gyeongri-daehang',
         title: '인테리어 업체 경리대행 — 공사대금·외주비·자재비 관리가 복잡한 이유',
         category: '경리뉴스',
