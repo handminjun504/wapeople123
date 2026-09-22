@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-labelledby="title desc">
+  <title id="title">expense management icon</title>
+  <desc id="desc">corporate card and expense report icon</desc>
+  <rect x="10" y="16" width="34" height="24" rx="4" fill="#6366f1"/>
+  <rect x="10" y="22" width="34" height="6" fill="#4338ca"/>
+  <rect x="15" y="32" width="12" height="4" rx="2" fill="#c7d2fe"/>
+  <rect x="34" y="10" width="20" height="26" rx="3" fill="#ffffff" stroke="#818cf8" stroke-width="2"/>
+  <path d="M39 17h10" stroke="#6366f1" stroke-width="2" stroke-linecap="round"/>
+  <path d="M39 22h10" stroke="#a5b4fc" stroke-width="2" stroke-linecap="round"/>
+  <path d="M39 27h7" stroke="#a5b4fc" stroke-width="2" stroke-linecap="round"/>
+  <path d="M40 31l2.5 2.5l5.5 -5.5" stroke="#22c55e" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+</svg>
