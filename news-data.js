@@ -16,6 +16,16 @@
     //   url       : 'news/{slug}.html'
     window.WA_NEWS_DATA = [
     {
+        slug: 'b2b-domae-nappumeop-gyeongri-daehang',
+        title: 'B2B 도매·납품업 경리대행 — 외상매출금, 지금 얼마인지 바로 말씀하실 수 있으세요?',
+        category: '경리뉴스',
+        date: '2026-09-23',
+        summary: 'B2B 도매·납품업은 거래처마다 외상 조건과 결제 시점이 달라 외상매출금 파악이 쉽지 않습니다. 미수금 연령분석부터 세금계산서 확인까지 경리아웃소싱으로 정리하는 방법을 소개합니다.',
+        cover: '',
+        url: 'news/b2b-domae-nappumeop-gyeongri-daehang.html'
+    },
+
+    {
         slug: 'platform-byeol-maechul-jipgye-daehang',
         title: '판매 플랫폼이 많을수록, 매출집계가 늦어지고 의사결정도 늦어집니다',
         category: '경리뉴스',
