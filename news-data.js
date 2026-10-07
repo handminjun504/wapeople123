@@ -16,6 +16,15 @@
     //   url       : 'news/{slug}.html'
     window.WA_NEWS_DATA = [
     {
+        slug: 'gyeongri-hoengnyeong-pangyeol-gujo',
+        title: '6년 동안 23억, 아무도 몰랐습니다 — 경리 횡령 판결에서 사장님이 확인해야 할 3가지',
+        category: '경리뉴스',
+        date: '2026-10-07',
+        summary: '회삿돈 23억여 원을 6년간 빼돌린 경리 직원 판결로 본 횡령의 구조. 이체·장부·확인을 한 사람에게 맡기지 않으려면 무엇을 나눠야 하는지 정리했습니다.',
+        cover: '',
+        url: 'news/gyeongri-hoengnyeong-pangyeol-gujo.html'
+    },
+    {
         slug: 'b2b-domae-nappumeop-gyeongri-daehang',
         title: 'B2B 도매·납품업 경리대행 — 외상매출금, 지금 얼마인지 바로 말씀하실 수 있으세요?',
         category: '경리뉴스',
