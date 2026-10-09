@@ -16,6 +16,16 @@
     //   url       : 'news/{slug}.html'
     window.WA_NEWS_DATA = [
     {
+        slug: 'jeonmun-geonseol-hyeonjangbyeol-sonik',
+        title: '현장은 네 곳인데, 어느 현장이 남았는지는 모릅니다 — 전문건설업 현장별 손익 관리',
+        category: '경리뉴스',
+        date: '2026-10-09',
+        summary: '동시에 여러 현장을 돌리는 전문건설업은 카드·통장 지출이 현장 구분 없이 섞이기 쉽습니다. 현장별 손익을 보려면 무엇부터 나눠야 하는지, 경리대행으로 정리하는 방법을 소개합니다.',
+        cover: '',
+        url: 'news/jeonmun-geonseol-hyeonjangbyeol-sonik.html'
+    },
+
+    {
         slug: 'gyeongri-hoengnyeong-pangyeol-gujo',
         title: '6년 동안 23억, 아무도 몰랐습니다 — 경리 횡령 판결에서 사장님이 확인해야 할 3가지',
         category: '경리뉴스',
