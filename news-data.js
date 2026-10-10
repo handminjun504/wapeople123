@@ -16,6 +16,16 @@
     //   url       : 'news/{slug}.html'
     window.WA_NEWS_DATA = [
     {
+        slug: 'beopinkadeu-jeomgeom-service',
+        title: '법인카드 결제 승인·사후 검증, 경리 아웃소싱에 맡기면 어디까지 해주나요?',
+        category: '경리뉴스',
+        date: '2026-10-10',
+        summary: '법인카드 결제 승인과 사후 검증을 경리 아웃소싱(경리대행)으로 맡기면 어디까지 해주는지, 서비스 범위와 도입 절차, 규모가 큰 회사가 안심하는 구조를 정리했습니다.',
+        cover: '',
+        url: 'news/beopinkadeu-jeomgeom-service.html'
+    },
+
+    {
         slug: 'beopinkadeu-gyeolje-seungin-sahu-geomjeung',
         title: '법인카드 사적 사용, 막는 것보다 어려운 건 ‘확인’입니다',
         category: '실무팁',
