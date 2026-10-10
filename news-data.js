@@ -16,6 +16,16 @@
     //   url       : 'news/{slug}.html'
     window.WA_NEWS_DATA = [
     {
+        slug: 'beopinkadeu-gyeolje-seungin-sahu-geomjeung',
+        title: '법인카드 사적 사용, 막는 것보다 어려운 건 ‘확인’입니다',
+        category: '실무팁',
+        date: '2026-10-10',
+        summary: '법인카드 결제 승인과 사후 검증, 규정을 벗어난 사용 안내까지. 경리 담당자 한 명이 감당하기 어려운 법인카드 점검을 경리대행으로 정리하는 방법을 소개합니다.',
+        cover: '',
+        url: 'news/beopinkadeu-gyeolje-seungin-sahu-geomjeung.html'
+    },
+
+    {
         slug: 'jeonmun-geonseol-hyeonjangbyeol-sonik',
         title: '현장은 네 곳인데, 어느 현장이 남았는지는 모릅니다 — 전문건설업 현장별 손익 관리',
         category: '경리뉴스',
