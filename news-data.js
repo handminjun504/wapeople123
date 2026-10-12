@@ -16,6 +16,16 @@
     //   url       : 'news/{slug}.html'
     window.WA_NEWS_DATA = [
     {
+        slug: 'beopinkadeu-jichulgyeoluiseo',
+        title: '지출결의서 양식은 있는데, 결재가 안 올라옵니다 — 밀린 지출결의서 정리법',
+        category: '경리뉴스',
+        date: '2026-10-12',
+        summary: '지출결의서가 밀리는 이유는 양식이 없어서가 아니라, 쓸 사람·결재 기준·확인 순서가 정리되지 않아서입니다. 법인카드 점검 시리즈 2편에서 지출결의서 양식과 결재 흐름, 경리 아웃소싱(경리대행)이 맡는 범위를 정리했습니다.',
+        cover: '',
+        url: 'news/beopinkadeu-jichulgyeoluiseo.html'
+    },
+
+    {
         slug: 'beopinkadeu-jeomgeom-service',
         title: '법인카드 결제 승인·사후 검증, 경리 아웃소싱에 맡기면 어디까지 해주나요?',
         category: '경리뉴스',
