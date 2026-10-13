@@ -336,10 +336,10 @@
 
     {
         slug: 'semusa-vs-gyeongri-daehang-chaijeom',
-        title: '세무사 vs 경리대행, 무엇이 다른가요?',
+        title: '세무기장과 경리 아웃소싱, 뭐가 다른가요? — 어디까지 맡길 수 있나',
         category: '경리뉴스',
-        date: '2026-05-27',
-        summary: '— 서비스 범위 완벽 비교',
+        date: '2026-10-13',
+        summary: '세무기장은 세금 신고·결산, 경리 아웃소싱(경리대행)은 매일의 전표·급여·자금 관리입니다. 둘의 차이와 각각 어디까지 맡길 수 있는지, 비용과 고르는 기준을 정리했습니다.',
         cover: '',
         url: 'news/semusa-vs-gyeongri-daehang-chaijeom.html'
     },
