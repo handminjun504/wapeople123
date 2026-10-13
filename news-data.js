@@ -16,6 +16,16 @@
     //   url       : 'news/{slug}.html'
     window.WA_NEWS_DATA = [
     {
+        slug: 'woncheonse-singo-gihan',
+        title: '원천세 신고, 매달 10일 놓치면 어떻게 되나요? — 대표님이 챙겨야 할 기한과 서류',
+        category: '경리뉴스',
+        date: '2026-10-13',
+        summary: '원천세 신고·납부 기한(매월 10일)과 지급명세서 제출 일정, 기한을 놓치지 않는 경리 체크리스트를 정리했습니다. 경리 아웃소싱·경리대행으로 급여·자료 정리를 맡기면 기한 관리가 쉬워집니다.',
+        cover: '',
+        url: 'news/woncheonse-singo-gihan.html'
+    },
+
+    {
         slug: 'beopinkadeu-jichulgyeoluiseo',
         title: '지출결의서 양식은 있는데, 결재가 안 올라옵니다 — 밀린 지출결의서 정리법',
         category: '경리뉴스',
