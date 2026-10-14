@@ -16,6 +16,16 @@
     //   url       : 'news/{slug}.html'
     window.WA_NEWS_DATA = [
     {
+        slug: 'bugase-singo-junbi-checklist',
+        title: '부가세 신고 준비, 경리 담당자가 신고 전에 챙길 것 — 10월 26일 예정신고 체크리스트',
+        category: '실무팁',
+        date: '2026-10-14',
+        summary: '부가세 신고는 담당 세무사가 하지만, 신고에 들어갈 매출·매입 자료와 증빙은 회사 경리가 만듭니다. 10월 26일 예정신고를 앞두고 경리 담당자가 신고 전에 챙길 것과, 경리 아웃소싱(경리대행)이 맡는 범위를 정리했습니다.',
+        cover: '',
+        url: 'news/bugase-singo-junbi-checklist.html'
+    },
+
+    {
         slug: 'woncheonse-singo-gihan',
         title: '원천세 신고, 매달 10일 놓치면 어떻게 되나요? — 대표님이 챙겨야 할 기한과 서류',
         category: '경리뉴스',
@@ -28,7 +38,7 @@
     {
         slug: 'beopinkadeu-jichulgyeoluiseo',
         title: '지출결의서 양식은 있는데, 결재가 안 올라옵니다 — 밀린 지출결의서 정리법',
-        category: '경리뉴스',
+        category: '실무팁',
         date: '2026-10-12',
         summary: '지출결의서가 밀리는 이유는 양식이 없어서가 아니라, 쓸 사람·결재 기준·확인 순서가 정리되지 않아서입니다. 법인카드 점검 시리즈 2편에서 지출결의서 양식과 결재 흐름, 경리 아웃소싱(경리대행)이 맡는 범위를 정리했습니다.',
         cover: '',
@@ -38,7 +48,7 @@
     {
         slug: 'beopinkadeu-jeomgeom-service',
         title: '법인카드 결제 승인·사후 검증, 경리 아웃소싱에 맡기면 어디까지 해주나요?',
-        category: '경리뉴스',
+        category: '실무팁',
         date: '2026-10-10',
         summary: '법인카드 결제 승인과 사후 검증을 경리 아웃소싱(경리대행)으로 맡기면 어디까지 해주는지, 서비스 범위와 도입 절차, 규모가 큰 회사가 안심하는 구조를 정리했습니다.',
         cover: '',
