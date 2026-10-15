@@ -16,6 +16,16 @@
     //   url       : 'news/{slug}.html'
     window.WA_NEWS_DATA = [
     {
+        slug: 'bugase-yejeongsingo-maeipseaek-sujeongsegeumgyesan',
+        title: '부가세 예정신고 전에 경리 담당자가 챙겨야 할 것 — 매입세액 공제와 수정세금계산서',
+        category: '실무팁',
+        date: '2026-10-15',
+        summary: '부가세 예정신고를 앞두고 경리 담당자가 확인해야 할 매입세액 공제 대상과 불공제 항목, 수정세금계산서가 필요한 경우를 정리했습니다. 경리 아웃소싱·경리대행으로 증빙 정리를 맡기면 신고 전 준비가 한결 쉬워집니다.',
+        cover: '',
+        url: 'news/bugase-yejeongsingo-maeipseaek-sujeongsegeumgyesan.html'
+    },
+
+    {
         slug: 'bugase-singo-junbi-checklist',
         title: '부가세 신고 준비, 경리 담당자가 신고 전에 챙길 것 — 10월 26일 예정신고 체크리스트',
         category: '실무팁',
