@@ -16,6 +16,15 @@
     //   url       : 'news/{slug}.html'
     window.WA_NEWS_DATA = [
     {
+        slug: 'gongdonginjeungseo-naebonaegi',
+        title: '공동인증서 내보내기, 기업은행을 안 써도 될까요? — 화면 그대로 따라하는 순서',
+        category: '실무팁',
+        date: '2026-10-15',
+        summary: '기업은행을 쓰지 않아도 괜찮습니다. 공동인증서를 바탕화면으로 내보내 담당자에게 전달하는 방법을 화면과 강조 표시 그대로 정리했습니다. 인증서 파일과 비밀번호를 안전하게 넘기는 방법도 함께 확인하세요.',
+        url: 'news/gongdonginjeungseo-naebonaegi.html'
+    },
+
+    {
         slug: 'bugase-yejeongsingo-maeipseaek-sujeongsegeumgyesan',
         title: '부가세 예정신고 전에 경리 담당자가 챙겨야 할 것 — 매입세액 공제와 수정세금계산서',
         category: '실무팁',
