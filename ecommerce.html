@@ -935,6 +935,7 @@
                 </div>
             </div>
             <div class="border-t border-gray-200 mt-6 pt-6 text-center text-gray-400 text-sm">
+                <p class="mb-2"><a href="/privacy" class="hover:text-blue-600 transition-colors underline underline-offset-2">개인정보 처리방침</a></p>
                 <p>&copy; <span class="copyright-year">2026</span> 경리업무를잘하는청년들. All rights reserved.</p>
             </div>
         </div>
@@ -990,6 +991,29 @@
                 <div>
                     <label class="block text-gray-700 font-semibold mb-2">현재 가장 큰 고민 <span class="text-rose-500">*</span></label>
                     <textarea name="message" required rows="4" class="w-full border-2 border-gray-200 rounded-xl px-4 py-3 text-gray-900 resize-none" placeholder="예) 채널별 정산이 복잡해요&#10;예) 상품별 마진이 안 보여요"></textarea>
+                </div>
+                <div class="agree-box" style="border:1px solid #e5e8ee;border-radius:0.75rem;padding:14px 16px;margin-top:14px;font-size:0.95rem;text-align:left;background:#fff;">
+                    <label style="display:flex;align-items:flex-start;gap:8px;font-weight:600;cursor:pointer;color:#374151;">
+                        <input type="checkbox" name="agree_privacy" required style="margin-top:4px;flex-shrink:0;">
+                        <span>[필수] 개인정보 수집·이용에 동의합니다.</span>
+                    </label>
+                    <p style="color:#5b6472;font-size:0.88rem;line-height:1.6;margin:6px 0 14px 26px;">
+                        · 수집 항목: 회사명, 담당자 성명, 연락처, 이메일, 문의 내용<br>
+                        · 수집·이용 목적: 상담 응대, 무료 재무 현황 진단, 견적·서비스 안내, 계약 체결<br>
+                        · 보유·이용 기간: 상담 종료 후 3년<br>
+                        · 동의를 거부할 권리가 있으며, 거부 시 상담 신청이 제한될 수 있습니다.<br>
+                        <a href="/privacy" target="_blank" rel="noopener" style="color:#2f6df6;text-decoration:underline;">개인정보 처리방침 보기</a>
+                    </p>
+                    <label style="display:flex;align-items:flex-start;gap:8px;font-weight:600;cursor:pointer;color:#374151;">
+                        <input type="checkbox" name="agree_marketing" style="margin-top:4px;flex-shrink:0;">
+                        <span>[선택] 마케팅·광고성 정보 수신에 동의합니다.</span>
+                    </label>
+                    <p style="color:#5b6472;font-size:0.88rem;line-height:1.6;margin:6px 0 0 26px;">
+                        · 수신 항목: 이메일, 문자(SMS/MMS), 전화<br>
+                        · 이용 목적: 이벤트·혜택 등 광고성 정보 발송, 서비스 소개<br>
+                        · 보유·이용 기간: 동의 철회 시까지<br>
+                        · 동의하지 않아도 상담 신청 및 서비스 이용에는 제한이 없습니다.
+                    </p>
                 </div>
                 <button type="submit" class="w-full accent-bg text-white font-bold text-lg py-4 rounded-xl hover:bg-violet-700 transition-all">무료 상담 신청하기</button>
             </form>
