@@ -16,6 +16,16 @@
     //   url       : 'news/{slug}.html'
     window.WA_NEWS_DATA = [
     {
+        slug: 'sujeongsegeumgyesan-jaksongil-chegip',
+        title: '세금계산서 수정 요청을 받았을 때 — 수정세금계산서 작성일과 경리가 챙길 것',
+        category: '실무팁',
+        date: '2026-10-16',
+        summary: '거래처가 세금계산서를 다시 끊어달라고 할 때, 사유와 작성일자를 먼저 확인해야 합니다. 수정 요청이 오는 상황과 경리가 챙길 것, 경리 아웃소싱(경리대행)이 맡는 범위를 정리했습니다. 발급 판단과 신고는 담당 세무사가 봅니다.',
+        cover: '',
+        url: 'news/sujeongsegeumgyesan-jaksongil-chegip.html'
+    },
+
+    {
         slug: 'gongdonginjeungseo-naebonaegi',
         title: '공동인증서 내보내기, 기업은행을 안 써도 될까요? — 화면 그대로 따라하는 순서',
         category: '실무팁',
