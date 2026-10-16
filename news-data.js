@@ -16,6 +16,16 @@
     //   url       : 'news/{slug}.html'
     window.WA_NEWS_DATA = [
     {
+        slug: 'gyeongri-insu-ingye-checklist',
+        title: '경리 담당자가 퇴사할 때, 인수인계는 무엇부터 받아야 할까요?',
+        category: '실무팁',
+        date: '2026-10-16',
+        summary: '퇴사 통보부터 마지막 출근일까지 경리 담당자에게 받아둘 장부·급여·4대보험·세무사 자료·자금·계정 자산을 체크리스트로 정리했습니다. 담당자 개인 계정을 회사 명의로 바꾸는 것과 그다음 선택까지.',
+        cover: '',
+        url: 'news/gyeongri-insu-ingye-checklist.html'
+    },
+
+    {
         slug: 'sujeongsegeumgyesan-jaksongil-chegip',
         title: '세금계산서 수정 요청을 받았을 때 — 수정세금계산서 작성일과 경리가 챙길 것',
         category: '실무팁',
