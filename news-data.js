@@ -16,6 +16,16 @@
     //   url       : 'news/{slug}.html'
     window.WA_NEWS_DATA = [
     {
+        slug: 'jeongchaekjageum-teukryebojeung-junbi',
+        title: '정책자금·특례보증, 신청 전에 무엇을 준비해야 할까요?',
+        category: '정책자금',
+        date: '2026-10-16',
+        summary: '정책자금(융자)과 특례보증(보증)이 무엇이 다른지, 신청 전에 챙겨야 할 기본 서류, 평소 경리로 정리해두면 빨라지는 것을 정리했습니다. 자격·한도·금리·기간은 기관과 공고 기준으로 확인해야 합니다.',
+        cover: '',
+        url: 'news/jeongchaekjageum-teukryebojeung-junbi.html'
+    },
+
+    {
         slug: 'gyeongri-insu-ingye-checklist',
         title: '경리 담당자가 퇴사할 때, 인수인계는 무엇부터 받아야 할까요?',
         category: '실무팁',
