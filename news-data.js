@@ -16,6 +16,16 @@
     //   url       : 'news/{slug}.html'
     window.WA_NEWS_DATA = [
     {
+        slug: 'bugase-gasansae-juligi',
+        title: '부가세 가산세, 왜 나오고 어떻게 줄이나 — 경리 담당자가 먼저 볼 것',
+        category: '실무팁',
+        date: '2026-10-19',
+        summary: '부가세 가산세가 붙는 경우(무신고·과소신고·납부지연·세금계산서·합계표)와 세율, 기한 후 신고·자진납부로 감면받는 구간, 경리 담당자가 매달 챙길 점검 항목을 정리했습니다. 개별 사안의 판단은 담당 세무사 확인이 필요합니다.',
+        cover: '',
+        url: 'news/bugase-gasansae-juligi.html'
+    },
+
+    {
         slug: 'jeongchaekjageum-teukryebojeung-junbi',
         title: '정책자금·특례보증, 신청 전에 무엇을 준비해야 할까요?',
         category: '정책자금',
