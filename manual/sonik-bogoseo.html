@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-THPPR46Q');</script>
+    <!-- End Google Tag Manager -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17745262400"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'AW-17745262400');
+    </script>
+    <!-- Event snippet for 견적 요청 conversion (Enhanced Conversions 지원) -->
+    <script>
+    function wapeopleGetUserData(form) {
+        if (!form) return {};
+        var fd = new FormData(form);
+        var email = ((fd.get('email') || '') + '').trim().toLowerCase();
+        var phone = ((fd.get('phone') || '') + '').trim();
+        var data = {};
+        if (email && email.indexOf('@') > 0) data.email = email;
+        if (phone) {
+            var digits = phone.replace(/D/g, '');
+            if (digits.length >= 10) {
+                if (digits.indexOf('82') === 0) data.phone_number = '+' + digits;
+                else if (digits.charAt(0) === '0') data.phone_number = '+82' + digits.substring(1);
+                else data.phone_number = '+' + digits;
+            }
+        }
+        return data;
+    }
+
+    function gtag_report_conversion(url, userData) {
+        var callback = function () {
+            if (typeof(url) != 'undefined') {
+                window.location = url;
+            }
+        };
+        var payload = {
+            'send_to': 'AW-17745262400/CarCCLvL6v0bEMDuzI1C',
+            'value': 1.0,
+            'currency': 'KRW',
+            'transaction_id': 'wa_' + Date.now() + '_' + Math.random().toString(36).substring(2, 9),
+            'event_callback': callback
+        };
+        if (userData && (userData.email || userData.phone_number)) {
+            payload.user_data = userData;
+        }
+        gtag('event', 'conversion', payload);
+        return false;
+    }
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>손익보고서 작성·확인 매뉴얼 (경리나라 화면 기준) | 경리업무를잘하는청년들</title>
+    <meta name="description" content="매입·카드매입·출금·입금 네 가지만 정리하면 손익보고서 숫자가 맞습니다. 경리나라 화면 그대로, 작성 4단계와 확인 3단계를 순서대로 정리했습니다.">
+    <meta name="keywords" content="손익보고서 작성, 손익보고서 확인, 경리나라 손익보고서, 매입내역 정리, 법인카드 매입, 출금내역 확인, 카드사 입금, 경리업무 매뉴얼">
+    <meta name="robots" content="index, follow">
+    <meta name="naver-site-verification" content="aefffa7a6d4cad21b90328c862b8ce5725188412">
+    <link rel="canonical" href="https://wapeople.kr/manual/sonik-bogoseo">
+    <meta property="og:title" content="공동인증서 내보내기 안내 (기업은행에서 어느 은행이든) | 경리업무를잘하는청년들">
+    <meta property="og:description" content="기업은행을 쓰지 않아도 괜찮습니다. 공동인증서를 바탕화면으로 내보내 담당자에게 전달하는 순서를 화면 그대로 정리했습니다.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://wapeople.kr/manual/cert-export">
+    <meta property="og:image" content="https://wapeople.kr/logo.png?v=20260310b">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:site_name" content="경리업무를잘하는청년들">
+    <meta property="og:locale" content="ko_KR">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="공동인증서 내보내기 안내 (기업은행에서 어느 은행이든) | 경리업무를잘하는청년들">
+    <meta name="twitter:description" content="기업은행을 쓰지 않아도 괜찮습니다. 공동인증서를 바탕화면으로 내보내 담당자에게 전달하는 순서를 화면 그대로 정리했습니다.">
+    <meta name="twitter:image" content="https://wapeople.kr/logo.png?v=20260310b">
+    
+    
+
+    <link rel="icon" type="image/x-icon" href="/favicon/favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-icon-180x180.png">
+    <meta name="theme-color" content="#2563eb">
+    <link rel="stylesheet" href="../dist/output.css?v=20261016">
+    <link rel="stylesheet" href="../mobile-optimize.css?v=20260312b">
+    <script src="../traffic-attribution.js?v=20260813a" defer></script>
+    <script src="/lead-ingest.js?v=20260806a" defer></script>
+    <script src="../a11y-enhance.js" defer></script>
+    <link rel="stylesheet" href="../fonts/Pretendard-1.3.9/web/static/pretendard-subset.css?v=20260312c">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/fontawesome.min.css" media="print" onload="this.media='all'">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/solid.min.css" media="print" onload="this.media='all'">
+        <script>
+        document.documentElement.style.opacity = '0';
+        document.documentElement.style.transition = 'opacity 0.2s ease';
+        function revealPageAfterFontLoad() { document.documentElement.style.opacity = '1'; }
+        const fontLoadFallback = setTimeout(revealPageAfterFontLoad, 3000);
+        if (document.fonts && document.fonts.ready) {
+            document.fonts.ready.then(function() { clearTimeout(fontLoadFallback); revealPageAfterFontLoad(); }).catch(revealPageAfterFontLoad);
+        } else { window.addEventListener('load', function() { clearTimeout(fontLoadFallback); revealPageAfterFontLoad(); }); }
+    </script>
+    <noscript><style>html { opacity: 1 !important; }</style></noscript>
+    <style>
+        .modal { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.5); z-index: 9999; align-items: center; justify-content: center; }
+        .modal.active { display: flex; }
+        .article-body { font-size: 1.125rem; line-height: 1.8; color: #1f2937; word-break: keep-all; letter-spacing: -0.01em; }
+        .article-body > p:first-of-type { font-size: 1.25rem; font-weight: 600; color: #0f172a; line-height: 1.7; padding-left: 1rem; border-left: 4px solid #2563eb; margin-bottom: 2rem; }
+        .article-body h2 { font-size: 1.5rem; font-weight: 800; color: #0f172a; margin: 2.5rem 0 1rem; padding-bottom: 0.5rem; border-bottom: 2px solid #2563eb; letter-spacing: -0.02em; }
+        .article-body h3 { font-size: 1.25rem; font-weight: 700; color: #1f2937; margin: 2rem 0 0.75rem; letter-spacing: -0.01em; }
+        .article-body p { margin: 1.25rem 0; }
+        .article-body p:has(> br:only-child) { display: none; }
+        .article-body hr { border: none; height: 0; margin: 1.75rem 0; position: relative; }
+        .article-body hr::before { content: ""; display: block; width: 60px; height: 3px; background: #e5e7eb; border-radius: 9999px; margin: 0 auto; }
+        .article-body ul, .article-body ol { margin: 1rem 0 1rem 1.5rem; }
+        .article-body ul { list-style: disc; } .article-body ol { list-style: decimal; }
+        .article-body li { margin: 0.5rem 0; }
+        .article-body strong { color: #0f172a; font-weight: 700; }
+        .article-body a { color: #2563eb; text-decoration: underline; text-underline-offset: 3px; }
+        .article-body blockquote { border-left: 4px solid #93c5fd; background: #eff6ff; padding: 1rem 1.25rem; margin: 1.5rem 0; border-radius: 0 0.75rem 0.75rem 0; color: #1e3a8a; font-style: italic; }
+        .article-body code { background: #f3f4f6; padding: 0.15rem 0.4rem; border-radius: 0.25rem; font-size: 0.9em; color: #be185d; }
+        .article-body img { max-width: 100%; height: auto; border-radius: 0.75rem; margin: 1.5rem 0; }
+        .article-body table { width: 100%; border-collapse: collapse; font-size: 0.9375rem; margin: 1.25rem 0; }
+        .article-body thead tr { background: #1a3a5c; color: #fff; }
+        .article-body thead th { padding: 0.75rem 1rem; text-align: left; font-weight: 600; }
+        .article-body tbody td { padding: 0.7rem 1rem; border-bottom: 1px solid #e5e5e0; color: #444; }
+        .article-body tbody tr:nth-child(even) { background: #f7f7f5; }
+    </style>
+<script type="application/ld+json">
+    {"@context":"https://schema.org","@type":"WebPage","name":"공동인증서 내보내기 안내","inLanguage":"ko-KR","url":"https://wapeople.kr/manual/cert-export"}
+    </script>
+</head>
+<body class="antialiased">
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-THPPR46Q" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 right-0 z-50 nav-glass">
+        <div class="max-w-7xl mx-auto px-3 md:px-6 py-2 flex items-center justify-between gap-2">
+            <a href="../index.html" class="flex items-center gap-1 hover:opacity-80 transition-opacity touch-manipulation min-w-0">
+                <img src="../logo.png?v=20260310b" alt="경리업무를잘하는청년들" class="hidden md:block object-contain" style="height:2.125rem;" fetchpriority="high">
+                <img src="../logo.png?v=20260310b" alt="경리업무를잘하는청년들" class="block md:hidden mobile-nav-logo object-contain" fetchpriority="high">
+            </a>
+            <div class="hidden md:flex items-center gap-6">
+                <a href="../about.html" class="text-gray-700 hover:text-blue-700 font-semibold transition-colors">원격경리</a>
+                <a href="../news.html" class="text-gray-700 hover:text-blue-700 font-semibold transition-colors">경리소식</a>
+                <a href="../manual/" class="text-blue-700 font-bold transition-colors">자료실</a>
+                <a href="../faq.html" class="text-gray-700 hover:text-blue-700 font-semibold transition-colors">자주 묻는 질문</a>
+            </div>
+            <button onclick="openModal()" class="bg-blue-600 hover:bg-blue-700 text-white font-bold px-5 py-2 rounded-xl transition-colors text-sm whitespace-nowrap">상담 바로가기</button>
+        </div>
+    </nav>
+
+    <!-- 자료 헤더 -->
+    <header class="bg-white pt-28 md:pt-32 pb-10 md:pb-12 border-b border-gray-100">
+        <div class="max-w-3xl mx-auto px-4 md:px-6">
+            <nav aria-label="현재 위치" class="text-sm text-gray-500 mb-6">
+                <a href="../index.html" class="hover:text-blue-600 transition-colors">홈</a>
+                <span class="mx-2 text-gray-300">/</span>
+                <span class="text-gray-700">손익보고서 작성·확인</span>
+            </nav>
+            <div class="flex flex-wrap items-center gap-2 mb-5">
+                <span class="text-xs font-bold px-3 py-1 rounded-full border bg-blue-50 text-blue-700 border-blue-200">자료 안내</span>
+                <time datetime="2026-10-19" class="text-sm text-gray-400">2026. 10. 19.</time>
+            </div>
+            <h1 class="text-3xl md:text-4xl font-black text-gray-900 leading-tight mb-4">손익보고서, 매달 이 순서로 정리하시면 됩니다</h1>
+            <p class="text-lg md:text-xl text-gray-600 leading-relaxed">경리나라 화면 그대로, 작성 네 단계와 확인 세 단계를 한 번에 정리했습니다. 매달 이 순서만 지키시면 됩니다.</p>
+        </div>
+    </header>
+
+    
+<main class="bg-slate-50 py-8 md:py-14">
+
+<style>
+.sm-wrap{max-width:880px;margin:0 auto;padding:0 16px}
+.sm-card{background:#fff;border:1px solid #e8edf5;border-radius:18px;padding:26px 24px;margin-bottom:22px;box-shadow:0 1px 2px rgba(16,24,40,.04)}
+@media(min-width:768px){.sm-card{padding:34px 36px}}
+.sm-eyebrow{color:#1d4ed8;font-weight:800;font-size:12px;letter-spacing:.14em;margin:0 0 8px}
+.sm-h2{font-size:22px;line-height:1.35;font-weight:800;color:#111827;margin:0 0 12px}
+@media(min-width:768px){.sm-h2{font-size:26px}}
+.sm-p{font-size:15px;line-height:1.75;color:#374151;margin:0}
+.sm-p b{color:#111827}
+.sm-note{background:#fffbeb;border:1px solid #fde68a;border-radius:12px;padding:14px 16px;font-size:14px;line-height:1.7;color:#78350f;margin:22px 0 0}
+.sm-cards{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin:18px 0 0}
+@media(min-width:768px){.sm-cards{grid-template-columns:repeat(4,1fr)}}
+.sm-c{background:#f8fafc;border:1px solid #e8edf5;border-radius:12px;padding:14px}
+.sm-c .no{font-size:11px;font-weight:800;color:#93a5c4;letter-spacing:.08em}
+.sm-c .t{font-size:15px;font-weight:800;color:#111827;margin-top:6px}
+.sm-c .d{font-size:13px;color:#6b7280;line-height:1.5;margin-top:4px}
+.sm-flow{background:#f4f7fd;border-radius:12px;padding:14px 16px;margin-top:16px;font-size:14px;color:#1f2c4d;font-weight:700;line-height:1.9}
+.sm-flow span{color:#9aa7bd;font-weight:400;margin:0 2px}
+.sm-sec{margin-top:8px}
+.sm-step{padding-top:20px;margin-top:20px;border-top:1px solid #eef2f7}
+.sm-step:first-of-type{border-top:none;padding-top:0;margin-top:0}
+.sm-st{display:flex;align-items:flex-start;gap:10px}
+.sm-num{flex:none;width:24px;height:24px;border-radius:50%;background:#e8efff;color:#1d4ed8;font-size:12px;font-weight:800;display:flex;align-items:center;justify-content:center;margin-top:1px}
+.sm-st h3{font-size:17px;font-weight:800;color:#111827;margin:0;line-height:1.45}
+.sm-env{font-size:12px;font-weight:700;color:#1d4ed8;letter-spacing:.02em;margin:0 0 10px 34px}
+.sm-shot{border:1px solid #e5eaf2;border-radius:12px;overflow:hidden;background:#fff;margin:14px 0 0}
+.sm-shot img{display:block;width:100%;height:auto}
+.sm-cap{font-size:12px;color:#8a94a6;margin:8px 2px 0}
+.sm-tip{background:#f6f8fc;border-left:4px solid #1d4ed8;border-radius:0 10px 10px 0;padding:13px 16px;font-size:14px;line-height:1.7;color:#3d4a5f;margin-top:14px}
+.sm-tip b{color:#1d4ed8}
+.sm-ol{margin:14px 0 0;padding:0;list-style:none}
+.sm-ol li{position:relative;padding-left:26px;font-size:15px;line-height:1.7;color:#374151;margin-bottom:7px}
+.sm-ol li:before{content:"";position:absolute;left:8px;top:11px;width:5px;height:5px;border-radius:50%;background:#c7d2e5}
+.sm-check{display:grid;grid-template-columns:1fr;gap:10px;margin:18px 0 0}
+@media(min-width:768px){.sm-check{grid-template-columns:1fr 1fr}}
+.sm-ck{display:flex;gap:12px;align-items:flex-start;border:1px solid #e8edf5;border-radius:12px;padding:14px 16px;font-size:14px;line-height:1.6;color:#374151}
+.sm-ck .bx{flex:none;width:18px;height:18px;border:2px solid #c7d2e5;border-radius:5px;margin-top:2px}
+.sm-ck b{color:#111827}
+.sm-cta{background:#1f2c4d;border-radius:18px;padding:28px 24px;color:#fff;margin-bottom:22px}
+.sm-cta h3{margin:0 0 8px;font-size:20px;font-weight:800;line-height:1.5}
+.sm-cta p{margin:0;font-size:14px;line-height:1.7;color:#c9d4e8}
+.sm-cta .u{display:inline-block;margin-top:14px;font-size:14px;font-weight:800;color:#fff;border-bottom:2px solid #6f8ec4;padding-bottom:2px}
+.sm-law{font-size:13px;line-height:1.7;color:#6b7280;margin-top:10px}
+.sm-small{font-size:12px;color:#9aa3b2;line-height:1.7;margin-top:14px}
+</style>
+
+<div class="sm-wrap">
+  <div class="sm-card">
+    <p class="sm-eyebrow">시작하기 전에</p>
+    <h2 class="sm-h2">매달 정리할 내역은 네 가지입니다</h2>
+    <p class="sm-p">손익보고서는 한 달 매출과 매입·비용을 모아 놓은 표입니다. 세금계산서 발행 마감일이 지나면 아래 네 가지를 정리해 주세요. 이 네 가지가 채워지면 보고서 숫자도 맞습니다.</p>
+    <div class="sm-cards">
+      <div class="sm-c"><div class="no">01</div><div class="t">매입내역</div><div class="d">매입 세금계산서, 현금영수증</div></div>
+      <div class="sm-c"><div class="no">02</div><div class="t">카드매입내역</div><div class="d">법인카드 사용분, 공제 여부</div></div>
+      <div class="sm-c"><div class="no">03</div><div class="t">출금내역</div><div class="d">통장에서 나간 돈 하나씩 대조</div></div>
+      <div class="sm-c"><div class="no">04</div><div class="t">입금내역</div><div class="d">카드사 입금, 매출과 맞추기</div></div>
+    </div>
+    <div class="sm-flow">① 매입내역 <span>→</span> ② 카드매입내역 <span>→</span> ③ 출금내역 <span>→</span> ④ 입금내역 <span>→</span> ⑤ 손익보고서 확인</div>
+    <p class="sm-small">마지막 확인은 경리나라 &gt; 판매 탭의 손익보고서에서 하시면 됩니다.</p>
+    <p class="sm-law">이 자료는 경리나라 화면 사용법을 정리한 것입니다. 매입세액 공제 여부, 계정 분류, 신고 내용 같은 세무 판단은 담당 세무사가 합니다.</p>
+    <div class="sm-note"><b>화면 안내</b> — 이 자료의 화면에 나오는 회사명·거래처·계좌번호·사업자번호·카드번호·금액은 모두 이해를 돕기 위한 <b>가상값</b>입니다. 실제 거래처 정보가 아닙니다.</div>
+  </div>
+
+  <div class="sm-card">
+    <p class="sm-eyebrow">PART 1 · 손익보고서 작성</p>
+    <h2 class="sm-h2">네 가지만 채우면 보고서가 만들어집니다</h2>
+    <p class="sm-p">경리나라 왼쪽 메뉴 순서대로 따라오시면 됩니다. 화면마다 무엇을 봐야 하는지 표시해 두었습니다.</p>
+    <div class="sm-sec"><div class="sm-step">
+  <div class="sm-st"><div class="sm-num">1</div><h3>이번 달 매입에 빠진 건은 없는지 봅니다</h3></div>
+  <div class="sm-env">매입내역 &nbsp;|&nbsp; 경리나라 &gt; 매입 &gt; 매입세금계산서(현행)</div>
+  <div class="sm-shot"><img src="img/sonik/step1-maeip.png" alt="매입세금계산서 화면" loading="lazy"></div>
+  <ul class="sm-ol"><li>마감일이 지나면 이번 달 <b>매입 건 전체</b>를 불러옵니다.</li><li>위쪽 <b>결의서 미작성</b> 금액이 0원이 될 때까지 남은 건을 처리합니다.</li><li>거래처별 <b>매입금액</b>과 증빙 종류(세금계산서·계산서)를 봅니다.</li><li><b>비고</b> 칸의 계좌·카드 표기를 보고 증빙이 빠진 매입이 없는지 맞춰 봅니다.</li></ul>
+  <div class="sm-tip"><b>확인 포인트.</b> 매입 증빙은 마감이 지나면 찾기 어렵습니다. 세금계산서나 현금영수증이 빠진 건이 없는지 이 화면에서 먼저 보세요.</div>
+</div><div class="sm-step">
+  <div class="sm-st"><div class="sm-num">2</div><h3>법인카드로 쓴 건은 공제 여부까지 표시합니다</h3></div>
+  <div class="sm-env">카드매입내역 &nbsp;|&nbsp; 경리나라 &gt; 매입 &gt; 카드(매입)사용내역</div>
+  <div class="sm-shot"><img src="img/sonik/step2-card.png" alt="카드(매입)사용내역 화면" loading="lazy"></div>
+  <ul class="sm-ol"><li><b>사용일자·사용처·사용처업종</b>을 같이 봅니다.</li><li><b>공제 / 불공제</b>가 맞게 찍혀 있는지 확인합니다.</li><li>결의서가 없는 건을 채워 <b>미작성 0원</b>으로 맞춥니다.</li><li>취소·환불 건이 <b>마이너스 금액</b>으로 들어가 있는지 봅니다.</li></ul>
+  <div class="sm-tip"><b>확인 포인트.</b> 접대비나 차량유지비처럼 증빙 요건이 따로 있는 항목은 사용처업종으로 먼저 걸러 두면 편합니다. 공제/불공제가 헷갈리는 건은 담당 세무사에게 확인하세요.</div>
+</div><div class="sm-step">
+  <div class="sm-st"><div class="sm-num">3</div><h3>통장에서 나간 돈은 하나씩 맞춰 봅니다</h3></div>
+  <div class="sm-env">출금내역 &nbsp;|&nbsp; 경리나라 &gt; 자금 &gt; 출금내역 지급확인</div>
+  <div class="sm-shot"><img src="img/sonik/step3-chulgeum.png" alt="출금내역 지급확인 화면" loading="lazy"></div>
+  <ul class="sm-ol"><li>급여·임차료·카드대금·이자까지 <b>출금된 건 전체</b>를 봅니다.</li><li>계좌적요와 실제로 지급한 내용이 맞는지 봅니다.</li><li>위쪽 <b>대기</b> 건수가 0건인지 확인합니다.</li><li>지급일과 귀속월이 다른 건은 <b>비고</b>에 적어 둡니다.</li></ul>
+  <div class="sm-tip"><b>확인 포인트.</b> 이자나 수수료처럼 금액이 작은 항목이 손익에서 빠지기 쉽습니다. 대기 건이 남아 있으면 그만큼 비용이 비어 있는 셈입니다.</div>
+</div><div class="sm-step">
+  <div class="sm-st"><div class="sm-num">4</div><h3>카드사에서 들어온 돈과 매출을 맞춥니다</h3></div>
+  <div class="sm-env">입금내역 &nbsp;|&nbsp; 경리나라 &gt; 자금 &gt; 입금내역 수납확인</div>
+  <div class="sm-shot"><img src="img/sonik/step4-ipgeum.png" alt="입금내역 수납확인 화면" loading="lazy"></div>
+  <ul class="sm-ol"><li><b>카드사별 입금 내역</b>을 봅니다.</li><li>입금액과 매출의 차액은 대부분 <b>카드 수수료</b>입니다.</li><li>맞추고 나면 손익보고서의 <b>매출과 입금이 같아집니다</b>.</li><li>정산이 걸친 건은 <b>마감 월 기준</b>으로 정리합니다.</li></ul>
+  <div class="sm-tip"><b>확인 포인트.</b> 카드사마다 정산 주기가 달라서 월말·월초에 걸치는 건이 생깁니다. 정산 주기, 차감 항목, 취소 건에 따라 차액이 달라질 수 있으니 카드사 정산내역과 같이 보세요.</div>
+</div></div>
+  </div>
+
+  <div class="sm-card">
+    <p class="sm-eyebrow">PART 2 · 손익보고서 확인</p>
+    <h2 class="sm-h2">숫자가 이상하면 원본까지 따라가 봅니다</h2>
+    <p class="sm-p">보고서에서 합계를 보고, 안 맞으면 항목을 눌러 내려가고, 마지막에는 증빙 원본까지 확인합니다.</p>
+    <div class="sm-sec"><div class="sm-step">
+  <div class="sm-st"><div class="sm-num">5</div><h3>정리한 내역이 이 화면에 모입니다</h3></div>
+  <div class="sm-env">손익보고서 &nbsp;|&nbsp; 경리나라 &gt; 판매 &gt; 손익보고서</div>
+  <div class="sm-shot"><img src="img/sonik/step5-report.png" alt="월별 손익보고서 상세 화면" loading="lazy"></div><div class="sm-cap">※ 화면의 금액은 가상값입니다. 실제 화면에는 해당 월 금액이 표시됩니다.</div>
+  <ul class="sm-ol"><li><b>조회기간</b>을 확인하고, 두 달을 비교한 뒤 마감 월 열을 봅니다.</li><li>매출 → 매입 → 비용 → 인건비 순서로 <b>합계</b>를 봅니다.</li><li>매입 항목을 누르면 <b>품목별 상세</b>로 내려갑니다.</li></ul>
+  
+</div><div class="sm-step">
+  <div class="sm-st"><div class="sm-num">6</div><h3>합계가 안 맞으면 항목을 눌러 들어갑니다</h3></div>
+  <div class="sm-env">품목별 상세내역 &nbsp;|&nbsp; 손익보고서에서 항목 클릭</div>
+  <div class="sm-shot"><img src="img/sonik/step6-detail.png" alt="품목별 상세내역(매입)" loading="lazy"></div><div class="sm-cap">다른 품목도 같은 방식으로 내려갑니다.</div>
+  <ul class="sm-ol"><li>건별 <b>일자·거래처·금액</b>을 봅니다.</li><li><b>구분</b> 값으로 계산서·카드 원본까지 따라갑니다.</li></ul>
+  <div class="sm-tip"><b>확인 포인트.</b> 합계가 안 맞을 때는 이 화면에서 건별로 내려가 보는 게 제일 빠릅니다.</div>
+</div><div class="sm-step">
+  <div class="sm-st"><div class="sm-num">7</div><h3>증빙 원본까지 그 자리에서 열립니다</h3></div>
+  <div class="sm-env">원본 증빙 &nbsp;|&nbsp; 구분값 클릭</div>
+  <div class="sm-shot"><img src="img/sonik/step7-invoice.png" alt="전자계산서 품목·금액 화면" loading="lazy"></div><div class="sm-cap">아래는 같은 건의 카드 승인 상세입니다.</div>
+  <ul class="sm-ol"><li><b>계산서</b>는 품목과 합계금액이 매입내역과 같은지 봅니다.</li><li><b>카드</b>는 승인일시와 공급금액·부가세를 봅니다.</li></ul>
+  
+</div></div>
+  </div>
+
+  <div class="sm-card">
+    <p class="sm-eyebrow">매달 마감 전 확인</p>
+    <h2 class="sm-h2">마감 전에 이 여섯 가지는 꼭 봅니다</h2>
+    <div class="sm-check">
+      <div class="sm-ck"><div class="bx"></div><div>매입 <b>세금계산서·현금영수증</b> 누락 없음</div></div>
+      <div class="sm-ck"><div class="bx"></div><div>카드 사용분 <b>공제 / 불공제</b> 정리 완료 <span style="color:#8a94a6">(판단은 담당 세무사 확인)</span></div></div>
+      <div class="sm-ck"><div class="bx"></div><div><b>결의서 미작성 0원</b> (매입·카드 모두)</div></div>
+      <div class="sm-ck"><div class="bx"></div><div>출금 <b>대기 0건</b> (이자·수수료 포함)</div></div>
+      <div class="sm-ck"><div class="bx"></div><div><b>카드사 입금과 매출</b> 매칭 완료</div></div>
+      <div class="sm-ck"><div class="bx"></div><div>손익보고서 <b>매출·매입·비용</b> 합계 확인</div></div>
+    </div>
+  </div>
+
+  <div class="sm-cta">
+    <h3>이 작업을 매달 직접 하기 어려우시면, 경리 아웃소싱으로 문의 주세요.</h3>
+    <p>손익보고서와 증빙 정리까지 한 흐름으로 맡아서 합니다.<br>세무 신고·세무 판단은 담당 세무사가 수행합니다.</p>
+    <span class="u">wapeople.kr</span>
+  </div>
+
+  <p class="sm-small">이 자료는 경리나라 화면을 기준으로 만들었습니다. 서비스가 업데이트되면 화면 구성이 달라질 수 있습니다.<br>문의 : wapeople.kr · 1566-2687</p>
+</div>
+</main>
+
+    <footer class="bg-white py-8 border-t border-gray-200">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="flex flex-col md:flex-row items-start justify-between gap-6">
+                <a href="../index.html"><img src="../logo.png?v=20260310b" alt="경리업무를잘하는청년들" class="h-14 md:h-16 object-contain"></a>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-3 text-gray-600 text-sm">
+                    <div class="flex items-center gap-2"><i class="fas fa-phone text-blue-700"></i><span>전화번호 : 1566-2687</span></div>
+                    <div class="flex items-center gap-2"><i class="fas fa-envelope text-blue-700"></i><span>wapeople000@gmail.com</span></div>
+                    <div class="flex items-center gap-2"><i class="fas fa-user text-blue-700"></i><span>대표이사 : 금종석</span></div>
+                    <div class="flex items-center gap-2"><i class="fas fa-clock text-blue-700"></i><span>평일 09:00 - 18:00</span></div>
+                    <div class="flex items-start gap-2 md:col-span-2"><i class="fas fa-map-marker-alt text-blue-700 mt-0.5"></i><span>주소 : 경기 수원시 팔달구 권광로175번길 83 201호</span></div>
+                </div>
+            </div>
+            <div class="border-t border-gray-200 mt-6 pt-6 text-center text-gray-400 text-sm">
+                <p class="mb-2"><a href="/privacy" class="hover:text-blue-600 transition-colors underline underline-offset-2">개인정보 처리방침</a></p>
+                <p>&copy; <span class="copyright-year">2026</span> 경리업무를잘하는청년들. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- 상담 모달 -->
+    <div id="consultModal" class="modal">
+        <div style="background:white;border-radius:1.5rem;padding:2rem;max-width:36rem;width:100%;margin:1rem;position:relative;max-height:90vh;overflow-y:auto;">
+            <button onclick="closeModal()" style="position:absolute;top:1.25rem;right:1.25rem;font-size:2rem;font-weight:300;color:#9ca3af;cursor:pointer;background:none;border:none;" aria-label="닫기">&times;</button>
+            <div style="text-align:center;margin-bottom:2rem;">
+                <div style="width:4rem;height:4rem;border-radius:1rem;background:#2563eb;display:flex;align-items:center;justify-content:center;margin:0 auto 1rem;"><i class="fas fa-paper-plane" style="color:white;font-size:1.5rem;"></i></div>
+                <h3 style="font-size:1.75rem;font-weight:700;color:#111827;margin-bottom:0.5rem;">무료 상담 신청</h3>
+                <p style="color:#6b7280;">원격경리 서비스에 대해 안내해드립니다.</p>
+            </div>
+            <form id="consultForm" style="display:flex;flex-direction:column;gap:1.25rem;" onsubmit="return handleFormSubmit(event, 'consultForm')">
+                <input type="hidden" name="inquiry_page" value="경리소식">
+                <div><label style="display:block;font-weight:600;color:#374151;margin-bottom:0.5rem;">업종 <span style="font-weight:400;color:#9ca3af;font-size:0.875rem;">(선택)</span></label><div class="grid grid-cols-2 md:grid-cols-3 gap-2"><label class="cursor-pointer"><input type="radio" name="industry" value="서비스업" class="peer hidden"><div class="border-2 border-gray-200 rounded-xl px-3 py-2.5 text-center text-sm font-medium text-gray-700 peer-checked:border-blue-600 peer-checked:bg-blue-50 peer-checked:text-blue-700 hover:border-blue-300 transition-all min-h-[48px] flex items-center justify-center">서비스업</div></label><label class="cursor-pointer"><input type="radio" name="industry" value="제조업" class="peer hidden"><div class="border-2 border-gray-200 rounded-xl px-3 py-2.5 text-center text-sm font-medium text-gray-700 peer-checked:border-blue-600 peer-checked:bg-blue-50 peer-checked:text-blue-700 hover:border-blue-300 transition-all min-h-[48px] flex items-center justify-center">제조업</div></label><label class="cursor-pointer"><input type="radio" name="industry" value="건설업" class="peer hidden"><div class="border-2 border-gray-200 rounded-xl px-3 py-2.5 text-center text-sm font-medium text-gray-700 peer-checked:border-blue-600 peer-checked:bg-blue-50 peer-checked:text-blue-700 hover:border-blue-300 transition-all min-h-[48px] flex items-center justify-center">건설업</div></label><label class="cursor-pointer"><input type="radio" name="industry" value="도소매업" class="peer hidden"><div class="border-2 border-gray-200 rounded-xl px-3 py-2.5 text-center text-sm font-medium text-gray-700 peer-checked:border-blue-600 peer-checked:bg-blue-50 peer-checked:text-blue-700 hover:border-blue-300 transition-all min-h-[48px] flex items-center justify-center">도소매업</div></label><label class="cursor-pointer"><input type="radio" name="industry" value="음식점업" class="peer hidden"><div class="border-2 border-gray-200 rounded-xl px-3 py-2.5 text-center text-sm font-medium text-gray-700 peer-checked:border-blue-600 peer-checked:bg-blue-50 peer-checked:text-blue-700 hover:border-blue-300 transition-all min-h-[48px] flex items-center justify-center">음식점업</div></label><label class="cursor-pointer"><input type="radio" name="industry" value="쇼핑몰업" class="peer hidden"><div class="border-2 border-gray-200 rounded-xl px-3 py-2.5 text-center text-sm font-medium text-gray-700 peer-checked:border-blue-600 peer-checked:bg-blue-50 peer-checked:text-blue-700 hover:border-blue-300 transition-all min-h-[48px] flex items-center justify-center">쇼핑몰업</div></label><label class="cursor-pointer"><input type="radio" name="industry" value="기타 업종" class="peer hidden"><div class="border-2 border-gray-200 rounded-xl px-3 py-2.5 text-center text-sm font-medium text-gray-700 peer-checked:border-blue-600 peer-checked:bg-blue-50 peer-checked:text-blue-700 hover:border-blue-300 transition-all min-h-[48px] flex items-center justify-center">기타 업종</div></label></div></div>
+                <div><label style="display:block;font-weight:600;color:#374151;margin-bottom:0.5rem;">회사명 <span style="color:#f43f5e;">*</span></label><input type="text" name="company" required style="width:100%;border:2px solid #e5e7eb;border-radius:0.75rem;padding:0.75rem 1rem;color:#111827;box-sizing:border-box;" placeholder="회사명을 입력해주세요"></div>
+                <div><label style="display:block;font-weight:600;color:#374151;margin-bottom:0.5rem;">대표님 성함 <span style="color:#f43f5e;">*</span></label><input type="text" name="name" required style="width:100%;border:2px solid #e5e7eb;border-radius:0.75rem;padding:0.75rem 1rem;color:#111827;box-sizing:border-box;" placeholder="성함을 입력해주세요"></div>
+                <div><label style="display:block;font-weight:600;color:#374151;margin-bottom:0.5rem;">연락처 <span style="color:#f43f5e;">*</span></label><input type="tel" name="phone" required style="width:100%;border:2px solid #e5e7eb;border-radius:0.75rem;padding:0.75rem 1rem;color:#111827;box-sizing:border-box;" placeholder="연락받으실 번호를 입력해주세요"></div>
+                <div><label style="display:block;font-weight:600;color:#374151;margin-bottom:0.5rem;">이메일 <span style="font-weight:400;color:#9ca3af;font-size:0.875rem;">(선택)</span></label><input type="email" name="email" style="width:100%;border:2px solid #e5e7eb;border-radius:0.75rem;padding:0.75rem 1rem;color:#111827;box-sizing:border-box;" placeholder="example@email.com"></div>
+                <div><label style="display:block;font-weight:600;color:#374151;margin-bottom:0.5rem;">유입경로 <span style="font-weight:400;color:#9ca3af;font-size:0.875rem;">(선택)</span></label><select name="referral_source" style="width:100%;border:2px solid #e5e7eb;border-radius:0.75rem;padding:0.75rem 1rem;color:#111827;background:white;box-sizing:border-box;"><option value="">선택해주세요</option><option value="검색">검색</option><option value="유튜브">유튜브</option><option value="스레드">스레드</option><option value="기타">기타</option></select></div>
+                <div><label style="display:block;font-weight:600;color:#374151;margin-bottom:0.5rem;">현재 가장 큰 고민 <span style="color:#f43f5e;">*</span></label><textarea name="message" required rows="4" style="width:100%;border:2px solid #e5e7eb;border-radius:0.75rem;padding:0.75rem 1rem;color:#111827;resize:none;box-sizing:border-box;" placeholder="예) 경리 직원 채용이 어려워요&#10;예) 장부 정리가 복잡해요"></textarea></div>
+                <div class="agree-box" style="border:1px solid #e5e8ee;border-radius:0.75rem;padding:14px 16px;margin-top:14px;font-size:0.95rem;text-align:left;background:#fff;">
+                    <label style="display:flex;align-items:flex-start;gap:8px;font-weight:600;cursor:pointer;color:#374151;">
+                        <input type="checkbox" name="agree_privacy" required style="margin-top:4px;flex-shrink:0;">
+                        <span>[필수] 개인정보 수집·이용에 동의합니다.</span>
+                    </label>
+                    <p style="color:#5b6472;font-size:0.88rem;line-height:1.6;margin:6px 0 14px 26px;">
+                        · 수집 항목: 회사명, 담당자 성명, 연락처, 이메일, 문의 내용<br>
+                        · 수집·이용 목적: 상담 응대, 무료 재무 현황 진단, 견적·서비스 안내, 계약 체결<br>
+                        · 보유·이용 기간: 상담 종료 후 3년<br>
+                        · 동의를 거부할 권리가 있으며, 거부 시 상담 신청이 제한될 수 있습니다.<br>
+                        <a href="/privacy" target="_blank" rel="noopener" style="color:#2f6df6;text-decoration:underline;">개인정보 처리방침 보기</a>
+                    </p>
+                    <label style="display:flex;align-items:flex-start;gap:8px;font-weight:600;cursor:pointer;color:#374151;">
+                        <input type="checkbox" name="agree_marketing" style="margin-top:4px;flex-shrink:0;">
+                        <span>[선택] 마케팅·광고성 정보 수신에 동의합니다.</span>
+                    </label>
+                    <p style="color:#5b6472;font-size:0.88rem;line-height:1.6;margin:6px 0 0 26px;">
+                        · 수신 항목: 이메일, 문자(SMS/MMS), 전화<br>
+                        · 이용 목적: 이벤트·혜택 등 광고성 정보 발송, 서비스 소개<br>
+                        · 보유·이용 기간: 동의 철회 시까지<br>
+                        · 동의하지 않아도 상담 신청 및 서비스 이용에는 제한이 없습니다.
+                    </p>
+                </div>
+                <button type="submit" style="width:100%;background:#2563eb;color:white;font-weight:700;font-size:1.125rem;padding:1rem;border-radius:0.75rem;border:none;cursor:pointer;">경리 아웃소싱 무료 상담 신청하기</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        function openModal() { document.getElementById('consultModal').classList.add('active'); document.body.style.overflow = 'hidden'; }
+        function closeModal() { document.getElementById('consultModal').classList.remove('active'); document.body.style.overflow = 'auto'; }
+        document.getElementById('consultModal').addEventListener('click', function(e) { if (e.target === this) closeModal(); });
+        document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeModal(); });
+        function copyShareUrl() { navigator.clipboard.writeText(window.location.href).then(function(){ alert('링크가 복사되었습니다!'); }).catch(function(){ alert('링크 복사에 실패했습니다.'); }); }
+        (function() {
+            var btn = document.getElementById('scrollToTop'); if (!btn) return;
+            window.addEventListener('scroll', function() { if (window.pageYOffset > 300) { btn.style.opacity='1'; btn.style.visibility='visible'; } else { btn.style.opacity='0'; btn.style.visibility='hidden'; } });
+            btn.addEventListener('click', function() { window.scrollTo({top:0,behavior:'smooth'}); });
+        })();
+        document.querySelectorAll('.copyright-year').forEach(function(el){ el.textContent = new Date().getFullYear(); });
+        function combineEmail(form) { const el = form.querySelector('input[name="email"]'); if (el) el.value = el.value.trim(); }
+        function handleFormSubmit(event, formId) {
+            event.preventDefault();
+            const form = document.getElementById(formId);
+            const btn = form.querySelector('button[type="submit"]');
+            const orig = btn.innerHTML;
+            combineEmail(form);
+            btn.disabled = true; btn.innerHTML = '봇 확인 중...';
+            const URL = 'https://script.google.com/macros/s/AKfycbwLkpVI-zFipUtirkixwbaiTg-NdJP99UajSA_eoBs7MB5QPh20zkgpesZ9uDJJkHAQ/exec';
+            grecaptcha.ready(function() {
+                grecaptcha.execute('6Le0CEMsAAAAAFGF3Dnci1_SUkC4VWmzqdox2jJZ', {action:'submit'}).then(function(token) {
+                    let r = form.querySelector('input[name="recaptcha_token"]');
+                    if (!r) { r = document.createElement('input'); r.type='hidden'; r.name='recaptcha_token'; form.appendChild(r); }
+                    r.value = token; btn.innerHTML = '전송 중...';
+                    fetch(URL, {method:'POST', body:new FormData(form), mode:'no-cors'})
+                        .then(function() { window.dataLayer=window.dataLayer||[]; window.dataLayer.push({event:'form_submit'}); if (typeof wapeopleSendLeadToErp === 'function') { wapeopleSendLeadToErp(form); } if (typeof gtag_report_conversion === 'function') { var _ud = (typeof wapeopleGetUserData === 'function') ? wapeopleGetUserData(form) : {}; gtag_report_conversion(undefined, _ud); } alert('\u2705 상담 신청이 완료되었습니다!\n\n영업시간 내 문의 시, 30분 이내로 연락드리겠습니다.'); form.reset(); closeModal(); btn.disabled=false; btn.innerHTML=orig; })
+                        .catch(function() { window.dataLayer=window.dataLayer||[]; window.dataLayer.push({event:'form_submit'}); if (typeof wapeopleSendLeadToErp === 'function') { wapeopleSendLeadToErp(form); } if (typeof gtag_report_conversion === 'function') { var _ud = (typeof wapeopleGetUserData === 'function') ? wapeopleGetUserData(form) : {}; gtag_report_conversion(undefined, _ud); } alert('\u2705 상담 신청이 완료되었습니다!\n\n영업시간 내 문의 시, 30분 이내로 연락드리겠습니다.'); form.reset(); closeModal(); btn.disabled=false; btn.innerHTML=orig; });
+                }).catch(function() { alert('\u274c 봇 확인 실패. 페이지를 새로고침해주세요.'); btn.disabled=false; btn.innerHTML=orig; });
+            });
+            return false;
+        }
+    </script>
+</body>
+</html>
