@@ -64,13 +64,13 @@
     <title>원격경리·경리아웃소싱 - 월 30만원부터 | 경리업무를잘하는청년들</title>
     <meta name="description" content="경리 직원 채용 부담 없이 전문 경리팀이 맡습니다. 182개 기업이 선택한 원격경리 서비스. 무료 상담 신청 후 30분 이내 연락드립니다.">
 
-    <link rel="canonical" href="https://wapeople.kr/lp-remote.html">
+    <link rel="canonical" href="https://wapeople.kr/lp-remote">
 
     <!-- Open Graph -->
     <meta property="og:title" content="원격경리·경리아웃소싱 - 월 30만원부터">
     <meta property="og:description" content="경리 직원 채용 부담 없이 전문 경리팀이 맡습니다. 무료 상담 신청 후 30분 이내 연락드립니다.">
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://wapeople.kr/lp-remote.html">
+    <meta property="og:url" content="https://wapeople.kr/lp-remote">
     <meta property="og:image" content="https://wapeople.kr/logo.png?v=20260310b">
     <meta property="og:site_name" content="경리업무를잘하는청년들">
     <meta property="og:locale" content="ko_KR">
@@ -80,32 +80,44 @@
     <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-icon-180x180.png">
     <meta name="theme-color" content="#2563eb">
 
-    <link rel="stylesheet" href="dist/output.css?v=20261016">
+    <link rel="stylesheet" href="dist/output.css?v=20261020">
     <link rel="stylesheet" href="mobile-optimize.css?v=20260312b">
     <script src="traffic-attribution.js?v=20260813a" defer></script>
     <script src="/lead-ingest.js?v=20260806a" defer></script>
-    <link rel="stylesheet" href="fonts/Pretendard-1.3.9/web/static/pretendard-subset.css?v=20260312c">
-    <link rel="preload" href="fonts/Pretendard-1.3.9/web/static/woff2-subset/Pretendard-Regular.subset.woff2" as="font" type="font/woff2" crossorigin="anonymous">
-    <link rel="preload" href="fonts/Pretendard-1.3.9/web/static/woff2-subset/Pretendard-Bold.subset.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+    <link rel="stylesheet" href="fonts/Pretendard-1.3.9/web/variable/pretendard-dynamic-subset.css?v=20261020">
+    <link rel="preload" href="fonts/Pretendard-1.3.9/web/variable/woff2-dynamic-subset/PretendardVariable.subset.87.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="fonts/Pretendard-1.3.9/web/variable/woff2-dynamic-subset/PretendardVariable.subset.88.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="fonts/Pretendard-1.3.9/web/variable/woff2-dynamic-subset/PretendardVariable.subset.89.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="fonts/Pretendard-1.3.9/web/variable/woff2-dynamic-subset/PretendardVariable.subset.90.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="fonts/Pretendard-1.3.9/web/variable/woff2-dynamic-subset/PretendardVariable.subset.91.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/fontawesome.min.css" media="print" onload="this.media='all'">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/solid.min.css" media="print" onload="this.media='all'">
 
     <!-- 폰트 로딩 페이드인 -->
-    <script>
-        document.documentElement.style.opacity = '0';
-        document.documentElement.style.transition = 'opacity 0.2s ease';
-        function revealPageAfterFontLoad() { document.documentElement.style.opacity = '1'; }
-        const fontLoadFallback = setTimeout(revealPageAfterFontLoad, 3000);
-        if (document.fonts && document.fonts.ready) {
-            document.fonts.ready.then(function() { clearTimeout(fontLoadFallback); revealPageAfterFontLoad(); }).catch(revealPageAfterFontLoad);
-        } else {
-            window.addEventListener('load', function() { clearTimeout(fontLoadFallback); revealPageAfterFontLoad(); });
-        }
-    </script>
-    <noscript><style>html { opacity: 1 !important; }</style></noscript>
 
     <!-- Google reCAPTCHA v3 -->
-    <script src="https://www.google.com/recaptcha/api.js?render=6Le0CEMsAAAAAFGF3Dnci1_SUkC4VWmzqdox2jJZ"></script>
+    <script>
+        // reCAPTCHA를 비동기로 불러오는 동안 grecaptcha.ready() 콜백을 ___grecaptcha_cfg.fns 대기열에 넣습니다(api.js가 로드 후 실행).
+        // 10초 안에 못 불러오면 execute()가 실패하도록 해 폼의 실패 처리(catch)로 넘깁니다.
+        (function (w) {
+            var cfg = w.___grecaptcha_cfg = w.___grecaptcha_cfg || {};
+            var g = w.grecaptcha = w.grecaptcha || {};
+            if (g.ready) return;
+            g.ready = function (cb) {
+                var done = false;
+                function run() { if (!done) { done = true; cb(); } }
+                (cfg.fns = cfg.fns || []).push(run);
+                setTimeout(function () {
+                    if (done) return;
+                    if (typeof w.grecaptcha.execute !== 'function') {
+                        w.grecaptcha.execute = function () { return Promise.reject(new Error('reCAPTCHA unavailable')); };
+                    }
+                    run();
+                }, 10000);
+            };
+        })(window);
+    </script>
+    <script src="https://www.google.com/recaptcha/api.js?render=6Le0CEMsAAAAAFGF3Dnci1_SUkC4VWmzqdox2jJZ" async defer></script>
 
     <style>
         /* LP 전용 미세 스타일 */
@@ -132,11 +144,11 @@
     <!-- 미니멀 헤더: 로고 + 전체 서비스 + 전화번호 -->
     <header class="bg-white border-b border-gray-100 sticky top-0 z-40">
         <div class="max-w-6xl mx-auto px-4 md:px-6 h-14 md:h-16 flex items-center justify-between gap-3">
-            <a href="index.html" class="flex items-center" aria-label="홈으로 이동">
+            <a href="/" class="flex items-center" aria-label="홈으로 이동">
                 <img src="logo.png?v=20260310b" alt="경리업무를잘하는청년들" class="object-contain" style="height:2rem;" fetchpriority="high">
             </a>
             <div class="flex items-center gap-2 md:gap-4">
-                <a href="index.html" class="hidden sm:inline-flex items-center gap-1.5 text-xs md:text-sm font-semibold text-gray-500 hover:text-blue-700 transition-colors">
+                <a href="/" class="hidden sm:inline-flex items-center gap-1.5 text-xs md:text-sm font-semibold text-gray-500 hover:text-blue-700 transition-colors">
                     <i class="fas fa-house text-[11px]"></i>
                     <span>전체 서비스 보기</span>
                 </a>
@@ -429,11 +441,11 @@
         <div class="max-w-6xl mx-auto px-4 md:px-6 py-8">
             <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
                 <div>
-                    <a href="index.html" class="text-white font-bold mb-1 hover:text-blue-300 transition-colors inline-block">경리업무를잘하는청년들</a>
+                    <a href="/" class="text-white font-bold mb-1 hover:text-blue-300 transition-colors inline-block">경리업무를잘하는청년들</a>
                     <p class="text-xs mt-1">경기 수원시 팔달구 권광로175번길 83 201호 · 1566-2687</p>
                 </div>
                 <div class="flex flex-wrap items-center gap-x-4 gap-y-2 text-xs">
-                    <a href="index.html" class="inline-flex items-center gap-1.5 text-gray-300 hover:text-white transition-colors">
+                    <a href="/" class="inline-flex items-center gap-1.5 text-gray-300 hover:text-white transition-colors">
                         <i class="fas fa-house text-[10px]"></i>
                         <span>메인 사이트로 이동</span>
                     </a>

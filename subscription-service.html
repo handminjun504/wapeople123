@@ -72,7 +72,7 @@
     <meta property="og:description" content="구독료·정기결제 사업 맞춤 경리 대행. 전문 경리팀이 구독 매출 인식, 미수금 관리, 갱신·해지 반영까지 직접 챙겨드립니다.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://wapeople.kr/subscription-service">
-    <meta property="og:image" content="https://wapeople.kr/logo.png?v=20260310b">
+    <meta property="og:image" content="https://wapeople.kr/assets/og/subscription-service.png?v=20261020">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
     <meta property="og:site_name" content="경리업무를잘하는청년들">
@@ -82,7 +82,7 @@
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="구독형 서비스 경리 - 경리업무를잘하는청년들">
     <meta name="twitter:description" content="전문 경리팀이 구독 매출 인식, 미수금 관리, 갱신·해지 반영까지 직접 챙겨드립니다.">
-    <meta name="twitter:image" content="https://wapeople.kr/logo.png?v=20260310b">
+    <meta name="twitter:image" content="https://wapeople.kr/assets/og/subscription-service.png?v=20261020">
 
     <!-- 서비스 구조화 데이터 -->
     <script type="application/ld+json">
@@ -142,7 +142,6 @@
     }
     </script>
 
-
     <link rel="icon" type="image/x-icon" href="/favicon/favicon.ico">
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png">
@@ -151,52 +150,44 @@
     <link rel="manifest" href="/favicon/manifest.json">
     <meta name="msapplication-config" content="/favicon/browserconfig.xml">
     <meta name="theme-color" content="#2563eb">
-    <link rel="stylesheet" href="dist/output.css?v=20261016">
+    <link rel="stylesheet" href="dist/output.css?v=20261020">
     <link rel="stylesheet" href="mobile-optimize.css?v=20260312b">
     <script src="traffic-attribution.js?v=20260813a" defer></script>
     <script src="/lead-ingest.js?v=20260806a" defer></script>
     <script src="a11y-enhance.js" defer></script>
-    <link rel="stylesheet" href="fonts/Pretendard-1.3.9/web/static/pretendard-subset.css?v=20260312c">
+    <link rel="stylesheet" href="fonts/Pretendard-1.3.9/web/variable/pretendard-dynamic-subset.css?v=20261020">
+    <link rel="preload" href="fonts/Pretendard-1.3.9/web/variable/woff2-dynamic-subset/PretendardVariable.subset.87.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="fonts/Pretendard-1.3.9/web/variable/woff2-dynamic-subset/PretendardVariable.subset.88.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="fonts/Pretendard-1.3.9/web/variable/woff2-dynamic-subset/PretendardVariable.subset.89.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="fonts/Pretendard-1.3.9/web/variable/woff2-dynamic-subset/PretendardVariable.subset.90.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="fonts/Pretendard-1.3.9/web/variable/woff2-dynamic-subset/PretendardVariable.subset.91.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/fontawesome.min.css" media="print" onload="this.media='all'">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/solid.min.css" media="print" onload="this.media='all'">
-    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
-
-    <!-- 폰트 로딩 스크립트 -->
-    <script>
-        document.documentElement.style.opacity = '0';
-        document.documentElement.style.transition = 'opacity 0.2s ease';
-
-        function revealPageAfterFontLoad() {
-            document.documentElement.style.opacity = '1';
-        }
-
-        const fontLoadFallback = setTimeout(revealPageAfterFontLoad, 3000);
-
-        if (document.fonts && document.fonts.ready) {
-            document.fonts.ready.then(function() {
-                clearTimeout(fontLoadFallback);
-                revealPageAfterFontLoad();
-            }).catch(function() {
-                revealPageAfterFontLoad();
-            });
-        } else {
-            window.addEventListener('load', function() {
-                clearTimeout(fontLoadFallback);
-                revealPageAfterFontLoad();
-            });
-        }
-    </script>
-
-    <!-- 검색 엔진을 위한 fallback -->
-    <noscript>
-        <style>
-            html { opacity: 1 !important; }
-        </style>
-    </noscript>
-
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" media="print" onload="this.media='all'">
 
     <!-- Google reCAPTCHA v3 -->
-    <script src="https://www.google.com/recaptcha/api.js?render=6Le0CEMsAAAAAFGF3Dnci1_SUkC4VWmzqdox2jJZ"></script>
+    <script>
+        // reCAPTCHA를 비동기로 불러오는 동안 grecaptcha.ready() 콜백을 ___grecaptcha_cfg.fns 대기열에 넣습니다(api.js가 로드 후 실행).
+        // 10초 안에 못 불러오면 execute()가 실패하도록 해 폼의 실패 처리(catch)로 넘깁니다.
+        (function (w) {
+            var cfg = w.___grecaptcha_cfg = w.___grecaptcha_cfg || {};
+            var g = w.grecaptcha = w.grecaptcha || {};
+            if (g.ready) return;
+            g.ready = function (cb) {
+                var done = false;
+                function run() { if (!done) { done = true; cb(); } }
+                (cfg.fns = cfg.fns || []).push(run);
+                setTimeout(function () {
+                    if (done) return;
+                    if (typeof w.grecaptcha.execute !== 'function') {
+                        w.grecaptcha.execute = function () { return Promise.reject(new Error('reCAPTCHA unavailable')); };
+                    }
+                    run();
+                }, 10000);
+            };
+        })(window);
+    </script>
+    <script src="https://www.google.com/recaptcha/api.js?render=6Le0CEMsAAAAAFGF3Dnci1_SUkC4VWmzqdox2jJZ" async defer></script>
 </head>
 <body class="antialiased">
     <!-- Google Tag Manager (noscript) -->
@@ -207,15 +198,15 @@
     <!-- Navigation -->
     <nav class="fixed top-0 left-0 right-0 z-50 nav-glass">
         <div class="max-w-7xl mx-auto px-3 md:px-6 py-2 flex items-center justify-between gap-2">
-                        <a href="index.html" class="flex items-center gap-1 hover:opacity-80 transition-opacity touch-manipulation min-w-0">
+                        <a href="/" class="flex items-center gap-1 hover:opacity-80 transition-opacity touch-manipulation min-w-0">
                 <img src="logo.png?v=20260310b" alt="경리업무를잘하는청년들" class="hidden md:block object-contain" style="height:2.125rem;" fetchpriority="high">
                 <img src="logo.png?v=20260310b" alt="경리업무를잘하는청년들" class="block md:hidden mobile-nav-logo object-contain" fetchpriority="high">
             </a>
 
             <!-- 데스크톱 메뉴 -->
-            <div class="hidden md:flex items-center gap-2 md:gap-6">
+            <div class="hidden xl:flex items-center gap-2 md:gap-6">
                 <!-- 원격경리 -->
-                <a href="about.html" class="px-8 py-5 text-gray-700 hover:text-teal-600 font-semibold transition-colors whitespace-nowrap">
+                <a href="/about" class="px-8 py-5 text-gray-700 hover:text-teal-600 font-semibold transition-colors whitespace-nowrap">
                     원격경리
                 </a>
 
@@ -232,35 +223,35 @@
                     <!-- 드롭다운 메뉴 -->
                     <div class="absolute top-full left-0 mt-2 w-48 bg-white rounded-xl shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 border border-gray-100">
                         <div class="py-2">
-                            <a href="service.html" class="flex items-center gap-3 px-4 py-3 hover:bg-blue-50 transition-colors">
+                            <a href="/service" class="flex items-center gap-3 px-4 py-3 hover:bg-blue-50 transition-colors">
                                 <img src="assets/industry/icons/service.svg" alt="" width="24" height="24" class="w-6 h-6 rounded-xl object-contain flex-shrink-0">
                                 <span class="text-gray-700 font-medium">서비스업</span>
                             </a>
-                            <a href="manufacturing.html" class="flex items-center gap-3 px-4 py-3 hover:bg-emerald-50 transition-colors">
+                            <a href="/manufacturing" class="flex items-center gap-3 px-4 py-3 hover:bg-emerald-50 transition-colors">
                                 <img src="assets/industry/icons/manufacturing.svg" alt="" width="24" height="24" class="w-6 h-6 rounded-xl object-contain flex-shrink-0">
                                 <span class="text-gray-700 font-medium">제조업</span>
                             </a>
-                            <a href="construction.html" class="flex items-center gap-3 px-4 py-3 hover:bg-amber-50 transition-colors">
+                            <a href="/construction" class="flex items-center gap-3 px-4 py-3 hover:bg-amber-50 transition-colors">
                                 <img src="assets/industry/icons/construction.svg" alt="" width="24" height="24" class="w-6 h-6 rounded-xl object-contain flex-shrink-0">
                                 <span class="text-gray-700 font-medium">건설업</span>
                             </a>
-                            <a href="wholesale.html" class="flex items-center gap-3 px-4 py-3 hover:bg-sky-50 transition-colors">
+                            <a href="/wholesale" class="flex items-center gap-3 px-4 py-3 hover:bg-sky-50 transition-colors">
                                 <img src="assets/industry/icons/wholesale.svg" alt="" width="24" height="24" class="w-6 h-6 rounded-xl object-contain flex-shrink-0">
                                 <span class="text-gray-700 font-medium">도소매업</span>
                             </a>
-                            <a href="restaurant.html" class="flex items-center gap-3 px-4 py-3 hover:bg-rose-50 transition-colors">
+                            <a href="/restaurant" class="flex items-center gap-3 px-4 py-3 hover:bg-rose-50 transition-colors">
                                 <img src="assets/industry/icons/restaurant.svg" alt="" width="24" height="24" class="w-6 h-6 rounded-xl object-contain flex-shrink-0">
                                 <span class="text-gray-700 font-medium">음식점업</span>
                             </a>
-                            <a href="ecommerce.html" class="flex items-center gap-3 px-4 py-3 hover:bg-violet-50 transition-colors">
+                            <a href="/ecommerce" class="flex items-center gap-3 px-4 py-3 hover:bg-violet-50 transition-colors">
                                 <img src="assets/industry/icons/ecommerce.svg" alt="" width="24" height="24" class="w-6 h-6 rounded-xl object-contain flex-shrink-0">
                                 <span class="text-gray-700 font-medium">쇼핑몰업</span>
                             </a>
-                            <a href="expense-management.html" class="flex items-center gap-3 px-4 py-3 hover:bg-indigo-50 transition-colors">
+                            <a href="/expense-management" class="flex items-center gap-3 px-4 py-3 hover:bg-indigo-50 transition-colors">
                                 <img src="assets/industry/icons/expense-management.svg" alt="" width="24" height="24" class="w-6 h-6 rounded-xl object-contain flex-shrink-0">
                                 <span class="text-gray-700 font-medium">법인카드 경비관리</span>
                             </a>
-                            <a href="subscription-service.html" class="flex items-center gap-3 px-4 py-3 hover:bg-teal-50 transition-colors">
+                            <a href="/subscription-service" class="flex items-center gap-3 px-4 py-3 hover:bg-teal-50 transition-colors">
                                 <img src="assets/industry/icons/subscription-service.svg" alt="" width="24" height="24" class="w-6 h-6 rounded-xl object-contain flex-shrink-0">
                                 <span class="text-gray-700 font-medium">구독형 서비스</span>
                             </a>
@@ -272,7 +263,7 @@
                 <div class="h-6 w-px bg-gray-300"></div>
 
                 <!-- 오시는 길 -->
-                <a href="location.html" class="px-3 py-2 text-gray-700 hover:text-teal-600 font-semibold transition-colors whitespace-nowrap">
+                <a href="/location" class="px-3 py-2 text-gray-700 hover:text-teal-600 font-semibold transition-colors whitespace-nowrap">
                     오시는 길
                 </a>
 
@@ -280,17 +271,17 @@
                 <div class="h-6 w-px bg-gray-300"></div>
 
                 <!-- FAQ -->
-                <a href="news.html" class="px-3 py-2 text-gray-700 hover:text-blue-700 font-semibold transition-colors whitespace-nowrap">경리소식</a>
-                <a href="manual/" class="px-3 py-2 text-gray-700 hover:text-blue-700 font-semibold transition-colors whitespace-nowrap">자료실</a>
+                <a href="/news" class="px-3 py-2 text-gray-700 hover:text-blue-700 font-semibold transition-colors whitespace-nowrap">경리소식</a>
+                <a href="/manual" class="px-3 py-2 text-gray-700 hover:text-blue-700 font-semibold transition-colors whitespace-nowrap">자료실</a>
                 <div class="h-6 w-px bg-gray-300"></div>
-                <a href="reviews.html" class="px-3 py-2 text-gray-700 hover:text-teal-600 font-semibold transition-colors whitespace-nowrap">
+                <a href="/reviews" class="px-3 py-2 text-gray-700 hover:text-teal-600 font-semibold transition-colors whitespace-nowrap">
                     고객후기
                 </a>
 
                 <!-- 구분선 -->
                 <div class="h-6 w-px bg-gray-300"></div>
 
-                <a href="faq.html" class="px-3 py-2 text-gray-700 hover:text-teal-600 font-semibold transition-colors whitespace-nowrap">
+                <a href="/faq" class="px-3 py-2 text-gray-700 hover:text-teal-600 font-semibold transition-colors whitespace-nowrap">
                     FAQ
                 </a>
 
@@ -301,7 +292,7 @@
             </div>
 
             <!-- 모바일 메뉴 -->
-            <div class="mobile-nav-actions md:hidden">
+            <div class="mobile-nav-actions flex items-center gap-2 xl:hidden">
                 <button onclick="openModal()" class="flex items-center justify-center bg-teal-600 hover:bg-teal-700 text-white px-5 py-2.5 rounded-full font-bold text-sm transition-colors shadow-lg cursor-pointer whitespace-nowrap">
                     상담 바로가기
                 </button>
@@ -312,59 +303,59 @@
         </div>
 
         <!-- 모바일 메뉴 패널 -->
-        <div id="mobileMenu" class="hidden md:hidden bg-white border-t border-gray-200 shadow-lg">
+        <div id="mobileMenu" class="hidden xl:hidden bg-white border-t border-gray-200 shadow-lg">
             <div class="max-w-7xl mx-auto px-4 py-4">
-                <a href="about.html" class="block py-3 px-4 text-gray-700 hover:bg-teal-50 hover:text-teal-700 font-semibold rounded-lg transition-colors">
+                <a href="/about" class="block py-3 px-4 text-gray-700 hover:bg-teal-50 hover:text-teal-700 font-semibold rounded-lg transition-colors">
                     원격경리
                 </a>
 
                 <!-- 업종별 서비스 -->
                 <div class="border-t border-gray-100 mt-2 pt-2">
                     <p class="px-4 py-2 text-sm font-bold text-gray-500">업종별 서비스</p>
-                    <a href="service.html" class="flex items-center gap-3 py-3 px-4 text-gray-700 hover:bg-blue-50 rounded-lg transition-colors">
+                    <a href="/service" class="flex items-center gap-3 py-3 px-4 text-gray-700 hover:bg-blue-50 rounded-lg transition-colors">
                         <img src="assets/industry/icons/service.svg" alt="" width="24" height="24" class="w-6 h-6 rounded-xl object-contain flex-shrink-0">
                         <span class="font-medium">서비스업</span>
                     </a>
-                    <a href="manufacturing.html" class="flex items-center gap-3 py-3 px-4 text-gray-700 hover:bg-emerald-50 rounded-lg transition-colors">
+                    <a href="/manufacturing" class="flex items-center gap-3 py-3 px-4 text-gray-700 hover:bg-emerald-50 rounded-lg transition-colors">
                         <img src="assets/industry/icons/manufacturing.svg" alt="" width="24" height="24" class="w-6 h-6 rounded-xl object-contain flex-shrink-0">
                         <span class="font-medium">제조업</span>
                     </a>
-                    <a href="construction.html" class="flex items-center gap-3 py-3 px-4 text-gray-700 hover:bg-amber-50 rounded-lg transition-colors">
+                    <a href="/construction" class="flex items-center gap-3 py-3 px-4 text-gray-700 hover:bg-amber-50 rounded-lg transition-colors">
                         <img src="assets/industry/icons/construction.svg" alt="" width="24" height="24" class="w-6 h-6 rounded-xl object-contain flex-shrink-0">
                         <span class="font-medium">건설업</span>
                     </a>
-                    <a href="wholesale.html" class="flex items-center gap-3 py-3 px-4 text-gray-700 hover:bg-sky-50 rounded-lg transition-colors">
+                    <a href="/wholesale" class="flex items-center gap-3 py-3 px-4 text-gray-700 hover:bg-sky-50 rounded-lg transition-colors">
                         <img src="assets/industry/icons/wholesale.svg" alt="" width="24" height="24" class="w-6 h-6 rounded-xl object-contain flex-shrink-0">
                         <span class="font-medium">도소매업</span>
                     </a>
-                    <a href="restaurant.html" class="flex items-center gap-3 py-3 px-4 text-gray-700 hover:bg-rose-50 rounded-lg transition-colors">
+                    <a href="/restaurant" class="flex items-center gap-3 py-3 px-4 text-gray-700 hover:bg-rose-50 rounded-lg transition-colors">
                         <img src="assets/industry/icons/restaurant.svg" alt="" width="24" height="24" class="w-6 h-6 rounded-xl object-contain flex-shrink-0">
                         <span class="font-medium">음식점업</span>
                     </a>
-                    <a href="ecommerce.html" class="flex items-center gap-3 py-3 px-4 text-gray-700 hover:bg-violet-50 rounded-lg transition-colors">
+                    <a href="/ecommerce" class="flex items-center gap-3 py-3 px-4 text-gray-700 hover:bg-violet-50 rounded-lg transition-colors">
                         <img src="assets/industry/icons/ecommerce.svg" alt="" width="24" height="24" class="w-6 h-6 rounded-xl object-contain flex-shrink-0">
                         <span class="font-medium">쇼핑몰업</span>
                     </a>
-                    <a href="expense-management.html" class="flex items-center gap-3 py-3 px-4 text-gray-700 hover:bg-indigo-50 rounded-lg transition-colors">
+                    <a href="/expense-management" class="flex items-center gap-3 py-3 px-4 text-gray-700 hover:bg-indigo-50 rounded-lg transition-colors">
                         <img src="assets/industry/icons/expense-management.svg" alt="" width="24" height="24" class="w-6 h-6 rounded-xl object-contain flex-shrink-0">
                         <span class="font-medium">법인카드 경비관리</span>
                     </a>
-                    <a href="subscription-service.html" class="flex items-center gap-3 py-3 px-4 text-gray-700 hover:bg-teal-50 rounded-lg transition-colors">
+                    <a href="/subscription-service" class="flex items-center gap-3 py-3 px-4 text-gray-700 hover:bg-teal-50 rounded-lg transition-colors">
                         <img src="assets/industry/icons/subscription-service.svg" alt="" width="24" height="24" class="w-6 h-6 rounded-xl object-contain flex-shrink-0">
                         <span class="font-medium">구독형 서비스</span>
                     </a>
                 </div>
 
                 <div class="border-t border-gray-100 mt-2 pt-2">
-                    <a href="location.html" class="block py-3 px-4 text-gray-700 hover:bg-teal-50 hover:text-teal-700 font-semibold rounded-lg transition-colors">
+                    <a href="/location" class="block py-3 px-4 text-gray-700 hover:bg-teal-50 hover:text-teal-700 font-semibold rounded-lg transition-colors">
                         오시는 길
                     </a>
-                    <a href="news.html" class="block py-3 px-4 text-gray-700 hover:bg-blue-50 hover:text-blue-700 font-semibold rounded-lg transition-colors">경리소식</a>
-                    <a href="manual/" class="block py-3 px-4 text-gray-700 hover:bg-blue-50 hover:text-blue-700 font-semibold rounded-lg transition-colors">자료실</a>
-                    <a href="reviews.html" class="block py-3 px-4 text-gray-700 hover:bg-teal-50 hover:text-teal-700 font-semibold rounded-lg transition-colors">
+                    <a href="/news" class="block py-3 px-4 text-gray-700 hover:bg-blue-50 hover:text-blue-700 font-semibold rounded-lg transition-colors">경리소식</a>
+                    <a href="/manual" class="block py-3 px-4 text-gray-700 hover:bg-blue-50 hover:text-blue-700 font-semibold rounded-lg transition-colors">자료실</a>
+                    <a href="/reviews" class="block py-3 px-4 text-gray-700 hover:bg-teal-50 hover:text-teal-700 font-semibold rounded-lg transition-colors">
                         고객후기
                     </a>
-                    <a href="faq.html" class="block py-3 px-4 text-gray-700 hover:bg-teal-50 hover:text-teal-700 font-semibold rounded-lg transition-colors">
+                    <a href="/faq" class="block py-3 px-4 text-gray-700 hover:bg-teal-50 hover:text-teal-700 font-semibold rounded-lg transition-colors">
                         FAQ
                     </a>
                 </div>
@@ -413,27 +404,27 @@
     <section class="min-h-[62vh] md:min-h-[80vh] relative flex items-center pt-20 md:pt-24 pb-8 md:pb-16 bg-teal-50">
         <div class="max-w-7xl mx-auto px-6 relative z-10">
             <div class="max-w-4xl">
-                <a href="index.html" data-aos="fade-up" data-aos-duration="800" class="inline-flex items-center gap-2 text-gray-500 hover:text-teal-600 transition-colors mb-8">
+                <a href="/" class="inline-flex items-center gap-2 text-gray-500 hover:text-teal-600 transition-colors mb-8">
                     <i class="fas fa-arrow-left"></i>
                     <span>업종 선택으로 돌아가기</span>
                 </a>
 
-                <div data-aos="fade-up" data-aos-duration="800" data-aos-delay="100" class="inline-flex items-center gap-3 bg-white border-2 border-teal-300 px-5 py-3 rounded-full mb-8 shadow-sm">
+                <div class="inline-flex items-center gap-3 bg-white border-2 border-teal-300 px-5 py-3 rounded-full mb-8 shadow-sm">
                     <img src="assets/industry/icons/subscription-service.svg" alt="" width="32" height="32" class="w-8 h-8 md:w-9 md:h-9 object-contain">
                     <span class="text-lg font-semibold text-teal-700">구독형 서비스</span>
                 </div>
 
-                <h1 data-aos="fade-up" data-aos-duration="800" data-aos-delay="200" class="text-5xl md:text-7xl font-black leading-tight mb-8 tracking-tight text-gray-900">
+                <h1 class="text-5xl md:text-7xl font-black leading-tight mb-8 tracking-tight text-gray-900">
                     이번 달 매출,<br/>
                     <span class="text-teal-600">실제 들어온 돈과 다른가요?</span>
                 </h1>
 
-                <p data-aos="fade-up" data-aos-duration="800" data-aos-delay="300" class="text-xl md:text-2xl text-gray-600 leading-relaxed text-base md:text-lg mb-10 md:mb-16 max-w-2xl">
+                <p class="text-xl md:text-2xl text-gray-600 leading-relaxed text-base md:text-lg mb-10 md:mb-16 max-w-2xl">
                     구독료·정기결제 매출은 잡히는데 실제 입금은 안 되고,<br/>
                     미수금이 어디서 얼마나 쌓였는지 파악이 안 되시나요?
                 </p>
 
-                <div data-aos="fade-up" data-aos-duration="800" data-aos-delay="400" class="scroll-down flex flex-col items-center gap-3 hidden md:flex" onclick="document.querySelector('.section-gray').scrollIntoView({behavior: 'smooth'})">
+                <div class="scroll-down flex flex-col items-center gap-3 hidden md:flex" onclick="document.querySelector('.section-gray').scrollIntoView({behavior: 'smooth'})">
                     <span class="text-sm font-medium text-gray-500">자세히 알아보기</span>
                     <div class="scroll-arrow w-8 h-8 rounded-full border-2 border-teal-600 flex items-center justify-center">
                         <i class="fas fa-chevron-down text-teal-600"></i>
@@ -889,7 +880,7 @@
                 <button onclick="openModal()" data-aos="zoom-in" data-aos-duration="600" data-aos-delay="200" class="bg-white text-teal-600 font-bold text-xl px-14 py-6 rounded-full hover:bg-teal-50 transition-all shadow-lg hover:shadow-2xl hover:-translate-y-1">
                     지금 무료 상담 신청하기
                 </button>
-                <a href="faq.html" data-aos="zoom-in" data-aos-duration="600" data-aos-delay="250" class="bg-teal-500 text-white font-bold text-xl px-14 py-6 rounded-full hover:bg-teal-400 transition-all shadow-lg hover:shadow-2xl hover:-translate-y-1 inline-flex items-center justify-center gap-2">
+                <a href="/faq" data-aos="zoom-in" data-aos-duration="600" data-aos-delay="250" class="bg-teal-500 text-white font-bold text-xl px-14 py-6 rounded-full hover:bg-teal-400 transition-all shadow-lg hover:shadow-2xl hover:-translate-y-1 inline-flex items-center justify-center gap-2">
                     <i class="fas fa-question-circle"></i>
                     자주 묻는 질문
                 </a>
@@ -914,7 +905,7 @@
         <div class="max-w-6xl mx-auto px-6">
             <div class="flex flex-col md:flex-row items-start justify-between gap-6">
                 <div class="flex items-center gap-4">
-                    <a href="index.html"><img src="logo.png?v=20260310b" alt="경리업무를잘하는청년들" class="h-16 md:h-20 object-contain"></a>
+                    <a href="/"><img src="logo.png?v=20260310b" alt="경리업무를잘하는청년들" class="h-16 md:h-20 object-contain"></a>
                 </div>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-3 text-gray-600 text-sm">
                     <div class="flex items-center gap-2 hover:scale-105 transition-transform duration-300 cursor-pointer" onclick="copyToClipboard('1566-2687', '전화번호')">
@@ -1259,12 +1250,16 @@
     </script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-        AOS.init({
-            duration: 400,
-            once: true,
-            offset: 50,
-            easing: 'ease-out-cubic'
-        });
+        if (window.AOS) {
+            AOS.init({
+                duration: 400,
+                once: true,
+                offset: 50,
+                easing: 'ease-out-cubic'
+            });
+        } else {
+            document.querySelectorAll('[data-aos]').forEach(function (el) { el.removeAttribute('data-aos'); });
+        }
 
         // 페이지 로드 시 1번 고민 카드 자동 강조
         window.addEventListener('load', function() {

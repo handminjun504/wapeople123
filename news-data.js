@@ -13,7 +13,7 @@
     //   date      : 작성일 'YYYY-MM-DD'
     //   summary   : 1~2줄 요약 (목록 카드 + meta description 활용 가능)
     //   cover     : (선택) 썸네일 이미지 경로 — 미지정 시 카테고리별 기본 그라디언트 사용
-    //   url       : 'news/{slug}.html'
+    //   url       : '/news/{slug}'
     window.WA_NEWS_DATA = [
     {
         slug: 'bugase-gasansae-juligi',
@@ -22,7 +22,7 @@
         date: '2026-10-19',
         summary: '부가세 가산세가 붙는 경우(무신고·과소신고·납부지연·세금계산서·합계표)와 세율, 기한 후 신고·자진납부로 감면받는 구간, 경리 담당자가 매달 챙길 점검 항목을 정리했습니다. 개별 사안의 판단은 담당 세무사 확인이 필요합니다.',
         cover: '',
-        url: 'news/bugase-gasansae-juligi.html'
+        url: '/news/bugase-gasansae-juligi'
     },
 
     {
@@ -32,7 +32,7 @@
         date: '2026-10-16',
         summary: '정책자금(융자)과 특례보증(보증)이 무엇이 다른지, 신청 전에 챙겨야 할 기본 서류, 평소 경리로 정리해두면 빨라지는 것을 정리했습니다. 자격·한도·금리·기간은 기관과 공고 기준으로 확인해야 합니다.',
         cover: '',
-        url: 'news/jeongchaekjageum-teukryebojeung-junbi.html'
+        url: '/news/jeongchaekjageum-teukryebojeung-junbi'
     },
 
     {
@@ -42,7 +42,7 @@
         date: '2026-10-16',
         summary: '퇴사 통보부터 마지막 출근일까지 경리 담당자에게 받아둘 장부·급여·4대보험·세무사 자료·자금·계정 자산을 체크리스트로 정리했습니다. 담당자 개인 계정을 회사 명의로 바꾸는 것과 그다음 선택까지.',
         cover: '',
-        url: 'news/gyeongri-insu-ingye-checklist.html'
+        url: '/news/gyeongri-insu-ingye-checklist'
     },
 
     {
@@ -52,7 +52,7 @@
         date: '2026-10-16',
         summary: '거래처가 세금계산서를 다시 끊어달라고 할 때, 사유와 작성일자를 먼저 확인해야 합니다. 수정 요청이 오는 상황과 경리가 챙길 것, 경리 아웃소싱(경리대행)이 맡는 범위를 정리했습니다. 발급 판단과 신고는 담당 세무사가 봅니다.',
         cover: '',
-        url: 'news/sujeongsegeumgyesan-jaksongil-chegip.html'
+        url: '/news/sujeongsegeumgyesan-jaksongil-chegip'
     },
 
     {
@@ -61,7 +61,7 @@
         category: '실무팁',
         date: '2026-10-15',
         summary: '기업은행을 쓰지 않아도 괜찮습니다. 공동인증서를 바탕화면으로 내보내 담당자에게 전달하는 방법을 화면과 강조 표시 그대로 정리했습니다. 인증서 파일과 비밀번호를 안전하게 넘기는 방법도 함께 확인하세요.',
-        url: 'news/gongdonginjeungseo-naebonaegi.html'
+        url: '/news/gongdonginjeungseo-naebonaegi'
     },
 
     {
@@ -71,7 +71,7 @@
         date: '2026-10-15',
         summary: '부가세 예정신고를 앞두고 경리 담당자가 확인해야 할 매입세액 공제 대상과 불공제 항목, 수정세금계산서가 필요한 경우를 정리했습니다. 경리 아웃소싱·경리대행으로 증빙 정리를 맡기면 신고 전 준비가 한결 쉬워집니다.',
         cover: '',
-        url: 'news/bugase-yejeongsingo-maeipseaek-sujeongsegeumgyesan.html'
+        url: '/news/bugase-yejeongsingo-maeipseaek-sujeongsegeumgyesan'
     },
 
     {
@@ -81,7 +81,7 @@
         date: '2026-10-14',
         summary: '부가세 신고는 담당 세무사가 하지만, 신고에 들어갈 매출·매입 자료와 증빙은 회사 경리가 만듭니다. 10월 26일 예정신고를 앞두고 경리 담당자가 신고 전에 챙길 것과, 경리 아웃소싱(경리대행)이 맡는 범위를 정리했습니다.',
         cover: '',
-        url: 'news/bugase-singo-junbi-checklist.html'
+        url: '/news/bugase-singo-junbi-checklist'
     },
 
     {
@@ -91,7 +91,7 @@
         date: '2026-10-13',
         summary: '원천세 신고·납부 기한(매월 10일)과 지급명세서 제출 일정, 기한을 놓치지 않는 경리 체크리스트를 정리했습니다. 경리 아웃소싱·경리대행으로 급여·자료 정리를 맡기면 기한 관리가 쉬워집니다.',
         cover: '',
-        url: 'news/woncheonse-singo-gihan.html'
+        url: '/news/woncheonse-singo-gihan'
     },
 
     {
@@ -101,7 +101,7 @@
         date: '2026-10-12',
         summary: '지출결의서가 밀리는 이유는 양식이 없어서가 아니라, 쓸 사람·결재 기준·확인 순서가 정리되지 않아서입니다. 법인카드 점검 시리즈 2편에서 지출결의서 양식과 결재 흐름, 경리 아웃소싱(경리대행)이 맡는 범위를 정리했습니다.',
         cover: '',
-        url: 'news/beopinkadeu-jichulgyeoluiseo.html'
+        url: '/news/beopinkadeu-jichulgyeoluiseo'
     },
 
     {
@@ -111,7 +111,7 @@
         date: '2026-10-10',
         summary: '법인카드 결제 승인과 사후 검증을 경리 아웃소싱(경리대행)으로 맡기면 어디까지 해주는지, 서비스 범위와 도입 절차, 규모가 큰 회사가 안심하는 구조를 정리했습니다.',
         cover: '',
-        url: 'news/beopinkadeu-jeomgeom-service.html'
+        url: '/news/beopinkadeu-jeomgeom-service'
     },
 
     {
@@ -121,7 +121,7 @@
         date: '2026-10-10',
         summary: '법인카드 결제 승인과 사후 검증, 규정을 벗어난 사용 안내까지. 경리 담당자 한 명이 감당하기 어려운 법인카드 점검을 경리대행으로 정리하는 방법을 소개합니다.',
         cover: '',
-        url: 'news/beopinkadeu-gyeolje-seungin-sahu-geomjeung.html'
+        url: '/news/beopinkadeu-gyeolje-seungin-sahu-geomjeung'
     },
 
     {
@@ -131,7 +131,7 @@
         date: '2026-10-09',
         summary: '동시에 여러 현장을 돌리는 전문건설업은 카드·통장 지출이 현장 구분 없이 섞이기 쉽습니다. 현장별 손익을 보려면 무엇부터 나눠야 하는지, 경리대행으로 정리하는 방법을 소개합니다.',
         cover: '',
-        url: 'news/jeonmun-geonseol-hyeonjangbyeol-sonik.html'
+        url: '/news/jeonmun-geonseol-hyeonjangbyeol-sonik'
     },
 
     {
@@ -141,7 +141,7 @@
         date: '2026-10-07',
         summary: '회삿돈 23억여 원을 6년간 빼돌린 경리 직원 판결로 본 횡령의 구조. 이체·장부·확인을 한 사람에게 맡기지 않으려면 무엇을 나눠야 하는지 정리했습니다.',
         cover: '',
-        url: 'news/gyeongri-hoengnyeong-pangyeol-gujo.html'
+        url: '/news/gyeongri-hoengnyeong-pangyeol-gujo'
     },
     {
         slug: 'b2b-domae-nappumeop-gyeongri-daehang',
@@ -150,7 +150,7 @@
         date: '2026-09-23',
         summary: 'B2B 도매·납품업은 거래처마다 외상 조건과 결제 시점이 달라 외상매출금 파악이 쉽지 않습니다. 미수금 연령분석부터 세금계산서 확인까지 경리아웃소싱으로 정리하는 방법을 소개합니다.',
         cover: '',
-        url: 'news/b2b-domae-nappumeop-gyeongri-daehang.html'
+        url: '/news/b2b-domae-nappumeop-gyeongri-daehang'
     },
 
     {
@@ -160,7 +160,7 @@
         date: '2026-09-16',
         summary: '쿠팡·스마트스토어·배달앱·자사몰 등 판매 플랫폼이 늘어날수록 정산 주기와 수수료 체계가 제각각이라 매출집계가 늦어지고, 재고·마케팅 같은 의사결정도 함께 늦어집니다. 경리아웃소싱으로 정리하는 방법을 소개합니다.',
         cover: '',
-        url: 'news/platform-byeol-maechul-jipgye-daehang.html'
+        url: '/news/platform-byeol-maechul-jipgye-daehang'
     },
 
     {
@@ -170,7 +170,7 @@
         date: '2026-09-14',
         summary: '계열사 두 곳의 법인카드 경비 정산(월 수천 건)을 담당자 한 명이 전담하면, 그 담당자가 갑자기 퇴사할 때 업무가 통째로 멈출 위험이 있습니다. 카드사 데이터 대사부터 인수인계 매뉴얼까지 갖추는 경비 정산 아웃소싱 방법을 정리했습니다.',
         cover: '',
-        url: 'news/gyeyeolsa-gyeongbi-jeongsan-daehang.html'
+        url: '/news/gyeyeolsa-gyeongbi-jeongsan-daehang'
     },
 
     {
@@ -180,7 +180,7 @@
         date: '2026-09-11',
         summary: '여러 사업장을 함께 운영하면 매출이 들어오는 방식도, 지출 관리 방식도 사업장마다 따로 움직여 전체 손익을 파악하기 어렵습니다. 매출 취합부터 미수금 관리, 지출결의까지 사업장 통합 경리로 정리하는 방법을 정리했습니다.',
         cover: '',
-        url: 'news/2026-09-11.html'
+        url: '/news/2026-09-11'
     },
 
     {
@@ -190,7 +190,7 @@
         date: '2026-09-04',
         summary: '스마트스토어·쿠팡 등 여러 플랫폼 정산이 겹치는 온라인 쇼핑몰 경리, 왜 유독 관리가 어려운지와 경리대행으로 정리하는 방법을 정리했습니다.',
         cover: '',
-        url: 'news/ecommerce-gyeongri-daehang.html'
+        url: '/news/ecommerce-gyeongri-daehang'
     },
 
     {
@@ -200,7 +200,7 @@
         date: '2026-08-20',
         summary: '법인카드 사용내역 검토·정산은 재무팀 시간을 가장 많이 잡아먹는 반복 업무입니다. 게다가 내부 담당자가 동료 직원 경비를 반려하는 건 규정의 문제가 아니라 관계의 문제가 되기도 합니다.',
         cover: '',
-        url: 'news/beopin-card-gyeongbi-jeongsan-outsourcing.html'
+        url: '/news/beopin-card-gyeongbi-jeongsan-outsourcing'
     },
 
     {
@@ -210,7 +210,7 @@
         date: '2026-08-11',
         summary: '인테리어 업체는 공사마다 외주업체·자재비·인건비 구성이 달라 원가 계산이 공사별로 전부 다릅니다. 공사대금 미수금, 외주비 미지급금, 자재 세금계산서 관리까지 — 이걸 동시에 여러 현장 돌리면서 혼자 처리하기란 불가능에 가깝습니다.',
         cover: '',
-        url: 'news/interior-gyeongri-daehang.html'
+        url: '/news/interior-gyeongri-daehang'
     },
 
     {
@@ -220,7 +220,7 @@
         date: '2026-07-07',
         summary: '헬스장·필라테스는 회원권·PT·단체수업 매출이 섞이고 환불·이월·할인이 잦아 이번 달 실제 매출이 얼마인지 파악하기가 유독 어렵습니다. 트레이너별 매출 집계, 미수금 관리, 손익 파악까지 — 이걸 전부 혼자 하는 건 원장님 몫이 아닙니다.',
         cover: '',
-        url: 'news/helsgiang-pilates-gyeongri-daehang.html'
+        url: '/news/helsgiang-pilates-gyeongri-daehang'
     },
 
     {
@@ -230,7 +230,7 @@
         date: '2026-07-03',
         summary: '정책자금은 정부가 중소기업·소상공인에게 시중 금리보다 낮은 조건으로 제공하는 융자 제도입니다. 담보가 부족하거나 시중 금융 이용이 어려운 기업에게 자금을 공급하는 것이 핵심 목적입니다.',
         cover: '',
-        url: 'news/jungjingoung-sojingoung-jeongsaekjageum.html'
+        url: '/news/jungjingoung-sojingoung-jeongsaekjageum'
     },
 
     {
@@ -240,7 +240,7 @@
         date: '2026-07-01',
         summary: '원격경리는 경리 직원을 직접 채용하지 않고, 외부 전문 담당자가 비대면으로 회사 경리 업무를 처리하는 서비스입니다. 사무실에 출근하는 직원 없이 세금계산서·장부·미수미지급·손익 보고까지 온라인으로 처리됩니다.',
         cover: '',
-        url: 'news/wongyeok-gyeongri-ranhgan.html'
+        url: '/news/wongyeok-gyeongri-ranhgan'
     },
 
     {
@@ -250,7 +250,7 @@
         date: '2026-06-30',
         summary: '경리 아웃소싱은 회사 내부에서 직접 처리하던 경리 업무를 외부 전문 인력에게 맡기는 것을 말합니다. 세무사에게 자료만 넘기는 기장대행과는 다릅니다. 세금계산서, 장부, 미수미지급, 손익까지 매달 일상 업무 전체를 처리합니다.',
         cover: '',
-        url: 'news/gyeongri-outsourcing-ranhgan.html'
+        url: '/news/gyeongri-outsourcing-ranhgan'
     },
 
     {
@@ -260,7 +260,7 @@
         date: '2026-06-29',
         summary: '창업 초기에는 영업과 운영이 우선이다 보니 경리는 뒤로 밀립니다. 하지만 초기에 쌓인 경리 실수는 나중에 훨씬 더 큰 부담이 됩니다. 지금 하나씩 확인하고 잡아두세요.',
         cover: '',
-        url: 'news/saeop-chogi-gyeongri-silsu-top5.html'
+        url: '/news/saeop-chogi-gyeongri-silsu-top5'
     },
 
     {
@@ -270,7 +270,7 @@
         date: '2026-06-26',
         summary: '잘 팔리는 메뉴가 남는 메뉴가 아닙니다. 배달까지 포함하면 더욱 그렇습니다. 메뉴별 원가율 계산 → 배달 실질 마진 파악 → 홀·배달 구조 설계, 이 세 가지를 잡으면 바쁘게 팔면서 손해 보는 구조를 벗어날 수 있습니다.',
         cover: '',
-        url: 'news/2026-06-26.html'
+        url: '/news/2026-06-26'
     },
 
         {
@@ -280,7 +280,7 @@
         date: '2026-06-25',
         summary: '경리나라는 회계 지식 없이도 쓸 수 있도록 만든 소상공인·중소기업 전용 경리 프로그램입니다. 계좌 자동 연동 → 증빙 자동 수집 → 손익 보고서 자동 생성, 반복 경리 업무를 자동화해줍니다.',
         cover: '',
-        url: 'news/kyungrinara-guide.html'
+        url: '/news/kyungrinara-guide'
     },
 
     {
@@ -290,7 +290,7 @@
         date: '2026-06-24',
         summary: '경리 직원을 채용할지, 경리대행을 맡길지 고민 중이라면 먼저 실제 비용을 숫자로 비교해보세요. 직원 수, 거래 복잡도, 업종에 따라 답이 달라집니다. 이 글에서 규모별로 정리했습니다.',
         cover: '',
-        url: 'news/gyeongri-jikwon-chaeyong-vs-daehang.html'
+        url: '/news/gyeongri-jikwon-chaeyong-vs-daehang'
     },
 
     {
@@ -300,7 +300,7 @@
         date: '2026-06-23',
         summary: '매출이 늘지 않는데 인건비만 오르면 남는 돈은 매달 줄어듭니다. 인건비 비율 파악 → 원인 진단 → 구조 개선, 이 순서로 접근해야 감이 아니라 숫자로 대응할 수 있습니다.',
         cover: '',
-        url: 'news/labor-cost-management.html'
+        url: '/news/labor-cost-management'
     },
 
     {
@@ -310,7 +310,7 @@
         date: '2026-06-19',
         summary: '경리 직원이 나가면 세금계산서, 장부정리, 미수미지급, 손익 파악이 한꺼번에 멈춥니다. 당장 무엇부터 챙겨야 하는지, 공백을 현실적으로 메우는 방법을 순서대로 정리했습니다.',
         cover: '',
-        url: 'news/gyeongri-jikwon-toesa-gongbaek.html'
+        url: '/news/gyeongri-jikwon-toesa-gongbaek'
     },
 
     {
@@ -320,7 +320,7 @@
         date: '2026-06-16',
         summary: '횡령은 뉴스에 나오는 대기업만의 이야기가 아닙니다. 실제로는 중소기업·소기업에서 훨씬 더 많이 발생합니다. 모르고 있기 때문입니다. 그리고 모르는 동안 돈은 계속 빠져나갑니다.',
         cover: '',
-        url: 'news/gyeongri-hoengnyeong-yeobang.html'
+        url: '/news/gyeongri-hoengnyeong-yeobang'
     },
 
     {
@@ -330,7 +330,7 @@
         date: '2026-06-09',
         summary: '재고가 얼마나 남았는지 모르면 팔린 물건의 원가를 계산할 수 없습니다. 원가가 틀리면 손익이 왜곡되고, 손익이 왜곡되면 세금 신고까지 오류가 이어집니다. 재고관리는 단순한 창고 정리가 아닙니다.',
         cover: '',
-        url: 'news/jaego-gwanri-gyeongri.html'
+        url: '/news/jaego-gwanri-gyeongri'
     },
 
     {
@@ -340,7 +340,7 @@
         date: '2026-06-08',
         summary: '미용실·네일샵은 직원 급여 구조가 복잡하고 현금·카드 매출이 섞여 있어 경리를 혼자 처리하면 매달 급여 날이 가장 스트레스입니다. 인센티브 계산, 세금계산서 관리, 손익 파악까지 — 이걸 전부 혼자 하는 건 원장님 몫이 아닙니다.',
         cover: '',
-        url: 'news/migyongil-nailshop-gyeongri-daehang.html'
+        url: '/news/migyongil-nailshop-gyeongri-daehang'
     },
 
     {
@@ -350,7 +350,7 @@
         date: '2026-06-05',
         summary: '\"경리대행 비용이 얼마나 해요?\"라는 질문을 가장 많이 받습니다. 경리대행 비용만 놓고 보면 비싸 보일 수 있지만, 경리 직원을 직접 채용했을 때 드는 실제 비용과 비교하면 이야기가 완전히 달라집니다.',
         cover: '',
-        url: 'news/gyeongri-daehang-biyong.html'
+        url: '/news/gyeongri-daehang-biyong'
     },
 
     {
@@ -360,7 +360,7 @@
         date: '2026-06-04',
         summary: '매출은 나오는데 통장이 비는 카페, 이유는 대부분 메뉴별 원가율을 모르거나 고정비 구조를 파악하지 못해서입니다. 메뉴별 마진 분석 → 고정비·변동비 구조 파악 → 손익분기점 계산, 이 세 가지를 잡으면 어디서 새는지 보입니다.',
         cover: '',
-        url: 'news/2026-06-04.html'
+        url: '/news/2026-06-04'
     },
 
     {
@@ -370,7 +370,7 @@
         date: '2026-06-01',
         summary: '광고수익·협찬·굿즈·슈퍼챗이 섞여있는 크리에이터의 수익 구조는 일반 사업자와 다릅니다. 수익 채널별 분리 → 콘텐츠별 마진 분석 → 비용 체계화, 이 세 가지를 잡으면 매출이 오를수록 더 많이 남습니다.',
         cover: '',
-        url: 'news/2026-06-01.html'
+        url: '/news/2026-06-01'
     },
 
     {
@@ -380,7 +380,7 @@
         date: '2026-05-29',
         summary: '청년을 정규직으로 채용하면 최대 720만 원을 받을 수 있는 일자리도약장려금. 지원 대상, 청년 유형 10가지, 신청 방법까지 2026년 지침 기준으로 정리했습니다.',
         cover: '',
-        url: 'news/2026-05-29-720.html'
+        url: '/news/2026-05-29-720'
     },
 
     {
@@ -390,7 +390,7 @@
         date: '2026-05-28',
         summary: '사업 키우느라 바쁜 스타트업 대표님들이 놓치는 경영관리 구조 설계. 세금계산서, 손익분석, 마진분석을 지금 안 잡으면 나중에 훨씬 힘들어집니다.',
         cover: '',
-        url: 'news/2026-05-28.html'
+        url: '/news/2026-05-28'
     },
 
             {
@@ -400,7 +400,7 @@
         date: '2026-05-27',
         summary: '선생님별 담당 수강생 수, 매출, 수업 시간을 기준으로 인센티브를 계산합니다. 이를 자동화하려면 수강생 관리 시스템과 급여 시스템을 연동하거나, 경리대행 서비스를 통해 매월 정확하게 처리할 수 있습니다.',
         cover: '',
-        url: 'news/hagwon-gyeongri-unyeong.html'
+        url: '/news/hagwon-gyeongri-unyeong'
     },
 
     {
@@ -410,7 +410,7 @@
         date: '2026-10-13',
         summary: '세무기장은 세금 신고·결산, 경리 아웃소싱(경리대행)은 매일의 전표·급여·자금 관리입니다. 둘의 차이와 각각 어디까지 맡길 수 있는지, 비용과 고르는 기준을 정리했습니다.',
         cover: '',
-        url: 'news/semusa-vs-gyeongri-daehang-chaijeom.html'
+        url: '/news/semusa-vs-gyeongri-daehang-chaijeom'
     },
 
     {
@@ -420,7 +420,7 @@
         date: '2026-05-22',
         summary: '매출에서 인건비, 임차료, 재료비, 수수료까지 빼고 나면 실제로 얼마가 손에 남는지 숫자로 보이지 않으면 사업 판단을 감으로만 하게 됩니다.',
         cover: '',
-        url: 'news/2026-05-22.html'
+        url: '/news/2026-05-22'
     },
 
 
@@ -432,7 +432,7 @@
         //     date: '2026-05-21',
         //     summary: '운전자금·시설자금·신성장기반자금 등 항목별 한도와 금리, 신청 일정을 한눈에 정리했습니다.',
         //     cover: '',
-        //     url: 'news/2026-05-21-policy-fund-spring.html'
+        //     url: '/news/2026-05-21-policy-fund-spring'
         // }
     ];
 

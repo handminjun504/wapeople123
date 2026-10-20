@@ -4,7 +4,9 @@
   "description": "경리업무를잘하는청년들 웹사이트",
   "scripts": {
     "sync:reviews": "node scripts/generate-review-data.js",
-    "build": "npm run sync:reviews && tailwindcss -i ./src/input.css -o ./dist/output.css --minify",
+    "prerender": "node scripts/prerender-static.js",
+    "seo": "node scripts/generate-seo-files.js",
+    "build": "npm run sync:reviews && npm run prerender && npm run seo && tailwindcss -i ./src/input.css -o ./dist/output.css --minify",
     "watch": "tailwindcss -i ./src/input.css -o ./dist/output.css --watch"
   },
   "keywords": [],

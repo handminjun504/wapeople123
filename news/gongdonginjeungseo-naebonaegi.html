@@ -25,7 +25,7 @@
         var data = {};
         if (email && email.indexOf('@') > 0) data.email = email;
         if (phone) {
-            var digits = phone.replace(/D/g, '');
+            var digits = phone.replace(/\D/g, '');
             if (digits.length >= 10) {
                 if (digits.indexOf('82') === 0) data.phone_number = '+' + digits;
                 else if (digits.charAt(0) === '0') data.phone_number = '+82' + digits.substring(1);
@@ -63,11 +63,12 @@
     <meta name="robots" content="index, follow">
     <meta name="naver-site-verification" content="aefffa7a6d4cad21b90328c862b8ce5725188412">
     <link rel="canonical" href="https://wapeople.kr/news/gongdonginjeungseo-naebonaegi">
+    <link rel="alternate" type="application/rss+xml" title="경리소식 | 경리업무를잘하는청년들" href="https://wapeople.kr/rss.xml">
     <meta property="og:title" content="공동인증서 내보내기, 기업은행을 안 써도 될까요? — 화면 그대로 따라하는 순서 - 경리소식">
     <meta property="og:description" content="기업은행을 쓰지 않아도 괜찮습니다. 공동인증서를 바탕화면으로 내보내 담당자에게 전달하는 방법을 화면과 강조 표시 그대로 정리했습니다. 인증서 파일과 비밀번호를 안전하게 넘기는 방법도 함께 확인하세요.">
     <meta property="og:type" content="article">
     <meta property="og:url" content="https://wapeople.kr/news/gongdonginjeungseo-naebonaegi">
-    <meta property="og:image" content="https://wapeople.kr/logo.png?v=20260310b">
+    <meta property="og:image" content="https://wapeople.kr/assets/og/news.png">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
     <meta property="og:site_name" content="경리업무를잘하는청년들">
@@ -77,7 +78,7 @@
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="공동인증서 내보내기, 기업은행을 안 써도 될까요? — 화면 그대로 따라하는 순서 - 경리소식">
     <meta name="twitter:description" content="기업은행을 쓰지 않아도 괜찮습니다. 공동인증서를 바탕화면으로 내보내 담당자에게 전달하는 방법을 화면과 강조 표시 그대로 정리했습니다. 인증서 파일과 비밀번호를 안전하게 넘기는 방법도 함께 확인하세요.">
-    <meta name="twitter:image" content="https://wapeople.kr/logo.png?v=20260310b">
+    <meta name="twitter:image" content="https://wapeople.kr/assets/og/news.png">
     
     
 
@@ -85,25 +86,41 @@
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png">
     <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-icon-180x180.png">
     <meta name="theme-color" content="#2563eb">
-    <link rel="stylesheet" href="../dist/output.css?v=20261016">
+    <link rel="stylesheet" href="../dist/output.css?v=20261020">
     <link rel="stylesheet" href="../mobile-optimize.css?v=20260312b">
     <script src="../traffic-attribution.js?v=20260813a" defer></script>
     <script src="/lead-ingest.js?v=20260806a" defer></script>
     <script src="../a11y-enhance.js" defer></script>
-    <link rel="stylesheet" href="../fonts/Pretendard-1.3.9/web/static/pretendard-subset.css?v=20260312c">
+    <link rel="stylesheet" href="../fonts/Pretendard-1.3.9/web/variable/pretendard-dynamic-subset.css?v=20261020">
+    <link rel="preload" href="../fonts/Pretendard-1.3.9/web/variable/woff2-dynamic-subset/PretendardVariable.subset.87.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="../fonts/Pretendard-1.3.9/web/variable/woff2-dynamic-subset/PretendardVariable.subset.88.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="../fonts/Pretendard-1.3.9/web/variable/woff2-dynamic-subset/PretendardVariable.subset.89.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="../fonts/Pretendard-1.3.9/web/variable/woff2-dynamic-subset/PretendardVariable.subset.90.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="../fonts/Pretendard-1.3.9/web/variable/woff2-dynamic-subset/PretendardVariable.subset.91.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/fontawesome.min.css" media="print" onload="this.media='all'">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/solid.min.css" media="print" onload="this.media='all'">
-    <script src="https://www.google.com/recaptcha/api.js?render=6Le0CEMsAAAAAFGF3Dnci1_SUkC4VWmzqdox2jJZ"></script>
     <script>
-        document.documentElement.style.opacity = '0';
-        document.documentElement.style.transition = 'opacity 0.2s ease';
-        function revealPageAfterFontLoad() { document.documentElement.style.opacity = '1'; }
-        const fontLoadFallback = setTimeout(revealPageAfterFontLoad, 3000);
-        if (document.fonts && document.fonts.ready) {
-            document.fonts.ready.then(function() { clearTimeout(fontLoadFallback); revealPageAfterFontLoad(); }).catch(revealPageAfterFontLoad);
-        } else { window.addEventListener('load', function() { clearTimeout(fontLoadFallback); revealPageAfterFontLoad(); }); }
+        // reCAPTCHA를 비동기로 불러오는 동안 grecaptcha.ready() 콜백을 ___grecaptcha_cfg.fns 대기열에 넣습니다(api.js가 로드 후 실행).
+        // 10초 안에 못 불러오면 execute()가 실패하도록 해 폼의 실패 처리(catch)로 넘깁니다.
+        (function (w) {
+            var cfg = w.___grecaptcha_cfg = w.___grecaptcha_cfg || {};
+            var g = w.grecaptcha = w.grecaptcha || {};
+            if (g.ready) return;
+            g.ready = function (cb) {
+                var done = false;
+                function run() { if (!done) { done = true; cb(); } }
+                (cfg.fns = cfg.fns || []).push(run);
+                setTimeout(function () {
+                    if (done) return;
+                    if (typeof w.grecaptcha.execute !== 'function') {
+                        w.grecaptcha.execute = function () { return Promise.reject(new Error('reCAPTCHA unavailable')); };
+                    }
+                    run();
+                }, 10000);
+            };
+        })(window);
     </script>
-    <noscript><style>html { opacity: 1 !important; }</style></noscript>
+    <script src="https://www.google.com/recaptcha/api.js?render=6Le0CEMsAAAAAFGF3Dnci1_SUkC4VWmzqdox2jJZ" async defer></script>
     <style>
         .modal { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.5); z-index: 9999; align-items: center; justify-content: center; }
         .modal.active { display: flex; }
@@ -139,7 +156,7 @@
       "dateModified": "2026-10-15",
       "inLanguage": "ko-KR",
       "articleSection": "실무팁",
-      "image": "https://wapeople.kr/logo.png?v=20260310b",
+      "image": "https://wapeople.kr/assets/og/news.png",
       "author": { "@type": "Organization", "name": "경리업무를잘하는청년들", "url": "https://wapeople.kr" },
       "publisher": { "@type": "Organization", "name": "경리업무를잘하는청년들", "url": "https://wapeople.kr", "logo": { "@type": "ImageObject", "url": "https://wapeople.kr/logo.png?v=20260310b" } },
       "mainEntityOfPage": { "@type": "WebPage", "@id": "https://wapeople.kr/news/gongdonginjeungseo-naebonaegi" }
@@ -152,15 +169,15 @@
     <!-- Navigation -->
     <nav class="fixed top-0 left-0 right-0 z-50 nav-glass">
         <div class="max-w-7xl mx-auto px-3 md:px-6 py-2 flex items-center justify-between gap-2">
-            <a href="../index.html" class="flex items-center gap-1 hover:opacity-80 transition-opacity touch-manipulation min-w-0">
+            <a href="/" class="flex items-center gap-1 hover:opacity-80 transition-opacity touch-manipulation min-w-0">
                 <img src="../logo.png?v=20260310b" alt="경리업무를잘하는청년들" class="hidden md:block object-contain" style="height:2.125rem;" fetchpriority="high">
                 <img src="../logo.png?v=20260310b" alt="경리업무를잘하는청년들" class="block md:hidden mobile-nav-logo object-contain" fetchpriority="high">
             </a>
             <div class="hidden md:flex items-center gap-6">
-                <a href="../about.html" class="text-gray-700 hover:text-blue-700 font-semibold transition-colors">원격경리</a>
-                <a href="../news.html" class="text-blue-700 font-bold transition-colors">경리소식</a>
-                <a href="../manual/" class="text-gray-700 hover:text-blue-700 font-semibold transition-colors">자료실</a>
-                <a href="../faq.html" class="text-gray-700 hover:text-blue-700 font-semibold transition-colors">자주 묻는 질문</a>
+                <a href="/about" class="text-gray-700 hover:text-blue-700 font-semibold transition-colors">원격경리</a>
+                <a href="/news" class="text-blue-700 font-bold transition-colors">경리소식</a>
+                <a href="/manual" class="text-gray-700 hover:text-blue-700 font-semibold transition-colors">자료실</a>
+                <a href="/faq" class="text-gray-700 hover:text-blue-700 font-semibold transition-colors">자주 묻는 질문</a>
             </div>
             <button onclick="openModal()" class="bg-blue-600 hover:bg-blue-700 text-white font-bold px-5 py-2 rounded-xl transition-colors text-sm whitespace-nowrap">상담 바로가기</button>
         </div>
@@ -170,9 +187,9 @@
     <header class="bg-white pt-28 md:pt-32 pb-12 md:pb-16 border-b border-gray-100">
         <div class="max-w-3xl mx-auto px-4 md:px-6">
             <nav aria-label="현재 위치" class="text-sm text-gray-500 mb-6">
-                <a href="../index.html" class="hover:text-blue-600 transition-colors">홈</a>
+                <a href="/" class="hover:text-blue-600 transition-colors">홈</a>
                 <span class="mx-2 text-gray-300">/</span>
-                <a href="../news.html" class="hover:text-blue-600 transition-colors">경리소식</a>
+                <a href="/news" class="hover:text-blue-600 transition-colors">경리소식</a>
                 <span class="mx-2 text-gray-300">/</span>
                 <span class="text-gray-700">실무팁</span>
             </nav>
@@ -199,32 +216,32 @@
         <article class="max-w-3xl mx-auto px-4 md:px-6">
             <div class="article-body bg-white rounded-2xl shadow-sm border border-gray-100 p-6 md:p-12">
               <style>
-:root{--pink:#e8368f;--ink:#222;--sub:#666;--line:#eee;--bg:#fff;}
-.wa-manual *{box-sizing:border-box}
-.wa-manual{margin:0;background:#f7f7f8;color:var(--ink);font-family:-apple-system,"Apple SD Gothic Neo","Malgun Gothic",sans-serif;line-height:1.7;word-break:keep-all}
-.wa-manual .wrap{max-width:760px;margin:0 auto;background:var(--bg);padding:28px 20px 48px}
-.wa-manual .kicker{color:var(--pink);font-weight:700;font-size:13px;letter-spacing:.04em}
-.wa-manual h1{font-size:25px;line-height:1.35;margin:8px 0 6px}
-.wa-manual .lead{color:var(--sub);font-size:15px;margin:0 0 6px}
-.wa-manual .hint{background:#fff0f7;border:1px solid #ffd4e8;border-radius:10px;padding:11px 14px;font-size:14px;margin:16px 0 26px}
-.wa-manual .bankbox{background:#fff7fb;border:2.5px solid var(--pink);border-radius:14px;padding:15px 17px;margin:16px 0 22px}
-.wa-manual .bankbox-q{font-size:19px;font-weight:800;color:#c2116b;margin:0 0 7px;line-height:1.4}
-.wa-manual .bankbox p{margin:0;font-size:15px;line-height:1.65}
-.wa-manual .ex{font-size:12.5px;color:#999;margin:6px 0 0}
-.wa-manual .step{margin:0 0 34px}
-.wa-manual .step h2{font-size:18px;margin:0 0 4px;display:flex;gap:8px;align-items:flex-start}
-.wa-manual .num{flex:0 0 auto;width:26px;height:26px;border-radius:50%;background:var(--pink);color:#fff;font-size:14px;font-weight:700;display:flex;align-items:center;justify-content:center;margin-top:1px}
-.wa-manual .cap{font-size:15px;margin:0 0 10px}
-.wa-manual .hl{background:#fff0f7;color:#c2116b;font-weight:700;padding:1px 5px;border-radius:4px}
-.wa-manual figure{margin:0;border:1px solid var(--line);border-radius:12px;overflow:hidden;background:#fff;box-shadow:0 1px 4px rgba(0,0,0,.05)}
-.wa-manual figure img{display:block;width:100%;height:auto}
-.wa-manual .url{font-size:13px;color:var(--sub);margin-top:8px}
-.wa-manual .note{background:#fafafa;border:1px solid var(--line);border-radius:12px;padding:16px 18px;margin:14px 0 26px}
-.wa-manual .note h3{margin:0 0 8px;font-size:16px}
-.wa-manual .note ul{margin:0;padding-left:18px}
-.wa-manual .note li{margin:4px 0;font-size:14.5px}
-.wa-manual .end{font-size:15px}
-.wa-manual a{color:var(--pink)}
+:where(.article-body) {--pink:#e8368f;--ink:#222;--sub:#666;--line:#eee;--bg:#fff;}
+:where(.article-body) .wa-manual * {box-sizing:border-box}
+:where(.article-body) .wa-manual {margin:0;background:#f7f7f8;color:var(--ink);font-family:-apple-system,"Apple SD Gothic Neo","Malgun Gothic",sans-serif;line-height:1.7;word-break:keep-all}
+:where(.article-body) .wa-manual .wrap {max-width:760px;margin:0 auto;background:var(--bg);padding:28px 20px 48px}
+:where(.article-body) .wa-manual .kicker {color:var(--pink);font-weight:700;font-size:13px;letter-spacing:.04em}
+:where(.article-body) .wa-manual h1 {font-size:25px;line-height:1.35;margin:8px 0 6px}
+:where(.article-body) .wa-manual .lead {color:var(--sub);font-size:15px;margin:0 0 6px}
+:where(.article-body) .wa-manual .hint {background:#fff0f7;border:1px solid #ffd4e8;border-radius:10px;padding:11px 14px;font-size:14px;margin:16px 0 26px}
+:where(.article-body) .wa-manual .bankbox {background:#fff7fb;border:2.5px solid var(--pink);border-radius:14px;padding:15px 17px;margin:16px 0 22px}
+:where(.article-body) .wa-manual .bankbox-q {font-size:19px;font-weight:800;color:#c2116b;margin:0 0 7px;line-height:1.4}
+:where(.article-body) .wa-manual .bankbox p {margin:0;font-size:15px;line-height:1.65}
+:where(.article-body) .wa-manual .ex {font-size:12.5px;color:#999;margin:6px 0 0}
+:where(.article-body) .wa-manual .step {margin:0 0 34px}
+:where(.article-body) .wa-manual .step h2 {font-size:18px;margin:0 0 4px;display:flex;gap:8px;align-items:flex-start}
+:where(.article-body) .wa-manual .num {flex:0 0 auto;width:26px;height:26px;border-radius:50%;background:var(--pink);color:#fff;font-size:14px;font-weight:700;display:flex;align-items:center;justify-content:center;margin-top:1px}
+:where(.article-body) .wa-manual .cap {font-size:15px;margin:0 0 10px}
+:where(.article-body) .wa-manual .hl {background:#fff0f7;color:#c2116b;font-weight:700;padding:1px 5px;border-radius:4px}
+:where(.article-body) .wa-manual figure {margin:0;border:1px solid var(--line);border-radius:12px;overflow:hidden;background:#fff;box-shadow:0 1px 4px rgba(0,0,0,.05)}
+:where(.article-body) .wa-manual figure img {display:block;width:100%;height:auto}
+:where(.article-body) .wa-manual .url {font-size:13px;color:var(--sub);margin-top:8px}
+:where(.article-body) .wa-manual .note {background:#fafafa;border:1px solid var(--line);border-radius:12px;padding:16px 18px;margin:14px 0 26px}
+:where(.article-body) .wa-manual .note h3 {margin:0 0 8px;font-size:16px}
+:where(.article-body) .wa-manual .note ul {margin:0;padding-left:18px}
+:where(.article-body) .wa-manual .note li {margin:4px 0;font-size:14.5px}
+:where(.article-body) .wa-manual .end {font-size:15px}
+:where(.article-body) .wa-manual a {color:var(--pink)}
               </style>
               <div class="wa-manual">
 <div class="wrap">
@@ -286,7 +303,7 @@
 
             <!-- 목록으로 -->
             <div class="mt-8 text-center">
-                <a href="../news.html" class="inline-flex items-center gap-2 text-sm text-gray-500 hover:text-blue-600 transition-colors font-semibold">
+                <a href="/news" class="inline-flex items-center gap-2 text-sm text-gray-500 hover:text-blue-600 transition-colors font-semibold">
                     <i class="fas fa-arrow-left text-xs"></i> 경리소식 목록으로
                 </a>
             </div>
@@ -302,7 +319,7 @@
     <footer class="bg-white py-8 border-t border-gray-200">
         <div class="max-w-6xl mx-auto px-6">
             <div class="flex flex-col md:flex-row items-start justify-between gap-6">
-                <a href="../index.html"><img src="../logo.png?v=20260310b" alt="경리업무를잘하는청년들" class="h-14 md:h-16 object-contain"></a>
+                <a href="/"><img src="../logo.png?v=20260310b" alt="경리업무를잘하는청년들" class="h-14 md:h-16 object-contain"></a>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-3 text-gray-600 text-sm">
                     <div class="flex items-center gap-2"><i class="fas fa-phone text-blue-700"></i><span>전화번호 : 1566-2687</span></div>
                     <div class="flex items-center gap-2"><i class="fas fa-envelope text-blue-700"></i><span>wapeople000@gmail.com</span></div>

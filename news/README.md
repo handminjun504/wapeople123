@@ -57,13 +57,26 @@ window.WA_NEWS_DATA = [
         date: '2026-05-21',
         summary: '운전자금·시설자금·신성장기반자금 등 항목별 한도와 금리, 신청 일정을 한눈에 정리했습니다.',
         cover: '',                                         // 비워두면 카테고리 그라디언트로 자동 처리
-        url: 'news/2026-05-21-policy-fund-spring.html'
+        url: '/news/2026-05-21-policy-fund-spring'         // '/news/{slug}' — .html 을 붙이지 않습니다
     },
     // 기존 글들은 그대로 유지
 ];
 ```
 
 이 한 줄을 추가하면 `/news` 목록 페이지의 카드 그리드에 자동으로 노출됩니다.
+
+### 자동으로 처리되는 것 (직접 수정하지 마세요)
+
+배포(Vercel 빌드) 때 `scripts/generate-seo-files.js` 가 글 HTML의 canonical·구조화 데이터를 읽어 아래 파일을 새로 만듭니다.
+
+- `sitemap.xml` — 글 URL과 lastmod(NewsArticle `dateModified`, 없으면 `datePublished`)
+- `rss.xml` — 경리소식 RSS 피드(네이버 서치어드바이저 등록용)
+- `llms.txt`, `llms-full.txt` 의 경리소식 목록(`AUTO:NEWS` 구간)
+
+배포가 성공하면 GitHub Actions(`.github/workflows/indexnow.yml`)가 바뀐 글 주소를 네이버·Bing에 IndexNow로 알립니다.
+그래서 위 파일을 손으로 고칠 필요가 없고, 고쳐도 다음 빌드에서 덮어써집니다.
+
+> 기존 글을 고쳤다면 NewsArticle 구조화 데이터의 `dateModified` 를 고친 날짜로 바꿔주세요. 검색엔진이 수정 사실을 sitemap에서 알아챕니다.
 
 ---
 
@@ -85,10 +98,14 @@ window.WA_NEWS_DATA = [
 본문에 이미지를 넣으려면 `assets/news/` 폴더에 업로드한 뒤 다음과 같이 사용합니다.
 
 ```html
-<img src="../assets/news/2026-05-21-cover.webp" alt="2026년 부가세 신고 일정">
+<img src="/assets/news/2026-05-21-cover.webp" alt="2026년 부가세 신고 일정" width="1200" height="675" loading="lazy">
 ```
 
 > 가능하면 WebP 포맷, 가로 1200px 이하로 최적화해서 올려주세요. (속도/모바일 데이터 절약)
+> `width`·`height` 를 실제 이미지 크기로 적으면 이미지가 뜰 때 화면이 밀리지 않습니다.
+
+공유 미리보기(og:image·twitter:image)와 NewsArticle `image` 는 기본값 `https://wapeople.kr/assets/og/news.png`(1200×630)를 그대로 쓰면 됩니다.
+글 전용 이미지를 쓰려면 1200×630 크기로 만들어 세 곳을 함께 바꾸세요. (`logo.png` 는 913×187이라 공유 미리보기에 맞지 않습니다)
 
 ---
 
@@ -100,16 +117,21 @@ window.WA_NEWS_DATA = [
 - [ ] 카드 클릭 시 글 페이지로 이동되는가
 - [ ] 모바일에서 글 본문이 깨끗하게 보이는가
 - [ ] [Google Rich Results Test](https://search.google.com/test/rich-results) 에서 NewsArticle/BreadcrumbList 구조화 데이터가 통과하는가
-- [ ] `sitemap.xml` 에 글 URL을 추가했는가 (선택 — 검색 색인 가속)
+- [ ] `https://wapeople.kr/sitemap.xml`·`https://wapeople.kr/rss.xml` 에 글이 들어갔는가 (자동 — 빠졌다면 canonical 주소와 파일명이 같은지 확인)
+- [ ] GitHub Actions의 **IndexNow** 실행이 성공했는가 (자동)
 
 ---
 
 ## 5. 자주 하는 실수
 
 - ❌ `slug` 에 한글이나 공백을 넣음 → URL이 깨집니다.
-- ❌ `news-data.js` 의 `url` 과 실제 파일명이 다름 → 카드 클릭 시 404.
+- ❌ `news-data.js` 의 `url` 이 실제 파일명과 다름 → 카드 클릭 시 404. 형식은 `/news/{slug}` 입니다.
 - ❌ `[[카테고리]]` 자리표시자만 바꾸고 배지 클래스는 안 바꿈 → 배지 색이 카테고리와 안 맞음.
 - ❌ `canonical` URL을 안 바꿈 → 검색 엔진이 동일 URL을 중복 인덱싱.
+- ❌ 다른 곳에서 만든 **완성된 HTML 문서**(`<!DOCTYPE>`·`<head>`·`<title>`·`<h1>`·전역 `<style>` 포함)를 본문에 통째로 붙여넣음 → 제목(H1)과 구조화 데이터가 중복되고, `body {}` 같은 전역 스타일이 페이지 전체 글꼴·여백을 바꿉니다. 본문 요소만 넣고, 꼭 필요한 스타일은 `.article-body` 로 시작하는 선택자로 작성하세요.
+- ❌ 본문 안에 FAQPage 구조화 데이터를 한 번 더 넣음 → 머리말(`<head>`)의 FAQPage 하나에 질문을 모두 넣으세요. 한 페이지에 FAQPage는 하나만 둡니다.
+- ❌ `sitemap.xml`·`rss.xml`·`llms.txt` 를 직접 수정 → 다음 빌드에서 덮어써집니다. (위 "자동으로 처리되는 것" 참고)
+- ❌ 사이트 안 링크를 `../about.html` 처럼 씀 → `/about` 처럼 `.html` 없는 절대 경로로 쓰세요. `.html` 주소는 한 번 더 리다이렉트됩니다.
 
 ---
 

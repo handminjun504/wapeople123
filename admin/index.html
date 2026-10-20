@@ -872,7 +872,7 @@ async function doLogin() {
         }
 
         // 오늘 날짜 기본값
-        document.getElementById('date').value = new Date().toISOString().split('T')[0];
+        document.getElementById('date').value = todayIso();
         updatePreview();
 
         // 새 기기 안내: PAT가 없으면 설정 탭 안내 배너 표시
@@ -934,7 +934,7 @@ function titleToSlug(title) {
 
 function autoSlug() {
     const title = document.getElementById('title').value;
-    const date  = document.getElementById('date').value || new Date().toISOString().split('T')[0];
+    const date  = document.getElementById('date').value || todayIso();
     if (!title) return;
     const rawSlug = (date + '-' + titleToSlug(title)).replace(/-+$/, '');
     document.getElementById('slug').value = (rawSlug || date + '-new-post').replace(/[^a-z0-9\-]/g, '');
@@ -1043,34 +1043,178 @@ function showHtmlFromPreview() {
     _setEditorState('html');
 }
 
-// 미리보기 렌더링 — 발행 페이지와 동일한 article-body 스타일 적용
+// ─── 본문 정리 ────────────────────────────────────────────────────────────────
+// 본문에 완성된 HTML 문서(doctype·head·title·전역 style 등)를 통째로 붙여넣으면 페이지 전체의
+// 글꼴·여백이 바뀌고 제목(H1)이 중복됩니다. 게시·미리보기 전에 본문 요소만 남기고,
+// 본문 <style>은 :where(.article-body) 범위로 묶어 페이지 나머지에 새지 않게 합니다.
+const ARTICLE_SCOPE = ':where(.article-body)';
+const ARTICLE_LD_TYPES = ['Article', 'NewsArticle', 'BlogPosting'];
+const PRESERVED_TAGS = ['p', 'h3', 'h4', 'li', 'table', 'tr', 'img', 'a', 'blockquote', 'button'];
+
+function skipCssCommentOrString(css, i) {
+    if (css[i] === '/' && css[i + 1] === '*') {
+        const end = css.indexOf('*/', i + 2);
+        return end < 0 ? css.length : end + 1;
+    }
+    if (css[i] === '"' || css[i] === "'") {
+        let j = i + 1;
+        while (j < css.length && css[j] !== css[i]) { if (css[j] === '\\') j++; j++; }
+        return j;
+    }
+    return -1;
+}
+
+function findCssBlockEnd(css, openIdx) {
+    let depth = 0;
+    for (let i = openIdx; i < css.length; i++) {
+        const skip = skipCssCommentOrString(css, i);
+        if (skip >= 0) { i = skip; continue; }
+        if (css[i] === '{') depth++;
+        else if (css[i] === '}' && --depth === 0) return i;
+    }
+    throw new Error('본문 <style>의 중괄호 짝이 맞지 않습니다.');
+}
+
+function findCssTopLevel(css, from, chars) {
+    for (let i = from; i < css.length; i++) {
+        const skip = skipCssCommentOrString(css, i);
+        if (skip >= 0) { i = skip; continue; }
+        if (chars.includes(css[i])) return i;
+    }
+    return -1;
+}
+
+function splitCssSelectors(prelude) {
+    const parts = [];
+    let depth = 0, current = '';
+    for (const ch of prelude) {
+        if (ch === '(' || ch === '[') depth++;
+        if (ch === ')' || ch === ']') depth--;
+        if (ch === ',' && depth === 0) { parts.push(current); current = ''; continue; }
+        current += ch;
+    }
+    parts.push(current);
+    return parts.map(s => s.trim()).filter(Boolean);
+}
+
+function scopeCssSelector(selector) {
+    if (selector.startsWith(ARTICLE_SCOPE) || selector.startsWith('.article-body')) return selector;
+    const root = selector.match(/^(?::root|html|body)(?![\w-])((?:\s*(?::root|html|body)(?![\w-]))*)/);
+    if (root) return (ARTICLE_SCOPE + selector.slice(root[0].length)).trim();
+    return `${ARTICLE_SCOPE} ${selector}`;
+}
+
+function scopeArticleCss(css) {
+    let out = '', i = 0;
+    while (i < css.length) {
+        const ws = css.slice(i).match(/^\s+/);
+        if (ws) { out += ws[0]; i += ws[0].length; continue; }
+        if (css.startsWith('/*', i)) {
+            const end = css.indexOf('*/', i + 2);
+            const stop = end < 0 ? css.length : end + 2;
+            out += css.slice(i, stop); i = stop; continue;
+        }
+        const brace = findCssTopLevel(css, i, '{');
+        const semi = findCssTopLevel(css, i, ';');
+        if (css[i] === '@' && semi >= 0 && (brace < 0 || semi < brace)) { out += css.slice(i, semi + 1); i = semi + 1; continue; }
+        if (brace < 0) { out += css.slice(i); break; }
+        const prelude = css.slice(i, brace);
+        const close = findCssBlockEnd(css, brace);
+        const inner = css.slice(brace + 1, close);
+        if (prelude.trim().startsWith('@')) {
+            const name = prelude.trim().slice(1).split(/[\s({]/)[0].toLowerCase();
+            out += ['media', 'supports', 'container', 'layer', 'document'].includes(name)
+                ? `${prelude}{${scopeArticleCss(inner)}}`
+                : css.slice(i, close + 1);
+        } else {
+            const selectors = splitCssSelectors(prelude);
+            const scoped = [...new Set(selectors.map(scopeCssSelector))];
+            out += scoped.join(',') === selectors.join(',')
+                ? css.slice(i, close + 1)
+                : `${scoped.join(', ')} {${inner}}`;
+        }
+        i = close + 1;
+    }
+    return out;
+}
+
+// script·style 안의 문자열은 태그가 아니므로 개수 비교에서 뺍니다.
+function countTags(html, tag) {
+    const visible = html.replace(/<script\b[\s\S]*?<\/script>/gi, '').replace(/<style\b[\s\S]*?<\/style>/gi, '');
+    return (visible.match(new RegExp(`<${tag}\\b`, 'gi')) || []).length;
+}
+
+function sanitizeArticleBody(body, { title = '', dropFaqJsonLd = false } = {}) {
+    const actions = new Set();
+    const removed = [];
+    const drop = (fragment, label) => { removed.push(fragment); actions.add(label); return ''; };
+    const textOf = s => new DOMParser().parseFromString(s, 'text/html').body.textContent.replace(/\s+/g, '');
+    let html = body;
+    let pastedDocument = false;
+
+    html = html.replace(/<!DOCTYPE[^>]*>\s*/gi, m => { pastedDocument = true; return drop(m, '문서 선언(doctype)'); });
+    html = html.replace(/<\/?(?:html|head|body)(?:\s[^>]*)?>\s*/gi, m => { pastedDocument = true; return drop(m, 'html·head·body 태그'); });
+    html = html.replace(/<meta\b[^>]*>\s*/gi, m => drop(m, 'meta 태그'));
+    html = html.replace(/<title>[\s\S]*?<\/title>\s*/gi, m => drop(m, 'title 태그'));
+    html = html.replace(/<link\b[^>]*>\s*/gi, m => drop(m, 'link 태그'));
+    html = html.replace(/<script\b[^>]*type=["']application\/ld\+json["'][^>]*>([\s\S]*?)<\/script>\s*/gi, (m, json) => {
+        let data;
+        try { data = JSON.parse(json); } catch (e) { throw new Error('본문 안 구조화 데이터(JSON-LD) 문법 오류: ' + e.message); }
+        const types = [].concat(data['@type'] || []);
+        if (types.some(t => ARTICLE_LD_TYPES.includes(t))) return drop(m, '중복 Article 구조화 데이터');
+        if (dropFaqJsonLd && types.includes('FAQPage')) return drop(m, '본문 FAQ 구조화 데이터(FAQ 입력란과 중복)');
+        return m;
+    });
+    html = html.replace(/<div class="meta-bar">([\s\S]*?)<\/div>\s*/i, (m, inner) => {
+        if (/<div\b/i.test(inner)) throw new Error('meta-bar 안에 div가 있어 자동 정리를 중단했습니다. 해당 부분을 직접 지워주세요.');
+        pastedDocument = true;
+        return drop(m, '메타 정보 줄(meta-bar)');
+    });
+
+    let titleRemoved = false, demoted = 0;
+    html = html.replace(/<h1\b([^>]*)>([\s\S]*?)<\/h1>\s*/gi, (m, attrs, inner) => {
+        if (!titleRemoved && (pastedDocument || textOf(inner) === textOf(title))) {
+            titleRemoved = true;
+            return drop(m, '중복 제목(H1)');
+        }
+        demoted++;
+        actions.add('본문 H1 → H2');
+        return `<h2${attrs}>${inner}</h2>\n`;
+    });
+
+    html = html.replace(/<style\b([^>]*)>([\s\S]*?)<\/style>/gi, (m, attrs, css) => {
+        const scoped = scopeArticleCss(css);
+        if (scoped === css) return m;
+        actions.add('본문 스타일 범위 지정');
+        return `<style${attrs}>${scoped}</style>`;
+    });
+    html = html.replace(/\n{3,}/g, '\n\n').trim();
+
+    // 정리 규칙 밖에서 본문 요소가 사라지거나 늘었으면 게시하지 않습니다.
+    const expected = tag => countTags(body, tag) - removed.reduce((n, f) => n + countTags(f, tag), 0);
+    for (const tag of PRESERVED_TAGS) {
+        if (countTags(html, tag) !== expected(tag)) throw new Error(`정리 중 <${tag}> 개수가 예상과 다릅니다. 본문 HTML을 확인해주세요.`);
+    }
+    if (countTags(html, 'h2') !== expected('h2') + demoted) throw new Error('정리 중 <h2> 개수가 예상과 다릅니다. 본문 HTML을 확인해주세요.');
+
+    return { html, actions: [...actions] };
+}
+
+// 미리보기 렌더링 — 발행 페이지와 같은 정리·article-body 스타일 적용
 function renderHtmlPreview() {
-    const body = document.getElementById('htmlRaw').value;
     const previewContainer = document.getElementById('htmlPreviewContent');
-
-    const style = `
-        <style>
-        .preview-body { font-family: 'Noto Sans KR', sans-serif; font-size: 1rem; line-height: 1.8; color: #1e293b; }
-        .preview-body p { margin: 0 0 1rem; }
-        .preview-body h2 { font-size: 1.4rem; font-weight: 700; color: #0f172a; margin: 2rem 0 0.75rem; padding-bottom: 0.4rem; border-bottom: 2px solid #e2e8f0; }
-        .preview-body h3 { font-size: 1.15rem; font-weight: 700; color: #1e3a5f; margin: 1.5rem 0 0.5rem; }
-        .preview-body ul, .preview-body ol { margin: 0 0 1rem 1.5rem; }
-        .preview-body li { margin-bottom: 0.3rem; }
-        .preview-body strong { color: #0f172a; font-weight: 700; }
-        .preview-body em { font-style: italic; color: #334155; }
-        .preview-body blockquote { border-left: 4px solid #93c5fd; background: #eff6ff; padding: 1rem 1.25rem; margin: 1.5rem 0; border-radius: 0 0.75rem 0.75rem 0; color: #1e3a8a; font-style: italic; }
-        .preview-body code { background: #f3f4f6; padding: 0.15rem 0.4rem; border-radius: 0.25rem; font-size: 0.9em; color: #be185d; }
-        .preview-body img { max-width: 100%; height: auto; border-radius: 0.75rem; margin: 1.5rem 0; }
-        .preview-body hr { border: none; border-top: 2px solid #e2e8f0; margin: 2rem 0; }
-        .preview-body table { width: 100%; border-collapse: collapse; font-size: 0.9375rem; margin: 1.25rem 0; }
-        .preview-body thead tr { background: #1a3a5c; color: #fff; }
-        .preview-body thead th { padding: 0.75rem 1rem; text-align: left; font-weight: 600; }
-        .preview-body tbody td { padding: 0.7rem 1rem; border-bottom: 1px solid #e5e5e0; color: #444; }
-        .preview-body tbody tr:nth-child(even) { background: #f7f7f5; }
-        </style>
-    `;
-
-    previewContainer.innerHTML = style + `<div class="preview-body">${body}</div>`;
+    try {
+        const { html, actions } = sanitizeArticleBody(document.getElementById('htmlRaw').value, {
+            title: document.getElementById('title').value.trim(),
+            dropFaqJsonLd: collectFaqItems().length > 0,
+        });
+        const notice = actions.length
+            ? `<p class="mb-4 text-xs text-amber-800 bg-amber-50 border border-amber-200 rounded-lg px-3 py-2">게시할 때 자동으로 정리되는 항목: ${escHtml(actions.join(', '))}</p>`
+            : '';
+        previewContainer.innerHTML = `${notice}<style>${ARTICLE_BODY_CSS}</style><div class="article-body">${html}</div>`;
+    } catch (e) {
+        previewContainer.innerHTML = `<p class="text-sm text-red-700 bg-red-50 border border-red-200 rounded-lg px-3 py-2">❌ ${escHtml(e.message)}</p>`;
+    }
 }
 
 // ─── 특수 요소 삽입 ──────────────────────────────────────────────────────────
@@ -1589,10 +1733,35 @@ function categoryBadgeClass(cat) {
     return map[cat] || 'bg-gray-100 text-gray-700 border-gray-200';
 }
 
-function buildHtml({ title, seoTitle, summary, slug, date, displayDate, category, keywords, faqItems, body }) {
+const ARTICLE_BODY_CSS = `
+        .article-body { font-size: 1.125rem; line-height: 1.8; color: #1f2937; word-break: keep-all; letter-spacing: -0.01em; }
+        .article-body > p:first-of-type { font-size: 1.25rem; font-weight: 600; color: #0f172a; line-height: 1.7; padding-left: 1rem; border-left: 4px solid #2563eb; margin-bottom: 2rem; }
+        .article-body h2 { font-size: 1.5rem; font-weight: 800; color: #0f172a; margin: 2.5rem 0 1rem; padding-bottom: 0.5rem; border-bottom: 2px solid #2563eb; letter-spacing: -0.02em; }
+        .article-body h3 { font-size: 1.25rem; font-weight: 700; color: #1f2937; margin: 2rem 0 0.75rem; letter-spacing: -0.01em; }
+        .article-body p { margin: 1.25rem 0; }
+        .article-body p:has(> br:only-child) { display: none; }
+        .article-body hr { border: none; height: 0; margin: 1.75rem 0; position: relative; }
+        .article-body hr::before { content: ""; display: block; width: 60px; height: 3px; background: #e5e7eb; border-radius: 9999px; margin: 0 auto; }
+        .article-body ul, .article-body ol { margin: 1rem 0 1rem 1.5rem; }
+        .article-body ul { list-style: disc; } .article-body ol { list-style: decimal; }
+        .article-body li { margin: 0.5rem 0; }
+        .article-body strong { color: #0f172a; font-weight: 700; }
+        .article-body a { color: #2563eb; text-decoration: underline; text-underline-offset: 3px; }
+        .article-body blockquote { border-left: 4px solid #93c5fd; background: #eff6ff; padding: 1rem 1.25rem; margin: 1.5rem 0; border-radius: 0 0.75rem 0.75rem 0; color: #1e3a8a; font-style: italic; }
+        .article-body code { background: #f3f4f6; padding: 0.15rem 0.4rem; border-radius: 0.25rem; font-size: 0.9em; color: #be185d; }
+        .article-body img { max-width: 100%; height: auto; border-radius: 0.75rem; margin: 1.5rem 0; }
+        .article-body table { width: 100%; border-collapse: collapse; font-size: 0.9375rem; margin: 1.25rem 0; }
+        .article-body thead tr { background: #1a3a5c; color: #fff; }
+        .article-body thead th { padding: 0.75rem 1rem; text-align: left; font-weight: 600; }
+        .article-body tbody td { padding: 0.7rem 1rem; border-bottom: 1px solid #e5e5e0; color: #444; }
+        .article-body tbody tr:nth-child(even) { background: #f7f7f5; }`;
+
+function buildHtml({ title, seoTitle, summary, slug, date, modifiedDate, displayDate, category, keywords, faqItems, body, afterBody }) {
     const badgeClass = categoryBadgeClass(category);
     const kw = keywords ? keywords + ', ' : '';
     const finalTitle = (seoTitle || '').trim() || title;  // SEO 제목 없으면 글 제목 사용
+    const lastModified = modifiedDate || date;
+    const ogImage = 'https://wapeople.kr/assets/og/news.png';
 
     return `<!DOCTYPE html>
 <html lang="ko">
@@ -1621,7 +1790,7 @@ function buildHtml({ title, seoTitle, summary, slug, date, displayDate, category
         var data = {};
         if (email && email.indexOf('@') > 0) data.email = email;
         if (phone) {
-            var digits = phone.replace(/\D/g, '');
+            var digits = phone.replace(/\\D/g, '');
             if (digits.length >= 10) {
                 if (digits.indexOf('82') === 0) data.phone_number = '+' + digits;
                 else if (digits.charAt(0) === '0') data.phone_number = '+82' + digits.substring(1);
@@ -1659,21 +1828,22 @@ function buildHtml({ title, seoTitle, summary, slug, date, displayDate, category
     <meta name="robots" content="index, follow">
     <meta name="naver-site-verification" content="aefffa7a6d4cad21b90328c862b8ce5725188412">
     <link rel="canonical" href="https://wapeople.kr/news/${slug}">
+    <link rel="alternate" type="application/rss+xml" title="경리소식 | 경리업무를잘하는청년들" href="https://wapeople.kr/rss.xml">
     <meta property="og:title" content="${escAttr(finalTitle)} - 경리소식">
     <meta property="og:description" content="${escAttr(summary)}">
     <meta property="og:type" content="article">
     <meta property="og:url" content="https://wapeople.kr/news/${slug}">
-    <meta property="og:image" content="https://wapeople.kr/logo.png?v=20260310b">
+    <meta property="og:image" content="${ogImage}">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
     <meta property="og:site_name" content="경리업무를잘하는청년들">
     <meta property="og:locale" content="ko_KR">
     <meta property="article:published_time" content="${date}">
-    <meta property="article:section" content="${category}">
+${lastModified !== date ? `    <meta property="article:modified_time" content="${lastModified}">\n` : ''}    <meta property="article:section" content="${category}">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="${escAttr(finalTitle)} - 경리소식">
     <meta name="twitter:description" content="${escAttr(summary)}">
-    <meta name="twitter:image" content="https://wapeople.kr/logo.png?v=20260310b">
+    <meta name="twitter:image" content="${ogImage}">
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -1692,10 +1862,10 @@ function buildHtml({ title, seoTitle, summary, slug, date, displayDate, category
       "headline": "${escJson(finalTitle)}",
       "description": "${escJson(summary)}",
       "datePublished": "${date}",
-      "dateModified": "${date}",
+      "dateModified": "${lastModified}",
       "inLanguage": "ko-KR",
       "articleSection": "${category}",
-      "image": "https://wapeople.kr/logo.png?v=20260310b",
+      "image": "${ogImage}",
       "author": { "@type": "Organization", "name": "경리업무를잘하는청년들", "url": "https://wapeople.kr" },
       "publisher": {
         "@type": "Organization",
@@ -1721,49 +1891,42 @@ ${faqItems && faqItems.length > 0 ? `    <script type="application/ld+json">
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png">
     <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-icon-180x180.png">
     <meta name="theme-color" content="#2563eb">
-    <link rel="stylesheet" href="../dist/output.css?v=20261016">
+    <link rel="stylesheet" href="../dist/output.css?v=20261020">
     <link rel="stylesheet" href="../mobile-optimize.css?v=20260312b">
     <script src="../traffic-attribution.js?v=20260813a" defer><\/script>
     <script src="/lead-ingest.js?v=20260806a" defer><\/script>
     <script src="../a11y-enhance.js" defer><\/script>
-    <link rel="stylesheet" href="../fonts/Pretendard-1.3.9/web/static/pretendard-subset.css?v=20260312c">
+    <link rel="stylesheet" href="../fonts/Pretendard-1.3.9/web/variable/pretendard-dynamic-subset.css?v=20261020">
+    <link rel="preload" href="../fonts/Pretendard-1.3.9/web/variable/woff2-dynamic-subset/PretendardVariable.subset.87.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="../fonts/Pretendard-1.3.9/web/variable/woff2-dynamic-subset/PretendardVariable.subset.88.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="../fonts/Pretendard-1.3.9/web/variable/woff2-dynamic-subset/PretendardVariable.subset.89.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="../fonts/Pretendard-1.3.9/web/variable/woff2-dynamic-subset/PretendardVariable.subset.90.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="../fonts/Pretendard-1.3.9/web/variable/woff2-dynamic-subset/PretendardVariable.subset.91.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/fontawesome.min.css" media="print" onload="this.media='all'">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/solid.min.css" media="print" onload="this.media='all'">
-    <script src="https://www.google.com/recaptcha/api.js?render=6Le0CEMsAAAAAFGF3Dnci1_SUkC4VWmzqdox2jJZ"><\/script>
     <script>
-        document.documentElement.style.opacity = '0';
-        document.documentElement.style.transition = 'opacity 0.2s ease';
-        function revealPageAfterFontLoad() { document.documentElement.style.opacity = '1'; }
-        const fontLoadFallback = setTimeout(revealPageAfterFontLoad, 3000);
-        if (document.fonts && document.fonts.ready) {
-            document.fonts.ready.then(function() { clearTimeout(fontLoadFallback); revealPageAfterFontLoad(); }).catch(revealPageAfterFontLoad);
-        } else { window.addEventListener('load', function() { clearTimeout(fontLoadFallback); revealPageAfterFontLoad(); }); }
+        (function (w) {
+            var cfg = w.___grecaptcha_cfg = w.___grecaptcha_cfg || {};
+            var g = w.grecaptcha = w.grecaptcha || {};
+            if (g.ready) return;
+            g.ready = function (cb) {
+                var done = false;
+                function run() { if (!done) { done = true; cb(); } }
+                (cfg.fns = cfg.fns || []).push(run);
+                setTimeout(function () {
+                    if (done) return;
+                    if (typeof w.grecaptcha.execute !== 'function') {
+                        w.grecaptcha.execute = function () { return Promise.reject(new Error('reCAPTCHA unavailable')); };
+                    }
+                    run();
+                }, 10000);
+            };
+        })(window);
     <\/script>
-    <noscript><style>html { opacity: 1 !important; }<\/style><\/noscript>
+    <script src="https://www.google.com/recaptcha/api.js?render=6Le0CEMsAAAAAFGF3Dnci1_SUkC4VWmzqdox2jJZ" async defer><\/script>
     <style>
         .modal { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.5); z-index: 9999; align-items: center; justify-content: center; }
-        .modal.active { display: flex; }
-        .article-body { font-size: 1.125rem; line-height: 1.8; color: #1f2937; word-break: keep-all; letter-spacing: -0.01em; }
-        .article-body > p:first-of-type { font-size: 1.25rem; font-weight: 600; color: #0f172a; line-height: 1.7; padding-left: 1rem; border-left: 4px solid #2563eb; margin-bottom: 2rem; }
-        .article-body h2 { font-size: 1.5rem; font-weight: 800; color: #0f172a; margin: 2.5rem 0 1rem; padding-bottom: 0.5rem; border-bottom: 2px solid #2563eb; letter-spacing: -0.02em; }
-        .article-body h3 { font-size: 1.25rem; font-weight: 700; color: #1f2937; margin: 2rem 0 0.75rem; letter-spacing: -0.01em; }
-        .article-body p { margin: 1.25rem 0; }
-        .article-body p:has(> br:only-child) { display: none; }
-        .article-body hr { border: none; height: 0; margin: 1.75rem 0; position: relative; }
-        .article-body hr::before { content: ""; display: block; width: 60px; height: 3px; background: #e5e7eb; border-radius: 9999px; margin: 0 auto; }
-        .article-body ul, .article-body ol { margin: 1rem 0 1rem 1.5rem; }
-        .article-body ul { list-style: disc; } .article-body ol { list-style: decimal; }
-        .article-body li { margin: 0.5rem 0; }
-        .article-body strong { color: #0f172a; font-weight: 700; }
-        .article-body a { color: #2563eb; text-decoration: underline; text-underline-offset: 3px; }
-        .article-body blockquote { border-left: 4px solid #93c5fd; background: #eff6ff; padding: 1rem 1.25rem; margin: 1.5rem 0; border-radius: 0 0.75rem 0.75rem 0; color: #1e3a8a; font-style: italic; }
-        .article-body code { background: #f3f4f6; padding: 0.15rem 0.4rem; border-radius: 0.25rem; font-size: 0.9em; color: #be185d; }
-        .article-body img { max-width: 100%; height: auto; border-radius: 0.75rem; margin: 1.5rem 0; }
-        .article-body table { width: 100%; border-collapse: collapse; font-size: 0.9375rem; margin: 1.25rem 0; }
-        .article-body thead tr { background: #1a3a5c; color: #fff; }
-        .article-body thead th { padding: 0.75rem 1rem; text-align: left; font-weight: 600; }
-        .article-body tbody td { padding: 0.7rem 1rem; border-bottom: 1px solid #e5e5e0; color: #444; }
-        .article-body tbody tr:nth-child(even) { background: #f7f7f5; }
+        .modal.active { display: flex; }${ARTICLE_BODY_CSS}
     <\/style>
 </head>
 <body class="antialiased">
@@ -1772,14 +1935,15 @@ ${faqItems && faqItems.length > 0 ? `    <script type="application/ld+json">
     <!-- Navigation -->
     <nav class="fixed top-0 left-0 right-0 z-50 nav-glass">
         <div class="max-w-7xl mx-auto px-3 md:px-6 py-2 flex items-center justify-between gap-2">
-            <a href="../index.html" class="flex items-center gap-1 hover:opacity-80 transition-opacity touch-manipulation min-w-0">
+            <a href="/" class="flex items-center gap-1 hover:opacity-80 transition-opacity touch-manipulation min-w-0">
                 <img src="../logo.png?v=20260310b" alt="경리업무를잘하는청년들" class="hidden md:block object-contain" style="height:2.125rem;" fetchpriority="high">
                 <img src="../logo.png?v=20260310b" alt="경리업무를잘하는청년들" class="block md:hidden mobile-nav-logo object-contain" fetchpriority="high">
             </a>
             <div class="hidden md:flex items-center gap-6">
-                <a href="../about.html" class="text-gray-700 hover:text-blue-700 font-semibold transition-colors">원격경리</a>
-                <a href="../news.html" class="text-blue-700 font-bold transition-colors">경리소식</a>
-                <a href="../faq.html" class="text-gray-700 hover:text-blue-700 font-semibold transition-colors">자주 묻는 질문</a>
+                <a href="/about" class="text-gray-700 hover:text-blue-700 font-semibold transition-colors">원격경리</a>
+                <a href="/news" class="text-blue-700 font-bold transition-colors" aria-current="page">경리소식</a>
+                <a href="/manual" class="text-gray-700 hover:text-blue-700 font-semibold transition-colors">자료실</a>
+                <a href="/faq" class="text-gray-700 hover:text-blue-700 font-semibold transition-colors">자주 묻는 질문</a>
             </div>
             <button onclick="openModal()" class="bg-blue-600 hover:bg-blue-700 text-white font-bold px-5 py-2 rounded-xl transition-colors text-sm whitespace-nowrap">상담 바로가기</button>
         </div>
@@ -1790,9 +1954,9 @@ ${faqItems && faqItems.length > 0 ? `    <script type="application/ld+json">
         <div class="max-w-3xl mx-auto px-4 md:px-6">
             <!-- 빵부스러기 -->
             <nav aria-label="현재 위치" class="text-sm text-gray-500 mb-6">
-                <a href="../index.html" class="hover:text-blue-600 transition-colors">홈</a>
+                <a href="/" class="hover:text-blue-600 transition-colors">홈</a>
                 <span class="mx-2 text-gray-300">/</span>
-                <a href="../news.html" class="hover:text-blue-600 transition-colors">경리소식</a>
+                <a href="/news" class="hover:text-blue-600 transition-colors">경리소식</a>
                 <span class="mx-2 text-gray-300">/</span>
                 <span class="text-gray-700">${escHtml(category)}</span>
             </nav>
@@ -1826,7 +1990,7 @@ ${faqItems && faqItems.length > 0 ? `    <script type="application/ld+json">
 ${body}
             <\/div>
 
-            <!-- CTA 카드 -->
+${afterBody ? afterBody + '\n\n' : ''}            <!-- CTA 카드 -->
             <div class="mt-14 bg-blue-50 border border-blue-100 rounded-2xl p-8 text-center">
                 <p class="text-lg md:text-xl font-bold text-gray-900 mb-2">경리 고민, 지금 바로 해결하세요</p>
                 <p class="text-sm text-gray-600 mb-6">무료 상담으로 우리 회사에 맞는 솔루션을 확인해 보세요.</p>
@@ -1837,7 +2001,7 @@ ${body}
 
             <!-- 목록으로 -->
             <div class="mt-8 text-center">
-                <a href="../news.html" class="inline-flex items-center gap-2 text-sm text-gray-500 hover:text-blue-600 transition-colors font-semibold">
+                <a href="/news" class="inline-flex items-center gap-2 text-sm text-gray-500 hover:text-blue-600 transition-colors font-semibold">
                     <i class="fas fa-arrow-left text-xs"><\/i> 경리소식 목록으로
                 <\/a>
             <\/div>
@@ -1853,7 +2017,7 @@ ${body}
     <footer class="bg-white py-8 border-t border-gray-200">
         <div class="max-w-6xl mx-auto px-6">
             <div class="flex flex-col md:flex-row items-start justify-between gap-6">
-                <a href="../index.html"><img src="../logo.png?v=20260310b" alt="경리업무를잘하는청년들" class="h-14 md:h-16 object-contain"><\/a>
+                <a href="/"><img src="../logo.png?v=20260310b" alt="경리업무를잘하는청년들" class="h-14 md:h-16 object-contain"><\/a>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-3 text-gray-600 text-sm">
                     <div class="flex items-center gap-2"><i class="fas fa-phone text-blue-700"><\/i><span>전화번호 : 1566-2687</span><\/div>
                     <div class="flex items-center gap-2"><i class="fas fa-envelope text-blue-700"><\/i><span>wapeople000@gmail.com</span><\/div>
@@ -1863,6 +2027,7 @@ ${body}
                 <\/div>
             <\/div>
             <div class="border-t border-gray-200 mt-6 pt-6 text-center text-gray-400 text-sm">
+                <p class="mb-2"><a href="/privacy" class="hover:text-blue-600 transition-colors underline underline-offset-2">개인정보 처리방침</a></p>
                 <p>&copy; <span class="copyright-year">2026</span> 경리업무를잘하는청년들. All rights reserved.</p>
             <\/div>
         <\/div>
@@ -1886,6 +2051,29 @@ ${body}
                 <div><label style="display:block;font-weight:600;color:#374151;margin-bottom:0.5rem;">이메일 <span style="font-weight:400;color:#9ca3af;font-size:0.875rem;">(선택)<\/span><\/label><input type="email" name="email" style="width:100%;border:2px solid #e5e7eb;border-radius:0.75rem;padding:0.75rem 1rem;color:#111827;box-sizing:border-box;" placeholder="example@email.com"><\/div>
                 <div><label style="display:block;font-weight:600;color:#374151;margin-bottom:0.5rem;">유입경로 <span style="font-weight:400;color:#9ca3af;font-size:0.875rem;">(선택)<\/span><\/label><select name="referral_source" style="width:100%;border:2px solid #e5e7eb;border-radius:0.75rem;padding:0.75rem 1rem;color:#111827;background:white;box-sizing:border-box;"><option value="">선택해주세요<\/option><option value="검색">검색<\/option><option value="유튜브">유튜브<\/option><option value="스레드">스레드<\/option><option value="기타">기타<\/option><\/select><\/div>
                 <div><label style="display:block;font-weight:600;color:#374151;margin-bottom:0.5rem;">현재 가장 큰 고민 <span style="color:#f43f5e;">*<\/span><\/label><textarea name="message" required rows="4" style="width:100%;border:2px solid #e5e7eb;border-radius:0.75rem;padding:0.75rem 1rem;color:#111827;resize:none;box-sizing:border-box;" placeholder="예) 경리 직원 채용이 어려워요&#10;예) 장부 정리가 복잡해요"><\/textarea><\/div>
+                <div class="agree-box" style="border:1px solid #e5e8ee;border-radius:0.75rem;padding:14px 16px;margin-top:14px;font-size:0.95rem;text-align:left;background:#fff;">
+                    <label style="display:flex;align-items:flex-start;gap:8px;font-weight:600;cursor:pointer;color:#374151;">
+                        <input type="checkbox" name="agree_privacy" required style="margin-top:4px;flex-shrink:0;">
+                        <span>[필수] 개인정보 수집·이용에 동의합니다.<\/span>
+                    <\/label>
+                    <p style="color:#5b6472;font-size:0.88rem;line-height:1.6;margin:6px 0 14px 26px;">
+                        · 수집 항목: 회사명, 담당자 성명, 연락처, 이메일, 문의 내용<br>
+                        · 수집·이용 목적: 상담 응대, 무료 재무 현황 진단, 견적·서비스 안내, 계약 체결<br>
+                        · 보유·이용 기간: 상담 종료 후 3년<br>
+                        · 동의를 거부할 권리가 있으며, 거부 시 상담 신청이 제한될 수 있습니다.<br>
+                        <a href="/privacy" target="_blank" rel="noopener" style="color:#2f6df6;text-decoration:underline;">개인정보 처리방침 보기<\/a>
+                    <\/p>
+                    <label style="display:flex;align-items:flex-start;gap:8px;font-weight:600;cursor:pointer;color:#374151;">
+                        <input type="checkbox" name="agree_marketing" style="margin-top:4px;flex-shrink:0;">
+                        <span>[선택] 마케팅·광고성 정보 수신에 동의합니다.<\/span>
+                    <\/label>
+                    <p style="color:#5b6472;font-size:0.88rem;line-height:1.6;margin:6px 0 0 26px;">
+                        · 수신 항목: 이메일, 문자(SMS/MMS), 전화<br>
+                        · 이용 목적: 이벤트·혜택 등 광고성 정보 발송, 서비스 소개<br>
+                        · 보유·이용 기간: 동의 철회 시까지<br>
+                        · 동의하지 않아도 상담 신청 및 서비스 이용에는 제한이 없습니다.
+                    <\/p>
+                <\/div>
                 <button type="submit" style="width:100%;background:#2563eb;color:white;font-weight:700;font-size:1.125rem;padding:1rem;border-radius:0.75rem;border:none;cursor:pointer;">무료 상담 신청하기<\/button>
             <\/form>
         <\/div>
@@ -1948,8 +2136,28 @@ function toDisplayDate(iso) {
     return `${y}. ${m}. ${d}.`;
 }
 
+// 브라우저 현지 날짜(YYYY-MM-DD). toISOString()은 UTC라 한국 오전 9시 이전엔 전날이 됩니다.
+function todayIso() {
+    const now = new Date();
+    return new Date(now.getTime() - now.getTimezoneOffset() * 60000).toISOString().slice(0, 10);
+}
+
 // ─── 수정 모드 관련 ───────────────────────────────────────────────────────────
 let editingSlug = null;
+let editingAfterBody = '';
+
+// 본문(.article-body)과 CTA 카드 사이의 추가 블록(관련 서비스 등) — 수정 저장 때 그대로 다시 넣습니다.
+function extractAfterBody(articleEl) {
+    if (!articleEl) return '';
+    const parts = [];
+    for (let node = articleEl.nextSibling; node; node = node.nextSibling) {
+        if (node.nodeType === Node.COMMENT_NODE && node.textContent.trim() === 'CTA 카드') return parts.join('').trim();
+        if (node.nodeType === Node.ELEMENT_NODE) parts.push(node.outerHTML);
+        else if (node.nodeType === Node.COMMENT_NODE) parts.push(`<!--${node.textContent}-->`);
+        else parts.push(/^\s*$/.test(node.textContent) ? node.textContent : escHtml(node.textContent));
+    }
+    return '';
+}
 
 function setEditMode(slug) {
     editingSlug = slug;
@@ -1963,11 +2171,12 @@ function setEditMode(slug) {
 
 function cancelEdit() {
     editingSlug = null;
+    editingAfterBody = '';
     document.getElementById('editModeBanner').classList.add('hidden');
     document.getElementById('publishBtnText').textContent = 'GitHub에 게시하기';
     ['title','summary','slug','keywords','seoTitle'].forEach(id => { const el = document.getElementById(id); if (el) el.value = ''; });
     document.getElementById('category').value = '';
-    document.getElementById('date').value = new Date().toISOString().split('T')[0];
+    document.getElementById('date').value = todayIso();
     document.getElementById('seoTitleCount').textContent = '0자';
     document.getElementById('summaryCount').textContent  = '0자';
     if (quill) quill.setContents([]);
@@ -2049,7 +2258,7 @@ async function loadPostList() {
                         class="px-3 py-1.5 bg-blue-50 hover:bg-blue-100 text-blue-700 font-semibold text-xs rounded-lg transition-colors">
                         ✏️ 수정
                     </button>
-                    <a href="../news/${post.slug}.html" target="_blank"
+                    <a href="/news/${post.slug}" target="_blank" rel="noopener"
                         class="px-3 py-1.5 bg-gray-50 hover:bg-gray-100 text-gray-600 font-semibold text-xs rounded-lg transition-colors">
                         🔗 보기
                     </a>
@@ -2086,7 +2295,8 @@ async function loadPostForEdit(slug) {
         const metaDesc = doc.querySelector('meta[name="description"]')?.getAttribute('content') || '';
         const summary  = metaDesc.replace(/\n/g, ' ').trim();
         const dateEl   = doc.querySelector('time[datetime]');
-        const date     = dateEl?.getAttribute('datetime') || '';
+        const date     = dateEl?.getAttribute('datetime')
+            || doc.querySelector('meta[property="article:published_time"]')?.getAttribute('content') || '';
         const catEl    = doc.querySelector('.text-xs.font-bold.px-3');
         const category = catEl?.textContent?.trim() || '';
         const metaKw   = doc.querySelector('meta[name="keywords"]')?.getAttribute('content') || '';
@@ -2100,6 +2310,7 @@ async function loadPostForEdit(slug) {
         // 본문 추출
         const articleEl = doc.querySelector('.article-body');
         const body = articleEl ? articleEl.innerHTML : '';
+        const afterBody = extractAfterBody(articleEl);
 
         // 폼 채우기
         document.getElementById('title').value    = title;
@@ -2112,25 +2323,26 @@ async function loadPostForEdit(slug) {
         document.getElementById('seoTitleCount').textContent = seoTitle.length + '자';
         updateSeoTitleCount();
 
-        // FAQ JSON-LD 복원
+        // FAQ JSON-LD 복원 (머리말과 본문에 같은 FAQ가 중복돼 있어도 질문은 한 번만)
         clearFaqItems();
-        const faqScripts = doc.querySelectorAll('script[type="application/ld+json"]');
-        faqScripts.forEach(s => {
-            try {
-                const schema = JSON.parse(s.textContent);
-                if (schema['@type'] === 'FAQPage' && Array.isArray(schema.mainEntity)) {
-                    // FAQ 섹션 열기
-                    const sec = document.getElementById('faqSection');
-                    if (sec.classList.contains('hidden')) toggleFaqSection();
-                    schema.mainEntity.forEach(item => {
-                        addFaqItem(item.name || '', item.acceptedAnswer?.text || '');
-                    });
-                }
-            } catch (_) {}
+        const seenQuestions = new Set();
+        doc.querySelectorAll('script[type="application/ld+json"]').forEach(s => {
+            let schema;
+            try { schema = JSON.parse(s.textContent); }
+            catch (e) { console.warn(`[${slug}] 구조화 데이터 해석 실패:`, e.message); return; }
+            if (schema['@type'] !== 'FAQPage' || !Array.isArray(schema.mainEntity)) return;
+            const sec = document.getElementById('faqSection');
+            if (sec.classList.contains('hidden')) toggleFaqSection();
+            schema.mainEntity.forEach(item => {
+                const question = (item.name || '').trim();
+                if (!question || seenQuestions.has(question)) return;
+                seenQuestions.add(question);
+                addFaqItem(question, item.acceptedAnswer?.text || '');
+            });
         });
 
-        // 에디터에 본문 적용: <script>/<style> 포함 시 HTML 모드로 자동 전환
-        if (/<script[\s>]|<style[\s>]/i.test(body)) {
+        // 에디터에 본문 적용: 기본 편집기(Quill)가 보존하지 못하는 요소(표·박스·스크립트 등)가 있으면 HTML 모드
+        if (/<(?:script|style|table|div|section|aside|figure|details|iframe|svg|button|form)[\s>]/i.test(body)) {
             if (!htmlMode) toggleHtmlMode();
             document.getElementById('htmlRaw').value = body;
         } else {
@@ -2140,6 +2352,7 @@ async function loadPostForEdit(slug) {
 
         updatePreview();
         setEditMode(slug);
+        editingAfterBody = afterBody;
         showTab('write');
         showAlert(`"${slug}" 글을 불러왔습니다. 수정 후 "수정 저장하기"를 클릭하세요.`);
 
@@ -2190,13 +2403,10 @@ async function deletePost(slug) {
             }
         }
 
-        // 3. sitemap.xml에서 항목 제거 (실패해도 삭제는 완료로 처리)
-        await updateSitemap('remove', slug, '').catch(() => {});
-
-        // 4. 수정 모드였으면 해제
+        // 3. 수정 모드였으면 해제
         if (editingSlug === slug) cancelEdit();
 
-        // 5. 목록 새로고침
+        // 4. 목록 새로고침 (sitemap·RSS·IndexNow 알림은 배포 때 자동 처리)
         alert(`✅ "${slug}" 글이 삭제되었습니다.`);
         loadPostList();
 
@@ -2207,49 +2417,9 @@ async function deletePost(slug) {
     }
 }
 
-// ─── 검색엔진 사이트맵 핑 ─────────────────────────────────────────────────────
-async function pingSitemapToSearchEngines() {
-    const sitemapUrl = encodeURIComponent('https://wapeople.kr/sitemap.xml');
-    const endpoints = [
-        `https://www.google.com/ping?sitemap=${sitemapUrl}`,
-        `https://searchadvisor.naver.com/xml/sitemap/ping?sitemap=${sitemapUrl}`,
-    ];
-    await Promise.allSettled(
-        endpoints.map(url => fetch(url, { mode: 'no-cors' }).catch(() => {}))
-    );
-}
-
-// ─── 사이트맵 업데이트 (게시·수정·삭제 연동) ──────────────────────────────────
-async function updateSitemap(action, slug, date) {
-    const sitemapFile = await ghGetFile('sitemap.xml');
-    if (!sitemapFile) return;
-
-    const currentXml = decodeURIComponent(escape(atob(sitemapFile.content.replace(/\n/g, ''))));
-    const slugEsc = slug.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-
-    // 해당 슬러그의 기존 항목 제거
-    const entryRegex = new RegExp(
-        `[ \\t]*<url>[\\s\\S]*?<loc>https://wapeople\\.kr/news/${slugEsc}</loc>[\\s\\S]*?</url>\\n?`,
-        'g'
-    );
-    let updatedXml = currentXml.replace(entryRegex, '');
-
-    if (action !== 'remove') {
-        const newEntry = `  <url>\n    <loc>https://wapeople.kr/news/${slug}</loc>\n    <lastmod>${date}</lastmod>\n    <changefreq>monthly</changefreq>\n    <priority>0.6</priority>\n  </url>`;
-        updatedXml = updatedXml.replace('</urlset>', `${newEntry}\n</urlset>`);
-    }
-
-    const verb = action === 'remove' ? '삭제' : action === 'update' ? '수정' : '추가';
-    const res = await ghPutFile(
-        'sitemap.xml',
-        updatedXml,
-        `[sitemap] ${verb}: /news/${slug}`,
-        sitemapFile.sha
-    );
-    if (!res.ok) console.warn('sitemap.xml 업데이트 실패');
-}
-
 // ─── 게시 (GitHub API) ────────────────────────────────────────────────────────
+// sitemap.xml·rss.xml·llms 목록은 배포 빌드(scripts/generate-seo-files.js)가 만들고,
+// 검색엔진 알림은 배포 성공 후 GitHub Actions(scripts/indexnow.js)가 보냅니다.
 async function publishPost() {
     const title    = document.getElementById('title').value.trim();
     const summary  = document.getElementById('summary').value.trim();
@@ -2285,6 +2455,18 @@ async function publishPost() {
     if (!/^[a-z0-9\-]+$/.test(slug)) return showAlert('슬러그는 영문 소문자·숫자·하이픈만 사용 가능합니다.', 'error');
     if (!ls('ghPatEnc')) return showAlert('설정 탭에서 GitHub Personal Access Token을 먼저 입력해주세요.', 'error');
 
+    const faqItems = collectFaqItems();
+    let cleanedActions;
+    try {
+        const sanitized = sanitizeArticleBody(body, { title, dropFaqJsonLd: faqItems.length > 0 });
+        body = sanitized.html;
+        cleanedActions = sanitized.actions;
+    } catch (e) {
+        console.error('본문 정리 실패:', e);
+        return showAlert('❌ 본문 정리 실패: ' + e.message + ' — 게시를 중단했습니다.', 'error');
+    }
+    if (!body) return showAlert('정리 후 남은 본문이 없습니다. 본문 HTML을 확인해주세요.', 'error');
+
     const btn = document.getElementById('publishBtn');
     const spinner = document.getElementById('publishSpinner');
     btn.disabled = true;
@@ -2292,11 +2474,15 @@ async function publishPost() {
     spinner.classList.remove('hidden');
 
     try {
+        const isEditing   = (editingSlug !== null);
+        const today       = todayIso();
         const displayDate = toDisplayDate(date);
-        const htmlContent = buildHtml({ title, seoTitle, summary, slug, date, displayDate, category, keywords, faqItems: collectFaqItems(), body });
+        const htmlContent = buildHtml({
+            title, seoTitle, summary, slug, date, displayDate, category, keywords, faqItems, body,
+            modifiedDate: isEditing && today > date ? today : date,
+            afterBody: isEditing ? editingAfterBody : '',
+        });
         const newsPath    = `news/${slug}.html`;
-
-        const isEditing = (editingSlug !== null);
 
         // 1. 기존 파일 확인 (sha 필요)
         const existing = await ghGetFile(newsPath);
@@ -2321,7 +2507,7 @@ async function publishPost() {
         const dataFile = await ghGetFile('news-data.js');
         if (dataFile) {
             const currentContent = decodeURIComponent(escape(atob(dataFile.content.replace(/\n/g,''))));
-            const newEntry = `    {\n        slug: '${slug}',\n        title: '${escJson(title)}',\n        category: '${category}',\n        date: '${date}',\n        summary: '${escJson(summary)}',\n        cover: '',\n        url: 'news/${slug}.html'\n    },`;
+            const newEntry = `    {\n        slug: '${slug}',\n        title: '${escJson(title)}',\n        category: '${category}',\n        date: '${date}',\n        summary: '${escJson(summary)}',\n        cover: '',\n        url: '/news/${slug}'\n    },`;
 
             let updatedContent;
             if (isEditing) {
@@ -2352,24 +2538,21 @@ async function publishPost() {
             }
         }
 
-        // 3. sitemap.xml 업데이트 (실패해도 게시는 완료로 처리)
-        await updateSitemap(isEditing ? 'update' : 'add', slug, date).catch(() => {});
-
-        // 4. 검색엔진 사이트맵 핑 (실패해도 무시)
-        await pingSitemapToSearchEngines().catch(() => {});
-
-        const successMsg = isEditing
+        const cleanedNote = cleanedActions.length ? ` 본문 자동 정리: ${cleanedActions.join(', ')}.` : '';
+        const successMsg = (isEditing
             ? `✅ 수정 완료! "${slug}.html"이 GitHub에 저장됐습니다.`
-            : `✅ 게시 완료! "${slug}.html"이 GitHub에 저장됐습니다. 배포 후 /news 에서 확인하세요.`;
+            : `✅ 게시 완료! "${slug}.html"이 GitHub에 저장됐습니다.`)
+            + ` 1~2분 뒤 배포가 끝나면 /news/${slug} 에서 확인할 수 있고, 사이트맵·RSS·검색엔진 알림은 자동으로 처리됩니다.${cleanedNote}`;
         showAlert(successMsg);
 
         // 수정 모드 해제 및 폼 초기화
         editingSlug = null;
+        editingAfterBody = '';
         document.getElementById('editModeBanner').classList.add('hidden');
         document.getElementById('publishBtnText').textContent = 'GitHub에 게시하기';
         ['title','summary','slug','keywords'].forEach(id => document.getElementById(id).value = '');
         document.getElementById('category').value = '';
-        document.getElementById('date').value = new Date().toISOString().split('T')[0];
+        document.getElementById('date').value = todayIso();
         quill.setContents([]);
         if (htmlMode) { toggleHtmlMode(); }
         updatePreview();

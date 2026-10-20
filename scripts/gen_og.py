@@ -3,6 +3,7 @@
 Pretendard 폰트로 한글을 정확히 렌더링한다. (AI 이미지 생성은 한글이 깨지므로 사용하지 않음)
 """
 import os
+import sys
 from PIL import Image, ImageDraw, ImageFont
 
 BASE = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -25,6 +26,8 @@ CARDS = {
     "wholesale":     ("업종별 맞춤 경리",       "도소매업 경리",     "재고 관리 · 매입매출 정산"),
     "restaurant":    ("업종별 맞춤 경리",       "음식점 경리",       "메뉴별 손익분석 · 식자재비 관리"),
     "ecommerce":     ("업종별 맞춤 경리",       "쇼핑몰 경리",       "다채널 정산 · 수수료 관리"),
+    "expense-management":   ("업종별 맞춤 경리", "법인카드 경비관리",  "카드 내역 분류 · 지출결의서 증빙 매칭"),
+    "subscription-service": ("업종별 맞춤 경리", "구독형 서비스 경리", "정기결제 매출 인식 · 미수금·연체 관리"),
     "faq":           ("자주 묻는 질문",         "무엇이든 물어보세요", "서비스 · 프로그램 · 금액 안내"),
     "reviews":       ("고객 후기",             "182개 기업의 선택",  "대표님들의 생생한 후기"),
     "about":         ("원격경리란?",           "전문 경리팀의 온라인 관리", "경리 직원 유무와 상관없이 회계를 맡깁니다"),
@@ -110,6 +113,11 @@ def make_card(key, eyebrow, title, tagline):
     return out
 
 if __name__ == "__main__":
-    for k, (e, t, g) in CARDS.items():
-        p = make_card(k, e, t, g)
+    # 인자로 키를 주면 해당 카드만 생성 (예: python3 scripts/gen_og.py expense-management)
+    keys = sys.argv[1:] or list(CARDS)
+    unknown = [k for k in keys if k not in CARDS]
+    if unknown:
+        sys.exit(f"알 수 없는 카드 키: {', '.join(unknown)} (가능: {', '.join(CARDS)})")
+    for k in keys:
+        p = make_card(k, *CARDS[k])
         print("wrote", os.path.relpath(p, BASE))

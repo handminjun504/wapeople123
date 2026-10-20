@@ -25,7 +25,7 @@
         var data = {};
         if (email && email.indexOf('@') > 0) data.email = email;
         if (phone) {
-            var digits = phone.replace(/D/g, '');
+            var digits = phone.replace(/\D/g, '');
             if (digits.length >= 10) {
                 if (digits.indexOf('82') === 0) data.phone_number = '+' + digits;
                 else if (digits.charAt(0) === '0') data.phone_number = '+82' + digits.substring(1);
@@ -83,25 +83,41 @@
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png">
     <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-icon-180x180.png">
     <meta name="theme-color" content="#2563eb">
-    <link rel="stylesheet" href="../dist/output.css?v=20261016">
+    <link rel="stylesheet" href="../dist/output.css?v=20261020">
     <link rel="stylesheet" href="../mobile-optimize.css?v=20260312b">
     <script src="../traffic-attribution.js?v=20260813a" defer></script>
     <script src="/lead-ingest.js?v=20260806a" defer></script>
     <script src="../a11y-enhance.js" defer></script>
-    <link rel="stylesheet" href="../fonts/Pretendard-1.3.9/web/static/pretendard-subset.css?v=20260312c">
+    <link rel="stylesheet" href="../fonts/Pretendard-1.3.9/web/variable/pretendard-dynamic-subset.css?v=20261020">
+    <link rel="preload" href="../fonts/Pretendard-1.3.9/web/variable/woff2-dynamic-subset/PretendardVariable.subset.87.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="../fonts/Pretendard-1.3.9/web/variable/woff2-dynamic-subset/PretendardVariable.subset.88.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="../fonts/Pretendard-1.3.9/web/variable/woff2-dynamic-subset/PretendardVariable.subset.89.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="../fonts/Pretendard-1.3.9/web/variable/woff2-dynamic-subset/PretendardVariable.subset.90.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="../fonts/Pretendard-1.3.9/web/variable/woff2-dynamic-subset/PretendardVariable.subset.91.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/fontawesome.min.css" media="print" onload="this.media='all'">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/solid.min.css" media="print" onload="this.media='all'">
-    <script src="https://www.google.com/recaptcha/api.js?render=6Le0CEMsAAAAAFGF3Dnci1_SUkC4VWmzqdox2jJZ"></script>
     <script>
-        document.documentElement.style.opacity = '0';
-        document.documentElement.style.transition = 'opacity 0.2s ease';
-        function revealPageAfterFontLoad() { document.documentElement.style.opacity = '1'; }
-        const fontLoadFallback = setTimeout(revealPageAfterFontLoad, 3000);
-        if (document.fonts && document.fonts.ready) {
-            document.fonts.ready.then(function() { clearTimeout(fontLoadFallback); revealPageAfterFontLoad(); }).catch(revealPageAfterFontLoad);
-        } else { window.addEventListener('load', function() { clearTimeout(fontLoadFallback); revealPageAfterFontLoad(); }); }
+        // reCAPTCHA를 비동기로 불러오는 동안 grecaptcha.ready() 콜백을 ___grecaptcha_cfg.fns 대기열에 넣습니다(api.js가 로드 후 실행).
+        // 10초 안에 못 불러오면 execute()가 실패하도록 해 폼의 실패 처리(catch)로 넘깁니다.
+        (function (w) {
+            var cfg = w.___grecaptcha_cfg = w.___grecaptcha_cfg || {};
+            var g = w.grecaptcha = w.grecaptcha || {};
+            if (g.ready) return;
+            g.ready = function (cb) {
+                var done = false;
+                function run() { if (!done) { done = true; cb(); } }
+                (cfg.fns = cfg.fns || []).push(run);
+                setTimeout(function () {
+                    if (done) return;
+                    if (typeof w.grecaptcha.execute !== 'function') {
+                        w.grecaptcha.execute = function () { return Promise.reject(new Error('reCAPTCHA unavailable')); };
+                    }
+                    run();
+                }, 10000);
+            };
+        })(window);
     </script>
-    <noscript><style>html { opacity: 1 !important; }</style></noscript>
+    <script src="https://www.google.com/recaptcha/api.js?render=6Le0CEMsAAAAAFGF3Dnci1_SUkC4VWmzqdox2jJZ" async defer></script>
     <style>
         .modal { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.5); z-index: 9999; align-items: center; justify-content: center; }
         .modal.active { display: flex; }
@@ -137,15 +153,15 @@
     <!-- Navigation -->
     <nav class="fixed top-0 left-0 right-0 z-50 nav-glass">
         <div class="max-w-7xl mx-auto px-3 md:px-6 py-2 flex items-center justify-between gap-2">
-            <a href="../index.html" class="flex items-center gap-1 hover:opacity-80 transition-opacity touch-manipulation min-w-0">
+            <a href="/" class="flex items-center gap-1 hover:opacity-80 transition-opacity touch-manipulation min-w-0">
                 <img src="../logo.png?v=20260310b" alt="경리업무를잘하는청년들" class="hidden md:block object-contain" style="height:2.125rem;" fetchpriority="high">
                 <img src="../logo.png?v=20260310b" alt="경리업무를잘하는청년들" class="block md:hidden mobile-nav-logo object-contain" fetchpriority="high">
             </a>
             <div class="hidden md:flex items-center gap-6">
-                <a href="../about.html" class="text-gray-700 hover:text-blue-700 font-semibold transition-colors">원격경리</a>
-                <a href="../news.html" class="text-gray-700 hover:text-blue-700 font-semibold transition-colors">경리소식</a>
-                <a href="../manual/" class="text-blue-700 font-bold transition-colors">자료실</a>
-                <a href="../faq.html" class="text-gray-700 hover:text-blue-700 font-semibold transition-colors">자주 묻는 질문</a>
+                <a href="/about" class="text-gray-700 hover:text-blue-700 font-semibold transition-colors">원격경리</a>
+                <a href="/news" class="text-gray-700 hover:text-blue-700 font-semibold transition-colors">경리소식</a>
+                <a href="/manual" class="text-blue-700 font-bold transition-colors">자료실</a>
+                <a href="/faq" class="text-gray-700 hover:text-blue-700 font-semibold transition-colors">자주 묻는 질문</a>
             </div>
             <button onclick="openModal()" class="bg-blue-600 hover:bg-blue-700 text-white font-bold px-5 py-2 rounded-xl transition-colors text-sm whitespace-nowrap">상담 바로가기</button>
         </div>
@@ -154,7 +170,7 @@
     <header class="bg-white pt-28 md:pt-32 pb-10 md:pb-12 border-b border-gray-100">
         <div class="max-w-3xl mx-auto px-4 md:px-6">
             <nav aria-label="현재 위치" class="text-sm text-gray-500 mb-6">
-                <a href="../index.html" class="hover:text-blue-600 transition-colors">홈</a>
+                <a href="/" class="hover:text-blue-600 transition-colors">홈</a>
                 <span class="mx-2 text-gray-300">/</span>
                 <span class="text-gray-700">자료실</span>
             </nav>
@@ -180,7 +196,7 @@
     <footer class="bg-white py-8 border-t border-gray-200">
         <div class="max-w-6xl mx-auto px-6">
             <div class="flex flex-col md:flex-row items-start justify-between gap-6">
-                <a href="../index.html"><img src="../logo.png?v=20260310b" alt="경리업무를잘하는청년들" class="h-14 md:h-16 object-contain"></a>
+                <a href="/"><img src="../logo.png?v=20260310b" alt="경리업무를잘하는청년들" class="h-14 md:h-16 object-contain"></a>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-3 text-gray-600 text-sm">
                     <div class="flex items-center gap-2"><i class="fas fa-phone text-blue-700"></i><span>전화번호 : 1566-2687</span></div>
                     <div class="flex items-center gap-2"><i class="fas fa-envelope text-blue-700"></i><span>wapeople000@gmail.com</span></div>

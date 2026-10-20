@@ -2,6 +2,8 @@
 module.exports = {
   content: [
     "./*.html",
+    "./news/*.html",
+    "./manual/*.html",
     "./src/**/*.{html,js}",
     "./case-data.js"
   ],

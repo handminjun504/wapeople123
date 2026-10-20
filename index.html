@@ -72,6 +72,7 @@
     
     <!-- 캐노니컬 URL -->
     <link rel="canonical" href="https://wapeople.kr/">
+    <link rel="alternate" type="application/rss+xml" title="경리소식 | 경리업무를잘하는청년들" href="https://wapeople.kr/rss.xml">
     
     <!-- 언어 및 지역 -->
     <meta name="language" content="Korean">
@@ -131,7 +132,10 @@
         "opens": "09:00",
         "closes": "18:00"
       },
-      "sameAs": [],
+      "hasMap": "https://map.naver.com/p/entry/place/1245812255",
+      "sameAs": [
+        "https://map.naver.com/p/entry/place/1245812255"
+      ],
       "priceRange": "₩₩",
       "areaServed": {
         "@type": "Country",
@@ -278,11 +282,8 @@
     <link rel="preconnect" href="https://www.google-analytics.com" crossorigin>
     
     <!-- Preload 중요 리소스 -->
-    <link rel="preload" href="fonts/Pretendard-1.3.9/web/static/woff2-subset/Pretendard-Regular.subset.woff2" as="font" type="font/woff2" crossorigin="anonymous">
-    <link rel="preload" href="fonts/Pretendard-1.3.9/web/static/woff2-subset/Pretendard-Bold.subset.woff2" as="font" type="font/woff2" crossorigin="anonymous">
-    <link rel="preload" href="dist/output.css?v=20261016" as="style">
-    
-    
+    <link rel="preload" href="dist/output.css?v=20261020" as="style">
+
     <!-- 네이버 애널리틱스 (무료) - 사이트 ID 받으면 활성화 -->
     <!--
     <script type="text/javascript" src="//wcs.naver.net/wcslog.js"></script>
@@ -293,53 +294,45 @@
     </script>
     -->
     
-    <link rel="stylesheet" href="dist/output.css?v=20261016">
+    <link rel="stylesheet" href="dist/output.css?v=20261020">
     <link rel="stylesheet" href="mobile-optimize.css?v=20260312b">
     <script src="traffic-attribution.js?v=20260813a" defer></script>
     <script src="/lead-ingest.js?v=20260806a" defer></script>
     <script src="a11y-enhance.js" defer></script>
-    <link rel="stylesheet" href="fonts/Pretendard-1.3.9/web/static/pretendard-subset.css?v=20260312c">
-    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
+    <link rel="stylesheet" href="fonts/Pretendard-1.3.9/web/variable/pretendard-dynamic-subset.css?v=20261020">
+    <link rel="preload" href="fonts/Pretendard-1.3.9/web/variable/woff2-dynamic-subset/PretendardVariable.subset.87.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="fonts/Pretendard-1.3.9/web/variable/woff2-dynamic-subset/PretendardVariable.subset.88.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="fonts/Pretendard-1.3.9/web/variable/woff2-dynamic-subset/PretendardVariable.subset.89.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="fonts/Pretendard-1.3.9/web/variable/woff2-dynamic-subset/PretendardVariable.subset.90.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="fonts/Pretendard-1.3.9/web/variable/woff2-dynamic-subset/PretendardVariable.subset.91.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" media="print" onload="this.media='all'">
     <!-- Font Awesome 필요한 아이콘만 로드하도록 지연 -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/fontawesome.min.css" media="print" onload="this.media='all'">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/solid.min.css" media="print" onload="this.media='all'">
-    
-    <!-- 폰트 로딩 스크립트 -->
-    <script>
-        document.documentElement.style.opacity = '0';
-        document.documentElement.style.transition = 'opacity 0.2s ease';
 
-        function revealPageAfterFontLoad() {
-            document.documentElement.style.opacity = '1';
-        }
-
-        const fontLoadFallback = setTimeout(revealPageAfterFontLoad, 3000);
-
-        if (document.fonts && document.fonts.ready) {
-            document.fonts.ready.then(function() {
-                clearTimeout(fontLoadFallback);
-                revealPageAfterFontLoad();
-            }).catch(function() {
-                revealPageAfterFontLoad();
-            });
-        } else {
-            window.addEventListener('load', function() {
-                clearTimeout(fontLoadFallback);
-                revealPageAfterFontLoad();
-            });
-        }
-    </script>
-    
-    <!-- 검색 엔진을 위한 fallback -->
-    <noscript>
-        <style>
-            html { opacity: 1 !important; }
-        </style>
-    </noscript>
-    
-    
     <!-- Google reCAPTCHA v3 -->
-    <script src="https://www.google.com/recaptcha/api.js?render=6Le0CEMsAAAAAFGF3Dnci1_SUkC4VWmzqdox2jJZ"></script>
+    <script>
+        // reCAPTCHA를 비동기로 불러오는 동안 grecaptcha.ready() 콜백을 ___grecaptcha_cfg.fns 대기열에 넣습니다(api.js가 로드 후 실행).
+        // 10초 안에 못 불러오면 execute()가 실패하도록 해 폼의 실패 처리(catch)로 넘깁니다.
+        (function (w) {
+            var cfg = w.___grecaptcha_cfg = w.___grecaptcha_cfg || {};
+            var g = w.grecaptcha = w.grecaptcha || {};
+            if (g.ready) return;
+            g.ready = function (cb) {
+                var done = false;
+                function run() { if (!done) { done = true; cb(); } }
+                (cfg.fns = cfg.fns || []).push(run);
+                setTimeout(function () {
+                    if (done) return;
+                    if (typeof w.grecaptcha.execute !== 'function') {
+                        w.grecaptcha.execute = function () { return Promise.reject(new Error('reCAPTCHA unavailable')); };
+                    }
+                    run();
+                }, 10000);
+            };
+        })(window);
+    </script>
+    <script src="https://www.google.com/recaptcha/api.js?render=6Le0CEMsAAAAAFGF3Dnci1_SUkC4VWmzqdox2jJZ" async defer></script>
 </head>
 <body class="antialiased">
     <!-- Google Tag Manager (noscript) -->
@@ -350,15 +343,15 @@
     <!-- Navigation -->
     <nav class="fixed top-0 left-0 right-0 z-50 nav-glass">
         <div class="max-w-7xl mx-auto px-3 md:px-6 py-2 flex items-center justify-between gap-2">
-                        <a href="index.html" class="flex items-center gap-1 hover:opacity-80 transition-opacity touch-manipulation min-w-0">
+                        <a href="/" class="flex items-center gap-1 hover:opacity-80 transition-opacity touch-manipulation min-w-0">
                 <img src="logo.png?v=20260310b" alt="경리업무를잘하는청년들" class="hidden md:block object-contain" style="height:2.125rem;" fetchpriority="high">
                 <img src="logo.png?v=20260310b" alt="경리업무를잘하는청년들" class="block md:hidden mobile-nav-logo object-contain" fetchpriority="high">
             </a>
             
             <!-- 데스크톱 메뉴 -->
-            <div class="hidden md:flex items-center gap-2 md:gap-6">
+            <div class="hidden xl:flex items-center gap-2 md:gap-6">
                 <!-- 원격경리 -->
-                <a href="about.html" class="px-8 py-5 text-gray-700 hover:text-blue-700 font-semibold transition-colors whitespace-nowrap">
+                <a href="/about" class="px-8 py-5 text-gray-700 hover:text-blue-700 font-semibold transition-colors whitespace-nowrap">
                     원격경리
                 </a>
                 
@@ -375,35 +368,35 @@
                     <!-- 드롭다운 메뉴 -->
                     <div class="absolute top-full left-0 mt-2 w-48 bg-white rounded-xl shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 border border-gray-100">
                         <div class="py-2">
-                            <a href="service.html" class="flex items-center gap-3 px-4 py-3 hover:bg-blue-50 transition-colors">
+                            <a href="/service" class="flex items-center gap-3 px-4 py-3 hover:bg-blue-50 transition-colors">
                                 <img src="assets/industry/icons/service.svg" alt="" width="24" height="24" class="w-6 h-6 rounded-xl object-contain flex-shrink-0">
                                 <span class="text-gray-700 font-medium">서비스업</span>
                             </a>
-                            <a href="manufacturing.html" class="flex items-center gap-3 px-4 py-3 hover:bg-emerald-50 transition-colors">
+                            <a href="/manufacturing" class="flex items-center gap-3 px-4 py-3 hover:bg-emerald-50 transition-colors">
                                 <img src="assets/industry/icons/manufacturing.svg" alt="" width="24" height="24" class="w-6 h-6 rounded-xl object-contain flex-shrink-0">
                                 <span class="text-gray-700 font-medium">제조업</span>
                             </a>
-                            <a href="construction.html" class="flex items-center gap-3 px-4 py-3 hover:bg-amber-50 transition-colors">
+                            <a href="/construction" class="flex items-center gap-3 px-4 py-3 hover:bg-amber-50 transition-colors">
                                 <img src="assets/industry/icons/construction.svg" alt="" width="24" height="24" class="w-6 h-6 rounded-xl object-contain flex-shrink-0">
                                 <span class="text-gray-700 font-medium">건설업</span>
                             </a>
-                            <a href="wholesale.html" class="flex items-center gap-3 px-4 py-3 hover:bg-sky-50 transition-colors">
+                            <a href="/wholesale" class="flex items-center gap-3 px-4 py-3 hover:bg-sky-50 transition-colors">
                                 <img src="assets/industry/icons/wholesale.svg" alt="" width="24" height="24" class="w-6 h-6 rounded-xl object-contain flex-shrink-0">
                                 <span class="text-gray-700 font-medium">도소매업</span>
                             </a>
-                            <a href="restaurant.html" class="flex items-center gap-3 px-4 py-3 hover:bg-rose-50 transition-colors">
+                            <a href="/restaurant" class="flex items-center gap-3 px-4 py-3 hover:bg-rose-50 transition-colors">
                                 <img src="assets/industry/icons/restaurant.svg" alt="" width="24" height="24" class="w-6 h-6 rounded-xl object-contain flex-shrink-0">
                                 <span class="text-gray-700 font-medium">음식점업</span>
                             </a>
-                            <a href="ecommerce.html" class="flex items-center gap-3 px-4 py-3 hover:bg-violet-50 transition-colors">
+                            <a href="/ecommerce" class="flex items-center gap-3 px-4 py-3 hover:bg-violet-50 transition-colors">
                                 <img src="assets/industry/icons/ecommerce.svg" alt="" width="24" height="24" class="w-6 h-6 rounded-xl object-contain flex-shrink-0">
                                 <span class="text-gray-700 font-medium">쇼핑몰업</span>
                             </a>
-                            <a href="expense-management.html" class="flex items-center gap-3 px-4 py-3 hover:bg-indigo-50 transition-colors">
+                            <a href="/expense-management" class="flex items-center gap-3 px-4 py-3 hover:bg-indigo-50 transition-colors">
                                 <img src="assets/industry/icons/expense-management.svg" alt="" width="24" height="24" class="w-6 h-6 rounded-xl object-contain flex-shrink-0">
                                 <span class="text-gray-700 font-medium">법인카드 경비관리</span>
                             </a>
-                            <a href="subscription-service.html" class="flex items-center gap-3 px-4 py-3 hover:bg-teal-50 transition-colors">
+                            <a href="/subscription-service" class="flex items-center gap-3 px-4 py-3 hover:bg-teal-50 transition-colors">
                                 <img src="assets/industry/icons/subscription-service.svg" alt="" width="24" height="24" class="w-6 h-6 rounded-xl object-contain flex-shrink-0">
                                 <span class="text-gray-700 font-medium">구독형 서비스</span>
                             </a>
@@ -415,7 +408,7 @@
                 <div class="h-6 w-px bg-gray-300"></div>
                 
                 <!-- 오시는 길 -->
-                <a href="location.html" class="px-3 py-2 text-gray-700 hover:text-blue-700 font-semibold transition-colors whitespace-nowrap">
+                <a href="/location" class="px-3 py-2 text-gray-700 hover:text-blue-700 font-semibold transition-colors whitespace-nowrap">
                     오시는 길
                 </a>
                 
@@ -423,17 +416,17 @@
                 <div class="h-6 w-px bg-gray-300"></div>
                 
                 <!-- FAQ -->
-                <a href="news.html" class="px-3 py-2 text-gray-700 hover:text-blue-700 font-semibold transition-colors whitespace-nowrap">경리소식</a>
-                <a href="manual/" class="px-3 py-2 text-gray-700 hover:text-blue-700 font-semibold transition-colors whitespace-nowrap">자료실</a>
+                <a href="/news" class="px-3 py-2 text-gray-700 hover:text-blue-700 font-semibold transition-colors whitespace-nowrap">경리소식</a>
+                <a href="/manual" class="px-3 py-2 text-gray-700 hover:text-blue-700 font-semibold transition-colors whitespace-nowrap">자료실</a>
                 <div class="h-6 w-px bg-gray-300"></div>
-                <a href="reviews.html" class="px-3 py-2 text-gray-700 hover:text-blue-700 font-semibold transition-colors whitespace-nowrap">
+                <a href="/reviews" class="px-3 py-2 text-gray-700 hover:text-blue-700 font-semibold transition-colors whitespace-nowrap">
                     고객후기
                 </a>
 
                 <!-- 구분선 -->
                 <div class="h-6 w-px bg-gray-300"></div>
 
-                <a href="faq.html" class="px-3 py-2 text-gray-700 hover:text-blue-700 font-semibold transition-colors whitespace-nowrap">
+                <a href="/faq" class="px-3 py-2 text-gray-700 hover:text-blue-700 font-semibold transition-colors whitespace-nowrap">
                     FAQ
                 </a>
                 
@@ -444,7 +437,7 @@
             </div>
 
             <!-- 모바일 메뉴 -->
-            <div class="mobile-nav-actions md:hidden">
+            <div class="mobile-nav-actions flex items-center gap-2 xl:hidden">
                 <button onclick="openModal()" class="flex items-center justify-center bg-blue-600 hover:bg-blue-700 text-white px-5 py-2.5 rounded-full font-bold text-sm transition-colors shadow-lg cursor-pointer whitespace-nowrap">
                     상담 바로가기
                 </button>
@@ -455,59 +448,59 @@
         </div>
 
         <!-- 모바일 메뉴 패널 -->
-        <div id="mobileMenu" class="hidden md:hidden bg-white border-t border-gray-200 shadow-lg">
+        <div id="mobileMenu" class="hidden xl:hidden bg-white border-t border-gray-200 shadow-lg">
             <div class="max-w-7xl mx-auto px-4 py-4">
-                <a href="about.html" class="block py-3 px-4 text-gray-700 hover:bg-blue-50 hover:text-blue-700 font-semibold rounded-lg transition-colors">
+                <a href="/about" class="block py-3 px-4 text-gray-700 hover:bg-blue-50 hover:text-blue-700 font-semibold rounded-lg transition-colors">
                     원격경리
                 </a>
                 
                 <!-- 업종별 서비스 -->
                 <div class="border-t border-gray-100 mt-2 pt-2">
                     <p class="px-4 py-2 text-sm font-bold text-gray-500">업종별 서비스</p>
-                    <a href="service.html" class="flex items-center gap-3 py-3 px-4 text-gray-700 hover:bg-blue-50 rounded-lg transition-colors">
+                    <a href="/service" class="flex items-center gap-3 py-3 px-4 text-gray-700 hover:bg-blue-50 rounded-lg transition-colors">
                         <img src="assets/industry/icons/service.svg" alt="" width="24" height="24" class="w-6 h-6 rounded-xl object-contain flex-shrink-0">
                         <span class="font-medium">서비스업</span>
                     </a>
-                    <a href="manufacturing.html" class="flex items-center gap-3 py-3 px-4 text-gray-700 hover:bg-emerald-50 rounded-lg transition-colors">
+                    <a href="/manufacturing" class="flex items-center gap-3 py-3 px-4 text-gray-700 hover:bg-emerald-50 rounded-lg transition-colors">
                         <img src="assets/industry/icons/manufacturing.svg" alt="" width="24" height="24" class="w-6 h-6 rounded-xl object-contain flex-shrink-0">
                         <span class="font-medium">제조업</span>
                     </a>
-                    <a href="construction.html" class="flex items-center gap-3 py-3 px-4 text-gray-700 hover:bg-amber-50 rounded-lg transition-colors">
+                    <a href="/construction" class="flex items-center gap-3 py-3 px-4 text-gray-700 hover:bg-amber-50 rounded-lg transition-colors">
                         <img src="assets/industry/icons/construction.svg" alt="" width="24" height="24" class="w-6 h-6 rounded-xl object-contain flex-shrink-0">
                         <span class="font-medium">건설업</span>
                     </a>
-                    <a href="wholesale.html" class="flex items-center gap-3 py-3 px-4 text-gray-700 hover:bg-sky-50 rounded-lg transition-colors">
+                    <a href="/wholesale" class="flex items-center gap-3 py-3 px-4 text-gray-700 hover:bg-sky-50 rounded-lg transition-colors">
                         <img src="assets/industry/icons/wholesale.svg" alt="" width="24" height="24" class="w-6 h-6 rounded-xl object-contain flex-shrink-0">
                         <span class="font-medium">도소매업</span>
                     </a>
-                    <a href="restaurant.html" class="flex items-center gap-3 py-3 px-4 text-gray-700 hover:bg-rose-50 rounded-lg transition-colors">
+                    <a href="/restaurant" class="flex items-center gap-3 py-3 px-4 text-gray-700 hover:bg-rose-50 rounded-lg transition-colors">
                         <img src="assets/industry/icons/restaurant.svg" alt="" width="24" height="24" class="w-6 h-6 rounded-xl object-contain flex-shrink-0">
                         <span class="font-medium">음식점업</span>
                     </a>
-                    <a href="ecommerce.html" class="flex items-center gap-3 py-3 px-4 text-gray-700 hover:bg-violet-50 rounded-lg transition-colors">
+                    <a href="/ecommerce" class="flex items-center gap-3 py-3 px-4 text-gray-700 hover:bg-violet-50 rounded-lg transition-colors">
                         <img src="assets/industry/icons/ecommerce.svg" alt="" width="24" height="24" class="w-6 h-6 rounded-xl object-contain flex-shrink-0">
                         <span class="font-medium">쇼핑몰업</span>
                     </a>
-                    <a href="expense-management.html" class="flex items-center gap-3 py-3 px-4 text-gray-700 hover:bg-indigo-50 rounded-lg transition-colors">
+                    <a href="/expense-management" class="flex items-center gap-3 py-3 px-4 text-gray-700 hover:bg-indigo-50 rounded-lg transition-colors">
                         <img src="assets/industry/icons/expense-management.svg" alt="" width="24" height="24" class="w-6 h-6 rounded-xl object-contain flex-shrink-0">
                         <span class="font-medium">법인카드 경비관리</span>
                     </a>
-                    <a href="subscription-service.html" class="flex items-center gap-3 py-3 px-4 text-gray-700 hover:bg-teal-50 rounded-lg transition-colors">
+                    <a href="/subscription-service" class="flex items-center gap-3 py-3 px-4 text-gray-700 hover:bg-teal-50 rounded-lg transition-colors">
                         <img src="assets/industry/icons/subscription-service.svg" alt="" width="24" height="24" class="w-6 h-6 rounded-xl object-contain flex-shrink-0">
                         <span class="font-medium">구독형 서비스</span>
                     </a>
                 </div>
                 
                 <div class="border-t border-gray-100 mt-2 pt-2">
-                    <a href="location.html" class="block py-3 px-4 text-gray-700 hover:bg-blue-50 hover:text-blue-700 font-semibold rounded-lg transition-colors">
+                    <a href="/location" class="block py-3 px-4 text-gray-700 hover:bg-blue-50 hover:text-blue-700 font-semibold rounded-lg transition-colors">
                         오시는 길
                     </a>
-                    <a href="news.html" class="block py-3 px-4 text-gray-700 hover:bg-blue-50 hover:text-blue-700 font-semibold rounded-lg transition-colors">경리소식</a>
-                    <a href="manual/" class="block py-3 px-4 text-gray-700 hover:bg-blue-50 hover:text-blue-700 font-semibold rounded-lg transition-colors">자료실</a>
-                    <a href="reviews.html" class="block py-3 px-4 text-gray-700 hover:bg-blue-50 hover:text-blue-700 font-semibold rounded-lg transition-colors">
+                    <a href="/news" class="block py-3 px-4 text-gray-700 hover:bg-blue-50 hover:text-blue-700 font-semibold rounded-lg transition-colors">경리소식</a>
+                    <a href="/manual" class="block py-3 px-4 text-gray-700 hover:bg-blue-50 hover:text-blue-700 font-semibold rounded-lg transition-colors">자료실</a>
+                    <a href="/reviews" class="block py-3 px-4 text-gray-700 hover:bg-blue-50 hover:text-blue-700 font-semibold rounded-lg transition-colors">
                         고객후기
                     </a>
-                    <a href="faq.html" class="block py-3 px-4 text-gray-700 hover:bg-blue-50 hover:text-blue-700 font-semibold rounded-lg transition-colors">
+                    <a href="/faq" class="block py-3 px-4 text-gray-700 hover:bg-blue-50 hover:text-blue-700 font-semibold rounded-lg transition-colors">
                         FAQ
                     </a>
                 </div>
@@ -557,16 +550,16 @@
         <div class="max-w-7xl mx-auto px-4 md:px-6 relative z-10 w-full">
             <!-- Header -->
             <div class="text-center mb-6 md:mb-8">
-                <div data-aos="fade-up" data-aos-duration="500" class="inline-flex items-center gap-2 bg-blue-50 border border-blue-100 px-3 md:px-6 py-1.5 md:py-2 rounded-full mb-4 md:mb-14 text-center">
+                <div class="inline-flex items-center gap-2 bg-blue-50 border border-blue-100 px-3 md:px-6 py-1.5 md:py-2 rounded-full mb-4 md:mb-14 text-center">
                     <span class="w-2 h-2 bg-green-500 rounded-full animate-pulse flex-shrink-0"></span>
                     <span class="text-sm md:text-lg text-gray-600 leading-tight">현재 182개 기업이 함께하고 있습니다 · 2026.10.16 기준</span>
                 </div>
                 
-                <h1 data-aos="fade-up" data-aos-duration="500" data-aos-delay="50" class="text-3xl md:text-5xl lg:text-6xl font-black leading-tight mb-3 md:mb-6 tracking-tight text-gray-900 px-2 md:px-4">
+                <h1 class="text-3xl md:text-5xl lg:text-6xl font-black leading-tight mb-3 md:mb-6 tracking-tight text-gray-900 px-2 md:px-4">
                     대표님들의 <span class="text-blue-600">고민을 해결</span>해 드리겠습니다
                 </h1>
                 
-                <p data-aos="fade-up" data-aos-duration="500" data-aos-delay="100" class="text-base md:text-xl text-gray-600 max-w-2xl mx-auto px-4 md:px-6 leading-relaxed">
+                <p class="text-base md:text-xl text-gray-600 max-w-2xl mx-auto px-4 md:px-6 leading-relaxed">
                     어떤 업종을 경영하고 계신가요?
                 </p>
             </div>
@@ -575,7 +568,7 @@
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6 max-w-6xl mx-auto mb-6 md:mb-0">
                 
                 <!-- 서비스업 -->
-                <a href="service.html" data-aos="zoom-in" data-aos-duration="400" data-aos-delay="50" class="card rounded-2xl p-5 md:p-7 block">
+                <a href="/service" class="card rounded-2xl p-5 md:p-7 block">
                     <div class="flex items-center gap-3 md:gap-4 mb-3 md:mb-4">
                         <div class="w-12 h-12 md:w-16 md:h-16 rounded-xl bg-blue-50 flex items-center justify-center card-icon flex-shrink-0 p-2 md:p-2.5">
                             <img src="assets/industry/icons/service.svg" alt="" width="64" height="64" class="w-full h-full object-contain">
@@ -589,7 +582,7 @@
                 </a>
                 
                 <!-- 제조업 -->
-                <a href="manufacturing.html" data-aos="zoom-in" data-aos-duration="400" data-aos-delay="100" class="card rounded-2xl p-5 md:p-7 block">
+                <a href="/manufacturing" class="card rounded-2xl p-5 md:p-7 block">
                     <div class="flex items-center gap-3 md:gap-4 mb-3 md:mb-4">
                         <div class="w-12 h-12 md:w-16 md:h-16 rounded-xl bg-emerald-50 flex items-center justify-center card-icon flex-shrink-0 p-2 md:p-2.5">
                             <img src="assets/industry/icons/manufacturing.svg" alt="" width="64" height="64" class="w-full h-full object-contain">
@@ -603,7 +596,7 @@
                 </a>
                 
                 <!-- 건설업 -->
-                <a href="construction.html" data-aos="zoom-in" data-aos-duration="400" data-aos-delay="150" class="card rounded-2xl p-5 md:p-7 block">
+                <a href="/construction" class="card rounded-2xl p-5 md:p-7 block">
                     <div class="flex items-center gap-3 md:gap-4 mb-3 md:mb-4">
                         <div class="w-12 h-12 md:w-16 md:h-16 rounded-xl bg-amber-50 flex items-center justify-center card-icon flex-shrink-0 p-2 md:p-2.5">
                             <img src="assets/industry/icons/construction.svg" alt="" width="64" height="64" class="w-full h-full object-contain">
@@ -617,7 +610,7 @@
                 </a>
                 
                 <!-- 도소매업 -->
-                <a href="wholesale.html" data-aos="zoom-in" data-aos-duration="400" data-aos-delay="200" class="card rounded-2xl p-5 md:p-7 block">
+                <a href="/wholesale" class="card rounded-2xl p-5 md:p-7 block">
                     <div class="flex items-center gap-3 md:gap-4 mb-3 md:mb-4">
                         <div class="w-12 h-12 md:w-16 md:h-16 rounded-xl bg-sky-50 flex items-center justify-center card-icon flex-shrink-0 p-2 md:p-2.5">
                             <img src="assets/industry/icons/wholesale.svg" alt="" width="64" height="64" class="w-full h-full object-contain">
@@ -631,7 +624,7 @@
                 </a>
                 
                 <!-- 음식점업 -->
-                <a href="restaurant.html" data-aos="zoom-in" data-aos-duration="400" data-aos-delay="250" class="card rounded-2xl p-5 md:p-7 block">
+                <a href="/restaurant" class="card rounded-2xl p-5 md:p-7 block">
                     <div class="flex items-center gap-3 md:gap-4 mb-3 md:mb-4">
                         <div class="w-12 h-12 md:w-16 md:h-16 rounded-xl bg-rose-50 flex items-center justify-center card-icon flex-shrink-0 p-2 md:p-2.5">
                             <img src="assets/industry/icons/restaurant.svg" alt="" width="64" height="64" class="w-full h-full object-contain">
@@ -645,7 +638,7 @@
                 </a>
                 
                 <!-- 쇼핑몰업 -->
-                <a href="ecommerce.html" data-aos="zoom-in" data-aos-duration="600" data-aos-delay="350" class="card rounded-2xl p-5 md:p-7 block">
+                <a href="/ecommerce" class="card rounded-2xl p-5 md:p-7 block">
                     <div class="flex items-center gap-3 md:gap-4 mb-3 md:mb-4">
                         <div class="w-12 h-12 md:w-16 md:h-16 rounded-xl bg-violet-50 flex items-center justify-center card-icon flex-shrink-0 p-2 md:p-2.5">
                             <img src="assets/industry/icons/ecommerce.svg" alt="" width="64" height="64" class="w-full h-full object-contain">
@@ -659,7 +652,7 @@
                 </a>
 
                 <!-- 법인카드 경비관리 -->
-                <a href="expense-management.html" data-aos="zoom-in" data-aos-duration="600" data-aos-delay="400" class="card rounded-2xl p-5 md:p-7 block">
+                <a href="/expense-management" class="card rounded-2xl p-5 md:p-7 block">
                     <div class="flex items-center gap-3 md:gap-4 mb-3 md:mb-4">
                         <div class="w-12 h-12 md:w-16 md:h-16 rounded-xl bg-indigo-50 flex items-center justify-center card-icon flex-shrink-0 p-2 md:p-2.5">
                             <img src="assets/industry/icons/expense-management.svg" alt="" width="64" height="64" class="w-full h-full object-contain">
@@ -673,7 +666,7 @@
                 </a>
 
                 <!-- 구독형 서비스 -->
-                <a href="subscription-service.html" data-aos="zoom-in" data-aos-duration="600" data-aos-delay="450" class="card rounded-2xl p-5 md:p-7 block">
+                <a href="/subscription-service" class="card rounded-2xl p-5 md:p-7 block">
                     <div class="flex items-center gap-3 md:gap-4 mb-3 md:mb-4">
                         <div class="w-12 h-12 md:w-16 md:h-16 rounded-xl bg-teal-50 flex items-center justify-center card-icon flex-shrink-0 p-2 md:p-2.5">
                             <img src="assets/industry/icons/subscription-service.svg" alt="" width="64" height="64" class="w-full h-full object-contain">
@@ -691,17 +684,17 @@
             <!-- Bottom CTA -->
             <div class="text-center mt-8 md:mt-10">
                 <div class="flex flex-col sm:flex-row gap-3 justify-center items-stretch sm:items-center mx-4 px-2">
-                    <a href="all-service.html" data-aos="fade-up" data-aos-duration="400" data-aos-delay="50" class="bg-white border-2 border-blue-300 rounded-full px-6 py-4 md:py-3 shadow-lg shadow-blue-100/50 hover:shadow-xl transition-all hover:-translate-y-1 inline-flex items-center justify-center gap-2 group min-h-[48px]">
+                    <a href="/all-service" data-aos="fade-up" data-aos-duration="400" data-aos-delay="50" class="bg-white border-2 border-blue-300 rounded-full px-6 py-4 md:py-3 shadow-lg shadow-blue-100/50 hover:shadow-xl transition-all hover:-translate-y-1 inline-flex items-center justify-center gap-2 group min-h-[48px]">
                         <i class="fas fa-list text-blue-600"></i>
                         <span class="text-blue-600 font-bold text-base md:text-lg">전체 서비스 보기</span>
                         <i class="fas fa-arrow-right text-blue-600 group-hover:translate-x-1 transition-transform text-sm"></i>
                     </a>
-                    <a href="faq.html" data-aos="fade-up" data-aos-duration="400" data-aos-delay="100" class="bg-blue-600 text-white rounded-full px-6 py-4 md:py-3 shadow-lg shadow-blue-100/50 hover:shadow-xl transition-all hover:-translate-y-1 inline-flex items-center justify-center gap-2 group min-h-[48px]">
+                    <a href="/faq" data-aos="fade-up" data-aos-duration="400" data-aos-delay="100" class="bg-blue-600 text-white rounded-full px-6 py-4 md:py-3 shadow-lg shadow-blue-100/50 hover:shadow-xl transition-all hover:-translate-y-1 inline-flex items-center justify-center gap-2 group min-h-[48px]">
                         <i class="fas fa-question-circle"></i>
                         <span class="font-bold text-base md:text-lg">자주 묻는 질문</span>
                         <i class="fas fa-arrow-right group-hover:translate-x-1 transition-transform text-sm"></i>
                     </a>
-                    <a href="reviews.html" data-aos="fade-up" data-aos-duration="400" data-aos-delay="150" class="bg-white border-2 border-amber-300 rounded-full px-6 py-4 md:py-3 shadow-lg shadow-amber-100/50 hover:shadow-xl transition-all hover:-translate-y-1 inline-flex items-center justify-center gap-2 group min-h-[48px]">
+                    <a href="/reviews" data-aos="fade-up" data-aos-duration="400" data-aos-delay="150" class="bg-white border-2 border-amber-300 rounded-full px-6 py-4 md:py-3 shadow-lg shadow-amber-100/50 hover:shadow-xl transition-all hover:-translate-y-1 inline-flex items-center justify-center gap-2 group min-h-[48px]">
                         <i class="fas fa-star text-amber-500"></i>
                         <span class="text-amber-600 font-bold text-base md:text-lg">고객 후기</span>
                         <i class="fas fa-arrow-right text-amber-500 group-hover:translate-x-1 transition-transform text-sm"></i>
@@ -814,7 +807,7 @@
                         <span class="ml-2 text-xs md:text-sm font-medium text-gray-400 align-middle">*100% 실제 후기입니다</span>
                     </h2>
                 </div>
-                <a href="reviews.html" class="hidden md:inline-flex items-center gap-2 text-blue-600 font-bold hover:text-blue-700 transition-colors group">
+                <a href="/reviews" class="hidden md:inline-flex items-center gap-2 text-blue-600 font-bold hover:text-blue-700 transition-colors group">
                     전체 후기 보기
                     <i class="fas fa-arrow-right group-hover:translate-x-1 transition-transform"></i>
                 </a>
@@ -919,7 +912,7 @@
         </div>
 
         <div class="text-center mt-8 md:hidden">
-            <a href="reviews.html" class="inline-flex items-center gap-2 text-blue-600 font-bold">
+            <a href="/reviews" class="inline-flex items-center gap-2 text-blue-600 font-bold">
                 전체 후기 보기 <i class="fas fa-arrow-right"></i>
             </a>
         </div>
@@ -2162,7 +2155,7 @@
             }
         }
     </script>
-    <script src="review-data.js?v=20260526c"></script>
+    <script src="review-data.js?v=20261020"></script>
     <script src="case-data.js?v=20260320b"></script>
     <script>
         var reviewData = Array.isArray(window.WA_REVIEW_DATA) ? window.WA_REVIEW_DATA.slice() : [];
@@ -2174,9 +2167,9 @@
 
             function createReviewCard(item, index) {
                 var imageSrc = encodeURI(item.image).replace(/#/g, '%23');
-                return '<a href="reviews.html?review=' + index + '" class="review-slide-card">'
+                return '<a href="/reviews?review=' + index + '" class="review-slide-card">'
                     + '<div class="review-slide-media">'
-                    + '<img src="' + imageSrc + '" alt="' + item.title + '" class="review-slide-image">'
+                    + '<img src="' + imageSrc + '" alt="' + item.title + '" class="review-slide-image" loading="lazy" decoding="async">'
                     + '</div>'
                     + '<div class="review-slide-body">'
                     + '<h3 class="review-slide-title">' + item.title + '</h3>'
@@ -2186,9 +2179,9 @@
 
             function createCaseCard(item) {
                 var imgSrc = Array.isArray(item.image) ? item.image[0] : item.image;
-                return '<a href="reviews.html?tab=cases" class="review-slide-card" style="border-color:#dbeafe">'
+                return '<a href="/reviews?tab=cases" class="review-slide-card" style="border-color:#dbeafe">'
                     + '<div class="review-slide-media">'
-                    + '<img src="' + encodeURI(imgSrc) + '" alt="' + item.title + '" class="review-slide-image">'
+                    + '<img src="' + encodeURI(imgSrc) + '" alt="' + item.title + '" class="review-slide-image" loading="lazy" decoding="async">'
                     + '</div>'
                     + '<div class="review-slide-body" style="background:#eff6ff">'
                     + '<h3 class="review-slide-title">' + item.title + '</h3>'
@@ -2218,6 +2211,22 @@
             }
 
             slider.innerHTML = html + html;
+
+            // 슬라이더가 transform 애니메이션이라 브라우저 기본 lazy 로딩은 옆에서 들어오는 카드를 미리 받지 못해 빈 카드가 보입니다.
+            // 섹션이 가까워지면 슬라이더 이미지를 한꺼번에 받습니다.
+            function loadAllSlideImages() {
+                slider.querySelectorAll('img[loading="lazy"]').forEach(function(img) { img.loading = 'eager'; });
+            }
+            if ('IntersectionObserver' in window) {
+                var slideObserver = new IntersectionObserver(function(entries) {
+                    if (!entries.some(function(entry) { return entry.isIntersecting; })) return;
+                    slideObserver.disconnect();
+                    loadAllSlideImages();
+                }, { rootMargin: '1200px 0px' });
+                slideObserver.observe(slider.parentElement || slider);
+            } else {
+                loadAllSlideImages();
+            }
         })();
     </script>
 </body>
