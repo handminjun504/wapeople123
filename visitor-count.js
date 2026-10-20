@@ -22,9 +22,10 @@
         })
         .then(function (data) {
             if (!data || !data.ok) return;
-            var today = el.querySelector('[data-visitor-today]');
+            var now = el.querySelector('[data-visitor-now]');
             var total = el.querySelector('[data-visitor-total]');
-            if (today) today.textContent = format(data.today);
+            var live = (data.now != null) ? data.now : data.today;
+            if (now) now.textContent = format(live);
             if (total) total.textContent = format(data.total);
             el.hidden = false;
         })

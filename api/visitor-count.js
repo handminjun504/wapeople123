@@ -115,6 +115,32 @@ async function runReport(propertyId, token, startDate, endDate, metric) {
     return value ? Number(value.value) || 0 : 0;
 }
 
+// Realtime: users active in the last 30 minutes. GA4's standard reports do not
+// carry the current day until it is processed, so "today" reads 0 for most of
+// the day; the footer's live slot uses this instead.
+async function runRealtime(propertyId, token, metric) {
+    const url = `https://analyticsdata.googleapis.com/v1beta/properties/${propertyId}:runRealtimeReport`;
+    const response = await fetch(url, {
+        method: 'POST',
+        headers: {
+            'Authorization': `Bearer ${token}`,
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            metrics: [{ name: metric }],
+            limit: 1
+        })
+    });
+    if (!response.ok) {
+        const text = await response.text().catch(() => '');
+        throw new Error(`runRealtime ${response.status} ${text.slice(0, 200)}`);
+    }
+    const data = await response.json();
+    if (!data.rows || !data.rows.length) return 0;
+    const value = data.rows[0].metricValues && data.rows[0].metricValues[0];
+    return value ? Number(value.value) || 0 : 0;
+}
+
 module.exports = async function handler(req, res) {
     if (req.method !== 'GET' && req.method !== 'HEAD') {
         res.setHeader('Allow', 'GET, HEAD');
@@ -134,12 +160,16 @@ module.exports = async function handler(req, res) {
     try {
         const token = await getAccessToken(sa);
         // GA4 omits empty date ranges, so ask for each window separately.
-        const [today, total] = await Promise.all([
+        // The live call is best-effort: if it fails the footer falls back to the
+        // daily figure instead of losing the whole counter.
+        const [now, today, total] = await Promise.all([
+            runRealtime(propertyId, token, metric).catch(() => null),
             runReport(propertyId, token, 'today', 'today', metric),
             runReport(propertyId, token, totalStart, 'today', metric)
         ]);
         return sendJson(res, 200, {
             ok: true,
+            now,
             today,
             total,
             metric,
