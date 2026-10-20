@@ -1845,6 +1845,11 @@
             <div class="border-t border-gray-200 mt-6 pt-6 text-center text-gray-400 text-sm">
                 <p class="mb-2"><a href="/privacy" class="hover:text-blue-600 transition-colors underline underline-offset-2">개인정보 처리방침</a></p>
                 <p>&copy; <span class="copyright-year">2026</span> 경리업무를잘하는청년들. All rights reserved.</p>
+                <p id="visitor-counter" class="mt-3 text-xs text-gray-400" hidden>
+                    오늘 <span data-visitor-today class="font-medium text-gray-500">0</span>명
+                    <span class="mx-1 text-gray-300">·</span>
+                    누적 <span data-visitor-total class="font-medium text-gray-500">0</span>명
+                </p>
             </div>
         </div>
     </footer>
@@ -2229,5 +2234,6 @@
             }
         })();
     </script>
+    <script src="visitor-count.js?v=20261020a" defer></script>
 </body>
 </html>
