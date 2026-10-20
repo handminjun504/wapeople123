@@ -54,6 +54,7 @@
 - [RSS 피드](https://wapeople.kr/rss.xml): 경리소식 새 글 구독.
 
 <!-- AUTO:NEWS START (scripts/generate-seo-files.js가 빌드할 때 자동으로 채웁니다. 직접 수정하지 마세요) -->
+- [6년간 5억5,600만원 — 회계프로그램까지 조작해 숨긴 경리, 우리 회사는 어디를 봐야 할까 (2026-10-20)](https://wapeople.kr/news/gyeongri-hoengnyeong-hoegyegwanri-6nyeon)
 - [부가세 가산세, 왜 나오고 어떻게 줄이나 — 경리 담당자가 먼저 볼 것 (2026-10-19)](https://wapeople.kr/news/bugase-gasansae-juligi)
 - [경리 담당자가 퇴사할 때, 인수인계는 무엇부터 받아야 할까요? (2026-10-16)](https://wapeople.kr/news/gyeongri-insu-ingye-checklist)
 - [정책자금·특례보증, 신청 전에 무엇을 준비해야 할까요? (2026-10-16)](https://wapeople.kr/news/jeongchaekjageum-teukryebojeung-junbi)

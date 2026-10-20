@@ -22,7 +22,7 @@
         date: '2026-10-20',
         summary: '부산의 한 회사에서 6년간 5억5,600만원이 횡령되고, 계좌 거래내역과 회계프로그램 조작으로 은폐된 사건이 보도됐습니다. 왜 오래 드러나지 않았는지, 금융감독원이 제시한 횡령 예방 체크포인트 6가지, 경리 담당자가 오늘부터 점검할 항목을 정리했습니다.',
         cover: '',
-        url: 'news/gyeongri-hoengnyeong-hoegyegwanri-6nyeon.html'
+        url: '/news/gyeongri-hoengnyeong-hoegyegwanri-6nyeon'
     },
 
     {
