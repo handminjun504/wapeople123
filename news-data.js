@@ -16,6 +16,16 @@
     //   url       : '/news/{slug}'
     window.WA_NEWS_DATA = [
     {
+        slug: 'sosanggongin-jeongchaekjageum-chongjeongri',
+        title: '소상공인 정책자금·지원금 총정리 — 경리 담당자가 챙길 체크리스트',
+        category: '정책자금',
+        date: '2026-10-21',
+        summary: '정책자금(융자)·지원금(보조)·공제가 어떻게 다른지 구분하고, 소상공인이 다시 볼 만한 제도 7가지를 한 표로 정리했습니다. 신청 전 경리 담당자가 준비할 서류와 확인 순서까지. 자격·한도·금리·기간은 기관·공고 기준으로 확인해야 합니다.',
+        cover: '',
+        url: 'news/sosanggongin-jeongchaekjageum-chongjeongri.html'
+    },
+
+    {
         slug: 'gyeongri-hoengnyeong-hoegyegwanri-6nyeon',
         title: '6년간 5억5,600만원 — 회계프로그램까지 조작해 숨긴 경리, 우리 회사는 어디를 봐야 할까',
         category: '경리뉴스',

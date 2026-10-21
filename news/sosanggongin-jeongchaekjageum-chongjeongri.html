@@ -1,0 +1,739 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-THPPR46Q');</script>
+    <!-- End Google Tag Manager -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17745262400"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'AW-17745262400');
+    </script>
+    <!-- Event snippet for 견적 요청 conversion (Enhanced Conversions 지원) -->
+    <script>
+    function wapeopleGetUserData(form) {
+        if (!form) return {};
+        var fd = new FormData(form);
+        var email = ((fd.get('email') || '') + '').trim().toLowerCase();
+        var phone = ((fd.get('phone') || '') + '').trim();
+        var data = {};
+        if (email && email.indexOf('@') > 0) data.email = email;
+        if (phone) {
+            var digits = phone.replace(/\D/g, '');
+            if (digits.length >= 10) {
+                if (digits.indexOf('82') === 0) data.phone_number = '+' + digits;
+                else if (digits.charAt(0) === '0') data.phone_number = '+82' + digits.substring(1);
+                else data.phone_number = '+' + digits;
+            }
+        }
+        return data;
+    }
+
+    function gtag_report_conversion(url, userData) {
+        var callback = function () {
+            if (typeof(url) != 'undefined') {
+                window.location = url;
+            }
+        };
+        var payload = {
+            'send_to': 'AW-17745262400/CarCCLvL6v0bEMDuzI1C',
+            'value': 1.0,
+            'currency': 'KRW',
+            'transaction_id': 'wa_' + Date.now() + '_' + Math.random().toString(36).substring(2, 9),
+            'event_callback': callback
+        };
+        if (userData && (userData.email || userData.phone_number)) {
+            payload.user_data = userData;
+        }
+        gtag('event', 'conversion', payload);
+        return false;
+    }
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>소상공인 정책자금·지원금 총정리 — 경리 담당자가 챙길 체크리스트 - 경리소식 | 경리업무를잘하는청년들</title>
+    <meta name="description" content="정책자금(융자)·지원금(보조)·공제가 어떻게 다른지 구분하고, 소상공인이 다시 볼 만한 제도 7가지를 한 표로 정리했습니다. 신청 전 경리 담당자가 준비할 서류와 확인 순서까지. 자격·한도·금리·기간은 기관·공고 기준으로 확인해야 합니다.">
+    <meta name="keywords" content="소상공인 정책자금, 소상공인 지원금, 정책자금 종류, 정책자금 신청 서류, 신용취약소상공인자금, 청년고용연계자금, 재도전특별자금, 노란우산공제, 경리 아웃소싱, 경리대행">
+    <meta name="robots" content="index, follow">
+    <meta name="naver-site-verification" content="aefffa7a6d4cad21b90328c862b8ce5725188412">
+    <link rel="canonical" href="https://wapeople.kr/news/sosanggongin-jeongchaekjageum-chongjeongri">
+    <link rel="alternate" type="application/rss+xml" title="경리소식 | 경리업무를잘하는청년들" href="https://wapeople.kr/rss.xml">
+    <meta property="og:title" content="소상공인 정책자금·지원금 총정리 — 경리 담당자가 챙길 체크리스트 - 경리소식">
+    <meta property="og:description" content="정책자금(융자)·지원금(보조)·공제가 어떻게 다른지 구분하고, 소상공인이 다시 볼 만한 제도 7가지를 한 표로 정리했습니다. 신청 전 경리 담당자가 준비할 서류와 확인 순서까지. 자격·한도·금리·기간은 기관·공고 기준으로 확인해야 합니다.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://wapeople.kr/news/sosanggongin-jeongchaekjageum-chongjeongri">
+    <meta property="og:image" content="https://wapeople.kr/assets/og/news.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:site_name" content="경리업무를잘하는청년들">
+    <meta property="og:locale" content="ko_KR">
+    <meta property="article:published_time" content="2026-10-21">
+    <meta property="article:section" content="정책자금">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="소상공인 정책자금·지원금 총정리 — 경리 담당자가 챙길 체크리스트 - 경리소식">
+    <meta name="twitter:description" content="정책자금(융자)·지원금(보조)·공제가 어떻게 다른지 구분하고, 소상공인이 다시 볼 만한 제도 7가지를 한 표로 정리했습니다. 신청 전 경리 담당자가 준비할 서류와 확인 순서까지. 자격·한도·금리·기간은 기관·공고 기준으로 확인해야 합니다.">
+    <meta name="twitter:image" content="https://wapeople.kr/assets/og/news.png">
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "홈",       "item": "https://wapeople.kr/" },
+        { "@type": "ListItem", "position": 2, "name": "경리소식", "item": "https://wapeople.kr/news" },
+        { "@type": "ListItem", "position": 3, "name": "소상공인 정책자금·지원금 총정리 — 경리 담당자가 챙길 체크리스트", "item": "https://wapeople.kr/news/sosanggongin-jeongchaekjageum-chongjeongri" }
+      ]
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "NewsArticle",
+      "headline": "소상공인 정책자금·지원금 총정리 — 경리 담당자가 챙길 체크리스트",
+      "description": "정책자금(융자)·지원금(보조)·공제가 어떻게 다른지 구분하고, 소상공인이 다시 볼 만한 제도 7가지를 한 표로 정리했습니다. 신청 전 경리 담당자가 준비할 서류와 확인 순서까지. 자격·한도·금리·기간은 기관·공고 기준으로 확인해야 합니다.",
+      "datePublished": "2026-10-21",
+      "dateModified": "2026-10-21",
+      "inLanguage": "ko-KR",
+      "articleSection": "정책자금",
+      "image": "https://wapeople.kr/assets/og/news.png",
+      "author": { "@type": "Organization", "name": "경리업무를잘하는청년들", "url": "https://wapeople.kr" },
+      "publisher": {
+        "@type": "Organization",
+        "name": "경리업무를잘하는청년들",
+        "url": "https://wapeople.kr",
+        "logo": { "@type": "ImageObject", "url": "https://wapeople.kr/logo.png?v=20260310b" }
+      },
+      "mainEntityOfPage": { "@type": "WebPage", "@id": "https://wapeople.kr/news/sosanggongin-jeongchaekjageum-chongjeongri" }
+    }
+    </script>
+
+    <link rel="icon" type="image/x-icon" href="/favicon/favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-icon-180x180.png">
+    <meta name="theme-color" content="#2563eb">
+    <link rel="stylesheet" href="../dist/output.css?v=20261020">
+    <link rel="stylesheet" href="../mobile-optimize.css?v=20260312b">
+    <script src="../traffic-attribution.js?v=20260813a" defer></script>
+    <script src="/lead-ingest.js?v=20260806a" defer></script>
+    <script src="../a11y-enhance.js" defer></script>
+    <link rel="stylesheet" href="../fonts/Pretendard-1.3.9/web/variable/pretendard-dynamic-subset.css?v=20261020">
+    <link rel="preload" href="../fonts/Pretendard-1.3.9/web/variable/woff2-dynamic-subset/PretendardVariable.subset.87.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="../fonts/Pretendard-1.3.9/web/variable/woff2-dynamic-subset/PretendardVariable.subset.88.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="../fonts/Pretendard-1.3.9/web/variable/woff2-dynamic-subset/PretendardVariable.subset.89.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="../fonts/Pretendard-1.3.9/web/variable/woff2-dynamic-subset/PretendardVariable.subset.90.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="../fonts/Pretendard-1.3.9/web/variable/woff2-dynamic-subset/PretendardVariable.subset.91.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/fontawesome.min.css" media="print" onload="this.media='all'">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/solid.min.css" media="print" onload="this.media='all'">
+    <script>
+        // reCAPTCHA를 비동기로 불러오는 동안 grecaptcha.ready() 콜백을 ___grecaptcha_cfg.fns 대기열에 넣습니다(api.js가 로드 후 실행).
+        // 10초 안에 못 불러오면 execute()가 실패하도록 해 폼의 실패 처리(catch)로 넘깁니다.
+        (function (w) {
+            var cfg = w.___grecaptcha_cfg = w.___grecaptcha_cfg || {};
+            var g = w.grecaptcha = w.grecaptcha || {};
+            if (g.ready) return;
+            g.ready = function (cb) {
+                var done = false;
+                function run() { if (!done) { done = true; cb(); } }
+                (cfg.fns = cfg.fns || []).push(run);
+                setTimeout(function () {
+                    if (done) return;
+                    if (typeof w.grecaptcha.execute !== 'function') {
+                        w.grecaptcha.execute = function () { return Promise.reject(new Error('reCAPTCHA unavailable')); };
+                    }
+                    run();
+                }, 10000);
+            };
+        })(window);
+    </script>
+    <script src="https://www.google.com/recaptcha/api.js?render=6Le0CEMsAAAAAFGF3Dnci1_SUkC4VWmzqdox2jJZ" async defer></script>
+    <style>
+        .modal { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.5); z-index: 9999; align-items: center; justify-content: center; }
+        .modal.active { display: flex; }
+        .article-body { font-size: 1.125rem; line-height: 1.8; color: #1f2937; word-break: keep-all; letter-spacing: -0.01em; }
+        .article-body > p:first-of-type { font-size: 1.25rem; font-weight: 600; color: #0f172a; line-height: 1.7; padding-left: 1rem; border-left: 4px solid #2563eb; margin-bottom: 2rem; }
+        .article-body h2 { font-size: 1.5rem; font-weight: 800; color: #0f172a; margin: 2.5rem 0 1rem; padding-bottom: 0.5rem; border-bottom: 2px solid #2563eb; letter-spacing: -0.02em; }
+        .article-body h3 { font-size: 1.25rem; font-weight: 700; color: #1f2937; margin: 2rem 0 0.75rem; letter-spacing: -0.01em; }
+        .article-body p { margin: 1.25rem 0; }
+        .article-body p:has(> br:only-child) { display: none; }
+        .article-body hr { border: none; height: 0; margin: 1.75rem 0; position: relative; }
+        .article-body hr::before { content: ""; display: block; width: 60px; height: 3px; background: #e5e7eb; border-radius: 9999px; margin: 0 auto; }
+        .article-body ul, .article-body ol { margin: 1rem 0 1rem 1.5rem; }
+        .article-body ul { list-style: disc; } .article-body ol { list-style: decimal; }
+        .article-body li { margin: 0.5rem 0; }
+        .article-body strong { color: #0f172a; font-weight: 700; }
+        .article-body a { color: #2563eb; text-decoration: underline; text-underline-offset: 3px; }
+        .article-body blockquote { border-left: 4px solid #93c5fd; background: #eff6ff; padding: 1rem 1.25rem; margin: 1.5rem 0; border-radius: 0 0.75rem 0.75rem 0; color: #1e3a8a; font-style: italic; }
+        .article-body code { background: #f3f4f6; padding: 0.15rem 0.4rem; border-radius: 0.25rem; font-size: 0.9em; color: #be185d; }
+        .article-body img { max-width: 100%; height: auto; border-radius: 0.75rem; margin: 1.5rem 0; }
+        .article-body table { width: 100%; border-collapse: collapse; font-size: 0.9375rem; margin: 1.25rem 0; }
+        .article-body thead tr { background: #1a3a5c; color: #fff; }
+        .article-body thead th { padding: 0.75rem 1rem; text-align: left; font-weight: 600; }
+        .article-body tbody td { padding: 0.7rem 1rem; border-bottom: 1px solid #e5e5e0; color: #444; }
+        .article-body tbody tr:nth-child(even) { background: #f7f7f5; }
+    </style>
+</head>
+<body class="antialiased">
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-THPPR46Q" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 right-0 z-50 nav-glass">
+        <div class="max-w-7xl mx-auto px-3 md:px-6 py-2 flex items-center justify-between gap-2">
+            <a href="/" class="flex items-center gap-1 hover:opacity-80 transition-opacity touch-manipulation min-w-0">
+                <img src="../logo.png?v=20260310b" alt="경리업무를잘하는청년들" class="hidden md:block object-contain" style="height:2.125rem;" fetchpriority="high">
+                <img src="../logo.png?v=20260310b" alt="경리업무를잘하는청년들" class="block md:hidden mobile-nav-logo object-contain" fetchpriority="high">
+            </a>
+            <div class="hidden md:flex items-center gap-6">
+                <a href="/about" class="text-gray-700 hover:text-blue-700 font-semibold transition-colors">원격경리</a>
+                <a href="/news" class="text-gray-700 hover:text-blue-700 font-semibold transition-colors">경리소식</a>
+                <a href="/manual" class="text-gray-700 hover:text-blue-700 font-semibold transition-colors">자료실</a>
+                <a href="/faq" class="text-gray-700 hover:text-blue-700 font-semibold transition-colors">자주 묻는 질문</a>
+            </div>
+            <button onclick="openModal()" class="bg-blue-600 hover:bg-blue-700 text-white font-bold px-5 py-2 rounded-xl transition-colors text-sm whitespace-nowrap">상담 바로가기</button>
+        </div>
+    </nav>
+
+    <!-- 글 헤더 -->
+    <header class="bg-white pt-28 md:pt-32 pb-12 md:pb-16 border-b border-gray-100">
+        <div class="max-w-3xl mx-auto px-4 md:px-6">
+            <!-- 빵부스러기 -->
+            <nav aria-label="현재 위치" class="text-sm text-gray-500 mb-6">
+                <a href="/" class="hover:text-blue-600 transition-colors">홈</a>
+                <span class="mx-2 text-gray-300">/</span>
+                <a href="/news" class="hover:text-blue-600 transition-colors">경리소식</a>
+                <span class="mx-2 text-gray-300">/</span>
+                <span class="text-gray-700">경리뉴스</span>
+            </nav>
+
+            <!-- 카테고리 배지 + 날짜 -->
+            <div class="flex flex-wrap items-center gap-2 mb-5">
+                <span class="text-xs font-bold px-3 py-1 rounded-full border bg-blue-100 text-blue-700 border-blue-200">정책자금</span>
+                <time datetime="2026-10-21" class="text-sm text-gray-400">2026. 10. 21.</time>
+            </div>
+
+            <h1 class="text-3xl md:text-4xl font-black text-gray-900 leading-tight mb-5">소상공인 정책자금·지원금 총정리 — 경리 담당자가 챙길 체크리스트</h1>
+            <p class="text-lg md:text-xl text-gray-600 leading-relaxed">정책자금(융자)·지원금(보조)·공제가 어떻게 다른지 구분하고, 소상공인이 다시 볼 만한 제도 7가지를 한 표로 정리했습니다. 신청 전 경리 담당자가 준비할 서류와 확인 순서까지. 자격·한도·금리·기간은 기관·공고 기준으로 확인해야 합니다.</p>
+
+            <!-- 저자 -->
+            <div class="mt-8 pt-6 border-t border-gray-100 flex items-center gap-3">
+                <div class="w-10 h-10 rounded-full bg-blue-600 flex items-center justify-center flex-shrink-0">
+                    <i class="fas fa-pen-nib text-white text-sm"></i>
+                </div>
+                <div>
+                    <p class="text-sm font-bold text-gray-900">경리업무를잘하는청년들</p>
+                    <p class="text-xs text-gray-400">원격 경리 전문 서비스</p>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- 본문 -->
+    <main class="bg-slate-50 py-12 md:py-16">
+        <article class="max-w-3xl mx-auto px-4 md:px-6">
+            <div class="article-body bg-white rounded-2xl shadow-sm border border-gray-100 p-6 md:p-12">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "정책자금이 한 번 떨어졌는데 다시 신청할 수 있나요?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "제도마다 대상과 요건이 다르고 해마다 바뀝니다. 떨어진 사유가 요건 미달인지 서류 미비인지에 따라 다시 볼 제도가 달라지니, 먼저 공고로 자격을 확인하세요. 자격 판단은 저희가 해 드릴 수 없습니다."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "노란우산공제도 정책자금인가요?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "아닙니다. 노란우산공제는 중소기업중앙회의 공제로, 목돈 마련과 소득공제 혜택을 함께 노리는 제도입니다. 갚아야 하는 자금이 아니라 적립 성격이라, 정책자금과 같은 기준으로 비교하면 안 됩니다."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "준비 서류는 누가 챙기나요?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "사업자등록증명·과세표준증명·납세증명서 등은 사업자가 직접 발급받습니다. 평소 거래 증빙과 급여·4대보험 자료를 경리로 정리해 두면 신청 시점에 모을 서류가 크게 줄어듭니다."
+      }
+    }
+  ]
+}
+</script>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&family=Noto+Serif+KR:wght@400;600;700&display=swap');
+:where(.article-body) *, :where(.article-body) *::before, :where(.article-body) *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:where(.article-body) {
+  --primary:      #1a3a5c;
+  --accent:       #2563a8;
+  --accent-light: #e8f0fb;
+  --text:         #1a1a1a;
+  --text-sec:     #4a4a4a;
+  --text-muted:   #888;
+  --border:       #e0e0da;
+  --bg:           #f8f8f6;
+  --surface:      #ffffff;
+  --hi-bg:        #fff8e6;
+  --hi-bd:        #f0c040;
+  --success:      #1a7a4a;
+  --success-light:#e8f5e9;
+  --danger:       #c0392b;
+  --danger-light: #fdf0f0;
+  --radius:       10px;
+  --serif:        'Noto Serif KR', serif;
+  --sans:         'Noto Sans KR', sans-serif;
+  --max-w:        720px;
+}
+:where(.article-body) { font-family: var(--sans); background: var(--bg); color: var(--text); font-size: 16px; line-height: 1.85; padding: 48px 20px 80px; }
+:where(.article-body) article { max-width: var(--max-w); margin: 0 auto; }
+
+:where(.article-body) .meta-bar { display: flex; align-items: center; gap: 8px; margin-bottom: 24px; font-size: 12px; color: var(--text-muted); }
+:where(.article-body) .badge { background: var(--accent-light); color: var(--accent); font-size: 11px; font-weight: 700; padding: 3px 10px; border-radius: 99px; letter-spacing: .04em; }
+:where(.article-body) .dot { color: var(--border); }
+
+:where(.article-body) h1 { font-family: var(--serif); font-size: clamp(22px, 4vw, 30px); font-weight: 700; color: var(--primary); line-height: 1.45; margin-bottom: 22px; letter-spacing: -.01em; }
+:where(.article-body) h2 { font-family: var(--serif); font-size: clamp(16px, 2.8vw, 19px); font-weight: 700; color: var(--primary); margin: 44px 0 14px; padding-bottom: 10px; border-bottom: 1.5px solid var(--border); letter-spacing: -.01em; }
+
+:where(.article-body) .summary-box { background: var(--accent-light); border-left: 4px solid var(--accent); border-radius: 0 var(--radius) var(--radius) 0; padding: 16px 20px; margin-bottom: 32px; font-size: 14.5px; font-weight: 500; color: var(--primary); line-height: 1.75; }
+:where(.article-body) .intro { font-size: 15.5px; color: var(--text-sec); margin-bottom: 40px; line-height: 1.95; }
+:where(.article-body) p { margin-bottom: 16px; color: var(--text-sec); font-size: 15px; line-height: 1.9; }
+
+:where(.article-body) ul.list { list-style: none; margin: 12px 0 20px; display: flex; flex-direction: column; gap: 10px; padding: 0; }
+:where(.article-body) ul.list li { font-size: 14.5px; color: var(--text-sec); line-height: 1.75; padding-left: 18px; position: relative; }
+:where(.article-body) ul.list li::before { content: ''; display: block; width: 5px; height: 5px; border-radius: 50%; background: var(--accent); position: absolute; left: 0; top: 9px; }
+
+:where(.article-body) .highlight { background: var(--hi-bg); border: 1px solid var(--hi-bd); border-radius: var(--radius); padding: 16px 20px; margin: 20px 0 24px; font-size: 14.5px; color: #5a4000; line-height: 1.8; }
+:where(.article-body) .danger-box { background: var(--danger-light); border: 1px solid #f5b0b0; border-radius: var(--radius); padding: 16px 20px; margin: 20px 0 24px; font-size: 14px; color: #7a1a1a; line-height: 1.8; }
+:where(.article-body) .success-box { background: var(--success-light); border: 1px solid #a0d0a0; border-radius: var(--radius); padding: 16px 20px; margin: 20px 0 24px; font-size: 14px; color: #1a4a2a; line-height: 1.8; }
+
+:where(.article-body) .story-box { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 24px 26px; margin: 24px 0 32px; }
+:where(.article-body) .story-quote { font-family: var(--serif); font-size: clamp(15px, 2.5vw, 17px); color: var(--text); line-height: 2; font-style: italic; margin-bottom: 14px; }
+:where(.article-body) .story-speaker { font-size: 12px; color: var(--text-muted); display: flex; align-items: center; gap: 6px; }
+:where(.article-body) .story-speaker::before { content: '—'; }
+
+:where(.article-body) .prob-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 16px 0 28px; }
+@media (max-width: 500px) { :where(.article-body) .prob-grid { grid-template-columns: 1fr; } }
+:where(.article-body) .prob-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 18px 20px; }
+:where(.article-body) .prob-icon { font-size: 20px; margin-bottom: 8px; }
+:where(.article-body) .prob-title { font-size: 13px; font-weight: 700; color: var(--primary); margin-bottom: 6px; }
+:where(.article-body) .prob-desc { font-size: 13px; color: var(--text-sec); line-height: 1.65; }
+
+:where(.article-body) .ba-wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 16px 0 28px; }
+@media (max-width: 500px) { :where(.article-body) .ba-wrap { grid-template-columns: 1fr; } }
+:where(.article-body) .ba-card { border-radius: var(--radius); padding: 18px 20px; }
+:where(.article-body) .ba-card.before { background: var(--danger-light); border: 1px solid #f5b0b0; }
+:where(.article-body) .ba-card.after { background: var(--success-light); border: 1px solid #a0d0a0; }
+:where(.article-body) .ba-label { font-size: 11px; font-weight: 700; letter-spacing: .08em; margin-bottom: 10px; }
+:where(.article-body) .ba-label.before { color: var(--danger); }
+:where(.article-body) .ba-label.after { color: var(--success); }
+:where(.article-body) .ba-list { list-style: none; padding: 0; display: flex; flex-direction: column; gap: 7px; }
+:where(.article-body) .ba-list li { font-size: 13px; line-height: 1.65; display: flex; gap: 8px; align-items: flex-start; }
+:where(.article-body) .ba-card.before .ba-list li { color: #7a1a1a; }
+:where(.article-body) .ba-card.after  .ba-list li { color: #1a5a2a; }
+:where(.article-body) .ba-card.before .ba-list li::before { content: '✗'; flex-shrink: 0; font-weight: 700; }
+:where(.article-body) .ba-card.after  .ba-list li::before { content: '✓'; flex-shrink: 0; font-weight: 700; }
+
+:where(.article-body) .table-wrap { overflow-x: auto; margin: 16px 0 28px; border-radius: var(--radius); border: 1px solid var(--border); }
+:where(.article-body) table { width: 100%; border-collapse: collapse; font-size: 13px; font-family: var(--sans); }
+:where(.article-body) thead tr { background: var(--primary); color: #fff; }
+:where(.article-body) thead th { padding: 11px 16px; font-weight: 600; text-align: left; font-size: 12px; white-space: nowrap; }
+:where(.article-body) tbody tr { border-bottom: 1px solid var(--border); }
+:where(.article-body) tbody tr:last-child { border-bottom: none; }
+:where(.article-body) tbody tr:nth-child(even) { background: #f5f5f3; }
+:where(.article-body) tbody td { padding: 11px 16px; color: var(--text-sec); vertical-align: middle; line-height: 1.55; font-size: 13px; font-weight: 400; }
+:where(.article-body) tbody td:first-child { font-weight: 600; color: var(--text); white-space: nowrap; }
+:where(.article-body) .tag-bad { color: var(--danger); font-weight: 600; }
+:where(.article-body) .tag-good { color: var(--success); font-weight: 600; }
+
+:where(.article-body) .faq-wrap { display: flex; flex-direction: column; gap: 10px; margin-top: 8px; }
+:where(.article-body) .faq-item { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; }
+:where(.article-body) .faq-q { width: 100%; background: none; border: none; text-align: left; padding: 16px 20px; font-size: 14.5px; font-weight: 600; color: var(--primary); cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 12px; font-family: var(--sans); line-height: 1.5; }
+:where(.article-body) .faq-q:hover { background: var(--accent-light); }
+:where(.article-body) .faq-icon { font-size: 18px; color: var(--accent); flex-shrink: 0; transition: transform .22s; }
+:where(.article-body) .faq-icon.open { transform: rotate(45deg); }
+:where(.article-body) .faq-a { display: none; padding: 14px 20px 16px; font-size: 13.5px; color: var(--text-sec); line-height: 1.8; border-top: 1px solid var(--border); }
+:where(.article-body) .faq-a.open { display: block; }
+
+:where(.article-body) hr { border: none; border-top: 1px solid var(--border); margin: 36px 0; }
+</style>
+
+<article>
+
+  <div class="meta-bar">
+    <span class="badge">정책자금</span>
+    <span class="dot">·</span>
+    <span>정책자금 · 지원금</span>
+    <span class="dot">·</span>
+    <span>2026년 최신</span>
+  </div>
+
+  <h1>소상공인 정책자금·지원금 총정리<br>경리 담당자가 챙길 체크리스트</h1>
+
+  <div class="summary-box">
+    정책자금은 갚아야 하는 융자, 지원금은 돌려주지 않는 보조금, 공제는 생활안정·절세 성격이 강합니다.<br>
+    <strong>세 가지를 한 통에 담아 보면 헷갈리니, 성격과 신청처를 먼저 나누고 준비할 서류를 미리 챙겨 두는 것이 가장 빠릅니다.</strong>
+  </div>
+
+  <p class="intro">
+    정책자금이 한 번 떨어지고 나면 "나는 안 되는구나" 하고 다시는 안 알아보는 사장님이 많습니다. 그런데 제도는 매년 바뀌고, 처음 신청할 때 걸렸던 요건이 다음 해에는 달라지기도 합니다. 정작 발목을 잡는 건 자격보다 <strong>서류와 숫자</strong>입니다. 이 글은 다시 알아볼 때 무엇을 먼저 볼지, 경리 담당자가 무엇을 미리 챙기면 되는지를 한 번에 정리했습니다.
+  </p>
+
+  <p>선정·한도·금리·승인 결과는 기관 심사에 따르며, 저희가 관여하거나 보장할 수 없습니다.</p>
+
+  <h2>1. 정책자금·지원금·공제는 이름만 비슷합니다</h2>
+
+  <p>먼저 성격을 나눠야 합니다. 같은 '지원'이라도 갚아야 하는 돈인지, 안 갚아도 되는 돈인지가 다르면 준비도 달라집니다.</p>
+
+  <ul class="list">
+    <li><strong>정책자금(융자)</strong> — 정부·공공기관이 조성한 재원으로 <strong>대출</strong>합니다. 갚아야 하고, 심사에서 매출·납부 이력·신용을 봅니다. 중소벤처기업진흥공단(중진공), 소상공인시장진흥공단(소진공) 등이 운용합니다. 실행 방식은 <strong>직접대출</strong>(기관이 직접)과 <strong>대리대출</strong>(기관 확인서를 받아 은행이 심사·실행)로 나뉩니다.</li>
+    <li><strong>지원금(보조금)</strong> — 돌려주지 않는 지원입니다. 대신 대상·용도·시기가 정해져 있고 예산이 소진되면 마감됩니다. 정부·지자체 사업이 대부분이고, 민간기업·재단이 만든 기금도 있습니다.</li>
+    <li><strong>공제</strong> — 노란우산공제처럼 목돈 마련과 절세를 함께 노리는 제도입니다. 대출이 아니라 적립·보장 성격이라, 정책자금과 같은 표에 놓고 비교하면 오해가 생깁니다.</li>
+  </ul>
+
+  <p>정책자금과 특례보증의 차이는 <a href="/news/jeongchaekjageum-teukryebojeung-junbi" style="color:var(--accent);font-weight:600;">정책자금·특례보증 신청 전 준비</a> 글에서 더 자세히 다뤘습니다.</p>
+
+  <h2>2. 다시 볼 만한 제도 7가지, 한눈에</h2>
+
+  <p>아래는 소상공인이 다시 알아볼 만한 것들을 하나로 묶은 것입니다. <strong>한도·금리·대상은 해마다, 기관마다 바뀌므로 반드시 해당 공고로 확인하세요.</strong> (기준일 2026-10-18)</p>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>제도</th>
+          <th>성격</th>
+          <th>대상(요약)</th>
+          <th>한도·내용</th>
+          <th>신청처·시기</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>신용취약소상공인자금</td>
+          <td>정책자금(직접대출)</td>
+          <td>신용점수(NCB) 839점 이하 등 중저신용 소상공인(공고 확인)</td>
+          <td>한도·금리는 공고 기준. 신용관리 교육 사전 이수 필요</td>
+          <td>소진공 (공고 기간 접수)</td>
+        </tr>
+        <tr>
+          <td>청년고용연계자금</td>
+          <td>정책자금(대리대출)</td>
+          <td>업력 3년 미만 청년 소상공인(만 39세 이하), 또는 상시근로자 50% 이상 청년 고용</td>
+          <td>최대 7,000만원, 5년 이내(거치 2년 포함)</td>
+          <td>소진공 → 은행 (분기별 공고)</td>
+        </tr>
+        <tr>
+          <td>재도전특별자금</td>
+          <td>정책자금(직접대출)</td>
+          <td>폐업 후 재창업 7년 미만, 채무조정 성실상환 중인 소상공인 등</td>
+          <td>유형별 한도 상이(일반형 7,000만원 수준)</td>
+          <td>소진공 (월별 접수)</td>
+        </tr>
+        <tr>
+          <td>노란우산공제</td>
+          <td>공제(절세·생활안정)</td>
+          <td>사업소득이 있는 소기업·소상공인</td>
+          <td>소득공제 한도 소득 구간별 600/500/400/200만원(600만원은 소득 4,000만원 이하 기준)</td>
+          <td>중소기업중앙회 (상시 가입)</td>
+        </tr>
+        <tr>
+          <td>우아한 사장님 살핌기금</td>
+          <td>지원금(민간 기금)</td>
+          <td>질병·사고로 의료비가 필요한 외식업 소상공인(연매출 3억 이하 등)</td>
+          <td>1인당 최대 1,700만원(본인부담금 한정)</td>
+          <td>희망브리지·우아한형제들 (상시 신청)</td>
+        </tr>
+        <tr>
+          <td>전통시장 안전관리패키지</td>
+          <td>지원사업(시설)</td>
+          <td>전통시장·상점가, 전통시장 내 개별 점포</td>
+          <td>개별점포당 총사업비 최대 500만원(전기 부문 한정), 시장 규모별 최대 5억/10억/15억원</td>
+          <td>소상공인시장진흥공단 (연 1~2차 공고)</td>
+        </tr>
+        <tr>
+          <td>소공인 판로개척 지원사업</td>
+          <td>지원사업(판로)</td>
+          <td>상시근로자 10인 미만 제조 소상공인(개별형) 등</td>
+          <td>개별형 최대 3,000만원(국비 70%·자부담 30%)</td>
+          <td>한국중소벤처기업유통원 (연 1~2차, 5월 등)</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>※ 표의 모든 수치·요건은 해당 연도 공고 확인 대상입니다. (기준일 2026-10-18)</p>
+
+  <p>이미지나 SNS에 도는 "한도 ○○만원" 요약은 조건이 빠져 있는 경우가 많습니다. 예를 들어 노란우산공제의 소득공제 600만원은 <strong>소득 4,000만원 이하일 때</strong> 기준이고, 재도전특별자금도 유형에 따라 금액이 달라집니다. 숫자는 꼭 공고 원문으로 확인하세요.</p>
+
+  <h2>3. 신청 전에 경리 담당자가 준비할 것</h2>
+
+  <p>정책자금 심사에서 보는 건 결국 <strong>매출과 납부 이력</strong>입니다. 말로 설명하는 게 아니라 서류로 증명해야 하니, 신청을 결심한 뒤에 모으기 시작하면 늦습니다. 아래는 기관들이 공통으로 요구하는 서류입니다. <strong>정확한 목록은 기관·상품마다 다르므로 공고의 구비서류를 기준으로 확인하세요.</strong></p>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>서류</th>
+          <th>발급처</th>
+          <th>메모</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>사업자등록증명</td>
+          <td>홈택스 · 세무서</td>
+          <td>기본</td>
+        </tr>
+        <tr>
+          <td>부가세 과세표준증명</td>
+          <td>홈택스</td>
+          <td>보통 최근 1~2년</td>
+        </tr>
+        <tr>
+          <td>납세증명서</td>
+          <td>홈택스 · 위택스</td>
+          <td>국세 · 지방세</td>
+        </tr>
+        <tr>
+          <td>매출 증빙</td>
+          <td>세금계산서 합계표 · 카드매출 · 현금영수증</td>
+          <td>신고 자료로 대체 가능</td>
+        </tr>
+        <tr>
+          <td>재무제표 · 손익계산서</td>
+          <td>담당 세무사</td>
+          <td>법인 · 개인사업자</td>
+        </tr>
+        <tr>
+          <td>4대보험 · 급여 자료</td>
+          <td>4대보험 정보연계센터</td>
+          <td>가입자 명부 · 납부 내역</td>
+        </tr>
+        <tr>
+          <td>임대차계약서 · 신청서</td>
+          <td>기관 양식</td>
+          <td>사업장 확인용</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p>평소 경리로 아래를 정리해 두면, 신청할 때 다시 모을 서류가 확 줄어듭니다.</p>
+
+  <ul class="list">
+    <li>매출·매입 증빙을 월 단위로 정리 (세금계산서·카드·현금영수증)</li>
+    <li>부가세 신고 자료를 파일로 보관 (과세표준증명의 근거)</li>
+    <li>4대보험·급여 자료, 사업자 명의 계좌·카드 거래내역 정리</li>
+    <li>임대차계약서 등 기본 계약서 사본 보관</li>
+  </ul>
+
+  <h2>4. 신청 흐름에서 경리 담당자가 맡는 부분</h2>
+
+  <ul class="list">
+    <li><strong>공고 확인</strong> — 기업마당(bizinfo.go.kr)과 소진공 등 기관 홈페이지에서 대상·기간·구비서류를 확인합니다.</li>
+    <li><strong>신청·제출</strong> — 신청과 제출은 사업자(회사) 본인이 합니다. 소상공인 정책자금은 누리집(ols.semas.or.kr)에서 온라인으로, 또는 관할 지역센터 방문으로 접수합니다.</li>
+    <li><strong>서류 준비</strong> — 위 표의 서류를 모읍니다. 대부분 사업자가 직접 발급받는 서류입니다.</li>
+    <li><strong>심사·약정·실행</strong> — 심사 결과에 따라 한도·금리·기간이 정해지고, 약정 후 자금이 실행됩니다.</li>
+  </ul>
+
+  <p>회사(사업자)의 <strong>경리 담당자</strong>가 직접 챙기는 것은 <strong>3번의 숫자와 서류</strong>입니다. 저희는 이 서류 준비를 지원합니다. 사장님이 "자금 알아보자"고 할 때 바로 낼 수 있게 준비해 두는 것이 경리의 몫입니다.</p>
+
+  <h2>5. 자주 걸리는 지점</h2>
+
+  <ul class="list">
+    <li><strong>SNS 요약을 그대로 믿지 마세요.</strong> 한도·금리·마감일은 조건이 붙어 있고 자주 바뀝니다.</li>
+    <li><strong>금리·한도·승인을 약속하는 말은 경계하세요.</strong> 결과는 기관 심사로만 정해집니다.</li>
+    <li><strong>중복·제한 요건을 확인하세요.</strong> 같은 목적의 자금은 중복 지원이 제한되는 경우가 있습니다.</li>
+    <li><strong>신청 대행·금융 자문과 경리 업무는 다릅니다.</strong> 서류 정리와 신청 대행은 다른 일입니다.</li>
+  </ul>
+
+  <h2>6. 우리가 하는 것과, 하지 않는 것</h2>
+
+  <p>저희는 매출·매입 증빙, 부가세 신고 자료, 4대보험·급여 자료, 계좌·카드 거래내역을 정리해 <strong>신청 준비를 돕는 것</strong>까지입니다. 대출·보증의 중개·알선이나 신청 대행은 하지 않고, <strong>금융·투자 자문이 아니며</strong>, 심사 결과·자격·금리·한도를 보장하지 않습니다. 신청과 제출은 사업자 본인이 하고, 세무·노무 판단은 담당 세무사와 전문가의 영역입니다.</p>
+
+  <p>세무기장과 경리 아웃소싱의 차이는 <a href="/news/semusa-vs-gyeongri-daehang-chaijeom" style="color:var(--accent);font-weight:600;">세무기장 vs 경리 아웃소싱</a> 글에, 저희가 맡는 범위는 <a href="/news/gyeongri-outsourcing-ranhgan" style="color:var(--accent);font-weight:600;">경리 아웃소싱이 맡는 범위</a>에 정리해 두었습니다.</p>
+
+  <h2>자주 묻는 질문</h2>
+
+  <div class="faq-wrap">
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">
+        정책자금이 한 번 떨어졌는데 다시 신청할 수 있나요?
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-a">
+        제도마다 대상과 요건이 다르고 해마다 바뀝니다. 떨어진 사유가 요건 미달인지 서류 미비인지에 따라 다시 볼 제도가 달라지니, 먼저 공고로 자격을 확인하세요. 자격 판단은 저희가 해 드릴 수 없습니다.
+      </div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">
+        노란우산공제도 정책자금인가요?
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-a">
+        아닙니다. 노란우산공제는 중소기업중앙회의 공제로, 목돈 마련과 소득공제 혜택을 함께 노리는 제도입니다. 갚아야 하는 자금이 아니라 적립 성격이라, 정책자금과 같은 기준으로 비교하면 안 됩니다.
+      </div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">
+        준비 서류는 누가 챙기나요?
+        <span class="faq-icon">+</span>
+      </button>
+      <div class="faq-a">
+        사업자등록증명·과세표준증명·납세증명서 등은 사업자가 직접 발급받습니다. 평소 거래 증빙과 급여·4대보험 자료를 경리로 정리해 두면 신청 시점에 모을 서류가 크게 줄어듭니다.
+      </div>
+    </div>
+  </div>
+
+  <h2>마무리</h2>
+
+  <p>정책자금은 갚아야 하는 융자, 지원금은 돌려주지 않는 보조금, 공제는 적립·절세입니다. 성격을 나눠 놓으면 "나는 뭘 다시 볼 수 있지"가 훨씬 빨리 정리됩니다. 그리고 어느 쪽이든 결국 평소 경리로 정리해 둔 숫자가 심사 자료가 됩니다.</p>
+
+  <p><strong>경리업무를 잘하는 청년들</strong>은 매출·매입 증빙, 부가세 신고 자료, 4대보험·급여 자료, 계좌·카드 거래내역을 매달 원격으로 정리합니다. 세무신고·기장은 담당 세무사의 영역이고, 저희는 그 앞단의 자료 정리를 맡습니다. 원격으로 다루는 자료는 처리위탁 계약에 따라 최소 범위로만 처리하며, 자세한 내용은 <a href="/privacy" style="color:var(--accent);font-weight:600;">개인정보처리방침</a>에서 확인하실 수 있습니다. 정책자금·지원금 신청에 필요한 자료 정리가 궁금하시면 <a href="https://wapeople.kr" style="color:var(--accent);font-weight:600;">wapeople.kr</a>에서 무료 상담을 신청해 주세요.</p>
+
+</article>
+<script>
+function toggleFaq(btn) {
+  var icon = btn.querySelector('.faq-icon');
+  var answer = btn.nextElementSibling;
+  var isOpen = answer.classList.contains('open');
+  document.querySelectorAll('.faq-a.open').forEach(function(el){ el.classList.remove('open'); });
+  document.querySelectorAll('.faq-icon.open').forEach(function(el){ el.classList.remove('open'); });
+  if (!isOpen) { answer.classList.add('open'); icon.classList.add('open'); }
+}
+</script>
+            </div>
+
+            <!-- CTA 카드 -->
+            <div class="mt-14 bg-blue-50 border border-blue-100 rounded-2xl p-8 text-center">
+                <p class="text-lg md:text-xl font-bold text-gray-900 mb-2">경리 아웃소싱, 무료 상담으로 확인하세요</p>
+                <p class="text-sm text-gray-600 mb-6">무료 상담으로 우리 회사에 맞는 경리 아웃소싱 방식을 확인해 보세요.</p>
+                <button type="button" onclick="openModal()" class="inline-flex items-center justify-center gap-2 bg-blue-600 hover:bg-blue-700 text-white font-bold px-8 py-3.5 rounded-xl transition-colors shadow-md text-base cursor-pointer">
+                    <i class="fas fa-paper-plane text-sm"></i> 경리 아웃소싱 무료 상담 신청하기
+                </button>
+            </div>
+
+            <!-- 목록으로 -->
+            <div class="mt-8 text-center">
+                <a href="/news" class="inline-flex items-center gap-2 text-sm text-gray-500 hover:text-blue-600 transition-colors font-semibold">
+                    <i class="fas fa-arrow-left text-xs"></i> 경리소식 목록으로
+                </a>
+            </div>
+        </article>
+    </main>
+
+    <!-- 맨 위로 -->
+    <button id="scrollToTop" aria-label="맨 위로 스크롤" style="position:fixed;bottom:2rem;right:2rem;z-index:9999;transition:all 0.3s ease;" class="bg-blue-600 hover:bg-blue-700 text-white w-12 h-12 rounded-full shadow-lg opacity-0 invisible flex items-center justify-center">
+        <i class="fas fa-chevron-up"></i>
+    </button>
+
+    <!-- 푸터 -->
+    <footer class="bg-white py-8 border-t border-gray-200">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="flex flex-col md:flex-row items-start justify-between gap-6">
+                <a href="/"><img src="../logo.png?v=20260310b" alt="경리업무를잘하는청년들" class="h-14 md:h-16 object-contain"></a>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-3 text-gray-600 text-sm">
+                    <div class="flex items-center gap-2"><i class="fas fa-phone text-blue-700"></i><span>전화번호 : 1566-2687</span></div>
+                    <div class="flex items-center gap-2"><i class="fas fa-envelope text-blue-700"></i><span>wapeople000@gmail.com</span></div>
+                    <div class="flex items-center gap-2"><i class="fas fa-user text-blue-700"></i><span>대표이사 : 금종석</span></div>
+                    <div class="flex items-center gap-2"><i class="fas fa-clock text-blue-700"></i><span>평일 09:00 - 18:00</span></div>
+                    <div class="flex items-start gap-2 md:col-span-2"><i class="fas fa-map-marker-alt text-blue-700 mt-0.5"></i><span>주소 : 경기 수원시 팔달구 권광로175번길 83 201호</span></div>
+                </div>
+            </div>
+            <div class="border-t border-gray-200 mt-6 pt-6 text-center text-gray-400 text-sm">
+                <p class="mb-2"><a href="/privacy" class="hover:text-blue-600 transition-colors underline underline-offset-2">개인정보 처리방침</a></p>
+                <p>&copy; <span class="copyright-year">2026</span> 경리업무를잘하는청년들. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- 상담 모달 -->
+    <div id="consultModal" class="modal">
+        <div style="background:white;border-radius:1.5rem;padding:2rem;max-width:36rem;width:100%;margin:1rem;position:relative;max-height:90vh;overflow-y:auto;">
+            <button onclick="closeModal()" style="position:absolute;top:1.25rem;right:1.25rem;font-size:2rem;font-weight:300;color:#9ca3af;cursor:pointer;background:none;border:none;" aria-label="닫기">&times;</button>
+            <div style="text-align:center;margin-bottom:2rem;">
+                <div style="width:4rem;height:4rem;border-radius:1rem;background:#2563eb;display:flex;align-items:center;justify-content:center;margin:0 auto 1rem;"><i class="fas fa-paper-plane" style="color:white;font-size:1.5rem;"></i></div>
+                <h3 style="font-size:1.75rem;font-weight:700;color:#111827;margin-bottom:0.5rem;">무료 상담 신청</h3>
+                <p style="color:#6b7280;">원격경리 서비스에 대해 안내해드립니다.</p>
+            </div>
+            <form id="consultForm" style="display:flex;flex-direction:column;gap:1.25rem;" onsubmit="return handleFormSubmit(event, 'consultForm')">
+                <input type="hidden" name="inquiry_page" value="경리소식">
+                <div><label style="display:block;font-weight:600;color:#374151;margin-bottom:0.5rem;">업종 <span style="font-weight:400;color:#9ca3af;font-size:0.875rem;">(선택)</span></label><div class="grid grid-cols-2 md:grid-cols-3 gap-2"><label class="cursor-pointer"><input type="radio" name="industry" value="서비스업" class="peer hidden"><div class="border-2 border-gray-200 rounded-xl px-3 py-2.5 text-center text-sm font-medium text-gray-700 peer-checked:border-blue-600 peer-checked:bg-blue-50 peer-checked:text-blue-700 hover:border-blue-300 transition-all min-h-[48px] flex items-center justify-center">서비스업</div></label><label class="cursor-pointer"><input type="radio" name="industry" value="제조업" class="peer hidden"><div class="border-2 border-gray-200 rounded-xl px-3 py-2.5 text-center text-sm font-medium text-gray-700 peer-checked:border-blue-600 peer-checked:bg-blue-50 peer-checked:text-blue-700 hover:border-blue-300 transition-all min-h-[48px] flex items-center justify-center">제조업</div></label><label class="cursor-pointer"><input type="radio" name="industry" value="건설업" class="peer hidden"><div class="border-2 border-gray-200 rounded-xl px-3 py-2.5 text-center text-sm font-medium text-gray-700 peer-checked:border-blue-600 peer-checked:bg-blue-50 peer-checked:text-blue-700 hover:border-blue-300 transition-all min-h-[48px] flex items-center justify-center">건설업</div></label><label class="cursor-pointer"><input type="radio" name="industry" value="도소매업" class="peer hidden"><div class="border-2 border-gray-200 rounded-xl px-3 py-2.5 text-center text-sm font-medium text-gray-700 peer-checked:border-blue-600 peer-checked:bg-blue-50 peer-checked:text-blue-700 hover:border-blue-300 transition-all min-h-[48px] flex items-center justify-center">도소매업</div></label><label class="cursor-pointer"><input type="radio" name="industry" value="음식점업" class="peer hidden"><div class="border-2 border-gray-200 rounded-xl px-3 py-2.5 text-center text-sm font-medium text-gray-700 peer-checked:border-blue-600 peer-checked:bg-blue-50 peer-checked:text-blue-700 hover:border-blue-300 transition-all min-h-[48px] flex items-center justify-center">음식점업</div></label><label class="cursor-pointer"><input type="radio" name="industry" value="쇼핑몰업" class="peer hidden"><div class="border-2 border-gray-200 rounded-xl px-3 py-2.5 text-center text-sm font-medium text-gray-700 peer-checked:border-blue-600 peer-checked:bg-blue-50 peer-checked:text-blue-700 hover:border-blue-300 transition-all min-h-[48px] flex items-center justify-center">쇼핑몰업</div></label><label class="cursor-pointer"><input type="radio" name="industry" value="기타 업종" class="peer hidden"><div class="border-2 border-gray-200 rounded-xl px-3 py-2.5 text-center text-sm font-medium text-gray-700 peer-checked:border-blue-600 peer-checked:bg-blue-50 peer-checked:text-blue-700 hover:border-blue-300 transition-all min-h-[48px] flex items-center justify-center">기타 업종</div></label></div></div>
+                <div><label style="display:block;font-weight:600;color:#374151;margin-bottom:0.5rem;">회사명 <span style="color:#f43f5e;">*</span></label><input type="text" name="company" required style="width:100%;border:2px solid #e5e7eb;border-radius:0.75rem;padding:0.75rem 1rem;color:#111827;box-sizing:border-box;" placeholder="회사명을 입력해주세요"></div>
+                <div><label style="display:block;font-weight:600;color:#374151;margin-bottom:0.5rem;">대표님 성함 <span style="color:#f43f5e;">*</span></label><input type="text" name="name" required style="width:100%;border:2px solid #e5e7eb;border-radius:0.75rem;padding:0.75rem 1rem;color:#111827;box-sizing:border-box;" placeholder="성함을 입력해주세요"></div>
+                <div><label style="display:block;font-weight:600;color:#374151;margin-bottom:0.5rem;">연락처 <span style="color:#f43f5e;">*</span></label><input type="tel" name="phone" required style="width:100%;border:2px solid #e5e7eb;border-radius:0.75rem;padding:0.75rem 1rem;color:#111827;box-sizing:border-box;" placeholder="연락받으실 번호를 입력해주세요"></div>
+                <div><label style="display:block;font-weight:600;color:#374151;margin-bottom:0.5rem;">이메일 <span style="font-weight:400;color:#9ca3af;font-size:0.875rem;">(선택)</span></label><input type="email" name="email" style="width:100%;border:2px solid #e5e7eb;border-radius:0.75rem;padding:0.75rem 1rem;color:#111827;box-sizing:border-box;" placeholder="example@email.com"></div>
+                <div><label style="display:block;font-weight:600;color:#374151;margin-bottom:0.5rem;">유입경로 <span style="font-weight:400;color:#9ca3af;font-size:0.875rem;">(선택)</span></label><select name="referral_source" style="width:100%;border:2px solid #e5e7eb;border-radius:0.75rem;padding:0.75rem 1rem;color:#111827;background:white;box-sizing:border-box;"><option value="">선택해주세요</option><option value="검색">검색</option><option value="유튜브">유튜브</option><option value="스레드">스레드</option><option value="기타">기타</option></select></div>
+                <div><label style="display:block;font-weight:600;color:#374151;margin-bottom:0.5rem;">현재 가장 큰 고민 <span style="color:#f43f5e;">*</span></label><textarea name="message" required rows="4" style="width:100%;border:2px solid #e5e7eb;border-radius:0.75rem;padding:0.75rem 1rem;color:#111827;resize:none;box-sizing:border-box;" placeholder="예) 경리 직원 채용이 어려워요&#10;예) 장부 정리가 복잡해요"></textarea></div>
+                <div class="agree-box" style="border:1px solid #e5e8ee;border-radius:0.75rem;padding:14px 16px;margin-top:14px;font-size:0.95rem;text-align:left;background:#fff;">
+                    <label style="display:flex;align-items:flex-start;gap:8px;font-weight:600;cursor:pointer;color:#374151;">
+                        <input type="checkbox" name="agree_privacy" required style="margin-top:4px;flex-shrink:0;">
+                        <span>[필수] 개인정보 수집·이용에 동의합니다.</span>
+                    </label>
+                    <p style="color:#5b6472;font-size:0.88rem;line-height:1.6;margin:6px 0 14px 26px;">
+                        · 수집 항목: 회사명, 담당자 성명, 연락처, 이메일, 문의 내용<br>
+                        · 수집·이용 목적: 상담 응대, 무료 재무 현황 진단, 견적·서비스 안내, 계약 체결<br>
+                        · 보유·이용 기간: 상담 종료 후 3년<br>
+                        · 동의를 거부할 권리가 있으며, 거부 시 상담 신청이 제한될 수 있습니다.<br>
+                        <a href="/privacy" target="_blank" rel="noopener" style="color:#2f6df6;text-decoration:underline;">개인정보 처리방침 보기</a>
+                    </p>
+                    <label style="display:flex;align-items:flex-start;gap:8px;font-weight:600;cursor:pointer;color:#374151;">
+                        <input type="checkbox" name="agree_marketing" style="margin-top:4px;flex-shrink:0;">
+                        <span>[선택] 마케팅·광고성 정보 수신에 동의합니다.</span>
+                    </label>
+                    <p style="color:#5b6472;font-size:0.88rem;line-height:1.6;margin:6px 0 0 26px;">
+                        · 수신 항목: 이메일, 문자(SMS/MMS), 전화<br>
+                        · 이용 목적: 이벤트·혜택 등 광고성 정보 발송, 서비스 소개<br>
+                        · 보유·이용 기간: 동의 철회 시까지<br>
+                        · 동의하지 않아도 상담 신청 및 서비스 이용에는 제한이 없습니다.
+                    </p>
+                </div>
+                <button type="submit" style="width:100%;background:#2563eb;color:white;font-weight:700;font-size:1.125rem;padding:1rem;border-radius:0.75rem;border:none;cursor:pointer;">경리 아웃소싱 무료 상담 신청하기</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        function openModal() { document.getElementById('consultModal').classList.add('active'); document.body.style.overflow = 'hidden'; }
+        function closeModal() { document.getElementById('consultModal').classList.remove('active'); document.body.style.overflow = 'auto'; }
+        document.getElementById('consultModal').addEventListener('click', function(e) { if (e.target === this) closeModal(); });
+        document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeModal(); });
+        function copyShareUrl() { navigator.clipboard.writeText(window.location.href).then(function(){ alert('링크가 복사되었습니다!'); }).catch(function(){ alert('링크 복사에 실패했습니다.'); }); }
+        (function() {
+            var btn = document.getElementById('scrollToTop'); if (!btn) return;
+            window.addEventListener('scroll', function() { if (window.pageYOffset > 300) { btn.style.opacity='1'; btn.style.visibility='visible'; } else { btn.style.opacity='0'; btn.style.visibility='hidden'; } });
+            btn.addEventListener('click', function() { window.scrollTo({top:0,behavior:'smooth'}); });
+        })();
+        document.querySelectorAll('.copyright-year').forEach(function(el){ el.textContent = new Date().getFullYear(); });
+        function combineEmail(form) { const el = form.querySelector('input[name="email"]'); if (el) el.value = el.value.trim(); }
+        function handleFormSubmit(event, formId) {
+            event.preventDefault();
+            const form = document.getElementById(formId);
+            const btn = form.querySelector('button[type="submit"]');
+            const orig = btn.innerHTML;
+            combineEmail(form);
+            btn.disabled = true; btn.innerHTML = '봇 확인 중...';
+            const URL = 'https://script.google.com/macros/s/AKfycbwLkpVI-zFipUtirkixwbaiTg-NdJP99UajSA_eoBs7MB5QPh20zkgpesZ9uDJJkHAQ/exec';
+            grecaptcha.ready(function() {
+                grecaptcha.execute('6Le0CEMsAAAAAFGF3Dnci1_SUkC4VWmzqdox2jJZ', {action:'submit'}).then(function(token) {
+                    let r = form.querySelector('input[name="recaptcha_token"]');
+                    if (!r) { r = document.createElement('input'); r.type='hidden'; r.name='recaptcha_token'; form.appendChild(r); }
+                    r.value = token; btn.innerHTML = '전송 중...';
+                    fetch(URL, {method:'POST', body:new FormData(form), mode:'no-cors'})
+                        .then(function() { window.dataLayer=window.dataLayer||[]; window.dataLayer.push({event:'form_submit'}); if (typeof wapeopleSendLeadToErp === 'function') { wapeopleSendLeadToErp(form); } if (typeof gtag_report_conversion === 'function') { var _ud = (typeof wapeopleGetUserData === 'function') ? wapeopleGetUserData(form) : {}; gtag_report_conversion(undefined, _ud); } alert('\u2705 상담 신청이 완료되었습니다!\n\n영업시간 내 문의 시, 30분 이내로 연락드리겠습니다.'); form.reset(); closeModal(); btn.disabled=false; btn.innerHTML=orig; })
+                        .catch(function() { window.dataLayer=window.dataLayer||[]; window.dataLayer.push({event:'form_submit'}); if (typeof wapeopleSendLeadToErp === 'function') { wapeopleSendLeadToErp(form); } if (typeof gtag_report_conversion === 'function') { var _ud = (typeof wapeopleGetUserData === 'function') ? wapeopleGetUserData(form) : {}; gtag_report_conversion(undefined, _ud); } alert('\u2705 상담 신청이 완료되었습니다!\n\n영업시간 내 문의 시, 30분 이내로 연락드리겠습니다.'); form.reset(); closeModal(); btn.disabled=false; btn.innerHTML=orig; });
+                }).catch(function() { alert('\u274c 봇 확인 실패. 페이지를 새로고침해주세요.'); btn.disabled=false; btn.innerHTML=orig; });
+            });
+            return false;
+        }
+    </script>
+</body>
+</html>
