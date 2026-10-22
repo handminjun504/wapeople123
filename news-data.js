@@ -16,6 +16,16 @@
     //   url       : '/news/{slug}'
     window.WA_NEWS_DATA = [
     {
+        slug: 'beopinkadeu-sajeoksayong-gyeongri-cheori',
+        title: '법인카드 사적사용, 경리는 어떻게 처리할까',
+        category: '경리뉴스',
+        date: '2026-10-22',
+        summary: '법인카드 사적사용이 확인됐을 때 회계·세무상 어떤 결과가 생기는지, 경리 담당자가 하는 일(사용내역 확인·증빙·소명 자료 정리)과 하지 않는 일(세무 판단·처분 결정)을 구분해 정리했습니다. 개별 판단은 담당 세무사 확인이 필요합니다.',
+        cover: '',
+        url: 'news/beopinkadeu-sajeoksayong-gyeongri-cheori.html'
+    },
+
+    {
         slug: 'sosanggongin-jeongchaekjageum-chongjeongri',
         title: '소상공인 정책자금·지원금 총정리 — 경리 담당자가 챙길 체크리스트',
         category: '정책자금',
