@@ -16,6 +16,16 @@
     //   url       : '/news/{slug}'
     window.WA_NEWS_DATA = [
     {
+        slug: 'noranusan-gongje-sodeukgongje',
+        title: '노란우산공제, 소득공제는 얼마나 되고 무엇을 조심해야 할까',
+        category: '실무팁',
+        date: '2026-10-23',
+        summary: '노란우산공제가 정책자금(대출)이 아니라 공제인 이유, 소득 구간별 소득공제 한도(600/500/400/200만원), 납입 한도와 공제금 지급사유, 중도 해지 시 불이익, 경리 담당자가 챙길 확인 항목을 정리했습니다. 가입·세무 판단은 중소기업중앙회와 담당 세무사 확인이 필요합니다.',
+        cover: '',
+        url: 'news/noranusan-gongje-sodeukgongje.html'
+    },
+
+    {
         slug: 'beopinkadeu-sajeoksayong-gyeongri-cheori',
         title: '법인카드 사적사용, 경리는 어떻게 처리할까',
         category: '경리뉴스',
