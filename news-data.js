@@ -16,6 +16,16 @@
     //   url       : '/news/{slug}'
     window.WA_NEWS_DATA = [
     {
+        slug: 'misugeum-gwanri-maedal-chekri',
+        title: '미수금 관리, 경리가 매달 챙기는 것',
+        category: '실무팁',
+        date: '2026-10-24',
+        summary: '미수금과 외상매출금의 차이, 채권 연령표로 30·60·90일 구간을 나눠 보는 방법, 90일 넘은 건의 처리 순서, 대손이 확정됐을 때 세무사에게 넘길 자료까지 정리했습니다. 회수 협상·법적 조치·대손 판단은 회사와 전문가의 영역입니다.',
+        cover: '',
+        url: 'news/misugeum-gwanri-maedal-chekri.html'
+    },
+
+    {
         slug: 'noranusan-gongje-sodeukgongje',
         title: '노란우산공제, 소득공제는 얼마나 되고 무엇을 조심해야 할까',
         category: '실무팁',
