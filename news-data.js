@@ -16,6 +16,16 @@
     //   url       : '/news/{slug}'
     window.WA_NEWS_DATA = [
     {
+        slug: 'bugase-yejeonggoji-napbu',
+        title: '부가세 예정고지서를 받았을 때 — 그냥 내면 되나요?',
+        category: '실무팁',
+        date: '2026-10-25',
+        summary: '부가세 예정고지서를 받았을 때 고지 금액을 그대로 내면 되는지, 예정신고(10월 26일)와 예정고지(11월 2일)의 차이, 고지세액 산정 방식과 50만원 미만 미고지, 사업부진·조기환급 시 예정신고로 바꾸는 방법, 경리 담당자가 확인할 항목을 정리했습니다. 개별 판단은 담당 세무사 확인이 필요합니다.',
+        cover: '',
+        url: 'news/bugase-yejeonggoji-napbu.html'
+    },
+
+    {
         slug: 'misugeum-gwanri-maedal-chekri',
         title: '미수금 관리, 경리가 매달 챙기는 것',
         category: '실무팁',
