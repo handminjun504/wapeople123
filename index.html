@@ -2077,6 +2077,12 @@
             if (m) m.addEventListener('click', function(e) { if (e.target === this) closeModal(); });
         });
         document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeModal(); });
+        // ?consult=1 로 들어오면 상담 모달을 바로 연다 (네이버 블로그 CTA 유입용)
+        document.addEventListener('DOMContentLoaded', function() {
+            try {
+                if (new URLSearchParams(window.location.search).get('consult') === '1') openModal();
+            } catch (e) {}
+        });
     </script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
