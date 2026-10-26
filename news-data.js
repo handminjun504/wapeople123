@@ -16,6 +16,16 @@
     //   url       : '/news/{slug}'
     window.WA_NEWS_DATA = [
     {
+        slug: 'cheongnyeon-goyong-yeongye-jageum',
+        title: '청년고용연계자금, 대표가 청년이 아니어도 받을 수 있나요?',
+        category: '정책자금',
+        date: '2026-10-26',
+        summary: '청년고용연계자금의 세 가지 신청 요건(청년 대표·청년 근로자 50% 이상·최근 1년 내 청년 고용), 한도와 상환 구조, 청년 고용 유지 조건, 경리 담당자가 확인·준비할 서류를 정리했습니다. 자격·금리·한도는 분기 공고로 확인해야 합니다.',
+        cover: '',
+        url: 'news/cheongnyeon-goyong-yeongye-jageum.html'
+    },
+
+    {
         slug: 'bugase-yejeonggoji-napbu',
         title: '부가세 예정고지서를 받았을 때 — 그냥 내면 되나요?',
         category: '실무팁',
