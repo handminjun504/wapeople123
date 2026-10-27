@@ -16,6 +16,16 @@
     //   url       : '/news/{slug}'
     window.WA_NEWS_DATA = [
     {
+        slug: 'sin-yongchwiyak-sosanggongin-jageum',
+        title: '신용점수 839점 이하 사장님 — 신용취약소상공인자금, 신청 전에 할 일',
+        category: '정책자금',
+        date: '2026-10-27',
+        summary: '신용취약소상공인자금의 신청 조건(NCB 개인신용평점 839점 이하·업력 90일 이상·신용관리교육 사전 이수·체납·연체 제한), 한도와 상환 구조, 신청 전에 경리 담당자가 준비할 서류와 순서를 정리했습니다. 자격·금리·한도는 분기 공고로 확인해야 합니다.',
+        cover: '',
+        url: 'news/sin-yongchwiyak-sosanggongin-jageum.html'
+    },
+
+    {
         slug: 'cheongnyeon-goyong-yeongye-jageum',
         title: '청년고용연계자금, 대표가 청년이 아니어도 받을 수 있나요?',
         category: '정책자금',
