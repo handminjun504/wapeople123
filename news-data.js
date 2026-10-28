@@ -16,6 +16,16 @@
     //   url       : '/news/{slug}'
     window.WA_NEWS_DATA = [
     {
+        slug: 'jaedojon-teukbyeoljageum-junbi',
+        title: '폐업 후 다시 시작한 사장님 — 재도전특별자금, 무엇을 준비해야 할까',
+        category: '정책자금',
+        date: '2026-10-28',
+        summary: '재도전특별자금의 대상(폐업 후 재창업 7년 미만, 채무조정 성실상환), 유형별 한도와 상환 구조, 재창업교육·폐업 증빙 등 신청 전에 준비할 것, 경리 담당자가 챙길 서류를 정리했습니다. 자격·한도·금리는 공고로 확인해야 합니다.',
+        cover: '',
+        url: 'news/jaedojon-teukbyeoljageum-junbi.html'
+    },
+
+    {
         slug: 'sin-yongchwiyak-sosanggongin-jageum',
         title: '신용점수 839점 이하 사장님 — 신용취약소상공인자금, 신청 전에 할 일',
         category: '정책자금',
