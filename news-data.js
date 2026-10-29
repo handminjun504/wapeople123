@@ -16,6 +16,16 @@
     //   url       : '/news/{slug}'
     window.WA_NEWS_DATA = [
     {
+        slug: 'uahan-sajangnim-salpimgigeum',
+        title: '외식업 사장님, 갑작스러운 병원비 — 우아한사장님 살핌기금',
+        category: '지원금',
+        date: '2026-10-29',
+        summary: '우아한사장님 살핌기금의 지원 내용(의료비 1인당 최대 1,700만원, 본인부담금 한정)과 대상(외식업·중위소득 140% 이하 또는 연매출 3억원 이하), 신청 시 필요한 서류와 경리 담당자가 준비할 것을 정리했습니다. 선정은 심사에 따르며, 개별 판단은 운영기관 확인이 필요합니다.',
+        cover: '',
+        url: 'news/uahan-sajangnim-salpimgigeum.html'
+    },
+
+    {
         slug: 'jaedojon-teukbyeoljageum-junbi',
         title: '폐업 후 다시 시작한 사장님 — 재도전특별자금, 무엇을 준비해야 할까',
         category: '정책자금',
