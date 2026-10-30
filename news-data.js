@@ -16,6 +16,16 @@
     //   url       : '/news/{slug}'
     window.WA_NEWS_DATA = [
     {
+        slug: 'sogongin-jeontongsijang-jiwonsa-eop',
+        title: '소공인 판로개척·전통시장 안전관리 — 내 회사가 해당되나요?',
+        category: '지원금',
+        date: '2026-10-30',
+        summary: '소공인 판로개척 지원사업과 전통시장 안전관리패키지의 대상·지원 내용·신청 시기, 자부담과 정산 증빙까지 경리 담당자가 확인할 것을 정리했습니다. 두 사업 모두 대상이 좁고 시기가 정해져 있어 공고 확인이 먼저입니다.',
+        cover: '',
+        url: 'news/sogongin-jeontongsijang-jiwonsa-eop.html'
+    },
+
+    {
         slug: 'uahan-sajangnim-salpimgigeum',
         title: '외식업 사장님, 갑작스러운 병원비 — 우아한사장님 살핌기금',
         category: '지원금',
