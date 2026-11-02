@@ -16,6 +16,16 @@
     //   url       : '/news/{slug}'
     window.WA_NEWS_DATA = [
     {
+        slug: 'maechul-segeumgyesanseo-nurak-hwagin',
+        title: '매출 세금계산서 누락, 나중에 알았을 때 확인 순서',
+        category: '실무팁',
+        date: '2026-11-02',
+        summary: '매출 세금계산서를 빠뜨린 걸 뒤늦게 발견했을 때 확인 순서(거래 사실·발급 여부·기록 대조)와 매월 대사 3종, 자주 하는 실수를 정리했습니다. 정정 방법과 신고는 담당 세무사 영역이고, 경리는 그 앞단의 원본 확인과 자료 정리를 맡습니다.',
+        cover: '',
+        url: 'news/maechul-segeumgyesanseo-nurak-hwagin.html'
+    },
+
+    {
         slug: 'sogongin-jeontongsijang-jiwonsa-eop',
         title: '소공인 판로개척·전통시장 안전관리 — 내 회사가 해당되나요?',
         category: '지원금',
