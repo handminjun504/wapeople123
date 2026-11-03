@@ -15,6 +15,15 @@
     //   cover     : (선택) 썸네일 이미지 경로 — 미지정 시 카테고리별 기본 그라디언트 사용
     //   url       : '/news/{slug}'
     window.WA_NEWS_DATA = [
+    {
+        slug: 'yeonmal-jeongsan-11wol-junbi',
+        title: '연말정산, 경리 담당자가 11월에 준비할 것',
+        category: '실무팁',
+        date: '2026-11-03',
+        summary: '연말정산에서 회사·경리·세무사의 역할 구분, 11월에 미리 해 둘 급여대장 대사·증빙 수집·중도입사·퇴사자 정리, 1월 간소화자료부터 3월 지급명세서까지 흐름을 정리했습니다. 세무 판단은 담당 세무사 영역입니다.',
+        cover: '',
+        url: 'news/yeonmal-jeongsan-11wol-junbi.html'
+    },
 
     {
         slug: 'maechul-segeumgyesanseo-nurak-hwagin',
