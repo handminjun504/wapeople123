@@ -16,6 +16,16 @@
     //   url       : '/news/{slug}'
     window.WA_NEWS_DATA = [
     {
+        slug: 'woncheonse-banginal-buap-seungin',
+        title: '원천세 반기납부, 12월 신청 창구를 놓치면 반 년을 기다립니다',
+        category: '실무팁',
+        date: '2026-11-04',
+        summary: '원천세 반기납부 승인의 대상(직전 연도 상시근로자 20명 이하), 신청 시기(6월·12월), 납부 기한(7/10·1/10), 경리가 11월에 확인할 것과 전환 시 달라지는 점을 정리했습니다. 세무 판단은 담당 세무사 영역입니다.',
+        cover: '',
+        url: 'news/woncheonse-banginal-buap-seungin.html'
+    },
+
+    {
         slug: 'yeonmal-jeongsan-11wol-junbi',
         title: '연말정산, 경리 담당자가 11월에 준비할 것',
         category: '실무팁',
