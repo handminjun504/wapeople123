@@ -54,6 +54,20 @@
 - [RSS 피드](https://wapeople.kr/rss.xml): 경리소식 새 글 구독.
 
 <!-- AUTO:NEWS START (scripts/generate-seo-files.js가 빌드할 때 자동으로 채웁니다. 직접 수정하지 마세요) -->
+- [정기 세무조사 선정 제외, 11/30까지 계획서 한 장 (2026-11-05)](https://wapeople.kr/news/goyong-tuja-gyehoekseo-semu-josa-jeoego)
+- [원천세 반기납부, 12월 신청 창구를 놓치면 반 년을 기다립니다 (2026-11-04)](https://wapeople.kr/news/woncheonse-banginal-buap-seungin)
+- [연말정산, 경리 담당자가 11월에 준비할 것 (2026-11-03)](https://wapeople.kr/news/yeonmal-jeongsan-11wol-junbi)
+- [매출 세금계산서 누락, 나중에 알았을 때 확인 순서 (2026-11-02)](https://wapeople.kr/news/maechul-segeumgyesanseo-nurak-hwagin)
+- [소공인 판로개척·전통시장 안전관리 — 내 회사가 해당되나요? (2026-10-30)](https://wapeople.kr/news/sogongin-jeontongsijang-jiwonsa-eop)
+- [외식업 사장님, 갑작스러운 병원비 — 우아한사장님 살핌기금 (2026-10-29)](https://wapeople.kr/news/uahan-sajangnim-salpimgigeum)
+- [폐업 후 다시 시작한 사장님 — 재도전특별자금, 무엇을 준비해야 할까 (2026-10-28)](https://wapeople.kr/news/jaedojon-teukbyeoljageum-junbi)
+- [신용점수 839점 이하 사장님 — 신용취약소상공인자금, 신청 전에 할 일 (2026-10-27)](https://wapeople.kr/news/sin-yongchwiyak-sosanggongin-jageum)
+- [청년고용연계자금, 대표가 청년이 아니어도 받을 수 있나요? (2026-10-26)](https://wapeople.kr/news/cheongnyeon-goyong-yeongye-jageum)
+- [부가세 예정고지서를 받았을 때 — 그냥 내면 되나요? (2026-10-25)](https://wapeople.kr/news/bugase-yejeonggoji-napbu)
+- [미수금 관리, 경리가 매달 챙기는 것 (2026-10-24)](https://wapeople.kr/news/misugeum-gwanri-maedal-chekri)
+- [노란우산공제, 소득공제는 얼마나 되고 무엇을 조심해야 할까 (2026-10-23)](https://wapeople.kr/news/noranusan-gongje-sodeukgongje)
+- [법인카드 사적사용, 경리는 어떻게 처리할까 (2026-10-22)](https://wapeople.kr/news/beopinkadeu-sajeoksayong-gyeongri-cheori)
+- [소상공인 정책자금·지원금 총정리 — 경리 담당자가 챙길 체크리스트 (2026-10-21)](https://wapeople.kr/news/sosanggongin-jeongchaekjageum-chongjeongri)
 - [6년간 5억5,600만원 — 회계프로그램까지 조작해 숨긴 경리, 우리 회사는 어디를 봐야 할까 (2026-10-20)](https://wapeople.kr/news/gyeongri-hoengnyeong-hoegyegwanri-6nyeon)
 - [부가세 가산세, 왜 나오고 어떻게 줄이나 — 경리 담당자가 먼저 볼 것 (2026-10-19)](https://wapeople.kr/news/bugase-gasansae-juligi)
 - [경리 담당자가 퇴사할 때, 인수인계는 무엇부터 받아야 할까요? (2026-10-16)](https://wapeople.kr/news/gyeongri-insu-ingye-checklist)
@@ -114,4 +128,4 @@
 - 사이트 관리자 페이지(`/admin`)는 크롤링 대상이 아닙니다.
 - AI 크롤러(GPTBot, ClaudeBot, PerplexityBot, ChatGPT-User, Google-Extended, CCBot 등)의 사이트 인덱싱 및 인용을 환영합니다.
 - 전체 본문: [llms-full.txt](https://wapeople.kr/llms-full.txt) · 사이트맵: [sitemap.xml](https://wapeople.kr/sitemap.xml)
-- 마지막 갱신: 2026-10-20
+- 마지막 갱신: 2026-11-05
