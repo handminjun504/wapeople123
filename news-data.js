@@ -16,6 +16,16 @@
     //   url       : '/news/{slug}'
     window.WA_NEWS_DATA = [
     {
+        slug: 'goyong-tuja-gyehoekseo-semu-josa-jeoego',
+        title: '정기 세무조사 선정 제외, 11/30까지 계획서 한 장',
+        category: '실무팁',
+        date: '2026-11-05',
+        summary: '국세청이 2026년 10월 28일 발표한 세정지원 — 고용·투자 계획서를 내면 2025사업연도 정기 세무조사 선정에서 제외됩니다. 신청 기간(11/2~11/30), 고용·투자 요건, 제외 대상, 경리가 11월에 확인할 것을 정리했습니다. 세무 자문이 아니며, '선정 제외'는 '조사 면제'가 아닙니다.',
+        cover: '',
+        url: 'news/goyong-tuja-gyehoekseo-semu-josa-jeoego.html'
+    },
+
+    {
         slug: 'woncheonse-banginal-buap-seungin',
         title: '원천세 반기납부, 12월 신청 창구를 놓치면 반 년을 기다립니다',
         category: '실무팁',
