@@ -16,6 +16,16 @@
     //   url       : '/news/{slug}'
     window.WA_NEWS_DATA = [
     {
+        slug: 'yeonmal-annae-mun',
+        title: '연말정산 서류 안내문, 11월에 이 문구로 정리해 두세요',
+        category: '실무팁',
+        date: '2026-11-06',
+        summary: '12월에 몰리는 연말정산 서류 요청을 11월 안내문 한 장으로 줄이는 방법. 안내문에 들어갈 네 칸, 1차·2차 안내 문구 예시, 퇴사자 처리, 안내문에 넣으면 안 되는 표현을 정리했습니다.',
+        cover: '',
+        url: 'news/yeonmal-annae-mun.html'
+    },
+
+    {
         slug: 'goyong-tuja-gyehoekseo-semu-josa-jeoego',
         title: '정기 세무조사 선정 제외, 11/30까지 계획서 한 장',
         category: '실무팁',
