@@ -16,6 +16,16 @@
     //   url       : '/news/{slug}'
     window.WA_NEWS_DATA = [
     {
+        slug: 'geupeo-myeongseo-gwandaerok-daesa',
+        title: '급여명세서와 급여대장이 어긋날 때, 마감에서 볼 3가지',
+        category: '실무팁',
+        date: '2026-11-07',
+        summary: '급여명세서와 급여대장이 갈라지는 세 자리(인원·공제·총액)와 마감 때 3단으로 확인하는 순서, 임금명세서에 남길 항목, 어긋남을 발견했을 때 처리 순서를 정리했습니다. 세무 판단은 담당 세무사 영역입니다.',
+        cover: '',
+        url: 'news/geupeo-myeongseo-gwandaerok-daesa.html'
+    },
+
+    {
         slug: 'yeonmal-annae-mun',
         title: '연말정산 서류 안내문, 11월에 이 문구로 정리해 두세요',
         category: '실무팁',
