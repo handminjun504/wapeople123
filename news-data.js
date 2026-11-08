@@ -16,6 +16,16 @@
     //   url       : '/news/{slug}'
     window.WA_NEWS_DATA = [
     {
+        slug: 'sadaeboheom-chwideuk-sangsil-singo',
+        title: '4대보험 취득·상실 신고, 입사와 퇴사가 같은 달에 겹칠 때',
+        category: '실무팁',
+        date: '2026-11-08',
+        summary: '4대보험 취득·상실 신고 기한(건강보험 14일 이내, 국민연금·고용·산재 다음 달 15일)과 입사·퇴사가 같은 달에 겹칠 때 확인할 것, 상실신고 누락·이중 취득·소급 취득, 판단이 갈리는 지점을 문답으로 정리했습니다. 취득일·상실일 판단은 공단 확인이 필요합니다.',
+        cover: '',
+        url: 'news/sadaeboheom-chwideuk-sangsil-singo.html'
+    },
+
+    {
         slug: 'geupeo-myeongseo-gwandaerok-daesa',
         title: '급여명세서와 급여대장이 어긋날 때, 마감에서 볼 3가지',
         category: '실무팁',
