@@ -16,6 +16,16 @@
     //   url       : '/news/{slug}'
     window.WA_NEWS_DATA = [
     {
+        slug: 'imgeum-chebul-5nyeon-geupeobil-jeomgeom',
+        title: '임금 체불 법정형 5년·5천만 원, 급여일 전에 볼 3가지',
+        category: '실무팁',
+        date: '2026-11-10',
+        summary: '2026년 10월 8일 시행된 개정 근로기준법으로 임금 체불 법정형 상한이 5년·5천만 원으로 올라갔습니다. 벌칙이 걸리는 범위(임금·수당·퇴직금 구분), 합의로 끝나지 않는 경우와 예외, 급여일 전에 경리가 볼 세 가지를 정리했습니다. 체불 판단은 노무사·근로감독관 소관입니다.',
+        cover: '',
+        url: 'news/imgeum-chebul-5nyeon-geupeobil-jeomgeom.html'
+    },
+
+    {
         slug: 'sadaeboheom-chwideuk-sangsil-singo',
         title: '4대보험 취득·상실 신고, 입사와 퇴사가 같은 달에 겹칠 때',
         category: '실무팁',
