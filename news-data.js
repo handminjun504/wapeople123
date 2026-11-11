@@ -16,6 +16,16 @@
     //   url       : '/news/{slug}'
     window.WA_NEWS_DATA = [
     {
+        slug: 'hyeongeum-yeongsujeung-balgup-nurak',
+        title: '현금영수증 발급·누락, 경리가 매달 확인할 것',
+        category: '실무팁',
+        date: '2026-11-11',
+        summary: '현금영수증 발급 의무(소비자 요청·의무발행업종)와 자진발급 기한, 매달 발급내역과 매출을 대사하는 방법, 누락을 발견했을 때의 처리 순서와 가산세 기준(미발급 5%·의무발행업종 20%)을 정리했습니다. 세무 판단은 담당 세무사 영역입니다.',
+        cover: '',
+        url: 'news/hyeongeum-yeongsujeung-balgup-nurak.html'
+    },
+
+    {
         slug: 'imgeum-chebul-5nyeon-geupeobil-jeomgeom',
         title: '임금 체불 법정형 5년·5천만 원, 급여일 전에 볼 3가지',
         category: '실무팁',
