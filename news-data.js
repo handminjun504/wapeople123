@@ -16,6 +16,16 @@
     //   url       : '/news/{slug}'
     window.WA_NEWS_DATA = [
     {
+        slug: 'ipsa-cheotdal-geupeo-4dae-woncheonse',
+        title: '입사 첫 달 급여, 4대보험·원천세는 어느 달에 잡힐까',
+        category: '실무팁',
+        date: '2026-11-11',
+        summary: '첫 급여에서 4대보험·원천세가 어느 달에 잡히는지, 취득신고 기한(건강보험 14일·국민연금·고용·산재 다음 달 15일)과 원천세 신고월(지급일 기준 다음 달 10일)을 순서대로 정리했습니다. 부과 시작 월은 공단 고지서로 확인해야 합니다.',
+        cover: '',
+        url: 'news/ipsa-cheotdal-geupeo-4dae-woncheonse.html'
+    },
+
+    {
         slug: 'hyeongeum-yeongsujeung-balgup-nurak',
         title: '현금영수증 발급·누락, 경리가 매달 확인할 것',
         category: '실무팁',
