@@ -16,6 +16,16 @@
     //   url       : '/news/{slug}'
     window.WA_NEWS_DATA = [
     {
+        slug: 'bugase-singo-sijeun-2gi-jeongri',
+        title: '부가세 신고 시즌, 2기 확정신고 전에 정리할 것',
+        category: '실무팁',
+        date: '2026-11-12',
+        summary: '2기 확정신고(법인 10~12월·개인 7~12월, 다음 해 1월 1~25일)를 앞두고 11월에 정리해 둘 매출·매입 증빙, 유형별 신고 횟수 차이, 신고 전에 자주 어긋나는 지점을 정리했습니다. 예정고지와 확정신고의 역할 구분, 세무 판단은 담당 세무사 영역입니다.',
+        cover: '',
+        url: 'news/bugase-singo-sijeun-2gi-jeongri.html'
+    },
+
+    {
         slug: 'ipsa-cheotdal-geupeo-4dae-woncheonse',
         title: '입사 첫 달 급여, 4대보험·원천세는 어느 달에 잡힐까',
         category: '실무팁',
