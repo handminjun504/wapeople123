@@ -16,6 +16,16 @@
     //   url       : '/news/{slug}'
     window.WA_NEWS_DATA = [
     {
+        slug: 'toejik-yeongeum-dc-gyeongri',
+        title: '퇴직연금 DC, 경리가 매달 확인할 3가지',
+        category: '실무팁',
+        date: '2026-11-13',
+        summary: '확정기여형(DC) 퇴직연금에서 경리가 매달 확인할 세 가지 — 부담금 납입(연간 임금총액의 12분의 1 이상), 운용지시 접수·보관, 세액공제·퇴사자 정산 자료. 운용·수익률 조언은 다루지 않으며, 부담금 기준과 납입 주기는 규약·금융기관 안내 확인이 필요합니다.',
+        cover: '',
+        url: 'news/toejik-yeongeum-dc-gyeongri.html'
+    },
+
+    {
         slug: 'bugase-singo-sijeun-2gi-jeongri',
         title: '부가세 신고 시즌, 2기 확정신고 전에 정리할 것',
         category: '실무팁',
