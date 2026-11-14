@@ -16,6 +16,16 @@
     //   url       : '/news/{slug}'
     window.WA_NEWS_DATA = [
     {
+        slug: 'miyongsil-kadeu-jeongsan-daesa',
+        title: '미용실·네일샵 카드·간편결제 정산, 매달 어긋나는 자리',
+        category: '실무팁',
+        date: '2026-11-14',
+        summary: '미용실·네일샵에서 카드·간편결제·현금 매출이 섞일 때 매달 어긋나는 자리와 대사 순서를 정리했습니다. 매출은 발생일, 입금은 정산일 기준으로 나눠 적고 수수료는 비용으로 처리하는 방법, 정산 예정액과 통장 입금액 대조, 소모품·약품 처리까지 다룹니다.',
+        cover: '',
+        url: 'news/miyongsil-kadeu-jeongsan-daesa.html'
+    },
+
+    {
         slug: 'toejik-yeongeum-dc-gyeongri',
         title: '퇴직연금 DC, 경리가 매달 확인할 3가지',
         category: '실무팁',
