@@ -16,6 +16,16 @@
     //   url       : '/news/{slug}'
     window.WA_NEWS_DATA = [
     {
+        slug: '4dae-boheomyoryul-insang-sillyeong',
+        title: '4대보험료율 인상, 실수령액이 줄었을 때 설명하는 법',
+        category: '실무팁',
+        date: '2026-11-15',
+        summary: '2026년 4대보험 요율(국민연금 9.5%·건강보험 7.19% 등) 변동으로 실수령액이 줄었을 때, 급여명세서에서 확인할 자리와 직원에게 설명하는 방법을 정리했습니다. 요율은 법령·고시로 정해지므로 공단 확인이 필요합니다.',
+        cover: '',
+        url: 'news/4dae-boheomyoryul-insang-sillyeong.html'
+    },
+
+    {
         slug: 'miyongsil-kadeu-jeongsan-daesa',
         title: '미용실·네일샵 카드·간편결제 정산, 매달 어긋나는 자리',
         category: '실무팁',
