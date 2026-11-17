@@ -16,6 +16,16 @@
     //   url       : '/news/{slug}'
     window.WA_NEWS_DATA = [
     {
+        slug: 'toejikgeum-jigeupgijun-hwaggin',
+        title: '퇴직금 지급기준, 경리가 확인할 3가지',
+        category: '실무팁',
+        date: '2026-11-17',
+        summary: '퇴직금 지급 대상(계속근로 1년 이상·주 15시간 이상)과 평균임금 산정, 퇴직 후 14일 지급 기한, 경리가 퇴사자 정산에서 확인할 세 가지를 정리했습니다. 계산 예시는 조건만 제시하며, 판단은 노무·세무 전문가 확인이 필요합니다.',
+        cover: '',
+        url: 'news/toejikgeum-jigeupgijun-hwaggin.html'
+    },
+
+    {
         slug: '4dae-boheomyoryul-insang-sillyeong',
         title: '4대보험료율 인상, 실수령액이 줄었을 때 설명하는 법',
         category: '실무팁',
