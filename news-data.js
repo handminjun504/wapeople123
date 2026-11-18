@@ -16,6 +16,16 @@
     //   url       : '/news/{slug}'
     window.WA_NEWS_DATA = [
     {
+        slug: 'gyeongri-naebutongje-checklist',
+        title: '경리 내부통제 체크리스트, 매달 한 장으로 남기는 5줄',
+        category: '실무팁',
+        date: '2026-11-18',
+        summary: '내부통제를 제도가 아니라 매달 한 장의 기록으로 운영하는 방법. 대사 결과·승인 기록·하루 마감·바뀐 계좌 확인 경로·퇴사자 권한 회수 다섯 줄과, 확인일·확인자·예외를 남기는 표 작성법을 정리했습니다.',
+        cover: '',
+        url: 'news/gyeongri-naebutongje-checklist.html'
+    },
+
+    {
         slug: 'toejikgeum-jigeupgijun-hwaggin',
         title: '퇴직금 지급기준, 경리가 확인할 3가지',
         category: '실무팁',
