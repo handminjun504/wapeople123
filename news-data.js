@@ -16,6 +16,16 @@
     //   url       : '/news/{slug}'
     window.WA_NEWS_DATA = [
     {
+        slug: 'gaseugeum-gajigeupgeum-gyeolsan-jeongri',
+        title: '가수금·가지급금, 12월 결산 전에 정리할 것',
+        category: '실무팁',
+        date: '2026-11-19',
+        summary: '가수금과 가지급금의 차이, 12월 결산 전에 확인해야 하는 이유와 정리 대상인지 확인하는 절차(계정별 원장→성격 분류→증빙 확인→세무사 전달)를 정리했습니다. 인정이자 계산과 소득처분 판단은 담당 세무사 영역입니다.',
+        cover: '',
+        url: 'news/gaseugeum-gajigeupgeum-gyeolsan-jeongri.html'
+    },
+
+    {
         slug: 'gyeongri-naebutongje-checklist',
         title: '경리 내부통제 체크리스트, 매달 한 장으로 남기는 5줄',
         category: '실무팁',
