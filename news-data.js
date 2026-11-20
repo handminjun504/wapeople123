@@ -16,6 +16,16 @@
     //   url       : '/news/{slug}'
     window.WA_NEWS_DATA = [
     {
+        slug: 'semujosa-tongji-daeung-junbi',
+        title: '세무조사 통지를 받았을 때, 경리가 준비할 것',
+        category: '실무팁',
+        date: '2026-11-20',
+        summary: '세무조사 통지서를 받은 뒤 확인할 것(세목·기간·범위·일정)과 경리가 준비할 자료 목록, 세무사·조력자 상담 순서, 하지 말아야 할 행동을 정리했습니다. 조사 대응의 판단은 세무사·조력자 영역입니다.',
+        cover: '',
+        url: 'news/semujosa-tongji-daeung-junbi.html'
+    },
+
+    {
         slug: 'gaseugeum-gajigeupgeum-gyeolsan-jeongri',
         title: '가수금·가지급금, 12월 결산 전에 정리할 것',
         category: '실무팁',
