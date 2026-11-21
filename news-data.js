@@ -16,6 +16,16 @@
     //   url       : '/news/{slug}'
     window.WA_NEWS_DATA = [
     {
+        slug: 'ju-hyusageupdang-gyeosan',
+        title: '주휴수당, 급여대장에서 어떻게 계산되는가',
+        category: '실무팁',
+        date: '2026-11-21',
+        summary: '주휴수당의 요건(4주 평균 1주 소정근로시간 15시간 이상·개근)과 계산 구조(1일 소정근로시간 × 시급), 급여대장에 반영하는 방법과 자주 헷갈리는 지점을 정리했습니다. 지급 대상 여부의 판단은 노무사 확인이 필요합니다.',
+        cover: '',
+        url: 'news/ju-hyusageupdang-gyeosan.html'
+    },
+
+    {
         slug: 'semujosa-tongji-daeung-junbi',
         title: '세무조사 통지를 받았을 때, 경리가 준비할 것',
         category: '실무팁',
