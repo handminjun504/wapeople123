@@ -16,6 +16,16 @@
     //   url       : '/news/{slug}'
     window.WA_NEWS_DATA = [
     {
+        slug: 'yeoncha-sudang-gyeolsan-cheori',
+        title: '연차수당, 남은 연차 정산은 급여대장에서 어떻게 처리하나',
+        category: '실무팁',
+        date: '2026-11-22',
+        summary: '남은 연차를 급여에서 정산하는 절차를 정리했습니다. 미사용 일수 확인, 1일 통상임금 산정, 수당 항목 분리, 공제 확인, 명세서 표시 순서와 퇴사자 정산 시 확인할 점을 다룹니다. 연차 발생·소멸 판단은 노무사 영역입니다.',
+        cover: '',
+        url: 'news/yeoncha-sudang-gyeolsan-cheori.html'
+    },
+
+    {
         slug: 'ju-hyusageupdang-gyeosan',
         title: '주휴수당, 급여대장에서 어떻게 계산되는가',
         category: '실무팁',
