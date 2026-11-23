@@ -16,6 +16,16 @@
     //   url       : '/news/{slug}'
     window.WA_NEWS_DATA = [
     {
+        slug: 'geullo-gyeyakseo-seomyeon-bogwan',
+        title: '근로계약서, 서면에 들어가야 하는 항목과 보관 방법',
+        category: '실무팁',
+        date: '2026-11-23',
+        summary: '근로계약서에 서면으로 적어야 하는 항목(임금·소정근로시간·휴일·연차·업무·장소), 기간제·단시간 근로자의 별도 기재 사항, 교부와 보관 방법, 내용이 바뀔 때 다시 쓰는 기준을 경리 실무 순서로 정리했습니다.',
+        cover: '',
+        url: 'news/geullo-gyeyakseo-seomyeon-bogwan.html'
+    },
+
+    {
         slug: 'yeoncha-sudang-gyeolsan-cheori',
         title: '연차수당, 남은 연차 정산은 급여대장에서 어떻게 처리하나',
         category: '실무팁',
