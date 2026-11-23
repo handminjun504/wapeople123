@@ -148,7 +148,7 @@ img {
     }
     
     /* --- 3.3 폼 입력 필드 --- */
-    input,
+    input:not([type="checkbox"]):not([type="radio"]),
     select,
     textarea {
         font-size: var(--font-size-base) !important; /* iOS 확대 방지 */
