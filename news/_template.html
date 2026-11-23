@@ -195,7 +195,7 @@
             };
         })(window);
     </script>
-    <script src="https://www.google.com/recaptcha/api.js?render=6Le0CEMsAAAAAFGF3Dnci1_SUkC4VWmzqdox2jJZ" async defer></script>
+    <script src="https://www.google.com/recaptcha/api.js?render=6Le7Pi4uAAAAAEACdLiv7fv8-TQ8LGAi255k7oDW" async defer></script>
 
     <style>
         .article-body { font-size: 1.0625rem; line-height: 1.85; color: #374151; }
@@ -554,7 +554,7 @@
             submitButton.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i>봇 확인 중...';
             const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwLkpVI-zFipUtirkixwbaiTg-NdJP99UajSA_eoBs7MB5QPh20zkgpesZ9uDJJkHAQ/exec';
             grecaptcha.ready(function() {
-                grecaptcha.execute('6Le0CEMsAAAAAFGF3Dnci1_SUkC4VWmzqdox2jJZ', {action: 'submit'}).then(function(token) {
+                grecaptcha.execute('6Le7Pi4uAAAAAEACdLiv7fv8-TQ8LGAi255k7oDW', {action: 'submit'}).then(function(token) {
                     let recaptchaInput = form.querySelector('input[name="recaptcha_token"]');
                     if (!recaptchaInput) { recaptchaInput = document.createElement('input'); recaptchaInput.type = 'hidden'; recaptchaInput.name = 'recaptcha_token'; form.appendChild(recaptchaInput); }
                     recaptchaInput.value = token;

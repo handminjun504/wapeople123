@@ -5,7 +5,7 @@
 (function () {
     'use strict';
 
-    var RECAPTCHA_SITE_KEY = '6Le0CEMsAAAAAFGF3Dnci1_SUkC4VWmzqdox2jJZ';
+    var RECAPTCHA_SITE_KEY = '6Le7Pi4uAAAAAEACdLiv7fv8-TQ8LGAi255k7oDW';
     var RECAPTCHA_ACTION = 'lead_ingest';
     var HONEYPOT_NAME = 'website_url';
 
