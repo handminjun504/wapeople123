@@ -16,6 +16,16 @@
     //   url       : '/news/{slug}'
     window.WA_NEWS_DATA = [
     {
+        slug: 'hagwon-jaego-sugangryo-jeongsan',
+        title: '학원 경리, 교재 재고와 수강료 정산은 이렇게 남깁니다',
+        category: '실무팁',
+        date: '2026-11-24',
+        summary: '학원 경리에서 매달 부딪히는 교재·교구 재고 관리와 수강료 정산 절차를 정리했습니다. 재고 수량 맞추기, 수강료 입금과 수강 기간 짝짓기, 미수금 관리, 강사료 대사까지 경리 실무 순서로 다룹니다.',
+        cover: '',
+        url: 'news/hagwon-jaego-sugangryo-jeongsan.html'
+    },
+
+    {
         slug: 'geullo-gyeyakseo-seomyeon-bogwan',
         title: '근로계약서, 서면에 들어가야 하는 항목과 보관 방법',
         category: '실무팁',
