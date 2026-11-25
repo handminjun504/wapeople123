@@ -16,6 +16,16 @@
     //   url       : '/news/{slug}'
     window.WA_NEWS_DATA = [
     {
+        slug: '5in-miman-gasansudang',
+        title: '5인 미만 사업장, 가산수당이 붙는 자리와 안 붙는 자리',
+        category: '실무팁',
+        date: '2026-11-25',
+        summary: '5인 미만 사업장에서 급여대장에 가산(할증) 항목이 붙는 자리와 붙지 않는 자리를 구분했습니다. 연장·야간·휴일 가산과 연차의 적용 범위, 실제 근로시간 임금과의 차이, 급여대장 표시 방법을 정리했습니다. 상시근로자 수 판정은 노무사 확인이 필요합니다.',
+        cover: '',
+        url: 'news/5in-miman-gasansudang.html'
+    },
+
+    {
         slug: 'hagwon-jaego-sugangryo-jeongsan',
         title: '학원 경리, 교재 재고와 수강료 정산은 이렇게 남깁니다',
         category: '실무팁',
