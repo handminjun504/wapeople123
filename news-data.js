@@ -16,6 +16,16 @@
     //   url       : '/news/{slug}'
     window.WA_NEWS_DATA = [
     {
+        slug: 'woncheonse-yeongan-daesa',
+        title: '원천세 연간 대사, 12월 전에 맞춰둘 것',
+        category: '실무팁',
+        date: '2026-11-26',
+        summary: '1월부터 12월까지 원천세 신고 금액과 급여대장을 월별로 맞춰보는 절차를 정리했습니다. 대사 기준 세 가지, 12개월 표 만드는 순서, 차이가 나는 흔한 원인을 다룹니다. 납부세액·환급·가산세 판단은 세무사 영역입니다.',
+        cover: '',
+        url: 'news/woncheonse-yeongan-daesa.html'
+    },
+
+    {
         slug: '5in-miman-gasansudang',
         title: '5인 미만 사업장, 가산수당이 붙는 자리와 안 붙는 자리',
         category: '실무팁',
