@@ -16,6 +16,16 @@
     //   url       : '/news/{slug}'
     window.WA_NEWS_DATA = [
     {
+        slug: 'yeoncha-balsaeng-gijun',
+        title: '연차 발생 기준, 1년 미만과 1년 이후가 다릅니다',
+        category: '실무팁',
+        date: '2026-11-27',
+        summary: '연차 발생 기준을 1년 미만과 1년 이상으로 나눠 정리했습니다. 입사일 기준과 회계연도 기준의 차이; 발생 일수를 확인하는 순서, 급여대장에 남기는 방법을 다룹니다. 개별 사안 판단은 노무사 영역입니다.',
+        cover: '',
+        url: 'news/yeoncha-balsaeng-gijun.html'
+    },
+
+    {
         slug: 'woncheonse-yeongan-daesa',
         title: '원천세 연간 대사, 12월 전에 맞춰둘 것',
         category: '실무팁',
