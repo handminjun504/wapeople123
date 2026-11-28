@@ -16,6 +16,16 @@
     //   url       : '/news/{slug}'
     window.WA_NEWS_DATA = [
     {
+        slug: 'yeonmal-jeongsan-miriboegi-gyeongni',
+        title: '연말정산 미리보기, 경리가 12월 전에 직원에게 안내할 것',
+        category: '실무팁',
+        date: '2026-11-28',
+        summary: '연말정산 미리보기 서비스를 경리 관점에서 정리했습니다. 직원 안내문에 담을 내용, 12월 전 급여·증빙 대사, 1월 간소화자료 대비까지 순서대로 다룹니다. 환급액 계산과 공제 판단은 세무사 영역입니다.',
+        cover: '',
+        url: 'news/yeonmal-jeongsan-miriboegi-gyeongni.html'
+    },
+
+    {
         slug: 'yeoncha-balsaeng-gijun',
         title: '연차 발생 기준, 1년 미만과 1년 이후가 다릅니다',
         category: '실무팁',
